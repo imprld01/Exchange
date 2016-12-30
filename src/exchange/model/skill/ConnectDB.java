@@ -38,7 +38,7 @@ public class ConnectDB {
 
 	}
 
-	static public void get() throws SQLException {
+	static public ResultSet get() throws SQLException {
 
 		// SQL
 		String sql = "SELECT * FROM `classes` ";
@@ -49,11 +49,7 @@ public class ConnectDB {
 		ResultSet result = statement.executeQuery();
 
 		// 印出來
-		System.out.println("class_code\tclass_name\t");
-		while (result.next()) {
-
-			System.out.println(result.getString("class_code") + "\t" + result.getString("class_name"));
-		}
+		return result;
 	}
 
 	public static void closeConnection() {

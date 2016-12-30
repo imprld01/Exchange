@@ -3,30 +3,26 @@ package exchange.model.skill;
 public class Type {
 	private Code typeCode;
 	private String typeName;
-	
-	public Type(String code,String name)
-	{
-		typeCode = new Code(code);
-		setTypeName(name);
+
+	public Type(Code typeCode, String typeName) {
+		this.typeCode = new Code(typeCode);
+		setTypeName(typeName);
 	}
 
-	public void setTypeName(String name) {
-		typeName = name;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
-	
-	public Code getCode()
-	{
-		return typeCode;
-	}
-	
-	public String getTypeName()
-	{
+
+	public String getTypeName() {
 		return typeName;
 	}
-	
+
+	public Code getTypeCode() {
+		return typeCode;
+	}
+
 	@Override
-	public String toString()
-	{
-		return String.format("typeCode:%s\ttypeName:%s", getCode(), getTypeName());
+	public String toString() {
+		return String.format("[ typeCode = %s, typeName = %s ]", getTypeCode(), getTypeName());
 	}
 }

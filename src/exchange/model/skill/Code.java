@@ -6,7 +6,11 @@ public class Code {
 	public Code(String code) {
 		setCode(code);
 	}
-
+	
+	public Code(Code code) {
+		setCode(code.getCode());
+	}
+	
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -44,6 +48,6 @@ public class Code {
 	@Override
 	public String toString()
 	{
-		return String.format(getCode());
+		return String.format("[ code = %s ]",getCode());
 	}
 }
