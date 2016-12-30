@@ -32,12 +32,11 @@ public class KindTypeManager {
 	{
 		String output = new String();
 		
-		output = "kindList [ ";
-		for(Kind kind:kindList)
-		{
-			output += kind + ", ";
-		}
-		output += " ]\n";
+		output = "kindLis";
+
+			output += kindList;
+
+		
 		return output;
 	}
 }
