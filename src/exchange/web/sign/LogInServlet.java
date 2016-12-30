@@ -21,6 +21,18 @@ public class LogInServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		RequestDispatcher view = null;
+
+		String id = (String)request.getParameter("id");
+		String pwd = (String)request.getParameter("pwd");
+		Secret secret = new Secret(id, pwd);
 		
+		SignManager sm = new SignManager();
+		boolean checkResult = sm.checkPassword(secret);
+		
+		if(checkResult) view = request.getRequestDispatcher("/ShowHomePageServlet");
+		else view = request.getRequestDispatcher("index.html");
+		
+		view.forward(request, response);
 	}
 }
