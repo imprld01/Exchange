@@ -8,35 +8,35 @@ import java.sql.SQLException;
 
 public  class DataBaseAdmin {
 	
-	private static  Connection connection = null; //¥Î¥H¸ò¸ê®Æ®w³s±µ¤§ª«¥ó
+	private static  Connection connection = null; //ç”¨ä»¥å»ºç«‹é€£ç·šä¹‹ç‰©ä»¶
 
 
-	//«Ø¥ß³s½u
-	//°Ñ¼Æ¬°¸ê®Æ®w±b¸¹±K½X
+	//å»ºç«‹é€£ç·š	
+	//åƒæ•¸ç‚ºè³‡æ–™åº«å¸³è™Ÿå¯†ç¢¼
 	public static void openConnection(String user,String pwd) {
 		System.out.println("-------- MySQL JDBC Connection ------------");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("MySQL JDBC Driver not found !!"); //§ä¤£¨ìJDBC Driver  
+			System.out.println("MySQL JDBC Driver not found !!"); 
 			return;
 		}
-		System.out.println("MySQL JDBC Driver Registered!"); // ¦¨¥\µù¥U
+		System.out.println("MySQL JDBC Driver Registered!"); // æˆåŠŸè¨»å†ŠJDBC DRIVER
 
 		try {
 			connection = DriverManager // jdbc:mysql://localhost:3306/data
 					.getConnection("jdbc:mysql://localhost:3306/exchange?useUnicode=true&characterEncoding=UTF-8",user,pwd);
-			//µn¤J¸ê®Æ®w
+			//èˆ‡è³‡æ–™åº«å»ºç«‹é€£ç·š
 			System.out.println("SQL Connection to database established!");
 
 		} catch (SQLException e) {
-			System.out.println("Connection Failed! Check output console"); //»P¸ê®Æ®w³s±µ¥¢±Ñ
+			System.out.println("Connection Failed! Check output console"); //é€£ç·šå¤±æ•—
 			System.out.println(e.getMessage());
 			return;
 		}
 
 	}
-	//²×¤î³s½u
+	//çµ‚æ­¢é€£ç·š
 	public static void closeConnection() {
 
 		try {
@@ -48,20 +48,20 @@ public  class DataBaseAdmin {
 		}
 
 	}
-	//¥Î¥H¤USelect Query¤§method 
+	//ç”¨ä»¥ä¸‹SELECT QUERYä¹‹method
 	//String query = "select  * from table_name";
 	public static ResultSet selectDB(String query){
 		
 		ResultSet result = null;
 		try{
 		PreparedStatement statement = connection.prepareStatement(query);
-		result = statement.executeQuery(); //±N SELECTµ²ªG¦s©ñ¦Üresult 
+		result = statement.executeQuery(); // å°‡SELECTçµæœå­˜æ”¾æ–¼resultç‰©ä»¶
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 		return result; 
 	} 
-	//¥Î¥Hinsert, update, delete ¤§method 
+	//ç”¨ä»¥ä¸‹insert, update, delete QUERYä¹‹method 
 	//UPDATE favorites SET type_name = 'swim' where account = 'admin'
 	//INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield', 2001)
 	//DELETE FROM Registration " +"WHERE id = 101";
@@ -80,9 +80,9 @@ public  class DataBaseAdmin {
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		
-		// method ¨Ï¥Î½d¨Ò ¶È¨Ñ°Ñ¦Ò
-		ResultSet result = null; //¥Î¥H©Ó±µSelectµ²ªG
-		DataBaseAdmin.openConnection("root","root"); //«Ø¥ß³s½u, ¿é¤J¸ê®Æ®w±b¸¹±K½X
+		// method ä½¿ç”¨ä¹‹ç¯„ä¾‹åƒè€ƒ
+		ResultSet result = null; //ç”¨ä»¥å­˜æ”¾SELECTçµæœ
+		DataBaseAdmin.openConnection("root","root"); //ç™»å…¥,å¸³è™Ÿå¯†ç¢¼çš†ç‚ºroot
 		String query = "UPDATE favorites SET type_name = 'swim' where account = 'admin'"; //QUERY
 		DataBaseAdmin.updateDB(query); 
 		
