@@ -1,4 +1,4 @@
-package exchange.skill;
+package exchange.model.skill;
 
 public class Comment {
 
