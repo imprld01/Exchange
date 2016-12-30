@@ -18,7 +18,7 @@ public class Test {
 		//////////////////////////
 
 		ConnectDB.openConnection();
-		//ConnectDB.get();
+		ConnectDB.get();
 	}
 
 }
