@@ -81,7 +81,7 @@ public  class DataBaseAdmin {
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		//closeConnection();
+		//closeConnection(); //待使用結束由使用者自行關閉
 		return ;
 	} 
 
