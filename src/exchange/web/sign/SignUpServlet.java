@@ -19,8 +19,6 @@ public class SignUpServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher view = null;
-
 		String id = (String)request.getParameter("id");
 		String pwd = (String)request.getParameter("pwd");
 		String user = (String)request.getParameter("user");
@@ -33,11 +31,14 @@ public class SignUpServlet extends HttpServlet {
 		Secret secret = new Secret(id, pwd);
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
-		boolean checkResult = sm.checkPassword(secret);
 		
-		if(checkResult) view = request.getRequestDispatcher("/Home.do");
-		else view = request.getRequestDispatcher("index.html");
+		boolean checkResult = false;// = sm.isAccountValid(secret);
 		
-		view.forward(request, response);
+		if(!checkResult){
+			// creation success.
+			//sm.create(secret, profile);
+		}
+		
+		response.sendRedirect("index.html");
 	}
 }

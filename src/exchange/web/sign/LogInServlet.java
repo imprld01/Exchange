@@ -27,9 +27,10 @@ public class LogInServlet extends HttpServlet {
 		SignManager sm = new SignManager();
 		boolean checkResult = sm.checkPassword(secret);
 		
-		if(checkResult) view = request.getRequestDispatcher("/Home.do");
-		else view = request.getRequestDispatcher("index.html");
-		
-		view.forward(request, response);
+		if(checkResult){
+			view = request.getRequestDispatcher("/Home.do");
+			view.forward(request, response);
+		}
+		else response.sendRedirect("index.html");
 	}
 }
