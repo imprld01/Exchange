@@ -7,9 +7,10 @@ public class AccountManager
 		
 	}
 	
-	public Account getAccount(Account id)
+	public Account getAccount(String id)
 	{
-		return id;
+		return null;
+	
 	}
 	
 	public void getAllUserId()
