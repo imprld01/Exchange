@@ -21,4 +21,9 @@ public class AccountManager
 	{
 		
 	}
+	
+	public void setSecret()
+	{
+		
+	}
 }

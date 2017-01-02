@@ -36,7 +36,7 @@ public class Profile
 		}
 	}
 	
-	public Profile(String userName, String nickName, String email, String birthday, String region)
+	public Profile(String nickName, String email, String region)
 	{
 		this.nickName = nickName;
 		this.email = email;
