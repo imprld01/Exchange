@@ -34,10 +34,7 @@ public class SignUpServlet extends HttpServlet {
 		
 		boolean checkResult = false;// = sm.isAccountValid(secret);
 		
-		if(!checkResult){
-			// creation success.
-			//sm.create(secret, profile);
-		}
+		if(!checkResult) sm.create(secret, profile);
 		
 		response.sendRedirect("index.html");
 	}
