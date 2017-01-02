@@ -9,17 +9,17 @@ public class Profile
 	private boolean gender;
 	private boolean male;
 	private boolean female;
-	private String Email;
+	private String email;
 	private Date birthday;
 	private String region;
 	private int skillMax;
 	private int skillNumber;
 	
-	public Profile(String userName, String nickName, boolean gender, String Email, Date birthday, String region, int skillMax, int skillNumber)
+	public Profile(String userName, String nickName, boolean gender, String email, Date birthday, String region, int skillMax, int skillNumber)
 	{
 		this.userName = userName;
 		this.nickName = nickName;
-		this.Email = Email;
+		this.email = email;
 		this.birthday = birthday;
 		this.region = region;
 		this.skillMax = skillMax;
@@ -55,7 +55,7 @@ public class Profile
 	
 	public String getEmail()
 	{
-		return Email;
+		return email;
 	}
 	
 	public Date getbirthday()
@@ -95,7 +95,7 @@ public class Profile
 	
 	public void setEmail(String Email)
 	{
-		this.Email = Email;
+		this.email = Email;
 	}
 	
 	public void setbirthday(Date birthday)
@@ -120,9 +120,7 @@ public class Profile
 	
 	public String toString()
 	{
-		return String.format("[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %tF, region: %s, skillMax: %d, skillNumber: %d]",
+		return String.format("Profile[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %tF, region: %s, skillMax: %d, skillNumber: %d]",
 				getuserName(), getnickName(), getgender(), getEmail(), getbirthday(), getregion(), getskillMax(), getskillNumber());
 	}
-	
-	
 }
