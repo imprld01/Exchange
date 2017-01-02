@@ -1,7 +1,5 @@
 package exchange.model.account;
 
-import java.sql.Date;
-
 public class Profile 
 {
 	private String userName;
@@ -9,21 +7,21 @@ public class Profile
 	private boolean gender;
 	private boolean male;
 	private boolean female;
-	private String Email;
-	private Date birthday;
+	private String email;
+	private String birthday;
 	private String region;
 	private int skillMax;
 	private int skillNumber;
 	
-	public Profile(String userName, String nickName, boolean gender, String Email, Date birthday, String region, int skillMax, int skillNumber)
+	public Profile(String userName, String nickName, boolean gender, String email, String birthday, String region, int skillMax, int skillNumber)
 	{
 		this.userName = userName;
 		this.nickName = nickName;
-		this.Email = Email;
+		this.email = email;
 		this.birthday = birthday;
 		this.region = region;
-		this.skillMax = skillMax;
-		this.skillNumber = skillNumber;
+		this.skillMax = 3;
+		this.skillNumber = 0;
 		
 		
 		boolean m = male;
@@ -36,6 +34,23 @@ public class Profile
 		{
 			System.out.println("female");
 		}
+	}
+	
+	public Profile(String nickName, String email, String region)
+	{
+		this.nickName = nickName;
+		this.email = email;
+		this.region = region;
+	}
+	
+	public Profile(String userName, String nickName, boolean gender, String email, String birthday, String region)
+	{
+		this.userName = userName;
+		this.nickName = nickName;
+		this.email = email;
+		this.birthday = birthday;
+		this.region = region;
+		this.gender = gender;
 	}
 	
 	public String getuserName()
@@ -55,10 +70,10 @@ public class Profile
 	
 	public String getEmail()
 	{
-		return Email;
+		return email;
 	}
 	
-	public Date getbirthday()
+	public String getbirthday()
 	{
 		return birthday;
 	}
@@ -95,10 +110,10 @@ public class Profile
 	
 	public void setEmail(String Email)
 	{
-		this.Email = Email;
+		this.email = Email;
 	}
 	
-	public void setbirthday(Date birthday)
+	public void setbirthday(String birthday)
 	{
 		this.birthday = birthday;
 	}
@@ -120,9 +135,7 @@ public class Profile
 	
 	public String toString()
 	{
-		return String.format("[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %tF, region: %s, skillMax: %d, skillNumber: %d]",
+		return String.format("Profile[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %s, region: %s, skillMax: %d, skillNumber: %d]",
 				getuserName(), getnickName(), getgender(), getEmail(), getbirthday(), getregion(), getskillMax(), getskillNumber());
 	}
-	
-	
 }

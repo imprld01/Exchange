@@ -47,6 +47,7 @@ public class Account
 	
 	public String toString()
 	{
-		return String.format("[Secret: %s, Profile: ]", getSecret(), getProfile(), getRecentLog());
+		return String.format("Account[Secret = %s, Profile = %s, recentLog = %tT ]", getSecret(), getProfile(), 
+				getRecentLog());
 	}
 }
