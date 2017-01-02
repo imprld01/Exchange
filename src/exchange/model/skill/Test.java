@@ -2,6 +2,7 @@ package exchange.model.skill;
 
 import java.sql.SQLException;
 
+
 public class Test {
 
 	public static void main(String[] args) throws SQLException  {
@@ -12,18 +13,17 @@ public class Test {
 //		if( code.equals(otherCode)) System.out.println("yes");
 //		else System.out.println("no");
 //
-//		Type type = new Type(new Code("MUS"),"音樂");
-//		System.out.println(type);
-//		
-//		Kind kind = new Kind(new Code("MUS_001"),"吉他");
-//		System.out.println(kind);
+		Type type = new Type(new Code("MUS_001"),"音樂",new Code("MUS"));
+		System.out.println(type);
+
 		
-		//KindTypeManager kind = new KindTypeManager();
-		//System.out.println(kind);
+		Kind kind = new Kind(new Code("MUS_001"),"吉他");
+		System.out.println(kind);
+		
+		KindTypeManager kindType = new KindTypeManager();
+		System.out.println(kindType);
 		//////////////////////////
 
-		ConnectDB.openConnection();
-		ConnectDB.get();
 	}
 
 }
