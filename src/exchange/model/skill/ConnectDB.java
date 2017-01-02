@@ -27,7 +27,7 @@ public class ConnectDB {
 		try {
 			connection = DriverManager // jdbc:mysql://localhost:3306/data
 					.getConnection("jdbc:mysql://localhost:3306/exchange?useUnicode=true&characterEncoding=UTF-8",
-							"root", "root");
+							"root", "a2n5h011oj");
 			System.out.println("SQL Connection to database established!");
 
 		} catch (SQLException e) {
@@ -50,6 +50,7 @@ public class ConnectDB {
 
 		// 印出來
 		System.out.println("class_code\tclass_name\t");
+		
 		while (result.next()) {
 
 			System.out.println(result.getString("class_code") + "\t" + result.getString("class_name"));
