@@ -27,6 +27,14 @@ public class SignUpServlet extends HttpServlet {
 		String birth = (String)request.getParameter("birth");
 		String region = (String)request.getParameter("region");
 		
+		/*
+		String birth = request.getParameter("birth");
+		SimpleDataFormat parseDate = new java.text.SimpleDateFormat("dd/MM/yyyy");
+		SimpleDataFormat formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
+		Date date = (Date)parseDate.parse(birth);
+		String DisplayDate= formatDate.format(date);
+		*/
+		
 		Secret secret = new Secret(id, pwd);
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
