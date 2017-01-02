@@ -10,4 +10,9 @@ public class Secret {
 		this.id = id;
 		this.password = password;
 	}
+	
+	public String getId(){
+		
+		return this.id;
+	}
 }
