@@ -3,10 +3,99 @@
   <display-name>Exchange</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>LogInServlet</servlet-name>
+    <servlet-class>exchange.web.sign.LogInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogInServlet</servlet-name>
+    <url-pattern>/Login.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>exchange.web.sign.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/Signup.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowHomePageServlet</servlet-name>
+    <servlet-class>exchange.web.home.ShowHomePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowHomePageServlet</servlet-name>
+    <url-pattern>/Home.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AccountServlet</servlet-name>
+    <servlet-class>exchange.web.account.AccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountServlet</servlet-name>
+    <url-pattern>/Account.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SkillServlet</servlet-name>
+    <servlet-class>exchange.web.skill.SkillServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SkillServlet</servlet-name>
+    <url-pattern>/Skill.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MatchServlet</servlet-name>
+    <servlet-class>exchange.web.match.MatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MatchServlet</servlet-name>
+    <url-pattern>/Match.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowExchangePageServlet</servlet-name>
+    <servlet-class>exchange.web.exchange.ShowExchangePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowExchangePageServlet</servlet-name>
+    <url-pattern>/Exchange.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>InvitationServlet</servlet-name>
+    <servlet-class>exchange.web.exchange.InvitationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvitationServlet</servlet-name>
+    <url-pattern>/Invitation.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EvaluationServlet</servlet-name>
+    <servlet-class>exchange.web.evaluation.EvaluationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EvaluationServlet</servlet-name>
+    <url-pattern>/Evaluation.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowCommunicationPageServlet</servlet-name>
+    <servlet-class>exchange.web.communication.ShowCommunicationPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowCommunicationPageServlet</servlet-name>
+    <url-pattern>/Communication.do</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+  	<listener-class>exchange.web.listener.EventContextListener</listener-class>
+  </listener>
 </web-app>
