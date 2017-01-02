@@ -16,4 +16,9 @@ public class AccountManager
 	{
 		
 	}
+	
+	public void setProfile()
+	{
+		
+	}
 }

@@ -20,8 +20,8 @@ public class Profile
 		this.email = email;
 		this.birthday = birthday;
 		this.region = region;
-		this.skillMax = skillMax;
-		this.skillNumber = skillNumber;
+		this.skillMax = 3;
+		this.skillNumber = 0;
 		
 		
 		boolean m = male;
@@ -38,12 +38,19 @@ public class Profile
 	
 	public Profile(String userName, String nickName, String email, String birthday, String region)
 	{
-		
+		this.nickName = nickName;
+		this.email = email;
+		this.region = region;
 	}
 	
 	public Profile(String userName, String nickName, boolean gender, String email, String birthday, String region)
 	{
-		
+		this.userName = userName;
+		this.nickName = nickName;
+		this.email = email;
+		this.birthday = birthday;
+		this.region = region;
+		this.gender = gender;
 	}
 	
 	public String getuserName()
@@ -128,7 +135,7 @@ public class Profile
 	
 	public String toString()
 	{
-		return String.format("Profile[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %tF, region: %s, skillMax: %d, skillNumber: %d]",
+		return String.format("Profile[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %s, region: %s, skillMax: %d, skillNumber: %d]",
 				getuserName(), getnickName(), getgender(), getEmail(), getbirthday(), getregion(), getskillMax(), getskillNumber());
 	}
 }
