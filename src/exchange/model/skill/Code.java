@@ -48,6 +48,6 @@ public class Code {
 	@Override
 	public String toString()
 	{
-		return String.format("[ code = %s ]",getCode());
+		return String.format("[code = %s]",getCode());
 	}
 }

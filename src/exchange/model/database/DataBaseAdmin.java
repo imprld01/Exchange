@@ -64,7 +64,7 @@ public  class DataBaseAdmin {
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		closeConnection();
+		//closeConnection();
 		return result; 
 	} 
 	//用以下insert, update, delete QUERY之method 
@@ -83,7 +83,7 @@ public  class DataBaseAdmin {
 		return ;
 	} 
 
-	
+	/*
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		
@@ -94,5 +94,5 @@ public  class DataBaseAdmin {
 		DataBaseAdmin.updateDB(query); 
 		
 	}
-
+*/
 }
