@@ -18,12 +18,12 @@ public class Test {
 //		Kind kind = new Kind(new Code("MUS_001"),"吉他");
 //		System.out.println(kind);
 		
-		KindTypeManager kind = new KindTypeManager();
-		System.out.println(kind);
+		//KindTypeManager kind = new KindTypeManager();
+		//System.out.println(kind);
 		//////////////////////////
 
 		ConnectDB.openConnection();
-		//ConnectDB.get();
+		ConnectDB.get();
 	}
 
 }
