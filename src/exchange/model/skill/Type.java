@@ -4,12 +4,17 @@ public class Type {
 	private Code typeCode;
 	private Code kindCode;
 	private String typeName;
-	
-	
+
+	//建構子(Code,String,Code)
 	public Type(Code typeCode, String typeName, Code kindCode) {
 		this.typeCode = new Code(typeCode);
 		this.kindCode = new Code(kindCode);
 		setTypeName(typeName);
+	}
+
+	//建構子(Type)
+	public Type(Type type) {
+		this(type.getKindCode(), type.getTypeName(), type.getTypeCode());
 	}
 
 	public void setTypeName(String typeName) {
@@ -27,9 +32,10 @@ public class Type {
 	public Code getKindCode() {
 		return kindCode;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.format("[typeCode = %s, typeName = %s, kindCode = %s]", getTypeCode(), getTypeName(), getKindCode());
+		return String.format("Type[typeCode=%s, typeName=%s, kindCode=%s]", getTypeCode(), getTypeName(),
+				getKindCode());
 	}
 }

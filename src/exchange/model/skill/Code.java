@@ -3,12 +3,14 @@ package exchange.model.skill;
 public class Code {
 	private String code;
 
+	//建構子(String)
 	public Code(String code) {
 		setCode(code);
 	}
 	
+	//建構子(Code)
 	public Code(Code code) {
-		setCode(code.getCode());
+		this(code.getCode());
 	}
 	
 	public void setCode(String code) {
@@ -48,6 +50,6 @@ public class Code {
 	@Override
 	public String toString()
 	{
-		return String.format("[code = %s]",getCode());
+		return String.format("Code[code=%s]",getCode());
 	}
 }
