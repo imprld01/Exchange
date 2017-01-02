@@ -42,6 +42,7 @@ public  class DataBaseAdmin {
 
 	}
 	//終止連線
+	//使DB完畢後皆由使用者自行關閉DB
 	public static void closeConnection() {
 
 		try {
@@ -64,9 +65,9 @@ public  class DataBaseAdmin {
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		closeConnection();
 		return result; 
-	} 
+	}  //使用完result物件後需要自行關閉DB
+	
 	//用以下insert, update, delete QUERY之method 
 	//UPDATE favorites SET type_name = 'swim' where account = 'admin'
 	//INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield', 2001)
@@ -79,9 +80,8 @@ public  class DataBaseAdmin {
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		closeConnection();
 		return ;
-	} 
+	}
 
 	
 	public static void main(String[] args) throws SQLException {
@@ -90,9 +90,12 @@ public  class DataBaseAdmin {
 		// method 使用之範例參考
 		ResultSet result = null; //用以存放SELECT結果
 		DataBaseAdmin.changeDBAccount("root", "root");//更改DB帳號密碼
-		String query = "UPDATE favorites SET type_name = 'guitar' where account = 'admin'"; //QUERY
-		DataBaseAdmin.updateDB(query); 
-		
+		String query = "select  * from favorites"; //QUERY
+		result = DataBaseAdmin.selectDB(query); 
+		while(result.next()){
+				System.out.println(result.getString("type_name")+" "+result.getString("account"));
+		}
+		closeConnection(); //使用後 "result使用完畢"則需要自行關閉
 	}
 
 }
