@@ -7,7 +7,7 @@ public class AccountManager
 		
 	}
 	
-	public String getAccount(String id)
+	public Account getAccount(Account id)
 	{
 		return id;
 	}
