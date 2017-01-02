@@ -1,4 +1,4 @@
-package Exchange.model.Account;
+package exchange.model.account;
 
 public class Secret 
 {

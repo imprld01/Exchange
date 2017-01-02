@@ -31,8 +31,8 @@ public class Skill {
 		vedio = new ArrayList<String>();
 	}
 	
-	//建構子()
-	public Skill(int skillId,String intorExper,Type type)
+	//建構子(int,String,Type,image,vedio) 用於新增技能
+	public Skill(int skillId,String intorExper,Type type,ArrayList<String> image,ArrayList<String> vedio)
 	{
 		this.skillId = skillId;
 		this.skillLv = 0;
@@ -43,7 +43,10 @@ public class Skill {
 		this.type = new Type(type);
 		score = new Score();
 		comment = new ArrayList<Comment>();
-		image = new ArrayList<String>();
-		vedio = new ArrayList<String>();
+		this.image = new ArrayList<String>(image);
+		this.vedio = new ArrayList<String>(vedio);
+				
 	}
+	
+	//
 }

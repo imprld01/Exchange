@@ -1,4 +1,4 @@
-package Exchange.model.Account;
+package exchange.model.account;
 
 import java.sql.Date;
 
