@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package exchange.model.database;
 
 import java.sql.Connection;
@@ -88,4 +89,6 @@ public  class DataBaseAdmin {
 		
 	}
 
-}
+=======
+package exchange.model.database;
+
