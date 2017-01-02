@@ -1,9 +1,6 @@
 package exchange.web.sign;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,12 +24,13 @@ public class SignUpServlet extends HttpServlet {
 		String nick = (String)request.getParameter("nick");
 		boolean gender = Boolean.parseBoolean((String)request.getParameter("gender"));
 		String email = (String)request.getParameter("email");
-		//String birth = (String)request.getParameter("birth");
+		String birth = (String)request.getParameter("birth");
 		String region = (String)request.getParameter("region");
 		
-		
+		/*
 		String birth = request.getParameter("birth");
 		SimpleDateFormat parseDate = new java.text.SimpleDateFormat("dd/MM/yyyy");
+		
 		Date date = null;
 		try {
 			date = (Date)parseDate.parse(birth);
@@ -40,9 +38,10 @@ public class SignUpServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		//String DisplayDate= formatDate.format(date);
+		*/
 		
 		Secret secret = new Secret(id, pwd);
-		Profile profile = new Profile(user, nick, gender, email, date, region);
+		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
 		
 		boolean checkResult = sm.isAccountValid(secret.getId());

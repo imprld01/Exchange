@@ -1,7 +1,5 @@
 package exchange.model.account;
 
-import java.util.Date;
-
 public class Profile 
 {
 	private String userName;
@@ -10,12 +8,12 @@ public class Profile
 	private boolean male;
 	private boolean female;
 	private String email;
-	private Date birthday;
+	private String birthday;
 	private String region;
 	private int skillMax;
 	private int skillNumber;
 	
-	public Profile(String userName, String nickName, boolean gender, String email, Date birthday, String region, int skillMax, int skillNumber)
+	public Profile(String userName, String nickName, boolean gender, String email, String birthday, String region, int skillMax, int skillNumber)
 	{
 		this.userName = userName;
 		this.nickName = nickName;
@@ -38,12 +36,12 @@ public class Profile
 		}
 	}
 	
-	public Profile(String userName, String nickName, String email, Date birthday, String region)
+	public Profile(String userName, String nickName, String email, String birthday, String region)
 	{
 		
 	}
 	
-	public Profile(String userName, String nickName, boolean gender, String email, Date birthday, String region)
+	public Profile(String userName, String nickName, boolean gender, String email, String birthday, String region)
 	{
 		
 	}
@@ -68,7 +66,7 @@ public class Profile
 		return email;
 	}
 	
-	public Date getbirthday()
+	public String getbirthday()
 	{
 		return birthday;
 	}
@@ -108,7 +106,7 @@ public class Profile
 		this.email = Email;
 	}
 	
-	public void setbirthday(Date birthday)
+	public void setbirthday(String birthday)
 	{
 		this.birthday = birthday;
 	}
