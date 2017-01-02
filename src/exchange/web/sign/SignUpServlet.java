@@ -2,7 +2,6 @@ package exchange.web.sign;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +31,7 @@ public class SignUpServlet extends HttpServlet {
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
 		
-		boolean checkResult = false;// = sm.isAccountValid(secret.getId());
+		boolean checkResult = sm.isAccountValid(secret.getId());
 		
 		if(!checkResult) sm.create(secret, profile);
 		
