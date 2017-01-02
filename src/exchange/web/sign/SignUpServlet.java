@@ -1,6 +1,9 @@
 package exchange.web.sign;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,21 +25,24 @@ public class SignUpServlet extends HttpServlet {
 		String pwd = (String)request.getParameter("pwd");
 		String user = (String)request.getParameter("user");
 		String nick = (String)request.getParameter("nick");
-		String gender = (String)request.getParameter("gender");
+		boolean gender = Boolean.parseBoolean((String)request.getParameter("gender"));
 		String email = (String)request.getParameter("email");
-		String birth = (String)request.getParameter("birth");
+		//String birth = (String)request.getParameter("birth");
 		String region = (String)request.getParameter("region");
 		
-		/*
+		
 		String birth = request.getParameter("birth");
-		SimpleDataFormat parseDate = new java.text.SimpleDateFormat("dd/MM/yyyy");
-		SimpleDataFormat formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
-		Date date = (Date)parseDate.parse(birth);
-		String DisplayDate= formatDate.format(date);
-		*/
+		SimpleDateFormat parseDate = new java.text.SimpleDateFormat("dd/MM/yyyy");
+		Date date = null;
+		try {
+			date = (Date)parseDate.parse(birth);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		//String DisplayDate= formatDate.format(date);
 		
 		Secret secret = new Secret(id, pwd);
-		Profile profile = new Profile(user, nick, gender, email, birth, region);
+		Profile profile = new Profile(user, nick, gender, email, date, region);
 		SignManager sm = new SignManager();
 		
 		boolean checkResult = sm.isAccountValid(secret.getId());

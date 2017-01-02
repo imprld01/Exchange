@@ -32,7 +32,7 @@ public class AccountServlet extends HttpServlet {
 			//Profile profile = new Profile(user, nick, email, birth, region);
 			
 			AccountManager sm = new AccountManager();
-			boolean checkResult = sm.checkPassword(secret);
+			/*boolean checkResult = sm.checkPassword(secret);
 			
 			if(checkResult){
 				//session
@@ -43,6 +43,7 @@ public class AccountServlet extends HttpServlet {
 				session.invalidate();
 				response.sendRedirect("index.html");
 			}
+			*/
 		}
 		
 		response.sendRedirect("/Home.do");

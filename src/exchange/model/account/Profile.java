@@ -1,6 +1,6 @@
 package exchange.model.account;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Profile 
 {
@@ -36,6 +36,16 @@ public class Profile
 		{
 			System.out.println("female");
 		}
+	}
+	
+	public Profile(String userName, String nickName, String email, Date birthday, String region)
+	{
+		
+	}
+	
+	public Profile(String userName, String nickName, boolean gender, String email, Date birthday, String region)
+	{
+		
 	}
 	
 	public String getuserName()
