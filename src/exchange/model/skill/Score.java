@@ -7,6 +7,15 @@ public class Score {
 	private int frequency;
 	private int satisfication;
 
+	//建構子()
+	public Score() {
+		this.attitude = 0;
+		this.profession = 0;
+		this.teaching = 0;
+		this.frequency = 0;
+		this.satisfication = 0;
+	}
+	
 	//建構子(int,int,int,int,int)
 	public Score(int attitude, int profession, int teaching, int frequency, int satisfication) {
 		this.attitude = attitude;
