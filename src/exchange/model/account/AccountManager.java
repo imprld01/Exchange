@@ -17,12 +17,12 @@ public class AccountManager
 		
 	}
 	
-	public void setProfile()
+	public void setProfile(Profile profile)
 	{
 		
 	}
 	
-	public void setSecret()
+	public void setSecret(Secret secret)
 	{
 		
 	}
