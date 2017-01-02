@@ -11,7 +11,7 @@ public class Secret
 		this.password = password;
 	}
 	
-	public String getID()
+	public String getId()
 	{
 		return id;
 	}
@@ -28,12 +28,12 @@ public class Secret
 	
 	public String toString()
 	{
-		return String.format("[id: %s, password: %s]", getID(), getPassword());
+		return String.format("[id: %s, password: %s]", getId(), getPassword());
 	}
 
 	public boolean equalValue(Secret s)
 	{
-		if(!s.getID().equals(id))
+		if(!s.getId().equals(id))
 			return false;
 		else if(!s.equals(password))
 			return false;
