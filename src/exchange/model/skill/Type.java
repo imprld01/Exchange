@@ -2,31 +2,47 @@ package exchange.model.skill;
 
 public class Type {
 	private Code typeCode;
+	private Code kindCode;
 	private String typeName;
+
+	//建構子()
+		public Type() {
+			this.typeCode = new Code("");
+			this.kindCode = new Code("");
+			setTypeName("");
+		}
 	
-	public Type(String code,String name)
-	{
-		typeCode = new Code(code);
-		setTypeName(name);
+	//建構子(Code,String,Code)
+	public Type(Code typeCode, String typeName, Code kindCode) {
+		this.typeCode = new Code(typeCode);
+		this.kindCode = new Code(kindCode);
+		setTypeName(typeName);
 	}
 
-	public void setTypeName(String name) {
-		typeName = name;
+	//建構子(Type)
+	public Type(Type type) {
+		this(type.getKindCode(), type.getTypeName(), type.getTypeCode());
 	}
-	
-	public Code getCode()
-	{
-		return typeCode;
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
-	
-	public String getTypeName()
-	{
+
+	public String getTypeName() {
 		return typeName;
 	}
-	
+
+	public Code getTypeCode() {
+		return typeCode;
+	}
+
+	public Code getKindCode() {
+		return kindCode;
+	}
+
 	@Override
-	public String toString()
-	{
-		return String.format("typeCode:%s\ttypeName:%s", getCode(), getTypeName());
+	public String toString() {
+		return String.format("Type[typeCode=%s, typeName=%s, kindCode=%s]", getTypeCode(), getTypeName(),
+				getKindCode());
 	}
 }
