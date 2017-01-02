@@ -7,10 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public  class DataBaseAdmin {
-	
+	private static String userID ="root";
+	private static String pwd = "root";
 	private static  Connection connection = null; //用以建立連線之物件
-
-
+	
+	//更改DB帳號密碼
+	public static void changeDBAccount(String userID, String pwd){
+		DataBaseAdmin.userID = userID;
+		DataBaseAdmin.pwd = pwd;
+	}
 	//建立連線	
 	//參數為資料庫帳號密碼
 	public static void openConnection(String user,String pwd) {
@@ -51,7 +56,7 @@ public  class DataBaseAdmin {
 	//用以下SELECT QUERY之method
 	//String query = "select  * from table_name";
 	public static ResultSet selectDB(String query){
-		
+		DataBaseAdmin.openConnection(DataBaseAdmin.userID , DataBaseAdmin.pwd ); //登入,帳號密碼
 		ResultSet result = null;
 		try{
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -59,6 +64,7 @@ public  class DataBaseAdmin {
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
+		closeConnection();
 		return result; 
 	} 
 	//用以下insert, update, delete QUERY之method 
@@ -66,13 +72,14 @@ public  class DataBaseAdmin {
 	//INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield', 2001)
 	//DELETE FROM Registration " +"WHERE id = 101";
 	public  static void updateDB(String query){
-		
+		DataBaseAdmin.openConnection(DataBaseAdmin.userID , DataBaseAdmin.pwd ); //登入,帳號密碼
 		try{
 		PreparedStatement statement = connection.prepareStatement(query);
 		statement.executeUpdate(query);
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 		}
+		closeConnection();
 		return ;
 	} 
 
@@ -82,8 +89,8 @@ public  class DataBaseAdmin {
 		
 		// method 使用之範例參考
 		ResultSet result = null; //用以存放SELECT結果
-		DataBaseAdmin.openConnection("root","root"); //登入,帳號密碼皆為root
-		String query = "UPDATE favorites SET type_name = 'swim' where account = 'admin'"; //QUERY
+		DataBaseAdmin.changeDBAccount("root", "root");//更改DB帳號密碼
+		String query = "UPDATE favorites SET type_name = 'guitar' where account = 'admin'"; //QUERY
 		DataBaseAdmin.updateDB(query); 
 		
 	}
