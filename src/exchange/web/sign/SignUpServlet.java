@@ -32,7 +32,7 @@ public class SignUpServlet extends HttpServlet {
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
 		
-		boolean checkResult = false;// = sm.isAccountValid(secret);
+		boolean checkResult = false;// = sm.isAccountValid(secret.getId());
 		
 		if(!checkResult) sm.create(secret, profile);
 		

@@ -22,4 +22,13 @@ public class SignManager {
 		
 		return result;
 	}
+	
+	public boolean isAccountValid(String id){
+		
+		boolean result = false;
+		
+		
+		
+		return result;
+	}
 }
