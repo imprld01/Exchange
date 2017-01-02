@@ -1,5 +1,6 @@
-package exchange.model.account;
+package Exchange.model.Account;
 
-public class AccountManager {
-
+public class AccountManager 
+{
+	
 }
