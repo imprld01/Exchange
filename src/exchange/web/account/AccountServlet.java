@@ -15,12 +15,13 @@ import exchange.model.account.Secret;
 
 @WebServlet("/Account.do")
 public class AccountServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	
 	private static final int SECRET_MODIFICATION = 0;
 	private static final int PROFILE_MODIFICATION = 1;
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		
