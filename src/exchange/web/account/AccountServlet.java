@@ -54,5 +54,6 @@ public class AccountServlet extends HttpServlet {
 				break;
 			}
 		}
+		else response.sendRedirect("index.html");
 	}
 }
