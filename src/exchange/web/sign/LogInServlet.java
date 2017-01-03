@@ -37,6 +37,7 @@ public class LogInServlet extends HttpServlet {
 			else{
 				session.invalidate();
 				response.sendRedirect("index.html");
+				return;
 			}
 		}
 		
