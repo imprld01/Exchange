@@ -14,9 +14,10 @@ import exchange.model.sign.SignManager;
 
 @WebServlet("/Signup.do")
 public class SignUpServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id = (String)request.getParameter("id");
 		String pwd = (String)request.getParameter("pwd");
