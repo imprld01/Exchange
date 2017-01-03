@@ -28,7 +28,7 @@ public class Secret
 	
 	public String toString()
 	{
-		return String.format("[id: %s, password: %s]", getId(), getPassword());
+		return String.format("[id= %s, password= %s]", getId(), getPassword());
 	}
 
 	public boolean equalValue(Secret s)
