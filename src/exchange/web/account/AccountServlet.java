@@ -23,9 +23,9 @@ public class AccountServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		
-		if(session.isNew()){
+		if(session != null){
 		
 			AccountManager am = new AccountManager();
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
