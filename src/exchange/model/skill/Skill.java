@@ -45,5 +45,4 @@ public class Skill {
 		this.vedio = new ArrayList<String>(vedio);
 	}
 
-	//
 }
