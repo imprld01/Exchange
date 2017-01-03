@@ -32,7 +32,7 @@ public class AccountServlet extends HttpServlet {
 			
 			switch(mark){
 			case SECRET_MODIFICATION:
-				String id = (String)request.getParameter("id");
+				String id = (String)session.getAttribute("uid");
 				String pwd = (String)request.getParameter("pwd");
 				
 				Secret secret = new Secret(id, pwd);
