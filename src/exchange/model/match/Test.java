@@ -8,11 +8,16 @@ public class Test {
 		// TODO Auto-generated method stub
 
 
+		// TODO Auto-generated method stub
+
+
 		
 		//////////////////////////
-
-		MatchMaker.openConnection();
-		MatchMaker.get();
+		BasicAlgorithm basicAlgorithm =new BasicAlgorithm("john1105"); //傳遞帳號與技能ID過去
+		basicAlgorithm.creatMateSet();
+		
+	
+		
 	}
 
 }
