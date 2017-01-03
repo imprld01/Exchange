@@ -10,11 +10,7 @@ public class Secret
 		this.id = id;
 		this.password = password;
 	}
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 829432907efc5faf4265795571291882933d0f9d
 	public String getId()
 	{
 		return id;
@@ -32,8 +28,7 @@ public class Secret
 	
 	public String toString()
 	{
-<<<<<<< HEAD
-		return String.format("[id: %s, password: %s]", getId(), getPassword());
+		return String.format("[id= %s, password= %s]", getId(), getPassword());
 	}
 
 	public boolean equalValue(Secret s)
@@ -64,8 +59,5 @@ public class Secret
 	    if(equalValue((Secret) other)) 
 	    	return true;
 	    else return false;
-=======
-		return String.format("Secret[id = %s, password = %s]", getId(), getPassword());
->>>>>>> 829432907efc5faf4265795571291882933d0f9d
 	}
 }

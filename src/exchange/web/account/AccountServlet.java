@@ -15,23 +15,24 @@ import exchange.model.account.Secret;
 
 @WebServlet("/Account.do")
 public class AccountServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	
 	private static final int SECRET_MODIFICATION = 0;
 	private static final int PROFILE_MODIFICATION = 1;
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		
-		if(session.isNew()){
+		if(session != null){
 		
 			AccountManager am = new AccountManager();
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){
 			case SECRET_MODIFICATION:
-				String id = (String)request.getParameter("id");
+				String id = (String)session.getAttribute("uid");
 				String pwd = (String)request.getParameter("pwd");
 				
 				Secret secret = new Secret(id, pwd);
@@ -53,5 +54,6 @@ public class AccountServlet extends HttpServlet {
 				break;
 			}
 		}
+		else response.sendRedirect("index.html");
 	}
 }
