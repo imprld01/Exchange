@@ -32,10 +32,10 @@ public class InvitationServlet extends HttpServlet {
 			
 			switch(mark){
 			case REJECT_INVITATION:
-				//em.rejectInvitation(receiver);
+				//em.rejectInvitation(send, receiver);
 				break;
 			case ACCEPT_INVITATION:
-				//em.acceptInvitation(receiver);
+				//em.acceptInvitation(send, receiver);
 				break;
 			case SEND_INVITATION:
 				//en.sendInvitation(sender, receiver);
