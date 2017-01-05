@@ -92,7 +92,13 @@ public  class DataBaseAdmin {
 		// method 使用之範例參考
 		ResultSet result = null; //用以存放SELECT結果
 		DataBaseAdmin.changeDBAccount("root", "root");//更改DB帳號密碼
-		String query = "UPDATE favorites SET type_name = 'guitar' where account = 'admin'"; //QUERY
+		//SELECT 範例
+		result = DataBaseAdmin.selectDB("SELECT * FROM 'accounts'"); 
+		while(result.next()){
+			System.out.println(result.getString("user_id")+" "+result.getString("user_name"));
+		}
+		//修改範例
+		String  query = "UPDATE favorites SET type_name = 'guitar' where account = 'admin'"; //QUERY
 		DataBaseAdmin.updateDB(query); 
 		
 	}
