@@ -5,7 +5,7 @@ import exchange.model.account.Secret;
 
 public class SignManager {
 
-	public boolean checkPassword(Secret secret){
+	public boolean check(Secret secret){
 		
 		boolean result = false;
 		
@@ -16,19 +16,11 @@ public class SignManager {
 	
 	public boolean create(Secret secret, Profile profile){
 		
-		boolean result = false;
 		
 		
 		
-		return result;
+		return false;
 	}
 	
-	public boolean isAccountValid(String id){
-		
-		boolean result = false;
-		
-		
-		
-		return result;
-	}
+	
 }
