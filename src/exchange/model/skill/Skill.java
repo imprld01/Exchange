@@ -58,20 +58,43 @@ public class Skill {
 				account = rs.getString("account");	
 			}
 			
-			query = "SELECT type_name FROM skills WHERE skill_id = '" + this.skillId + "'";
+			query = "SELECT * FROM types WHERE type_name = '" + type_name + "'";
 			rs = DataBaseAdmin.selectDB(query);
+			if (rs.next()) {
+				type = new Type(new Code(rs.getString("type_code")),
+						rs.getString("type_name"),
+						new Code(rs.getString("class_code")));
+			}
 			
+			
+			comment = new ArrayList<Comment>();
+			image = new ArrayList<String>();
+			vedio = new ArrayList<String>();
+			
+			query = "SELECT * FROM comments WHERE skill_id = '" + this.skillId + "'";
+			rs = DataBaseAdmin.selectDB(query);
+			while (rs.next()) {
+				comment.add(new Comment(rs.getString("comment"),rs.getString("date")));
+			}
+			
+			query = "SELECT * FROM images WHERE skill_id = '" + this.skillId + "'";
+			rs = DataBaseAdmin.selectDB(query);
+			while (rs.next()) {
+				image.add(rs.getString("image"));
+			}
+			
+			query = "SELECT * FROM videos WHERE skill_id = '" + this.skillId + "'";
+			rs = DataBaseAdmin.selectDB(query);
+			while (rs.next()) {
+				vedio.add(rs.getString("video"));
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		type = new Type();
+	
 		
-		comment = new ArrayList<Comment>();
-		image = new ArrayList<String>();
-		vedio = new ArrayList<String>();
 	}
 
 	// 建構子(int,String,Type,image,vedio) 用於新增技能

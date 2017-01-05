@@ -5,21 +5,21 @@ public class Type {
 	private Code kindCode;
 	private String typeName;
 
-	//建構子()
-		public Type() {
-			this.typeCode = new Code("");
-			this.kindCode = new Code("");
-			setTypeName("");
-		}
-	
-	//建構子(Code,String,Code)
+	// 建構子()
+	public Type() {
+		this.typeCode = new Code("");
+		this.kindCode = new Code("");
+		setTypeName("");
+	}
+
+	// 建構子(Code,String,Code)
 	public Type(Code typeCode, String typeName, Code kindCode) {
 		this.typeCode = new Code(typeCode);
 		this.kindCode = new Code(kindCode);
 		setTypeName(typeName);
 	}
 
-	//建構子(Type)
+	// 建構子(Type)
 	public Type(Type type) {
 		this(type.getKindCode(), type.getTypeName(), type.getTypeCode());
 	}
