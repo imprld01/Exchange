@@ -53,6 +53,10 @@ public class Profile
 		this.getgender();
 	}
 	
+	public Profile() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getuserName()
 	{
 		return userName;

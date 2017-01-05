@@ -7,10 +7,19 @@ public class Secret
 	
 	public Secret(String id, String password)
 	{
-		this.id = id;
-		this.password = password;
+		this.id = new String();
+		this.password = new String();
 	}
 	
+	public Secret(String id) {
+		//getAlluserid()
+		this.id = id;
+	}
+
+	public Secret() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getId()
 	{
 		return id;
