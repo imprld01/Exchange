@@ -2,15 +2,10 @@ package exchange.model.account;
 
 public class AccountManager 
 {
-	public void addAccount(Secret Account)
-	{
-		
-	}
-	
 	public Account getAccount(String id)
 	{
-		return null;
-	
+		AccountManager am = new AccountManager();
+		return am.getAccount(id);
 	}
 	
 	public void getAllUserId()
