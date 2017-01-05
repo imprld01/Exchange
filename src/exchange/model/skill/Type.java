@@ -42,7 +42,6 @@ public class Type {
 
 	@Override
 	public String toString() {
-		return String.format("Type[typeCode=%s, typeName=%s, kindCode=%s]", getTypeCode(), getTypeName(),
-				getKindCode());
+		return "Type [typeCode=" + typeCode + ", kindCode=" + kindCode + ", typeName=" + typeName + "]";
 	}
 }

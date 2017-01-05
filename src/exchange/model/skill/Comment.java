@@ -19,6 +19,6 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment[comment=" + comment + ", date=" + date + "]";
+		return "Comment [comment=" + comment + ", date=" + date + "]";
 	}
 }

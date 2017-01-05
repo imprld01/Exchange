@@ -48,8 +48,7 @@ public class Code {
 	}
 	
 	@Override
-	public String toString()
-	{
-		return String.format("Code[code=%s]",getCode());
+	public String toString() {
+		return "Code [code=" + code + "]";
 	}
 }
