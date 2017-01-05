@@ -27,12 +27,14 @@ public class ShowExchangePageServlet extends HttpServlet {
 		if(session != null){
 			RequestDispatcher view = null;
 			
-			String uid = (String)session.getAttribute("uid");
-			
 			ExchangeManager em = new ExchangeManager();
-			//ArrayList<Invitation> result = em.getAllInvitations();
+			//ArrayList<Exchange> exchange = em.getExchangings();
+			//ArrayList<Exchange> receive = em.getReceiveInvitations();
+			//ArrayList<Exchange> send = em.getSendInvitations();
 			
-			//request.setAttribute("invitations", result);
+			//request.setAttribute("Exchanging", exchange);
+			//request.setAttribute("ReceiveInvitation", receive);
+			//request.setAttribute("SendInvitation", send);
 			
 			view = request.getRequestDispatcher("/ExchangePage.jsp");
 			view.forward(request, response);
