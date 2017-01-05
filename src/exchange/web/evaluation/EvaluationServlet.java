@@ -39,7 +39,7 @@ public class EvaluationServlet extends HttpServlet {
 			//em.saveComment(comment);
 			
 			ExchangeManager xm = new ExchangeManager();
-			//xm.finishExchange();
+			//xm.finishExchange(cid);
 			
 			response.sendRedirect("/Exchange.do");
 		}

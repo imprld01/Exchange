@@ -21,6 +21,7 @@ public class InvitationServlet extends HttpServlet {
 		
 		if(session != null){
 			
+			/*
 			String cid = (String)request.getParameter("cardId");
 			int attitude = Integer.parseInt((String)request.getParameter("atd"));
 			int profession = Integer.parseInt((String)request.getParameter("pfn"));
@@ -28,17 +29,8 @@ public class InvitationServlet extends HttpServlet {
 			int frequency = Integer.parseInt((String)request.getParameter("fqc"));
 			int satisfication = Integer.parseInt((String)request.getParameter("sfn"));
 			String comment = (String)request.getParameter("comment");
+			*/
 			
-			//EvaluationManager em = new EvaluationManager(cid);
-			//em.saveAttitudeScore(attitude);
-			//em.saveProfessionScore(profession);
-			//em.saveTeachingScore(teaching);
-			//em.saveFrequencyScore(frequency);
-			//em.saveSatisficationScore(satisfication);
-			//em.saveComment(comment);
-			
-			ExchangeManager xm = new ExchangeManager();
-			//xm.finishExchange(cid);
 			
 			response.sendRedirect("/Exchange.do");
 		}
