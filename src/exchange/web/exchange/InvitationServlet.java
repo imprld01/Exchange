@@ -14,6 +14,9 @@ import exchange.model.exchange.ExchangeManager;
 public class InvitationServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private static final int REJECT_INVITATION = 0;
+	private static final int ACCEPT_INVITATION = 1;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -21,16 +24,18 @@ public class InvitationServlet extends HttpServlet {
 		
 		if(session != null){
 			
-			/*
-			String cid = (String)request.getParameter("cardId");
-			int attitude = Integer.parseInt((String)request.getParameter("atd"));
-			int profession = Integer.parseInt((String)request.getParameter("pfn"));
-			int teaching = Integer.parseInt((String)request.getParameter("tch"));
-			int frequency = Integer.parseInt((String)request.getParameter("fqc"));
-			int satisfication = Integer.parseInt((String)request.getParameter("sfn"));
-			String comment = (String)request.getParameter("comment");
-			*/
+			ExchangeManager em = new ExchangeManager();
+			String receiver = (String)request.getParameter("rcv");
+			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
+			switch(mark){
+			case REJECT_INVITATION:
+				//em.rejectInvitation(receiver);
+				break;
+			case ACCEPT_INVITATION:
+				//em.acceptInvitation(receiver);
+				break;
+			}
 			
 			response.sendRedirect("/Exchange.do");
 		}
