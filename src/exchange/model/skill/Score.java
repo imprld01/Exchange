@@ -7,7 +7,7 @@ public class Score {
 	private int frequency;
 	private int satisfication;
 
-	//建構子()
+	// 建構子()
 	public Score() {
 		this.attitude = 0;
 		this.profession = 0;
@@ -15,8 +15,8 @@ public class Score {
 		this.frequency = 0;
 		this.satisfication = 0;
 	}
-	
-	//建構子(int,int,int,int,int)
+
+	// 建構子(int,int,int,int,int)
 	public Score(int attitude, int profession, int teaching, int frequency, int satisfication) {
 		this.attitude = attitude;
 		this.profession = profession;
@@ -24,12 +24,13 @@ public class Score {
 		this.frequency = frequency;
 		this.satisfication = satisfication;
 	}
-	
-	//建構子(Score)
+
+	// 建構子(Score)
 	public Score(Score score) {
-		this(score.getAttitude(),score.getProfession(),score.getTeaching(),score.getFrequency(),score.getSatisfication());
+		this(score.getAttitude(), score.getProfession(), score.getTeaching(), score.getFrequency(),
+				score.getSatisfication());
 	}
-	
+
 	public int getAttitude() {
 		return attitude;
 	}
@@ -50,9 +51,13 @@ public class Score {
 		return satisfication;
 	}
 
+	public int calSumScore() {
+		return (attitude + profession + teaching + frequency + satisfication);
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Score[attitude=%d, profession=%d, teaching=%d, frequency=%d, satisfication=%d]",
-				getAttitude(), getProfession(), getTeaching(), getFrequency(), getSatisfication());
+		return "Score [attitude=" + attitude + ", profession=" + profession + ", teaching=" + teaching + ", frequency="
+				+ frequency + ", satisfication=" + satisfication + "]";
 	}
 }

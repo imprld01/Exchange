@@ -22,7 +22,9 @@ public class Test {
 		
 		KindTypeManager kindType = new KindTypeManager();
 		System.out.println(kindType);
-		//////////////////////////
+		
+		Skill skill = new Skill(1);
+		System.out.println(skill);
 
 	}
 

@@ -27,8 +27,8 @@ public class Kind {
 		return kindCode;
 	}
 
+	@Override
 	public String toString() {
-		return String.format("Kind[kindCode=%s, kindName=%s]", getKindCode(), getKindName());
-
+		return "Kind [kindCode=" + kindCode + ", kindName=" + kindName + "]";
 	}
 }
