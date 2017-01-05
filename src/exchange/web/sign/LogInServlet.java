@@ -27,7 +27,7 @@ public class LogInServlet extends HttpServlet {
 			Secret secret = new Secret(id, pwd);
 			
 			SignManager sm = new SignManager();
-			boolean checkResult = sm.checkPassword(secret);
+			boolean checkResult = sm.check(secret);
 			
 			if(checkResult){
 				//session
