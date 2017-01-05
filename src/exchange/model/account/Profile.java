@@ -50,7 +50,7 @@ public class Profile
 		this.email = email;
 		this.birthday = birthday;
 		this.region = region;
-		this.gender = gender;
+		this.getgender();
 	}
 	
 	public String getuserName()
