@@ -17,6 +17,7 @@ public class InvitationServlet extends HttpServlet {
 	
 	private static final int REJECT_INVITATION = 0;
 	private static final int ACCEPT_INVITATION = 1;
+	private static final int SEND_INVITATION = 2;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -25,6 +26,7 @@ public class InvitationServlet extends HttpServlet {
 		if(session != null){
 			
 			ExchangeManager em = new ExchangeManager();
+			String sender = (String)request.getParameter("sdr");
 			String receiver = (String)request.getParameter("rcv");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
@@ -34,6 +36,9 @@ public class InvitationServlet extends HttpServlet {
 				break;
 			case ACCEPT_INVITATION:
 				//em.acceptInvitation(receiver);
+				break;
+			case SEND_INVITATION:
+				//en.sendInvitation(sender, receiver);
 				break;
 			}
 			
