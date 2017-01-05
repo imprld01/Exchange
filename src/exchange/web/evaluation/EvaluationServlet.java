@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.exchange.ExchangeManager;
+
 @WebServlet("/Evaluation.do")
 public class EvaluationServlet extends HttpServlet {
 	
@@ -35,6 +37,9 @@ public class EvaluationServlet extends HttpServlet {
 			//em.saveFrequencyScore(frequency);
 			//em.saveSatisficationScore(satisfication);
 			//em.saveComment(comment);
+			
+			ExchangeManager xm = new ExchangeManager();
+			//xm.finishExchange();
 			
 			response.sendRedirect("/Exchange.do");
 		}
