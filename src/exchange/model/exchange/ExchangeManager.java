@@ -26,5 +26,5 @@ public class ExchangeManager {
 				+ "(skill_a = '"+mySkillID+"' OR skill_b = '"+mySkillID+"')");
 		return exchangeList;
 	}
-	//a
+
 }
