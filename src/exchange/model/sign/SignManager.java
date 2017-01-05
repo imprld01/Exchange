@@ -22,5 +22,10 @@ public class SignManager {
 		return false;
 	}
 	
+	public boolean isAccountValid(String id){
+		return false;
+		
+	}
+	
 	
 }

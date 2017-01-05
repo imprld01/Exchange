@@ -9,7 +9,7 @@ public class AccountManager
 	}
 	public Account getAccount(String id)
 	{
-		return getAccount(id);
+		return null;
 	}
 	
 	public void getAllUserId()
