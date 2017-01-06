@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
-import exchange.model.skill.FavoriteSkill;
 import exchange.model.skill.Skill;
 import exchange.model.skill.SkillManager;
+import exchange.model.skill.Type;
 
 @WebServlet("/Home.do")
 public class ShowHomePageServlet extends HttpServlet {
@@ -44,7 +44,7 @@ public class ShowHomePageServlet extends HttpServlet {
 			
 			SkillManager sm = new SkillManager();
 			ArrayList<Skill> skills = null;//sm.getAllSkills(uid);
-			ArrayList<FavoriteSkill> favorites = null;//sm.getAllFavorites(uid);
+			ArrayList<Type> favorites = null;//sm.getAllFavorites(uid);
 			
 			Hashtable<String, Skill> skillTable = new Hashtable<String, Skill>();
 			for(Skill skill : skills) skillTable.put(Integer.toString(skill.getSkillId()), skill);
