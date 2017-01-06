@@ -18,8 +18,7 @@ public class Test {
 //		if( code.equals(otherCode)) System.out.println("yes");
 //		else System.out.println("no");
 //
-<<<<<<< HEAD
-		
+
 		Type type = new Type(new Code("MUS_001"),"音樂",new Code("MUS"));
 		System.out.println(type);
 
@@ -30,10 +29,7 @@ public class Test {
 		KindTypeManager kindType = new KindTypeManager();
 		System.out.println(kindType);
 		
-		Skill skill = new Skill(1);
-		System.out.println(skill);
-		
-=======
+
 //		Type type = new Type(new Code("MUS_001"),"音樂",new Code("MUS"));
 //		System.out.println(type);
 //
@@ -50,12 +46,10 @@ public class Test {
 
 		SkillManager sm = new SkillManager();
 		System.out.println(sm.getAllFavoriteSkills("vegetable"));
-<<<<<<< HEAD
+
 		System.out.println(sm.getAllSkills("vegetable"));
 		sm.createSkill(new Skill("vegetable","123123",new Type("游泳"), new ArrayList<String>(), new ArrayList<String>()));
-=======
->>>>>>> 0bd78bd6d64e13490cef64003c8cfeb31b6ed52f
->>>>>>> 303d28a1f1a7a0d0ba6cab0771bb6e6bb05141da
+
 	}
 
 }
