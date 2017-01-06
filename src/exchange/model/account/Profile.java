@@ -5,8 +5,6 @@ public class Profile
 	private String userName;
 	private String nickName;
 	private boolean gender;
-	private boolean male;
-	private boolean female;
 	private String email;
 	private String birthday;
 	private String region;
@@ -22,18 +20,8 @@ public class Profile
 		this.region = region;
 		this.skillMax = 3;
 		this.skillNumber = 0;
+		this.gender = gender;
 		
-		
-		boolean m = male;
-		boolean f = female;
-		if(gender == m)
-		{
-			System.out.println("male");
-		}
-		else if(gender == f)
-		{
-			System.out.println("female");
-		}
 	}
 	
 	public Profile(String nickName, String email, String region)
@@ -50,25 +38,31 @@ public class Profile
 		this.email = email;
 		this.birthday = birthday;
 		this.region = region;
-		this.getgender();
+		this.gender = gender;
 	}
 	
 	public Profile() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getuserName()
+	public String getUserName()
 	{
 		return userName;
 	}
 	
-	public String getnickName()
+	public String getNickName()
 	{
 		return nickName;
 	}
 	
-	public boolean getgender()
+	public boolean getGender()
 	{
+		boolean male = true;
+		boolean female = false;
+		if(gender == male)
+			gender = true;
+		if(gender == female)
+			gender = false;
 		return gender;
 	}
 	
@@ -77,37 +71,37 @@ public class Profile
 		return email;
 	}
 	
-	public String getbirthday()
+	public String getBirthday()
 	{
 		return birthday;
 	}
 	
-	public String getregion()
+	public String getRegion()
 	{
 		return region;
 	}
 	
-	public int getskillMax()
+	public int getSkillMax()
 	{
 		return skillMax;
 	}
 	
-	public int getskillNumber()
+	public int getSkillNumber()
 	{
 		return skillNumber;
 	}
 	
-	public void setnickName(String nickName)
+	public void setNickName(String nickName)
 	{
 		this.nickName = nickName;
 	}
 	
-	public void setuserName(String userName)
+	public void setUserName(String userName)
 	{
 		this.userName = userName;
 	}
 	
-	public void setgender(boolean gender)
+	public void setGender(boolean gender)
 	{
 		this.gender = gender;
 	}
@@ -117,22 +111,22 @@ public class Profile
 		this.email = Email;
 	}
 	
-	public void setbirthday(String birthday)
+	public void setBirthday(String birthday)
 	{
 		this.birthday = birthday;
 	}
 	
-	public void setregion(String region)
+	public void setRegion(String region)
 	{
 		this.region = region;
 	}
 	
-	public void setskillMax(int skillMax)
+	public void setSkillMax(int skillMax)
 	{
 		this.skillMax = skillMax;
 	}
 	
-	public void setskillNumber(int skillNumber)
+	public void setSkillNumber(int skillNumber)
 	{
 		this.skillNumber = skillNumber;
 	}
@@ -140,6 +134,6 @@ public class Profile
 	public String toString()
 	{
 		return String.format("Profile[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %s, region: %s, skillMax: %d, skillNumber: %d]",
-				getuserName(), getnickName(), getgender(), getEmail(), getbirthday(), getregion(), getskillMax(), getskillNumber());
+				getUserName(), getNickName(), getGender(), getEmail(), getBirthday(), getRegion(), getSkillMax(), getSkillNumber());
 	}
 }
