@@ -7,10 +7,8 @@ import exchange.model.database.DataBaseAdmin;
 
 public class FavoriteSkill {
 	private Type type;
-	
-	public FavoriteSkill(Type type)
-	{
+
+	public FavoriteSkill(Type type) {
 		this.type = new Type(type);
 	}
 }
- 

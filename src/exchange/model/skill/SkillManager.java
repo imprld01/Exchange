@@ -9,12 +9,6 @@ import exchange.model.database.DataBaseAdmin;
 
 public class SkillManager {
 
-	public boolean isSendingInvation() {
-
-		// 判斷卡片是否再invitation的sender中
-		return false;
-	}
-
 	static public void createSkill(Skill skill) throws SQLException {
 		// 判斷是否可新增技能
 		int skillId = 0;
@@ -60,7 +54,8 @@ public class SkillManager {
 	}
 
 	static public void deleteFavoriteSkill(String typeName, String userId) {
-		DataBaseAdmin.updateDB("DELETE FROM favorites Where user_id= '"+ userId +"'AND type_name = '"+ typeName+"'");
+		DataBaseAdmin
+				.updateDB("DELETE FROM favorites Where user_id= '" + userId + "'AND type_name = '" + typeName + "'");
 	}
 
 	static public ArrayList<Skill> getAllSkills(String userId) throws SQLException {
@@ -88,4 +83,20 @@ public class SkillManager {
 		return favoriteTypes;
 	}
 
+	// 評斷是否黑單：在
+	static public void judgeBlock(int skillId, Score score) {
+
+	}
+
+	// 判斷卡片是否再邀請別人
+	static public boolean isSendingInvation() {
+
+		
+		return false;
+	}
+
+	static public void updateSkillLevel(int skillId) {
+		String query = "SELECT * FROM skills WHERE skill_id = '" + skillId + "'";
+		ResultSet rs = DataBaseAdmin.selectDB(query);
+	}
 }

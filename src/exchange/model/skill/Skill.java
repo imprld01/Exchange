@@ -188,18 +188,10 @@ public class Skill {
 		return type;
 	}
 
-	public void calSkillLevel() {
-
-		try {
-			skillLv = score.calSumScore() / times;
-		} catch (ArithmeticException ae) {
-			skillLv = 0;
-		}
-	}
 
 	public double calAvgScore() {
 
-		return score.calSumScore() / 5;
+		return score.calSumScore() / times;
 	}
 
 	@Override

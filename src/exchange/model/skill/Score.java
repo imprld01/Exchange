@@ -51,6 +51,7 @@ public class Score {
 		return satisfication;
 	}
 
+	//回傳所有分數相加
 	public int calSumScore() {
 		return (attitude + profession + teaching + frequency + satisfication);
 	}
