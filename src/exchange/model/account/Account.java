@@ -14,12 +14,18 @@ public class Account
 		this.profile = profile;
 		this.reccntLog = recentLog;
 	}
-
+	
 	public Account(Profile profile) {
 		// TODO Auto-generated constructor stub
 		this.profile = profile;
 	}
 
+	public Account(Profile profile, Secret secret)
+	{
+		this.profile = profile;
+		this.secret = secret;
+	}
+	
 	public void setSecret(Secret secret)
 	{
 		this.secret = secret;
