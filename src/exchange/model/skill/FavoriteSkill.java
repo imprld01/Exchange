@@ -1,6 +1,16 @@
 package exchange.model.skill;
 
-public class FavoriteSkill {
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import exchange.model.database.DataBaseAdmin;
+
+public class FavoriteSkill {
+	private Type type;
+	
+	public FavoriteSkill(Type type)
+	{
+		this.type = new Type(type);
+	}
 }
  

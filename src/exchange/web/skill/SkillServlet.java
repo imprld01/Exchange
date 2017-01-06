@@ -2,7 +2,9 @@ package exchange.web.skill;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +21,11 @@ public class SkillServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final int CREATION = 0;
-	private static final int MODIFICATION = 1;
+	private static final int CREATE_SKILL = 0;
+	private static final int MODIFY_SKILL = 1;
+	private static final int SHOW_SKILL = 2;
+	private static final int CREATE_FAVORITE = 3;
+	private static final int DELETE_FAVORITE = 4;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -31,14 +36,15 @@ public class SkillServlet extends HttpServlet {
 			Type type;
 			int vn, in;
 			Skill skill;
-			String cid, ie;
+			String cid, ie, id, uid;
 			SkillManager sm = new SkillManager();
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){
-			case CREATION:				
+			case CREATE_SKILL:
+				uid = (String)session.getAttribute("uid");
 				ie = (String)request.getParameter("introExper");
 				//type = new Type((String)request.getParameter("type"));
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -48,11 +54,11 @@ public class SkillServlet extends HttpServlet {
 				
 				//skill = new Skill(ie, type, img, vdo);
 				
-				//sm.createSkill(skill);
+				//sm.createSkill(uid, skill);
 				
 				response.sendRedirect("/Home.do");
 				break;
-			case MODIFICATION:
+			case MODIFY_SKILL:
 				cid = (String)request.getParameter("cid");
 				ie = (String)request.getParameter("introExper");
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -63,6 +69,33 @@ public class SkillServlet extends HttpServlet {
 				//skill = new Skill(cid, ie, img, vdo);
 				
 				//sm.modifySkill(skill);
+				
+				response.sendRedirect("/Home.do");
+				break;
+			case SHOW_SKILL:
+				RequestDispatcher view = null;
+				Hashtable<String, Skill> table = (Hashtable<String, Skill>)session.getAttribute("skills");
+				
+				id = (String)request.getParameter("id");
+				
+				request.setAttribute("skill", table.get(id));
+				
+				view = request.getRequestDispatcher("/SkillPage.jsp");
+				view.forward(request, response);
+				break;
+			case CREATE_FAVORITE:
+				//type = new Type((String)request.getParameter("type"));
+				uid = (String)session.getAttribute("uid");
+				
+				//sm.createFavorite(uid, skill);
+				
+				response.sendRedirect("/Home.do");
+				break;
+			case DELETE_FAVORITE:
+				//type = new Type((String)request.getParameter("type"));
+				uid = (String)session.getAttribute("uid");
+				
+				//sm.deleteFavrite(uid, skill);
 				
 				response.sendRedirect("/Home.do");
 				break;

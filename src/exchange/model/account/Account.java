@@ -1,6 +1,6 @@
 package exchange.model.account;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Account 
 {
@@ -14,7 +14,12 @@ public class Account
 		this.profile = profile;
 		this.reccntLog = recentLog;
 	}
-	
+
+	public Account(Profile profile) {
+		// TODO Auto-generated constructor stub
+		this.profile = profile;
+	}
+
 	public void setSecret(Secret secret)
 	{
 		this.secret = secret;
