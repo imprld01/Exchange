@@ -83,9 +83,7 @@ public class SkillServlet extends HttpServlet {
 				view.forward(request, response);
 				break;
 			case CREATE_FAVORITE:
-				//(String)request.getParameter("kind")
-				//(String)request.getParameter("type")
-				//type = new Type();
+				//type = new Type((String)request.getParameter("type"));
 				uid = (String)session.getAttribute("uid");
 				
 				//sm.createFavorite(uid, skill);
@@ -93,9 +91,7 @@ public class SkillServlet extends HttpServlet {
 				response.sendRedirect("/Home.do");
 				break;
 			case DELETE_FAVORITE:
-				//(String)request.getParameter("kind")
-				//(String)request.getParameter("type")
-				//type = new Type();
+				//type = new Type((String)request.getParameter("type"));
 				uid = (String)session.getAttribute("uid");
 				
 				//sm.deleteFavrite(uid, skill);
