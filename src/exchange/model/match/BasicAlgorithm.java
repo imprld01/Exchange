@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import exchange.model.skill.*;
+import exchange.model.account.*;
+import exchange.model.database.DataBaseAdmin;
 
 
 
@@ -18,11 +20,12 @@ public  class BasicAlgorithm extends MatchMaker {
 	}
 	
 	static Connection connection;
+	//private ArrayList<Type> favoritesSkill;
 	private String[] favoritesSkill; //此帳號的興趣技能
 	private String account;  //此帳號
 	private String region;   //此帳號的地區
 	private int regionNum=0; //此帳號的地區指標
-	
+	AccountManager accountManager=new AccountManager();
 	
 	
 	
@@ -46,17 +49,19 @@ public  class BasicAlgorithm extends MatchMaker {
 	
     public  void match(){};
     public  void creatMateSet(){
-    	openConnection();
     	try {
 			setFavoriteSkill();
-			setRegion();
+			//favoritesSkill=SkillManager.getAllFavoriteSkills(account);
+			region=accountManager.getRegion(account);	
+			setRegionNum(region); //設定地區指標
+			
 			getMatchSkill();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	    	
-    	closeConnection();
+    	DataBaseAdmin.closeConnection();
     	
     };
     
@@ -129,26 +134,17 @@ public  class BasicAlgorithm extends MatchMaker {
     }
 	//String type_name;//技能名稱	
 	//int distance;     //距離
-    private void setRegion()throws SQLException { //取得自己地區
-		String sql="SELECT region FROM accounts where accounts.user_id='"+account+"';";
-		PreparedStatement statement = connection.prepareStatement(sql);
-		ResultSet result = statement.executeQuery();
-		while (result.next()) {
-			region=result.getString("region");		
-		}
-		setRegionNum(region); //設定地區指標	
-	}
+    
     
     private void setFavoriteSkill()throws SQLException { //取得興趣技能以做搜尋
 		String sql="SELECT count(type_name)as num FROM exchange.favorites where favorites.account='"+account+"';";
-		PreparedStatement statement = connection.prepareStatement(sql);
-		ResultSet result = statement.executeQuery();
+		ResultSet result = DataBaseAdmin.selectDB(sql);
+		
 		while (result.next()) {
 			favoritesSkill=new String[Integer.parseInt(result.getString("num"))];
 		}
 		sql="SELECT type_name FROM exchange.favorites where favorites.account='"+account+"';";
-		statement = connection.prepareStatement(sql);
-		result = statement.executeQuery();
+		result = DataBaseAdmin.selectDB(sql);
 		int i=0;
 		while (result.next()) {
 			favoritesSkill[i++]=result.getString("type_name");		
@@ -157,33 +153,9 @@ public  class BasicAlgorithm extends MatchMaker {
 		
 	}
     
-    private void openConnection() {
-		System.out.println("-------- MySQL JDBC Connection ------------");
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("MySQL JDBC Driver not found !!");
-			return;
-		}
-		System.out.println("MySQL JDBC Driver Registered!");
-
-		try {
-			connection = DriverManager // jdbc:mysql://localhost:3306/data
-					.getConnection("jdbc:mysql://localhost:3306/exchange?useUnicode=true&characterEncoding=UTF-8",
-							"root", "a2n5h011oj");
-			System.out.println("SQL Connection to database established!");
-
-		} catch (SQLException e) {
-			System.out.println("Connection Failed! Check output console");
-			System.out.println(e.getMessage());
-			return;
-		}
-
-	}
+   
 
 	private void getMatchSkill() throws SQLException {
-		int skillNum=0;
-		int lastdistance=0;
 		int nowdistance=0;
 		int nowRegionNum=0;
 		int limit=50;
@@ -210,43 +182,32 @@ public  class BasicAlgorithm extends MatchMaker {
 			}
 			
 			//----------------------------------------------------------------------------------
-			
-			for(int j=nowRegionNum;j<16;j++){  //select 加入地區判斷 用查表
+			for(int j=nowRegionNum;j<16;j++){
+				if(j==nowRegionNum){ //第一次
+					sql=sql+"and ( ";
+				}
 				
 				nowdistance=area[regionNum][j].distance;
-				if(nowdistance!=lastdistance){ //判斷是否還有距離相同之地區
-					sql=sql+")";
-					nowRegionNum=j;
-					lastdistance=nowdistance;
-					break;
+				sql=sql+"accounts.region='"+area[regionNum][j].placeName+"' ";
+				if(j!=15&&nowdistance==area[regionNum][j+1].distance){ //如果下一筆距離一樣且不是最後一個地區
+						sql=sql+"or ";	
 				}
-				
-				if(j==nowRegionNum){ //第一筆
-					sql=sql+"and (accounts.region='"+area[regionNum][j].placeName+"' ";
-				}
-				else{ //第二筆之後
-					sql=sql+"or accounts.region='"+area[regionNum][j].placeName+"' ";
-				}
-				lastdistance=nowdistance;
-				//System.out.println(area[regionNum][j].placeName); //測試地名
-				if(j==15){
-					sql=sql+")";
+				else{
+					sql=sql+") ";
 					nowRegionNum=j+1;
-				}
-				
+					break;
+				}	
 			}
 			
 			
 			
+					
 			sql=sql+" order by rand(now()) limit "+limit+"; "; 
 			
 			
 			System.out.println(sql);
-			// 不知道是什麼
-			PreparedStatement statement = connection.prepareStatement(sql);
-			// 執行SQL存入結果
-			ResultSet result = statement.executeQuery();
-	
+		
+			ResultSet result = DataBaseAdmin.selectDB(sql);
 			// 印出來
 			//System.out.println("type_name\t region\t attitude_score\t profession_score\t teaching_score\t frequency_score\t satisfication_score\t ");
 			
@@ -259,11 +220,11 @@ public  class BasicAlgorithm extends MatchMaker {
 				
 				System.out.println(result.getString("type_name")+ "\t"+result.getString("region")+ "\t"+result.getString("attitude_score")+ "\t"+result.getString("profession_score")+ "\t"+result.getString("teaching_score")+ "\t"+result.getString("frequency_score")+ "\t"+Boolean.parseBoolean(result.getString("bad_tag"))+ "\t");
 				
-				Skill skill=new Skill(result.getInt("skill_id"));
+				Skill skill= SkillManager.findSkill(result.getInt("skill_id"));
 				System.out.println(skill);
 				SkillCard sc=new SkillCard();
 				sc.skill=skill;
-				sc.Score=8.5;
+				//sc.Score=8.5;
 				sc.distance=0;
 				skillCard.add(sc);
 				
@@ -281,18 +242,5 @@ public  class BasicAlgorithm extends MatchMaker {
 		
 	}
 
-	
-	
-	private  void closeConnection() {
-
-		try {
-			if (connection != null)
-				connection.close();
-			System.out.println("Connection closed !!");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
     
 }
