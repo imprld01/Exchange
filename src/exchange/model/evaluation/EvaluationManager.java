@@ -4,29 +4,22 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import exchange.model.database.DataBaseAdmin;
+import exchange.model.skill.Score;
 
 public class EvaluationManager{
-	String skillId;
-	String comment;
 	
-	public void saveComment() throws SQLException
+	public static void saveComment(String skillId, String comment) throws SQLException
 	{
 		
 		Date recentLog = new Date();
 		java.sql.Date now = new java.sql.Date(recentLog.getTime());
-		String query = "INSERT comments SET comment = '"+ comment +"' where skill_id = '"+skillId+"'";
+		String query = "INSERT comments SET comment = '"+ comment +"',date = '"+ now +"' where skill_id = '"+skillId+"'";
 		DataBaseAdmin.updateDB(query);
 	}
 
-	int attitude;
-	int profession;
-	int teaching;
-	int frequency;
-	int satisfication;
-
-	public void saveScore()
+	public static void saveScore(String skillId, Score score)
 	{
-		String query = "UPDATE skills SET  = '"+ attitude +"', '"+ profession +"',  where skill_id = '"+skillId+"'";
+		String query = "UPDATE skills SET  = '"+ score.getAttitude() +"', '"+score.getProfession()+"',where skill_id = '"+skillId+"'";
 		DataBaseAdmin.updateDB(query);
 
 
