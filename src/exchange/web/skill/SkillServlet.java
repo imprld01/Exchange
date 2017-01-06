@@ -107,7 +107,7 @@ public class SkillServlet extends HttpServlet {
 				Skill skilltoshow = null;
 				
 				try {
-					skilltoshow = new Skill(Integer.parseInt(id));
+					skilltoshow = new Skill(Integer.parseInt(id)); // get skill from database
 				} catch (NumberFormatException | SQLException e) {
 					e.printStackTrace();
 				}

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import exchange.model.evaluation.EvaluationManager;
 import exchange.model.exchange.ExchangeManager;
+import exchange.model.skill.Score;
 
 @WebServlet("/Evaluation.do")
 public class EvaluationServlet extends HttpServlet {
@@ -32,8 +32,13 @@ public class EvaluationServlet extends HttpServlet {
 			int satisfication = Integer.parseInt((String)request.getParameter("sfn"));
 			String comment = (String)request.getParameter("comment");
 			
-			//EvaluationManager.saveScore(other, new Score(attitude, profession, teaching, frequency, satisfication));
+			Score score = new Score(attitude, profession, teaching, frequency, satisfication);
+			
+			//EvaluationManager.saveScore(other, score);
 			//EvaluationManager.saveComment(other, comment);
+			
+			//SkillManager.judgeBlock(Integer.parseInt(other), score);
+			//SkillManager.updateSkillLevel(Integer.parseInt(other));
 			
 			ExchangeManager.finishExchange(my, other);
 			
