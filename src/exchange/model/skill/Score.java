@@ -56,6 +56,26 @@ public class Score {
 		return (attitude + profession + teaching + frequency + satisfication);
 	}
 
+	public void setAttitude(int attitude) {
+		this.attitude = attitude;
+	}
+
+	public void setProfession(int profession) {
+		this.profession = profession;
+	}
+
+	public void setTeaching(int teaching) {
+		this.teaching = teaching;
+	}
+
+	public void setFrequency(int frequency) {
+		this.frequency = frequency;
+	}
+
+	public void setSatisfication(int satisfication) {
+		this.satisfication = satisfication;
+	}
+
 	@Override
 	public String toString() {
 		return "Score [attitude=" + attitude + ", profession=" + profession + ", teaching=" + teaching + ", frequency="

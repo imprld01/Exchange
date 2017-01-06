@@ -25,14 +25,18 @@ public class Type {
 	}
 
 	// 建構子(String)：只要取得type_name即可
-	public Type(String typeName) throws SQLException {
+	public Type(String typeName){
 		String query = "SELECT * FROM types WHERE type_name = '" + typeName + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 
-		if (rs.next()) {
-			this.typeCode = new Code(rs.getString("type_code"));
-			setTypeName(rs.getString("type_name"));
-			this.kindCode = new Code(rs.getString("class_code"));
+		try {
+			if (rs.next()) {
+				this.typeCode = new Code(rs.getString("type_code"));
+				setTypeName(rs.getString("type_name"));
+				this.kindCode = new Code(rs.getString("class_code"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

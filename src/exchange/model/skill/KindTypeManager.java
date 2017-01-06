@@ -11,7 +11,7 @@ public class KindTypeManager {
 	ArrayList<Type> typeList;
 
 	//建構子
-	public KindTypeManager() throws SQLException {
+	public KindTypeManager(){
 		kindList = new ArrayList<Kind>();
 		typeList = new ArrayList<Type>();
 
@@ -20,27 +20,35 @@ public class KindTypeManager {
 	}
 
 	//取得資料哭中所有Kind
-	public void updateKindList() throws SQLException {
+	public void updateKindList(){
 
 		String query = "SELECT * FROM classes";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		
-		while (rs.next()) {
-			kindList.add(new Kind(new Code(rs.getString("class_code")), rs.getString("class_name")));
+		try {
+			while (rs.next()) {
+				kindList.add(new Kind(new Code(rs.getString("class_code")), rs.getString("class_name")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
 	//取得資料庫中所有Type
-	public void updateTypeList() throws SQLException {
+	public void updateTypeList(){
 
 		String query = "SELECT * FROM types";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		
 		
-		while (rs.next()) {
-			typeList.add(new Type(new Code(rs.getString("type_code")), 
-								  rs.getString("type_name"),
-								  new Code(rs.getString("class_code"))));
+		try {
+			while (rs.next()) {
+				typeList.add(new Type(new Code(rs.getString("type_code")), 
+									  rs.getString("type_name"),
+									  new Code(rs.getString("class_code"))));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
