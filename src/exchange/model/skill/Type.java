@@ -1,9 +1,14 @@
 package exchange.model.skill;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import exchange.model.database.DataBaseAdmin;
+
 public class Type {
 	private Code typeCode;
-	private Code kindCode;
 	private String typeName;
+	private Code kindCode;
 
 	// 建構子()
 	public Type() {
@@ -19,6 +24,18 @@ public class Type {
 		setTypeName(typeName);
 	}
 
+	public Type(String typeName) throws SQLException {
+		String query = "SELECT * FROM types WHERE type_name = '" + typeName + "'";
+		ResultSet rs = DataBaseAdmin.selectDB(query);
+
+		if (rs.next())
+		{
+			this.typeCode = new Code(rs.getString("type_code"));
+			setTypeName(rs.getString("type_name"));
+			this.kindCode = new Code(rs.getString("class_code"));
+		}
+	}
+	
 	// 建構子(Type)
 	public Type(Type type) {
 		this(type.getKindCode(), type.getTypeName(), type.getTypeCode());
@@ -40,8 +57,10 @@ public class Type {
 		return kindCode;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Type [typeCode=" + typeCode + ", kindCode=" + kindCode + ", typeName=" + typeName + "]";
+		return "Type [typeCode=" + typeCode + ", typeName=" + typeName + ", kindCode=" + kindCode + "]";
 	}
 }

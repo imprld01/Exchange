@@ -1,19 +1,16 @@
 package exchange.model.skill;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import exchange.model.database.DataBaseAdmin;
 
 public class FavoriteSkill {
 	private Type type;
 	
-	public FavoriteSkill(String user_id)
+	public FavoriteSkill(Type type)
 	{
-		query = "SELECT * FROM types WHERE type_name = '" + type_name + "'";
-		rs = DataBaseAdmin.selectDB(query);
-		if (rs.next()) {
-			type = new Type(new Code(rs.getString("type_code")),
-					rs.getString("type_name"),
-					new Code(rs.getString("class_code")));
-		}
+		this.type = new Type(type);
 	}
 }
  
