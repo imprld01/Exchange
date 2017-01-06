@@ -31,11 +31,7 @@ public class EvaluationServlet extends HttpServlet {
 			String comment = (String)request.getParameter("comment");
 			
 			//EvaluationManager em = new EvaluationManager(cid);
-			//em.saveAttitudeScore(attitude);
-			//em.saveProfessionScore(profession);
-			//em.saveTeachingScore(teaching);
-			//em.saveFrequencyScore(frequency);
-			//em.saveSatisficationScore(satisfication);
+			//em.saveScore(attitude, profession, teaching, frequency, satisfication);
 			//em.saveComment(comment);
 			
 			ExchangeManager xm = new ExchangeManager();
