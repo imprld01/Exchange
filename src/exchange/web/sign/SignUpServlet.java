@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import exchange.model.account.Account;
 import exchange.model.account.Profile;
 import exchange.model.account.Secret;
 import exchange.model.sign.SignManager;
@@ -47,7 +48,7 @@ public class SignUpServlet extends HttpServlet {
 		
 		boolean checkResult = sm.isAccountValid(secret.getId());
 		
-		if(!checkResult) sm.create(secret, profile);
+		if(!checkResult) sm.create(new Account(secret, profile));
 		else response.sendRedirect("error.html");
 		
 		response.sendRedirect("index.html");
