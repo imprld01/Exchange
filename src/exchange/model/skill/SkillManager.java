@@ -32,10 +32,10 @@ public class SkillManager {
 				skillId = rs.getInt("skill_id");
 
 			for (String vedio : skill.getVedio())
-				DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + vedio + "')");
+				DataBaseAdmin.updateDB("INSERT INTO vedio VALUES('" + skillId + "','" + vedio + "')");
 
 			for (String image : skill.getImage())
-				DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + image + "')");
+				DataBaseAdmin.updateDB("INSERT INTO image VALUES('" + skillId + "','" + image + "')");
 		} else {
 			System.out.println(userId + " 技能已達上限");
 		}
@@ -43,16 +43,24 @@ public class SkillManager {
 	}
 
 	static public void modifySkill(Skill skill) {
-		
-		DataBaseAdmin.updateDB("UPDATE skills SET  where (skill_a = '"+othersSkillID+");
+
+		int skillId = skill.getSkillId();
+		DataBaseAdmin.updateDB(
+				"UPDATE skills SET intro_expr='" + skill.getIntorExpr() + "' where (skill_id = '" + skillId + "')");
+
+		for (String vedio : skill.getVedio())
+			DataBaseAdmin.updateDB("UPDATE videos SET vedio='" + vedio + "' where (skill_id = '" + skillId + "')");
+
+		for (String image : skill.getImage())
+			DataBaseAdmin.updateDB("UPDATE images SET image='" + image + "' where (skill_id = '" + skillId + "')");
 	}
 
-	static public void createFavoriteSkill(String userId, String typeName) {
-
+	static public void createFavoriteSkill(String typeName, String userId) {
+		DataBaseAdmin.updateDB("INSERT INTO favorites VALUES('" + typeName + "','" + userId + "')");
 	}
 
-	static public void deleteFavoriteSkill(String userId, String typeName) {
-
+	static public void deleteFavoriteSkill(String typeName, String userId) {
+		DataBaseAdmin.updateDB("DELETE FROM favorites Where user_id= '"+ userId +"'AND type_name = '"+ typeName+"'");
 	}
 
 	static public ArrayList<Skill> getAllSkills(String userId) throws SQLException {
