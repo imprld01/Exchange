@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.skill.Skill;
 import exchange.model.skill.SkillManager;
-import exchange.model.skill.Type;
 
 @WebServlet("/Skill.do")
 public class SkillServlet extends HttpServlet {
@@ -33,8 +32,7 @@ public class SkillServlet extends HttpServlet {
 		
 		if(session != null){
 			int vn, in;
-			Skill skill;
-			Type type = null;
+			Skill skill = null;
 			String cid, ie, uid, tp;
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
@@ -50,9 +48,13 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				skill = new Skill(uid, ie, tp, img, vdo);
+				try {
+					skill = new Skill(uid, ie, tp, img, vdo);
+					SkillManager.createSkill(skill);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				
-				SkillManager.createSkill(skill);
 				break;
 			case MODIFY_SKILL:
 				tp = (String)request.getParameter("type");
@@ -63,7 +65,11 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				skill = new Skill(cid, ie, tp, img, vdo);
+				try {
+					skill = new Skill(cid, ie, tp, img, vdo);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				
 				SkillManager.modifySkill(skill);
 				break;
@@ -96,10 +102,15 @@ public class SkillServlet extends HttpServlet {
 			switch(mark){
 			case SHOW_SKILL:
 				RequestDispatcher view = null;
-				//Hashtable<String, Skill> table = (Hashtable<String, Skill>)session.getAttribute("skills");
-				
+
 				String id = (String)request.getParameter("id");
-				Skill skilltoshow = new Skill(Integer.parseInt(id));
+				Skill skilltoshow = null;
+				
+				try {
+					skilltoshow = new Skill(Integer.parseInt(id));
+				} catch (NumberFormatException | SQLException e) {
+					e.printStackTrace();
+				}
 				
 				request.setAttribute("skill", skilltoshow);
 				
