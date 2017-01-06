@@ -17,18 +17,19 @@ public class SkillManager {
 
 	static public void createSkill(Skill skill) {
 		// 判斷是否可新增技能
-		
+		int skillId = 0;
+		String userId = skill.getUserId();
+		String typeName = skill.getType().getTypeName();
+
 		try {
-			if (AccountManager.isSkillFull(skill.getUserId()))
-			{
-				int skillId = 0;
-				String userId = skill.getUserId();
-				String typeName = skill.getType().getTypeName();
+
+			if (AccountManager.isSkillFull(userId)) {
+
 				DataBaseAdmin.updateDB("INSERT INTO skills VALUES('0','" + userId + "','" + typeName + "','"
 						+ skill.getIntorExpr() + "','0','0','0','0','0','0','0','0','0')");
 
-				ResultSet rs = DataBaseAdmin
-						.selectDB("SELECT * FROM skills where user_id = '" + userId + "' AND type_name ='" + typeName+"'");
+				ResultSet rs = DataBaseAdmin.selectDB(
+						"SELECT * FROM skills where user_id = '" + userId + "' AND type_name ='" + typeName + "'");
 				try {
 					if (rs.next()) {
 						skillId = rs.getInt("skill_id");
@@ -40,9 +41,11 @@ public class SkillManager {
 
 				for (String vedio : skill.getVedio())
 					DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + vedio + "')");
-				
+
 				for (String image : skill.getImage())
 					DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + image + "')");
+			} else {
+				System.out.println(userId + " 技能已達上限");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

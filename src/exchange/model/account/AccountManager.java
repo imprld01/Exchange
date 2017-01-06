@@ -72,6 +72,7 @@ public class AccountManager {
 		boolean result;
 		String query = "select * from accounts where user_id = '" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
+		rs.next();
 		if (rs.getInt("skill_number") >= rs.getInt("skill_max"))
 			result = false;
 		else

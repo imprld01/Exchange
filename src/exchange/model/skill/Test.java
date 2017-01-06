@@ -3,6 +3,7 @@ package exchange.model.skill;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exchange.model.account.AccountManager;
 import exchange.model.database.DataBaseAdmin;
 
 import exchange.model.database.DataBaseAdmin;
@@ -46,8 +47,9 @@ public class Test {
 //		System.out.println(sm.getAllFavoriteSkills("vegetable"));
 
 		System.out.println(sm.getAllSkills("vegetable"));
-		SkillManager.createSkill(new Skill("bowen","123123",new Type("游泳"), new ArrayList<String>(), new ArrayList<String>()));
+		SkillManager.createSkill(new Skill("vegetable","123123",new Type("英文"), new ArrayList<String>(), new ArrayList<String>()));
 
+		System.out.println(AccountManager.isSkillFull("vegetable"));
 	}
 
 }
