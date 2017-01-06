@@ -10,14 +10,14 @@ public class Type {
 	private String typeName;
 	private Code kindCode;
 
-	// 建構子()
+	// 建構子()：沒參數，全部為""
 	public Type() {
 		this.typeCode = new Code("");
 		this.kindCode = new Code("");
 		setTypeName("");
 	}
 
-	// 建構子(Code,String,Code)
+	// 建構子(Code,String,Code)：輸入全參數
 	public Type(Code typeCode, String typeName, Code kindCode) {
 		this.typeCode = new Code(typeCode);
 		this.kindCode = new Code(kindCode);
