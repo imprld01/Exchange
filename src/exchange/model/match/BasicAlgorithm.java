@@ -156,13 +156,15 @@ public  class BasicAlgorithm extends MatchMaker {
    
 
 	private void getMatchSkill() throws SQLException {
+
 		int nowdistance=0;
 		int nowRegionNum=0;
 		int limit=50;
 		do{
 			// SQL
-			String sql = "select skills.*,accounts.region from skills,accounts where skills.account=accounts.user_id and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+account+"' ";
-						
+			//String sql = "select skills.*,accounts.region from skills,accounts where skills.account=accounts.user_id and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+account+"' ";
+			String sql = "select skills.*,accounts.region from skills,accounts where skills.account=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+account+"' ";
+					
 			for(int i=0;i<favoritesSkill.length;i++){  //加入興趣技能
 				
 				if(favoritesSkill.length>1){
