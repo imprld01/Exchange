@@ -1,6 +1,7 @@
 package exchange.web.sign;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,9 +47,15 @@ public class SignUpServlet extends HttpServlet {
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
 		
-		boolean checkResult = sm.isAccountValid(secret.getId());
+		boolean checkResult = false;
+		try {
+			checkResult = sm.isAccountValid(secret.getId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		if(!checkResult) sm.create(new Account(secret, profile));
+		if(!checkResult) sm.create(new Account(profile, secret));
 		else response.sendRedirect("error.html");
 		
 		response.sendRedirect("index.html");
