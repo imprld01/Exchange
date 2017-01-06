@@ -39,6 +39,7 @@ public class SignManager {
 	
 	public boolean create(Account account){
 		AccountManager am = new AccountManager();
+		//if(am.addAccount(account.getSecret().getId(), account.get, userName, nickName, gender, email, birthday, region, skillMax, skillNumber))
 		
 		
 		

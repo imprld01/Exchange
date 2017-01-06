@@ -22,7 +22,8 @@ public class Account
 
 	public Account()
 	{
-		
+		this.profile = profile;
+		this.secret = secret;
 	}
 	
 	public void setSecret(Secret secret)
