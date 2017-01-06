@@ -1,6 +1,7 @@
 package exchange.web.home;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
+import exchange.model.skill.FavoriteSkill;
 import exchange.model.skill.Skill;
 import exchange.model.skill.SkillManager;
 
@@ -31,10 +33,17 @@ public class ShowHomePageServlet extends HttpServlet {
 			String uid = (String)session.getAttribute("uid");
 			
 			AccountManager am = new AccountManager();
-			Profile profile = am.getAccount(uid).getProfile();
+			Profile profile = null;
+			try {
+				profile = am.getAccount(uid).getProfile();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			SkillManager sm = new SkillManager();
 			ArrayList<Skill> skills = null;//sm.getAllSkills(uid);
+			ArrayList<FavoriteSkill> favorites = null;//sm.getAllFavorites(uid);
 			
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
