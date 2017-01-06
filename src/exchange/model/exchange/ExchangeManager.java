@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import exchange.model.database.DataBaseAdmin;
 import exchange.model.exchange.Exchange;
-import exchange.model.skill.Skill;
+import exchange.model.skill.SkillManager;;
 public class ExchangeManager {
 	//接受邀請, 新增到交流Table ,將邀請Table中原本的row刪除
 	public static void acceptInvitation(String mySkillID, String othersSkillID){
@@ -39,13 +39,13 @@ public class ExchangeManager {
 		try{
 			//處理我送出的邀請所進行的交流 並放進ArrayList
 			while(exchangeResultA.next()){
-				Exchange exchange = new Exchange(new Skill(exchangeResultA.getInt("skill_b")), exchangeResultA.getString("type_name"));
+				Exchange exchange = new Exchange(SkillManager.findSkill(exchangeResultA.getInt("skill_b")), exchangeResultA.getString("type_name"));
 				//System.out.println("A"+exchangeResultA.getInt("skill_b")+exchangeResultA.getString("type_name"));
 				exchangeList.add(exchange);
 			}
 			//處理我收到的邀請所進行的交流 並放進ArrayList
 			while(exchangeResultB.next()){
-				Exchange exchange = new Exchange(new Skill(exchangeResultB.getInt("skill_a")), exchangeResultB.getString("type_name"));
+				Exchange exchange = new Exchange(SkillManager.findSkill(exchangeResultB.getInt("skill_a")), exchangeResultB.getString("type_name"));
 				//System.out.println("B"+exchangeResultB.getInt("skill_a")+exchangeResultB.getString("type_name"));
 				exchangeList.add(exchange);
 			}
@@ -64,7 +64,7 @@ public class ExchangeManager {
 		try{
 			//處理我收到的邀請 並放進ArrayList
 			while(receiveInvitationResult.next()){
-				Exchange exchange = new Exchange(new Skill(receiveInvitationResult.getInt("ivt_sender")), receiveInvitationResult.getString("type_name"));
+				Exchange exchange = new Exchange(SkillManager.findSkill(receiveInvitationResult.getInt("ivt_sender")), receiveInvitationResult.getString("type_name"));
 				//System.out.println(receiveInvitationResult.getInt("ivt_sender")+receiveInvitationResult.getString("type_name"));
 				exchangeList.add(exchange);
 			}
@@ -83,7 +83,7 @@ public class ExchangeManager {
 		try{
 			//處理我送出的邀請 並放進ArrayList
 			while(sendInvitationResult.next()){
-				Exchange exchange = new Exchange(new Skill(sendInvitationResult.getInt("ivt_receiver")), sendInvitationResult.getString("type_name"));
+				Exchange exchange = new Exchange(SkillManager.findSkill(sendInvitationResult.getInt("ivt_receiver")), sendInvitationResult.getString("type_name"));
 				System.out.println(sendInvitationResult.getInt("ivt_receiver")+sendInvitationResult.getString("type_name"));
 				exchangeList.add(exchange);
 			}
@@ -95,6 +95,5 @@ public class ExchangeManager {
 	}
 	public static void main(String args[]){
 		ExchangeManager.getSendInvitations("bowen");
-		//a
 	}
 }
