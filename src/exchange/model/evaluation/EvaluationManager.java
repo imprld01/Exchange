@@ -26,14 +26,9 @@ public class EvaluationManager{
 
 	public void saveScore()
 	{
-<<<<<<< HEAD
-		String query = "UPDATE skills SET  = '"+ attitude +"', '"+ profession +"',"
-				+ " '"+ teaching +"', '"+ frequency +"', '"+ satisfication +"' where skill_id = '"+skillId+"'";
-		DataBaseAdmin.updateDB(query);
-=======
 		String query = "UPDATE skills SET  = '"+ attitude +"', '"+ profession +"',  where skill_id = '"+skillId+"'";
-		
+		DataBaseAdmin.updateDB(query);
 
->>>>>>> 0513981648e797c587793d381a292b539d102cda
+
 	}
 }
