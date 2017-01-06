@@ -20,7 +20,7 @@ public class Account
 		this.profile = profile;
 	}
 
-	public Account()
+	public Account(Profile profile, Secret secret)
 	{
 		this.profile = profile;
 		this.secret = secret;
