@@ -8,9 +8,11 @@ import exchange.model.database.DataBaseAdmin;
 
 public class AccountManager {
 	public void addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
-			String birthday, String region, int skillMax, int skillNumber) throws SQLException {
+			String birthday, String region) throws SQLException {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
+		int skillMax = 3;
+		int skillNumber = 0;
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
 				+ "', '" + gender + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillMax
 				+ "', '" + skillNumber + "', '" + sqlStartDate + "')";

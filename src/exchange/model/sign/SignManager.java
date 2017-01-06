@@ -37,13 +37,11 @@ public class SignManager {
 		return result;
 	}
 	
-	public boolean create(Account account){
+	public void create(Account account) throws SQLException{
 		AccountManager am = new AccountManager();
-		if(am.addAccount(account.getSecret().getId(), account.getS(), userName, nickName, gender, email, birthday, region, skillMax, skillNumber))
-		
-		
-		
-		return false;
+		am.addAccount(account.getSecret().getId(), account.getSecret().getPassword(),
+		account.getProfile().getUserName(), account.getProfile().getNickName(), account.getProfile().getGender(),
+		account.getProfile().getEmail(), account.getProfile().getBirthday(), account.getProfile().getRegion());
 	}
 	
 	public boolean isAccountValid(String id) throws SQLException{
