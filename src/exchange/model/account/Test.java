@@ -25,8 +25,8 @@ public class Test {
 		//System.out.println(am.isValid("10567026"));
 		//System.out.println(am.getRegion("10567026"));
 		//System.out.println();
-		Profile profile = new Profile("nickName", "email", "region");
-		am.setProfile(profile);
+		//Profile profile = new Profile("nickName", "email", "region");
+		//am.setProfile(profile);
 	}
 
 }
