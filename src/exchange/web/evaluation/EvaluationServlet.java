@@ -1,6 +1,7 @@
 package exchange.web.evaluation;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.evaluation.EvaluationManager;
 import exchange.model.exchange.ExchangeManager;
 import exchange.model.skill.Score;
+import exchange.model.skill.SkillManager;
 
 @WebServlet("/Evaluation.do")
 public class EvaluationServlet extends HttpServlet {
@@ -34,11 +37,15 @@ public class EvaluationServlet extends HttpServlet {
 			
 			Score score = new Score(attitude, profession, teaching, frequency, satisfication);
 			
-			//EvaluationManager.saveScore(other, score);
-			//EvaluationManager.saveComment(other, comment);
+			EvaluationManager.saveScore(other, score);
+			try {
+				EvaluationManager.saveComment(other, comment);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
-			//SkillManager.judgeBlock(Integer.parseInt(other), score);
-			//SkillManager.updateSkillLevel(Integer.parseInt(other));
+			SkillManager.judgeBlock(Integer.parseInt(other), score);
+			SkillManager.updateSkillLevel(Integer.parseInt(other));
 			
 			ExchangeManager.finishExchange(my, other);
 			
