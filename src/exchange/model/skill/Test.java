@@ -11,7 +11,7 @@ import exchange.model.database.DataBaseAdmin;
 
 public class Test {
 
-	public static void main(String[] args) throws SQLException  {
+	public static void main(String[] args){
 		// TODO Auto-generated method stub
 //		Code code = new Code("123");
 //		Code otherCode = new Code("1233");
@@ -46,10 +46,13 @@ public class Test {
 		SkillManager sm = new SkillManager();
 //		System.out.println(sm.getAllFavoriteSkills("vegetable"));
 
-		System.out.println(sm.getAllSkills("vegetable"));
-		SkillManager.createSkill(new Skill("vegetable","123123",new Type("英文"), new ArrayList<String>(), new ArrayList<String>()));
-
-		System.out.println(AccountManager.isSkillFull("vegetable"));
+		//System.out.println(sm.getAllSkills("vegetable"));
+		//System.out.println(AccountManager.isSkillFull("bowen"));
+		//SkillManager.createFavoriteSkill("游泳", "bowen");
+		//SkillManager.deleteFavoriteSkill("游泳", "bowen");
+		//SkillManager.createSkill(new Skill("bowen","123123","吉他", new ArrayList<String>(), new ArrayList<String>()));
+		
+		SkillManager.updateSkillLevel(1);
 	}
 
 }

@@ -4,13 +4,13 @@ public class Kind {
 	private Code kindCode;
 	private String kindName;
 
-	//建構子(Code,String)
+	// 建構子(Code,String)
 	public Kind(Code kindCode, String kindName) {
 		this.kindCode = new Code(kindCode);
 		setKindName(kindName);
 	}
 
-	//建構子(Kind)
+	// 建構子(Kind)
 	public Kind(Kind kind) {
 		this(kind.getKindCode(), kind.getKindName());
 	}

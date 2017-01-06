@@ -1,6 +1,7 @@
 package exchange.web.evaluation;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.evaluation.EvaluationManager;
 import exchange.model.exchange.ExchangeManager;
+import exchange.model.skill.Score;
+import exchange.model.skill.SkillManager;
 
 @WebServlet("/Evaluation.do")
 public class EvaluationServlet extends HttpServlet {
@@ -22,7 +26,8 @@ public class EvaluationServlet extends HttpServlet {
 		
 		if(session != null){
 			
-			String cid = (String)request.getParameter("cardId");
+			String my = (String)request.getParameter("my");
+			String other = (String)request.getParameter("other");
 			int attitude = Integer.parseInt((String)request.getParameter("atd"));
 			int profession = Integer.parseInt((String)request.getParameter("pfn"));
 			int teaching = Integer.parseInt((String)request.getParameter("tch"));
@@ -30,12 +35,23 @@ public class EvaluationServlet extends HttpServlet {
 			int satisfication = Integer.parseInt((String)request.getParameter("sfn"));
 			String comment = (String)request.getParameter("comment");
 			
-			//EvaluationManager em = new EvaluationManager(cid);
-			//em.saveScore(attitude, profession, teaching, frequency, satisfication);
-			//em.saveComment(comment);
+			Score score = new Score(attitude, profession, teaching, frequency, satisfication);
 			
-			ExchangeManager xm = new ExchangeManager();
-			//xm.finishExchange(cid);
+			try {
+				EvaluationManager.saveScore(Integer.parseInt(other), score);
+			} catch (NumberFormatException | SQLException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				EvaluationManager.saveComment(Integer.parseInt(other), comment);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			SkillManager.judgeBlock(Integer.parseInt(other), score);
+			SkillManager.updateSkillLevel(Integer.parseInt(other));
+			
+			ExchangeManager.finishExchange(my, other);
 			
 			response.sendRedirect("/Exchange.do");
 		}

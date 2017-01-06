@@ -28,11 +28,11 @@ public class AccountServlet extends HttpServlet {
 		if(session != null){
 		
 			AccountManager am = new AccountManager();
+			String id = (String)session.getAttribute("uid");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){
 			case SECRET_MODIFICATION:
-				String id = (String)session.getAttribute("uid");
 				String pwd = (String)request.getParameter("pwd");
 				
 				Secret secret = new Secret(id, pwd);
@@ -48,7 +48,7 @@ public class AccountServlet extends HttpServlet {
 				
 				Profile profile = new Profile(nick, email, region);
 				
-				am.setProfile(profile);
+				am.setProfile(id, profile);
 				
 				response.sendRedirect("/Home.do");
 				break;

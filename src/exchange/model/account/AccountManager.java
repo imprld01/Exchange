@@ -8,9 +8,11 @@ import exchange.model.database.DataBaseAdmin;
 
 public class AccountManager {
 	public void addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
-			String birthday, String region, int skillMax, int skillNumber) throws SQLException {
+			String birthday, String region) throws SQLException {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
+		int skillMax = 3;
+		int skillNumber = 0;
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
 				+ "', '" + gender + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillMax
 				+ "', '" + skillNumber + "', '" + sqlStartDate + "')";
@@ -33,9 +35,9 @@ public class AccountManager {
 		
 	}
 
-	public ArrayList getAllUserId() throws SQLException {
+	public ArrayList<Secret> getAllUserId() throws SQLException {
 		ArrayList<Secret> idlist = new ArrayList<>();
-		String query = "SELECT * FROM 'user_id' ";
+		String query = "SELECT * FROM accounts ";
 		ResultSet result = null;
 		result = DataBaseAdmin.selectDB(query);
 		while (result.next())
@@ -47,13 +49,10 @@ public class AccountManager {
 	String nickName;
 
 	// Profile修改
-	public void setProfile(Profile profile) {
-		Secret s = new Secret();
-		Profile p = new Profile();
-		String id = s.getId();
-		String nickName = p.getnickName();
-		String email = p.getEmail();
-		String region = p.getEmail();
+	public void setProfile(String id, Profile profile) {
+		String nickName = profile.getNickName();
+		String email = profile.getEmail();
+		String region = profile.getEmail();
 		String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
 				+ region + "' " + "where user_id = '" + id + "'";
 		DataBaseAdmin.updateDB(query);
@@ -61,9 +60,8 @@ public class AccountManager {
 
 	// Secret修改
 	public void setSecret(Secret secret) {
-		Secret s = new Secret();
-		String id = s.getId();
-		String password = s.getPassword();
+		String id = secret.getId();
+		String password = secret.getPassword();
 		String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
 		DataBaseAdmin.updateDB(query);
 	}
@@ -82,8 +80,9 @@ public class AccountManager {
 
 	public boolean isValid(String id) throws SQLException {
 		boolean result;
-		String query = "SELECT * FROM 'user_id' ";
+		String query = "SELECT * FROM accounts";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
+		rs.next();
 		if (id.equals(rs.getString("user_id")))
 			result = false;
 		else if (id.length() > 20)
@@ -91,5 +90,12 @@ public class AccountManager {
 		else
 			result = true;
 		return result;
+	}
+	public String getRegion(String id) throws SQLException
+	{
+		String query = "SELECT * FROM accounts where user_id = '"+ id +"' ";
+		ResultSet rs = DataBaseAdmin.selectDB(query);
+		rs.next();
+		return rs.getString("region");
 	}
 }

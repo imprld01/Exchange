@@ -1,6 +1,7 @@
 package exchange.web.exchange;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,21 +25,19 @@ public class InvitationServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
-			
-			ExchangeManager em = new ExchangeManager();
 			String sender = (String)request.getParameter("sdr");
 			String receiver = (String)request.getParameter("rcv");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){
 			case REJECT_INVITATION:
-				//em.rejectInvitation(sender, receiver);
+				ExchangeManager.rejectInvitation(sender, receiver);
 				break;
 			case ACCEPT_INVITATION:
-				//em.acceptInvitation(sender, receiver);
+				ExchangeManager.acceptInvitation(sender, receiver);
 				break;
 			case SEND_INVITATION:
-				//en.sendInvitation(sender, receiver);
+				ExchangeManager.sendInvitation(sender, receiver);
 				break;
 			}
 			

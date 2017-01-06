@@ -1,8 +1,8 @@
 package exchange.web.skill;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.skill.Skill;
 import exchange.model.skill.SkillManager;
-import exchange.model.skill.Type;
 
 @WebServlet("/Skill.do")
 public class SkillServlet extends HttpServlet {
@@ -32,33 +31,33 @@ public class SkillServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
-			
-			Type type;
 			int vn, in;
-			Skill skill;
-			String cid, ie, id, uid;
-			SkillManager sm = new SkillManager();
+			Skill skill = null;
+			String cid, ie, uid, tp;
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){
 			case CREATE_SKILL:
+				tp = (String)request.getParameter("type");
 				uid = (String)session.getAttribute("uid");
 				ie = (String)request.getParameter("introExper");
-				//type = new Type((String)request.getParameter("type"));
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
 				in = Integer.parseInt((String)request.getParameter("inum"));
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				//skill = new Skill(ie, type, img, vdo);
+				try {
+					skill = new Skill(uid, ie, tp, img, vdo);
+					SkillManager.createSkill(skill);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				
-				//sm.createSkill(uid, skill);
-				
-				response.sendRedirect("/Home.do");
 				break;
 			case MODIFY_SKILL:
+				tp = (String)request.getParameter("type");
 				cid = (String)request.getParameter("cid");
 				ie = (String)request.getParameter("introExper");
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -66,38 +65,57 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				//skill = new Skill(cid, ie, img, vdo);
+				try {
+					skill = new Skill(cid, ie, tp, img, vdo);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				
-				//sm.modifySkill(skill);
-				
-				response.sendRedirect("/Home.do");
+				SkillManager.modifySkill(skill);
 				break;
+			case CREATE_FAVORITE:
+				tp = (String)request.getParameter("type");
+				uid = (String)session.getAttribute("uid");
+				
+				SkillManager.createFavoriteSkill(tp, uid);
+				break;
+			case DELETE_FAVORITE:
+				tp = (String)request.getParameter("type");
+				uid = (String)session.getAttribute("uid");
+				
+				SkillManager.deleteFavoriteSkill(tp, uid);
+				break;
+			}
+			
+			response.sendRedirect("/Home.do");
+		}
+		else response.sendRedirect("index.html");
+	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(false);
+		
+		if(session != null){
+			int mark = Integer.parseInt((String)request.getParameter("mark"));
+			
+			switch(mark){
 			case SHOW_SKILL:
 				RequestDispatcher view = null;
-				Hashtable<String, Skill> table = (Hashtable<String, Skill>)session.getAttribute("skills");
+
+				String id = (String)request.getParameter("id");
+				Skill skilltoshow = null;
 				
-				id = (String)request.getParameter("id");
+				try {
+					skilltoshow = SkillManager.findSkill(Integer.parseInt(id));
+				} catch (NumberFormatException | SQLException e) {
+					e.printStackTrace();
+				}
 				
-				request.setAttribute("skill", table.get(id));
+				request.setAttribute("skill", skilltoshow);
 				
 				view = request.getRequestDispatcher("/SkillPage.jsp");
 				view.forward(request, response);
-				break;
-			case CREATE_FAVORITE:
-				//type = new Type((String)request.getParameter("type"));
-				uid = (String)session.getAttribute("uid");
-				
-				//sm.createFavorite(uid, skill);
-				
-				response.sendRedirect("/Home.do");
-				break;
-			case DELETE_FAVORITE:
-				//type = new Type((String)request.getParameter("type"));
-				uid = (String)session.getAttribute("uid");
-				
-				//sm.deleteFavrite(uid, skill);
-				
-				response.sendRedirect("/Home.do");
 				break;
 			}
 		}

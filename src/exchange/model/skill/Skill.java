@@ -8,92 +8,59 @@ import exchange.model.database.DataBaseAdmin;
 
 public class Skill {
 	private int skillId;
-	private int skillLv;
-	private int times;
-	private boolean badTag;
-	private boolean warningTag;
-	private String intorExpr;
 	private String userId;
 	private Type type;
+	private String introExpr;
+	private int skillLevel;
+	private int times;
 	private Score score;
-	private ArrayList<Comment> comment;
+	private boolean warningTag;
+	private boolean badTag;
 	private ArrayList<String> image;
-	private ArrayList<String> vedio;
+	private ArrayList<String> video;
+	private ArrayList<Comment> comment;
 
 	// 建構子()
 	public Skill() {
 		skillId = 0;
-		skillLv = 0;
+		skillLevel = 0;
 		times = 0;
 		badTag = false;
 		warningTag = false;
-		intorExpr = null;
+		introExpr = null;
 		type = new Type();
 		score = new Score();
 		comment = new ArrayList<Comment>();
 		image = new ArrayList<String>();
-		vedio = new ArrayList<String>();
+		video = new ArrayList<String>();
 	}
 
-	// 建構子(int)
-	public Skill(int skillId) {
+	// 建構子(全參數)12個
+	public Skill(int skillId, String userId, String typeName, String introExpr, int skillLevel, int times,
+			Score score, boolean badTag, boolean warningTag, ArrayList<Comment> comment, ArrayList<String> image,
+			ArrayList<String> video) {
 		this.skillId = skillId;
-
-		try {
-			String query = "SELECT * FROM skills WHERE skill_id = '" + this.skillId + "' ";
-			ResultSet rs = DataBaseAdmin.selectDB(query);
-			String type_name = new String();
-
-			if (rs.next()) {
-				times = rs.getInt("times");
-				skillLv = rs.getInt("skill_level");
-				times = rs.getInt("times");
-				score = new Score(rs.getInt("attitude_score"), rs.getInt("profession_score"),
-						rs.getInt("teaching_score"), rs.getInt("frequency_score"), rs.getInt("satisfication_score"));
-				badTag = (rs.getBoolean("bad_tag")) ? true : false;
-				warningTag = (rs.getBoolean("warning_tag")) ? true : false;
-				intorExpr = rs.getString("intro_expr");
-				type_name = rs.getString("type_name");
-				userId = rs.getString("user_id");
-			}
-
-			type = new Type(type_name);
-
-			comment = new ArrayList<Comment>();
-			image = new ArrayList<String>();
-			vedio = new ArrayList<String>();
-
-			query = "SELECT * FROM comments WHERE skill_id = '" + this.skillId + "'";
-			rs = DataBaseAdmin.selectDB(query);
-			while (rs.next()) {
-				comment.add(new Comment(rs.getString("comment"), rs.getString("date")));
-			}
-
-			query = "SELECT * FROM images WHERE skill_id = '" + this.skillId + "'";
-			rs = DataBaseAdmin.selectDB(query);
-			while (rs.next()) {
-				image.add(rs.getString("image"));
-			}
-
-			query = "SELECT * FROM videos WHERE skill_id = '" + this.skillId + "'";
-			rs = DataBaseAdmin.selectDB(query);
-			while (rs.next()) {
-				vedio.add(rs.getString("video"));
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.userId = userId;
+		this.type = new Type(typeName);
+		this.introExpr = introExpr;
+		this.skillLevel = skillLevel;
+		this.times = times;
+		this.warningTag = warningTag;
+		this.badTag = badTag;
+		this.score = score;
+		this.comment = comment;
+		this.image = image;
+		this.video = video;
 	}
 
-	// 建構子(int,String,Type,image,vedio) 用於新增技能
-	public Skill(String userId, String intorExper, Type type, ArrayList<String> image, ArrayList<String> vedio) {
+	// 建構子() 用於新增技能
+	public Skill(String userId, String intorExper, String typeName, ArrayList<String> image, ArrayList<String> video)
+			throws SQLException {
 		this.userId = userId;
-		this.intorExpr = new String(intorExper);
-		this.type = new Type(type);
+		this.introExpr = new String(intorExper);
+		this.type = new Type(typeName);
 		this.image = new ArrayList<String>(image);
-		this.vedio = new ArrayList<String>(vedio);
+		this.video = new ArrayList<String>(video);
 	}
 
 	public int getSkillId() {
@@ -104,12 +71,12 @@ public class Skill {
 		this.skillId = skillId;
 	}
 
-	public int getSkillLv() {
-		return skillLv;
+	public int getSkillLevel() {
+		return skillLevel;
 	}
 
-	public void setSkillLv(int skillLv) {
-		this.skillLv = skillLv;
+	public void setSkillLevel(int skillLevel) {
+		this.skillLevel = skillLevel;
 	}
 
 	public int getTimes() {
@@ -137,11 +104,11 @@ public class Skill {
 	}
 
 	public String getIntorExpr() {
-		return intorExpr;
+		return introExpr;
 	}
 
-	public void setIntorExpr(String intorExpr) {
-		this.intorExpr = intorExpr;
+	public void setIntorExpr(String introExpr) {
+		this.introExpr = introExpr;
 	}
 
 	public String getUserId() {
@@ -176,12 +143,12 @@ public class Skill {
 		this.image = image;
 	}
 
-	public ArrayList<String> getVedio() {
-		return vedio;
+	public ArrayList<String> getVideo() {
+		return video;
 	}
 
-	public void setVedio(ArrayList<String> vedio) {
-		this.vedio = vedio;
+	public void setVideo(ArrayList<String> video) {
+		this.video = video;
 	}
 
 	public void setType(Type type) {
@@ -192,24 +159,15 @@ public class Skill {
 		return type;
 	}
 
-	public void calSkillLevel() {
-
-		try {
-			skillLv = score.calSumScore() / times;
-		} catch (ArithmeticException ae) {
-			skillLv = 0;
-		}
-	}
-
 	public double calAvgScore() {
 
-		return score.calSumScore() / 5;
+		return score.calSumScore() / times;
 	}
 
 	@Override
 	public String toString() {
-		return "Skill [skillId=" + skillId + ", skillLv=" + skillLv + ", times=" + times + ", badTag=" + badTag
-				+ ", warningTag=" + warningTag + ", intorExpr=" + intorExpr + ", userId=" + userId + ", type=" + type
-				+ ", score=" + score + ", comment=" + comment + ", image=" + image + ", vedio=" + vedio + "]";
+		return "Skill [skillId=" + skillId + ", userId=" + userId + ", type=" + type + ", introExpr=" + introExpr
+				+ ", skillLevel=" + skillLevel + ", times=" + times + ", score=" + score + ", warningTag=" + warningTag
+				+ ", badTag=" + badTag + ", image=" + image + ", video=" + video + ", comment=" + comment + "]";
 	}
 }

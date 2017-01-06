@@ -3,7 +3,6 @@ package exchange.web.home;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
-import exchange.model.skill.Skill;
+import exchange.model.exchange.ExchangeManager;
 import exchange.model.skill.SkillManager;
 import exchange.model.skill.Type;
 
@@ -42,13 +41,14 @@ public class ShowHomePageServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			SkillManager sm = new SkillManager();
-			ArrayList<Skill> skills = null;//sm.getAllSkills(uid);
-			ArrayList<Type> favorites = null;//sm.getAllFavorites(uid);
+			ArrayList<Type> favorites = null;
+			try {
+				favorites = SkillManager.getAllFavoriteSkills(uid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
-			Hashtable<String, Skill> skillTable = new Hashtable<String, Skill>();
-			for(Skill skill : skills) skillTable.put(Integer.toString(skill.getSkillId()), skill);
-			session.setAttribute("skills", skillTable);
+			ArrayList<MySkill> skills = ExchangeManager.getMySkillStatus(uid);
 			
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);

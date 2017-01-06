@@ -1,6 +1,7 @@
 package exchange.web.sign;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +28,13 @@ public class LogInServlet extends HttpServlet {
 			Secret secret = new Secret(id, pwd);
 			
 			SignManager sm = new SignManager();
-			boolean checkResult = sm.check(secret);
+			boolean checkResult = false;
+			try {
+				checkResult = sm.check(secret);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			if(checkResult){
 				//session
