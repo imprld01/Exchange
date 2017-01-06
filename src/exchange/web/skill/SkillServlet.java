@@ -44,6 +44,7 @@ public class SkillServlet extends HttpServlet {
 			
 			switch(mark){
 			case CREATE_SKILL:
+				uid = (String)session.getAttribute("uid");
 				ie = (String)request.getParameter("introExper");
 				//type = new Type((String)request.getParameter("type"));
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -53,7 +54,7 @@ public class SkillServlet extends HttpServlet {
 				
 				//skill = new Skill(ie, type, img, vdo);
 				
-				//sm.createSkill(skill);
+				//sm.createSkill(uid, skill);
 				
 				response.sendRedirect("/Home.do");
 				break;
