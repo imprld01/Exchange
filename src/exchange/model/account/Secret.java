@@ -7,8 +7,8 @@ public class Secret
 	
 	public Secret(String id, String password)
 	{
-		this.id = new String();
-		this.password = new String();
+		this.id = id;
+		this.password = password;
 	}
 	
 	public Secret(String id) {

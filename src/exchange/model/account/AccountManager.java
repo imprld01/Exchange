@@ -7,7 +7,11 @@ import java.util.Date;
 import exchange.model.database.DataBaseAdmin;
 
 public class AccountManager {
+<<<<<<< HEAD
+	public void addAccount(String id, String password, String userName, String nickName, int gender, String email,
+=======
 	public void addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
+>>>>>>> 0513981648e797c587793d381a292b539d102cda
 			String birthday, String region, int skillMax, int skillNumber) throws SQLException {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
@@ -35,7 +39,7 @@ public class AccountManager {
 
 	public ArrayList getAllUserId() throws SQLException {
 		ArrayList<Secret> idlist = new ArrayList<>();
-		String query = "SELECT * FROM 'user_id' ";
+		String query = "SELECT * FROM accounts ";
 		ResultSet result = null;
 		result = DataBaseAdmin.selectDB(query);
 		while (result.next())
@@ -51,7 +55,7 @@ public class AccountManager {
 		Secret s = new Secret();
 		Profile p = new Profile();
 		String id = s.getId();
-		String nickName = p.getnickName();
+		String nickName = p.getNickName();
 		String email = p.getEmail();
 		String region = p.getEmail();
 		String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
@@ -69,6 +73,10 @@ public class AccountManager {
 	}
 
 	public static boolean isSkillFull(String id) throws SQLException {
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 0513981648e797c587793d381a292b539d102cda
 		boolean result;
 		String query = "select * from accounts where user_id = '" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
@@ -82,8 +90,14 @@ public class AccountManager {
 
 	public boolean isValid(String id) throws SQLException {
 		boolean result;
+<<<<<<< HEAD
+		String query = "SELECT * FROM accounts";
+		ResultSet rs = DataBaseAdmin.selectDB(query);
+		rs.next();
+=======
 		String query = "SELECT * FROM 'user_id' ";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
+>>>>>>> 0513981648e797c587793d381a292b539d102cda
 		if (id.equals(rs.getString("user_id")))
 			result = false;
 		else if (id.length() > 20)
@@ -91,5 +105,12 @@ public class AccountManager {
 		else
 			result = true;
 		return result;
+	}
+	public String getRegion(String id) throws SQLException
+	{
+		String query = "SELECT * FROM accounts where user_id = '"+ id +"' ";
+		ResultSet rs = DataBaseAdmin.selectDB(query);
+		rs.next();
+		return rs.getString("region");
 	}
 }
