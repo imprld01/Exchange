@@ -16,12 +16,7 @@ public class Comment {
 	public String getDate() {
 		return date;
 	}
-	
-	static public Comment findComment()
-	{
-		return null;
-	}
-	
+
 	@Override
 	public String toString() {
 		return "Comment [comment=" + comment + ", date=" + date + "]";

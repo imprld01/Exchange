@@ -3,16 +3,16 @@ package exchange.model.skill;
 public class Code {
 	private String code;
 
-	//建構子(String)
+	// 建構子(String)
 	public Code(String code) {
 		setCode(code);
 	}
-	
-	//建構子(Code)
+
+	// 建構子(Code)
 	public Code(Code code) {
 		this(code.getCode());
 	}
-	
+
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -22,7 +22,7 @@ public class Code {
 	}
 
 	public boolean equalValue(Code ohertCode) {
-		if ( !code.equals(ohertCode.getCode()))
+		if (!code.equals(ohertCode.getCode()))
 			return false;
 		return true;
 	}
@@ -38,7 +38,7 @@ public class Code {
 
 		if (equalValue((Code) other))
 			return true;
-		
+
 		return false;
 	}
 
@@ -46,7 +46,7 @@ public class Code {
 	public int hashCode() {
 		return 0;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Code [code=" + code + "]";
