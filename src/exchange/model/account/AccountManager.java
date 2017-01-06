@@ -33,7 +33,7 @@ public class AccountManager {
 		
 	}
 
-	public ArrayList getAllUserId() throws SQLException {
+	public ArrayList<Secret> getAllUserId() throws SQLException {
 		ArrayList<Secret> idlist = new ArrayList<>();
 		String query = "SELECT * FROM accounts ";
 		ResultSet result = null;
@@ -47,13 +47,10 @@ public class AccountManager {
 	String nickName;
 
 	// Profile修改
-	public void setProfile(Profile profile) {
-		Secret s = new Secret();
-		Profile p = new Profile();
-		String id = s.getId();
-		String nickName = p.getNickName();
-		String email = p.getEmail();
-		String region = p.getEmail();
+	public void setProfile(String id, Profile profile) {
+		String nickName = profile.getNickName();
+		String email = profile.getEmail();
+		String region = profile.getEmail();
 		String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
 				+ region + "' " + "where user_id = '" + id + "'";
 		DataBaseAdmin.updateDB(query);
@@ -61,9 +58,8 @@ public class AccountManager {
 
 	// Secret修改
 	public void setSecret(Secret secret) {
-		Secret s = new Secret();
-		String id = s.getId();
-		String password = s.getPassword();
+		String id = secret.getId();
+		String password = secret.getPassword();
 		String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
 		DataBaseAdmin.updateDB(query);
 	}
