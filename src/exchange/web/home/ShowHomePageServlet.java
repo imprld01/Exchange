@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
-import exchange.model.skill.Skill;
+import exchange.model.exchange.ExchangeManager;
 import exchange.model.skill.SkillManager;
 import exchange.model.skill.Type;
 
@@ -41,14 +41,14 @@ public class ShowHomePageServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			ArrayList<Skill> skills = null;
 			ArrayList<Type> favorites = null;
 			try {
-				skills = SkillManager.getAllSkills(uid);
 				favorites = SkillManager.getAllFavoriteSkills(uid);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+			ArrayList<MySkill> skills = ExchangeManager.getMySkillStatus(uid);
 			
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
