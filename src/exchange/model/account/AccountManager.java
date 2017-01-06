@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import exchange.model.database.DataBaseAdmin;
-import exchange.model.account.Profile;
-import exchange.model.account.Secret;
+
 
 public class AccountManager 
 {
@@ -68,7 +67,7 @@ public class AccountManager
 		DataBaseAdmin.updateDB(query);
 	}
 	
-	public boolean isSkillFull(Profile profile)
+	public static boolean isSkillFull(Profile profile)
 	{
 		Profile p = new Profile();
 		boolean result;
