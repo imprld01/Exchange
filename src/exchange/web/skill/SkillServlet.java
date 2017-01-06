@@ -2,7 +2,9 @@ package exchange.web.skill;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,7 @@ public class SkillServlet extends HttpServlet {
 	
 	private static final int CREATION = 0;
 	private static final int MODIFICATION = 1;
+	private static final int SHOW_SKILL = 2;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -31,14 +34,14 @@ public class SkillServlet extends HttpServlet {
 			Type type;
 			int vn, in;
 			Skill skill;
-			String cid, ie;
+			String cid, ie, id;
 			SkillManager sm = new SkillManager();
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){
-			case CREATION:				
+			case CREATION:
 				ie = (String)request.getParameter("introExper");
 				//type = new Type((String)request.getParameter("type"));
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -65,6 +68,18 @@ public class SkillServlet extends HttpServlet {
 				//sm.modifySkill(skill);
 				
 				response.sendRedirect("/Home.do");
+				break;
+			case SHOW_SKILL:
+				
+				RequestDispatcher view = null;
+				Hashtable<String, Skill> table = (Hashtable<String, Skill>)session.getAttribute("skills");
+				
+				id = (String)request.getParameter("id");
+				
+				request.setAttribute("skill", table.get(id));
+				
+				view = request.getRequestDispatcher("/SkillPage.jsp");
+				view.forward(request, response);
 				break;
 			}
 		}

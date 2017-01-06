@@ -3,6 +3,7 @@ package exchange.web.home;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,8 +46,13 @@ public class ShowHomePageServlet extends HttpServlet {
 			ArrayList<Skill> skills = null;//sm.getAllSkills(uid);
 			ArrayList<FavoriteSkill> favorites = null;//sm.getAllFavorites(uid);
 			
+			Hashtable<String, Skill> skillTable = new Hashtable<String, Skill>();
+			for(Skill skill : skills) skillTable.put(Integer.toString(skill.getSkillId()), skill);
+			session.setAttribute("skills", skillTable);
+			
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
+			request.setAttribute("favorites", favorites);
 			
 			view = request.getRequestDispatcher("/HomePage.jsp");
 			view.forward(request, response);
