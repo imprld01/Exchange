@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.exchange.Exchange;
 import exchange.model.exchange.ExchangeManager;
-import exchange.model.skill.Skill;
-import exchange.model.skill.SkillManager;
 
 @WebServlet("/Exchange.do")
 public class ShowExchangePageServlet extends HttpServlet {
@@ -26,15 +25,15 @@ public class ShowExchangePageServlet extends HttpServlet {
 		
 		if(session != null){
 			RequestDispatcher view = null;
+			String uid = (String)session.getAttribute("uid");
 			
-			ExchangeManager em = new ExchangeManager();
-			//ArrayList<Exchange> exchange = em.getExchangings();
-			//ArrayList<Exchange> receive = em.getReceiveInvitations();
-			//ArrayList<Exchange> send = em.getSendInvitations();
+			ArrayList<Exchange> exchange = ExchangeManager.getExchangings(uid);
+			ArrayList<Exchange> receive = ExchangeManager.getReceiveInvitations(uid);
+			ArrayList<Exchange> send = ExchangeManager.getSendInvitations(uid);
 			
-			//request.setAttribute("Exchanging", exchange);
-			//request.setAttribute("ReceiveInvitation", receive);
-			//request.setAttribute("SendInvitation", send);
+			request.setAttribute("Exchanging", exchange);
+			request.setAttribute("ReceiveInvitation", receive);
+			request.setAttribute("SendInvitation", send);
 			
 			view = request.getRequestDispatcher("/ExchangePage.jsp");
 			view.forward(request, response);

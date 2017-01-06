@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.evaluation.EvaluationManager;
 import exchange.model.exchange.ExchangeManager;
 
 @WebServlet("/Evaluation.do")
@@ -22,7 +23,8 @@ public class EvaluationServlet extends HttpServlet {
 		
 		if(session != null){
 			
-			String cid = (String)request.getParameter("cardId");
+			String my = (String)request.getParameter("my");
+			String other = (String)request.getParameter("other");
 			int attitude = Integer.parseInt((String)request.getParameter("atd"));
 			int profession = Integer.parseInt((String)request.getParameter("pfn"));
 			int teaching = Integer.parseInt((String)request.getParameter("tch"));
@@ -30,12 +32,12 @@ public class EvaluationServlet extends HttpServlet {
 			int satisfication = Integer.parseInt((String)request.getParameter("sfn"));
 			String comment = (String)request.getParameter("comment");
 			
-			//EvaluationManager em = new EvaluationManager(cid);
+			//EvaluationManager em = new EvaluationManager(other);
 			//em.saveScore(attitude, profession, teaching, frequency, satisfication);
 			//em.saveComment(comment);
 			
-			ExchangeManager xm = new ExchangeManager();
-			//xm.finishExchange(cid);
+			
+			ExchangeManager.finishExchange(my, other);
 			
 			response.sendRedirect("/Exchange.do");
 		}
