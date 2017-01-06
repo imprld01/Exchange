@@ -21,7 +21,7 @@ public class EvaluationManager{
 
 	public void saveScore()
 	{
-		String query = "UPDATE skills SET  = '"+  +"' where skill_id = '"+skillId+"'";
+		String query = "UPDATE skills SET  = '"+ attitude +"', '"+ profession +"', "''" where skill_id = '"+skillId+"'";
 		
 		
 		
