@@ -53,15 +53,15 @@ public class SkillManager {
 		}
 	}
 
-	static public void modifySkill() {
+	static public void modifySkill(Skill skill) {
+		
+	}
+
+	static public void createFavoriteSkill(String userId,String typeName) {
 
 	}
 
-	static public void createFavoriteSkill(Skill skill) {
-
-	}
-
-	static public void modifyFavoriteSkill() {
+	static public void deleteFavoriteSkill(String userId,String typeName) {
 
 	}
 

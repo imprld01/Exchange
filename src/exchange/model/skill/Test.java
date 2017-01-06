@@ -47,9 +47,10 @@ public class Test {
 //		System.out.println(sm.getAllFavoriteSkills("vegetable"));
 
 		System.out.println(sm.getAllSkills("vegetable"));
-		SkillManager.createSkill(new Skill("vegetable","123123",new Type("英文"), new ArrayList<String>(), new ArrayList<String>()));
+		System.out.println(AccountManager.isSkillFull("bowen"));
+		SkillManager.createSkill(new Skill("vegetable","123123",new Type("日文"), new ArrayList<String>(), new ArrayList<String>()));
 
-		System.out.println(AccountManager.isSkillFull("vegetable"));
+		
 	}
 
 }
