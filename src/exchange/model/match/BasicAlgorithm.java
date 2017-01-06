@@ -31,7 +31,7 @@ public  class BasicAlgorithm extends MatchMaker {
 		Skill skill;	
 		int distance;     //距離
 		double Score;
-	}ArrayList<SkillCard> skillCard;
+	}ArrayList<SkillCard> skillCard=new ArrayList<SkillCard>();
 
 	class Area{ //依照表格排序地區  (魔術數字)
 		int distance;
@@ -251,17 +251,34 @@ public  class BasicAlgorithm extends MatchMaker {
 			//System.out.println("type_name\t region\t attitude_score\t profession_score\t teaching_score\t frequency_score\t satisfication_score\t ");
 			
 			while (result.next()) { //顯示當前抓了幾筆資料  預計在這將資料存入陣列
-				SkillCard sc = null;
-				sc.skill=new Skill(1);
+				
 				
 				limit--; //計算還需抓幾筆資料
 				//distance=area[regionNum][nowRegionNum-1].distance
 				
-				System.out.println(result.getString("type_name")+ "\t"+result.getString("region")+ "\t"+result.getString("attitude_score")+ "\t"+result.getString("profession_score")+ "\t"+result.getString("teaching_score")+ "\t"+result.getString("frequency_score")+ "\t"+result.getString("satisfication_score")+ "\t");
+				
+				System.out.println(result.getString("type_name")+ "\t"+result.getString("region")+ "\t"+result.getString("attitude_score")+ "\t"+result.getString("profession_score")+ "\t"+result.getString("teaching_score")+ "\t"+result.getString("frequency_score")+ "\t"+Boolean.parseBoolean(result.getString("bad_tag"))+ "\t");
+				
+				Skill skill=new Skill(result.getInt("skill_id"));
+				System.out.println(skill);
+				SkillCard sc=new SkillCard();
+				sc.skill=skill;
+				sc.Score=8.5;
+				sc.distance=0;
+				skillCard.add(sc);
+				
+				//System.out.println(sc.skill.getAccount());
 			}
 			//System.out.println(limit); 測試用
 			
 		}while(limit>0&&nowRegionNum<=15); //抓到50筆技能或全部地區資料抓完後跳出
+		
+		for(int i=0;i<skillCard.size();i++){
+			System.out.println(skillCard.get(i).skill);
+		}
+		
+		
+		
 	}
 
 	

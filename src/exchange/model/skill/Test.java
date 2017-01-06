@@ -2,6 +2,8 @@ package exchange.model.skill;
 
 import java.sql.SQLException;
 
+import exchange.model.database.DataBaseAdmin;
+
 
 public class Test {
 
@@ -13,6 +15,7 @@ public class Test {
 //		if( code.equals(otherCode)) System.out.println("yes");
 //		else System.out.println("no");
 //
+		
 		Type type = new Type(new Code("MUS_001"),"音樂",new Code("MUS"));
 		System.out.println(type);
 
@@ -25,7 +28,7 @@ public class Test {
 		
 		Skill skill = new Skill(1);
 		System.out.println(skill);
-
+		
 	}
 
 }

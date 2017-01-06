@@ -41,7 +41,7 @@ public class Skill {
 
 		
 		try {
-			String query = "SELECT * FROM skills WHERE skill_id = '" + this.skillId + "'";
+			String query = "SELECT * FROM skills WHERE skill_id = '" + this.skillId + "' ";
 			ResultSet rs = DataBaseAdmin.selectDB(query);
 			String type_name = new String();
 			
@@ -88,7 +88,6 @@ public class Skill {
 			while (rs.next()) {
 				vedio.add(rs.getString("video"));
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
