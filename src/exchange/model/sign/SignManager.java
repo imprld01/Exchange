@@ -3,6 +3,7 @@ package exchange.model.sign;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import exchange.model.account.Account;
 import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
 import exchange.model.account.Secret;
@@ -36,8 +37,8 @@ public class SignManager {
 		return result;
 	}
 	
-	public boolean create(Secret secret, Profile profile){
-		
+	public boolean create(Account account){
+		AccountManager am = new AccountManager();
 		
 		
 		
