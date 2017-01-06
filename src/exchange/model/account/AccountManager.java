@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import exchange.model.database.DataBaseAdmin;
-import exchange.model.account.Profile;
-import exchange.model.account.Secret;
+
 
 public class AccountManager 
 {
@@ -68,22 +67,25 @@ public class AccountManager
 		DataBaseAdmin.updateDB(query);
 	}
 	
+<<<<<<< HEAD
 	static public boolean isSkillFull(Profile profile)
+=======
+	public static boolean isSkillFull(String id) throws SQLException
+>>>>>>> 303d28a1f1a7a0d0ba6cab0771bb6e6bb05141da
 	{
-		Profile p = new Profile();
 		boolean result;
-		if(p.getskillNumber() > p.getskillMax())
+
+		String query = "select * from accounts where user_id = '"+id+"'";
+		ResultSet rs = DataBaseAdmin.selectDB(query);
+		if(rs.getInt("skill_number") > rs.getInt("skill_max"))
 			result = false;
 		else
 			result = true;
-		
-		return result;	
+		return result;
 	}
 	
 	public boolean isValid(String id) throws SQLException
 	{
-		boolean result;
-		int length = id.length();
 		AccountManager am = new AccountManager();
 		if(id.equals(am.getAllUserId()))
 			result = false;
