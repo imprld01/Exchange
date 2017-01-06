@@ -17,30 +17,36 @@ public class SkillManager {
 
 	static public void createSkill(Skill skill) {
 		// 判斷是否可新增技能
-		// if (AccountManager.isSkillFull(userID))
-		{
-			int skillId = 0;
-			String userId = skill.getUserId();
-			String typeName = skill.getType().getTypeName();
-			DataBaseAdmin.updateDB("INSERT INTO skills VALUES('','" + userId + "','" + typeName + "','"
-					+ skill.getIntorExpr() + "','0','0','0','0','0','0','0','0','0')");
+		
+		try {
+			if (AccountManager.isSkillFull(skill.getUserId()))
+			{
+				int skillId = 0;
+				String userId = skill.getUserId();
+				String typeName = skill.getType().getTypeName();
+				DataBaseAdmin.updateDB("INSERT INTO skills VALUES('0','" + userId + "','" + typeName + "','"
+						+ skill.getIntorExpr() + "','0','0','0','0','0','0','0','0','0')");
 
-			ResultSet rs = DataBaseAdmin
-					.selectDB("SELECT * FROM skills where user_id = " + userId + "AND type_name =" + typeName);
-			try {
-				if (rs.next()) {
-					skillId = rs.getInt("skill_id");
+				ResultSet rs = DataBaseAdmin
+						.selectDB("SELECT * FROM skills where user_id = '" + userId + "' AND type_name ='" + typeName+"'");
+				try {
+					if (rs.next()) {
+						skillId = rs.getInt("skill_id");
+					}
+					System.out.println("SKILL_ID:" + skillId);
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-				System.out.println("SKILL_ID:" + skillId);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 
-			for (String vedio : skill.getVedio())
-				DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + vedio + "')");
-			
-			for (String image : skill.getImage())
-				DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + image + "')");
+				for (String vedio : skill.getVedio())
+					DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + vedio + "')");
+				
+				for (String image : skill.getImage())
+					DataBaseAdmin.updateDB("INSERT INTO vedios VALUES('" + skillId + "','" + image + "')");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
