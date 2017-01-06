@@ -87,7 +87,7 @@ public class DataBaseAdmin {
 		DataBaseAdmin.openConnection(DataBaseAdmin.userID, DataBaseAdmin.pwd); // 登入,帳號密碼
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.executeUpdate(query);
+				statement.executeUpdate(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
