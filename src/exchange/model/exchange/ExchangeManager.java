@@ -95,5 +95,6 @@ public class ExchangeManager {
 	}
 	public static void main(String args[]){
 		ExchangeManager.getSendInvitations("bowen");
+		//a
 	}
 }
