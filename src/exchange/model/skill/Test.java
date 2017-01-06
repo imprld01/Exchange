@@ -1,6 +1,9 @@
 package exchange.model.skill;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import exchange.model.database.DataBaseAdmin;
 
 
 public class Test {
@@ -23,11 +26,14 @@ public class Test {
 //		KindTypeManager kindType = new KindTypeManager();
 //		System.out.println(KindTypeManager.findType("吉他"));
 //		
-//		Skill skill = new Skill(1);
-//		System.out.println(skill);
+
+		Skill skill = new Skill(2);
+		System.out.println(skill);
 
 		SkillManager sm = new SkillManager();
 		System.out.println(sm.getAllFavoriteSkills("vegetable"));
+		System.out.println(sm.getAllSkills("vegetable"));
+		sm.createSkill(new Skill("vegetable","123123",new Type("游泳"), new ArrayList<String>(), new ArrayList<String>()));
 	}
 
 }

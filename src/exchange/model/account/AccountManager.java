@@ -68,7 +68,7 @@ public class AccountManager
 		DataBaseAdmin.updateDB(query);
 	}
 	
-	public boolean isSkillFull(Profile profile)
+	static public boolean isSkillFull(Profile profile)
 	{
 		Profile p = new Profile();
 		boolean result;

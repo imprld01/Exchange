@@ -13,7 +13,7 @@ public class Skill {
 	private boolean badTag;
 	private boolean warningTag;
 	private String intorExpr;
-	private String account;
+	private String userId;
 	private Type type;
 	private Score score;
 	private ArrayList<Comment> comment;
@@ -54,7 +54,7 @@ public class Skill {
 				warningTag = (rs.getBoolean("warning_tag")) ? true : false;
 				intorExpr = rs.getString("intro_expr");
 				type_name = rs.getString("type_name");
-				account = rs.getString("user_id");
+				userId = rs.getString("user_id");
 			}
 
 			type = new Type(type_name);
@@ -88,16 +88,10 @@ public class Skill {
 	}
 
 	// 建構子(int,String,Type,image,vedio) 用於新增技能
-	public Skill(int skillId, String intorExper, Type type, ArrayList<String> image, ArrayList<String> vedio) {
-		this.skillId = skillId;
-		times = 0;
-		badTag = false;
-		warningTag = false;
+	public Skill(String userId, String intorExper, Type type, ArrayList<String> image, ArrayList<String> vedio) {
+		this.userId = userId;
 		this.intorExpr = new String(intorExper);
 		this.type = new Type(type);
-		score = new Score();
-		this.skillLv = 0;
-		comment = new ArrayList<Comment>();
 		this.image = new ArrayList<String>(image);
 		this.vedio = new ArrayList<String>(vedio);
 	}
@@ -150,12 +144,12 @@ public class Skill {
 		this.intorExpr = intorExpr;
 	}
 
-	public String getAccount() {
-		return account;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setAccount(String account) {
-		this.account = account;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public Score getScore() {
@@ -215,7 +209,7 @@ public class Skill {
 	@Override
 	public String toString() {
 		return "Skill [skillId=" + skillId + ", skillLv=" + skillLv + ", times=" + times + ", badTag=" + badTag
-				+ ", warningTag=" + warningTag + ", intorExpr=" + intorExpr + ", account=" + account + ", type=" + type
+				+ ", warningTag=" + warningTag + ", intorExpr=" + intorExpr + ", userId=" + userId + ", type=" + type
 				+ ", score=" + score + ", comment=" + comment + ", image=" + image + ", vedio=" + vedio + "]";
 	}
 }
