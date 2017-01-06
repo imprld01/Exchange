@@ -35,65 +35,59 @@ public class Skill {
 		vedio = new ArrayList<String>();
 	}
 
-	// 建構子()
+	// 建構子(int)
 	public Skill(int skillId) {
 		this.skillId = skillId;
 
-		
 		try {
 			String query = "SELECT * FROM skills WHERE skill_id = '" + this.skillId + "' ";
 			ResultSet rs = DataBaseAdmin.selectDB(query);
 			String type_name = new String();
-			
+
 			if (rs.next()) {
 				times = rs.getInt("times");
 				skillLv = rs.getInt("skill_level");
 				times = rs.getInt("times");
-				score = new Score(rs.getInt("attitude_score"),rs.getInt("profession_score"),
-						rs.getInt("teaching_score"),rs.getInt("frequency_score"),rs.getInt("satisfication_score"));
+				score = new Score(rs.getInt("attitude_score"), rs.getInt("profession_score"),
+						rs.getInt("teaching_score"), rs.getInt("frequency_score"), rs.getInt("satisfication_score"));
 				badTag = (rs.getBoolean("bad_tag")) ? true : false;
 				warningTag = (rs.getBoolean("warning_tag")) ? true : false;
 				intorExpr = rs.getString("intro_expr");
 				type_name = rs.getString("type_name");
-				account = rs.getString("account");	
+				account = rs.getString("user_id");
 			}
-			
-			query = "SELECT * FROM types WHERE type_name = '" + type_name + "'";
-			rs = DataBaseAdmin.selectDB(query);
-			if (rs.next()) {
-				type = new Type(new Code(rs.getString("type_code")),
-						rs.getString("type_name"),
-						new Code(rs.getString("class_code")));
-			}
-			
-			
+
+			type = new Type(type_name);
+
 			comment = new ArrayList<Comment>();
 			image = new ArrayList<String>();
 			vedio = new ArrayList<String>();
-			
+
 			query = "SELECT * FROM comments WHERE skill_id = '" + this.skillId + "'";
 			rs = DataBaseAdmin.selectDB(query);
 			while (rs.next()) {
-				comment.add(new Comment(rs.getString("comment"),rs.getString("date")));
+				comment.add(new Comment(rs.getString("comment"), rs.getString("date")));
 			}
-			
+
 			query = "SELECT * FROM images WHERE skill_id = '" + this.skillId + "'";
 			rs = DataBaseAdmin.selectDB(query);
 			while (rs.next()) {
 				image.add(rs.getString("image"));
 			}
-			
+
 			query = "SELECT * FROM videos WHERE skill_id = '" + this.skillId + "'";
 			rs = DataBaseAdmin.selectDB(query);
 			while (rs.next()) {
 				vedio.add(rs.getString("video"));
 			}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bd78bd6d64e13490cef64003c8cfeb31b6ed52f
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
 	}
 
 	// 建構子(int,String,Type,image,vedio) 用於新增技能
@@ -203,11 +197,10 @@ public class Skill {
 		this.type = type;
 	}
 
-	public Type getType()
-	{
+	public Type getType() {
 		return type;
 	}
-	
+
 	public void calSkillLevel() {
 
 		try {
