@@ -19,7 +19,8 @@ public class EvaluationManager{
 
 	public static void saveScore(String skillId, Score score)
 	{
-		String query = "UPDATE skills SET  = '"+ score.getAttitude() +"', '"+score.getProfession()+"',where skill_id = '"+skillId+"'";
+		String query = "UPDATE skills SET  = '"+ score.getAttitude() +"', '"+ score.getProfession() +"', "
+				+ "'"+score.getTeaching()+"', '"+ score.getFrequency() +"', '"+ score.getSatisfication() +"'where skill_id = '"+skillId+"'";
 		DataBaseAdmin.updateDB(query);
 
 
