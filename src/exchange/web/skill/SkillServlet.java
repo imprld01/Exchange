@@ -42,12 +42,7 @@ public class SkillServlet extends HttpServlet {
 			
 			switch(mark){
 			case CREATE_SKILL:
-				try {
-					type = new Type((String)request.getParameter("type"));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				tp = (String)request.getParameter("type");
 				uid = (String)session.getAttribute("uid");
 				ie = (String)request.getParameter("introExper");
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -55,17 +50,12 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				skill = new Skill(uid, ie, type, img, vdo);
+				skill = new Skill(uid, ie, tp, img, vdo);
 				
 				SkillManager.createSkill(skill);
 				break;
 			case MODIFY_SKILL:
-				try {
-					type = new Type((String)request.getParameter("type"));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				tp = (String)request.getParameter("type");
 				cid = (String)request.getParameter("cid");
 				ie = (String)request.getParameter("introExper");
 				vn = Integer.parseInt((String)request.getParameter("vnum"));
@@ -73,7 +63,7 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				skill = new Skill(cid, ie, type, img, vdo);
+				skill = new Skill(cid, ie, tp, img, vdo);
 				
 				SkillManager.modifySkill(skill);
 				break;
