@@ -14,15 +14,14 @@ import exchange.model.database.DataBaseAdmin;
 
 
 public  class BasicAlgorithm extends MatchMaker {
-	public BasicAlgorithm(String account){
+	public BasicAlgorithm(String user_id){
 		connection=null;
-		this.account=account;
+		this.user_id=user_id;
 	}
 	
 	static Connection connection;
-	//private ArrayList<Type> favoritesSkill;
-	private String[] favoritesSkill; //此帳號的興趣技能
-	private String account;  //此帳號
+	private ArrayList<Type> favoritesSkill;
+	private String user_id;  //此帳號
 	private String region;   //此帳號的地區
 	private int regionNum=0; //此帳號的地區指標
 	AccountManager accountManager=new AccountManager();
@@ -50,9 +49,9 @@ public  class BasicAlgorithm extends MatchMaker {
     public  void match(){};
     public  void creatMateSet(){
     	try {
-			setFavoriteSkill();
-			//favoritesSkill=SkillManager.getAllFavoriteSkills(account);
-			region=accountManager.getRegion(account);	
+			//setFavoriteSkill();
+			favoritesSkill=SkillManager.getAllFavoriteSkills(user_id);
+			region=accountManager.getRegion(user_id);	
 			setRegionNum(region); //設定地區指標
 			
 			getMatchSkill();
@@ -135,26 +134,6 @@ public  class BasicAlgorithm extends MatchMaker {
 	//String type_name;//技能名稱	
 	//int distance;     //距離
     
-    
-    private void setFavoriteSkill()throws SQLException { //取得興趣技能以做搜尋
-		String sql="SELECT count(type_name)as num FROM exchange.favorites where favorites.account='"+account+"';";
-		ResultSet result = DataBaseAdmin.selectDB(sql);
-		
-		while (result.next()) {
-			favoritesSkill=new String[Integer.parseInt(result.getString("num"))];
-		}
-		sql="SELECT type_name FROM exchange.favorites where favorites.account='"+account+"';";
-		result = DataBaseAdmin.selectDB(sql);
-		int i=0;
-		while (result.next()) {
-			favoritesSkill[i++]=result.getString("type_name");		
-		}	
-		
-		
-	}
-    
-   
-
 	private void getMatchSkill() throws SQLException {
 
 		int nowdistance=0;
@@ -163,23 +142,23 @@ public  class BasicAlgorithm extends MatchMaker {
 		do{
 			// SQL
 			//String sql = "select skills.*,accounts.region from skills,accounts where skills.account=accounts.user_id and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+account+"' ";
-			String sql = "select skills.*,accounts.region from skills,accounts where skills.account=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+account+"' ";
-					
-			for(int i=0;i<favoritesSkill.length;i++){  //加入興趣技能
+			String sql = "select skills.*,accounts.region from skills,accounts where skills.user_id=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+user_id+"' ";
+		
+			for(int i=0;i<favoritesSkill.size();i++){  //加入興趣技能
 				
-				if(favoritesSkill.length>1){
+				if(favoritesSkill.size()>1){
 					if(i==0){
-						sql=sql+"and (skills.type_name='"+favoritesSkill[i]+"' "; //多個興趣開頭+小括號
+						sql=sql+"and (skills.type_name='"+favoritesSkill.get(i).getTypeName()+"' "; //多個興趣開頭+小括號
 					}
-					else if(i==favoritesSkill.length-1){
-						sql=sql+"or skills.type_name='"+favoritesSkill[i]+"') ";//多個興趣結尾+小括號
+					else if(i==favoritesSkill.size()-1){
+						sql=sql+"or skills.type_name='"+favoritesSkill.get(i).getTypeName()+"') ";//多個興趣結尾+小括號
 					}
 					else{
-						sql=sql+"or skills.type_name='"+favoritesSkill[i]+"' ";
+						sql=sql+"or skills.type_name='"+favoritesSkill.get(i).getTypeName()+"' ";
 					}
 				}
 				else{
-					sql=sql+"and skills.type_name='"+favoritesSkill[i]+"' ";
+					sql=sql+"and skills.type_name='"+favoritesSkill.get(i).getTypeName()+"' ";
 				}
 			}
 			
@@ -222,9 +201,9 @@ public  class BasicAlgorithm extends MatchMaker {
 				
 				System.out.println(result.getString("type_name")+ "\t"+result.getString("region")+ "\t"+result.getString("attitude_score")+ "\t"+result.getString("profession_score")+ "\t"+result.getString("teaching_score")+ "\t"+result.getString("frequency_score")+ "\t"+Boolean.parseBoolean(result.getString("bad_tag"))+ "\t");
 				
-				Skill skill= SkillManager.findSkill(result.getInt("skill_id"));
-				System.out.println(skill);
 				SkillCard sc=new SkillCard();
+				Skill skill= SkillManager.findSkill(result.getInt("skill_id"));
+	
 				sc.skill=skill;
 				//sc.Score=8.5;
 				sc.distance=0;
