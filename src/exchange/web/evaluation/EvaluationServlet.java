@@ -37,9 +37,9 @@ public class EvaluationServlet extends HttpServlet {
 			
 			Score score = new Score(attitude, profession, teaching, frequency, satisfication);
 			
-			EvaluationManager.saveScore(other, score);
+			EvaluationManager.saveScore(Integer.parseInt(other), score);
 			try {
-				EvaluationManager.saveComment(other, comment);
+				EvaluationManager.saveComment(Integer.parseInt(other), comment);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
