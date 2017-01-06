@@ -252,7 +252,7 @@ public  class BasicAlgorithm extends MatchMaker {
 			
 			while (result.next()) { //顯示當前抓了幾筆資料  預計在這將資料存入陣列
 				SkillCard sc = null;
-				
+				sc.skill=new Skill(1);
 				
 				limit--; //計算還需抓幾筆資料
 				//distance=area[regionNum][nowRegionNum-1].distance
