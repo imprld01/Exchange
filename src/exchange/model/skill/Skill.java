@@ -36,8 +36,8 @@ public class Skill {
 	}
 
 	// 建構子(全參數)12個
-	public Skill(int skillId, String userId, String typeName, String introExpr, int skillLevel, int times,
-			Score score, boolean badTag, boolean warningTag, ArrayList<Comment> comment, ArrayList<String> image,
+	public Skill(int skillId, String userId, String typeName, String introExpr, int skillLevel, int times, Score score,
+			boolean badTag, boolean warningTag, ArrayList<Comment> comment, ArrayList<String> image,
 			ArrayList<String> video) {
 		this.skillId = skillId;
 		this.userId = userId;
@@ -54,8 +54,7 @@ public class Skill {
 	}
 
 	// 建構子() 用於新增技能
-	public Skill(String userId, String intorExper, String typeName, ArrayList<String> image, ArrayList<String> video)
-			throws SQLException {
+	public Skill(String userId, String intorExper, String typeName, ArrayList<String> image, ArrayList<String> video) {
 		this.userId = userId;
 		this.introExpr = new String(intorExper);
 		this.type = new Type(typeName);
