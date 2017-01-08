@@ -14,12 +14,6 @@ import exchange.model.database.DataBaseAdmin;
 
 
 public  class BasicAlgorithm extends MatchMaker {
-	public BasicAlgorithm(String user_id,int skill_id){
-		
-		this.user_id=user_id;
-		this.mySkill=SkillManager.findSkill(skill_id);
-	}
-	
 	private ArrayList<Type> favoritesSkill;
 	private ArrayList<Skill> myAllSkill;
 	private String user_id;  //此帳號
@@ -47,12 +41,22 @@ public  class BasicAlgorithm extends MatchMaker {
 										};
 	private int cardNumber=0;
 	
-    public  void match(){
-    	
-    	
-    	
-    	
-    }
+	public BasicAlgorithm(String user_id,int skill_id){
+		this.user_id=user_id;
+		this.mySkill=SkillManager.findSkill(skill_id);
+	}
+	
+    public Skill match(){
+    	if(skillCard.size()==0||cardNumber>=skillCard.size()){ //沒有卡片，或是已經最後一張卡
+    		return null;
+    	}
+    	else{
+	    	Skill skill=skillCard.get(cardNumber).getSkill();
+	    	cardNumber++;
+	    	return skill;
+    	}
+    };
+    
     public  void creatMateSet(){
     	try {
 			
@@ -60,23 +64,19 @@ public  class BasicAlgorithm extends MatchMaker {
 			myAllSkill=SkillManager.getAllSkills(user_id);
 			region=accountManager.getRegion(user_id);	
 			setRegionNum(region); //設定地區指標		
-			getMatchSkill();
-			computeDistanceCoefficient();
-			computeSkillScore();
-			sort();
+			getMatchSkill();	  //撈取資料
+			computeDistanceCoefficient();//計算距離係數
+			computeSkillScore(); //計算權重與分數
+			sort(); //排序
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	    	
     	DataBaseAdmin.closeConnection();
     	
     };
     
-    
-    //取得距離
-    //取得技能名稱
     private void setRegionNum(String region){// 設定自己的地區陣列位置
     	switch (region) {//加入地區距離 先土法煉鋼
 		case "基隆":
@@ -137,10 +137,10 @@ public  class BasicAlgorithm extends MatchMaker {
 				int distanceCoefficientSum=0; //距離係數總和
 				for(int i=0;i<skillCard.size();i++){  //計算距離係數		
 					distanceCoefficient=skillCard.size()-distancedifference;
-					distanceCoefficientSum+=distanceCoefficient;
+					distanceCoefficientSum+=distanceCoefficient; //累加距離係數
 					skillCard.get(i).setDistanceCoefficient(distanceCoefficient);
 					
-					if(i!=skillCard.size()-1&&skillCard.get(i).distance!=skillCard.get(i+1).distance){ //如果下一個技能距離不同
+					if(i!=skillCard.size()-1&&skillCard.get(i).getDisrance()!=skillCard.get(i+1).getDisrance()){ //如果下一個技能距離不同
 						distancedifference++;
 					}			
 					
@@ -176,7 +176,7 @@ public  class BasicAlgorithm extends MatchMaker {
 			}
 			
 			for(int j=0;j<myAllSkill.size();j++){ //判斷自己是否有該技能(程度與技巧權重)
-				if(skillCard.get(i).skill.getType().getTypeName().equals(myAllSkill.get(j).getType().getTypeName())){
+				if(skillCard.get(i).getSkill().getType().getTypeName().equals(myAllSkill.get(j).getType().getTypeName())){
 					hasSkill=true;
 					break;
 				}
@@ -192,14 +192,14 @@ public  class BasicAlgorithm extends MatchMaker {
 			}
 			//---------------------------------------
 			//--------------計算分數-----------------
-			int time=skillCard.get(i).skill.getTimes();   
+			int time=skillCard.get(i).getSkill().getTimes();   
 			if(time==0){score=0;}
 			else{
-				score=((double)skillCard.get(i).skill.getScore().getAttitude()/time*attitudeWeights+	  
-					   (double)skillCard.get(i).skill.getScore().getProfession()/time*professionWeights+	
-					   (double)skillCard.get(i).skill.getScore().getTeaching()/time*teachingWeights+
-					   (double)skillCard.get(i).skill.getScore().getFrequency()/time*frequencyWeights+
-					   (double)skillCard.get(i).skill.getScore().getSatisfication()/time*satisficationWeights)*
+				score=((double)skillCard.get(i).getSkill().getScore().getAttitude()/time*attitudeWeights+	  
+					   (double)skillCard.get(i).getSkill().getScore().getProfession()/time*professionWeights+	
+					   (double)skillCard.get(i).getSkill().getScore().getTeaching()/time*teachingWeights+
+					   (double)skillCard.get(i).getSkill().getScore().getFrequency()/time*frequencyWeights+
+					   (double)skillCard.get(i).getSkill().getScore().getSatisfication()/time*satisficationWeights)*
 					   skillCard.get(i).getDistanceCoefficient()/skillCard.get(i).getDistanceCoefficientSum();
 						
 			}
@@ -248,9 +248,9 @@ public  class BasicAlgorithm extends MatchMaker {
 					sql=sql+"and ( ";
 				}
 				
-				nowdistance=area[regionNum][j].distance;
-				sql=sql+"accounts.region='"+area[regionNum][j].placeName+"' ";
-				if(j!=15&&nowdistance==area[regionNum][j+1].distance){ //如果下一筆距離一樣且不是最後一個地區
+				nowdistance=area[regionNum][j].getDistance();
+				sql=sql+"accounts.region='"+area[regionNum][j].getPlaceName()+"' ";
+				if(j!=15&&nowdistance==area[regionNum][j+1].getDistance()){ //如果下一筆距離一樣且不是最後一個地區
 						sql=sql+"or ";	
 				}
 				else{

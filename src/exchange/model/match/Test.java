@@ -17,9 +17,9 @@ public class Test {
 		//////////////////////////
 		BasicAlgorithm basicAlgorithm =new BasicAlgorithm("vegetable",1); //傳遞帳號與技能ID過去
 		basicAlgorithm.creatMateSet();
-		
-	
-		
+		System.out.println(basicAlgorithm.match());
+		System.out.println(basicAlgorithm.match());
+		System.out.println(basicAlgorithm.match()); //回傳null代表沒資料了
 	}
 
 }
