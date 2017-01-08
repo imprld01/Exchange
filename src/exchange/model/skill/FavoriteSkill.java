@@ -11,4 +11,8 @@ public class FavoriteSkill {
 	public FavoriteSkill(Type type) {
 		this.type = new Type(type);
 	}
+	
+	public static void main(String[] args){
+		
+	}
 }

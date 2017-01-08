@@ -54,9 +54,10 @@ public class KindTypeManager {
 
 	@Override
 	public String toString() {
-		String output = new String();
-
-		output = "kindList" + kindList + "\ntypeList" + typeList;
-		return output;
+		return "KindTypeManager [kindList=" + kindList + ", typeList=" + typeList + "]";
+	}
+	
+	public static void main(String[] args){
+		
 	}
 }

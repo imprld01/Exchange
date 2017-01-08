@@ -55,7 +55,12 @@ public class SignUpServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(!checkResult) sm.create(new Account(profile, secret));
+		if(!checkResult)
+			try {
+				sm.create(new Account(profile, secret));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		else response.sendRedirect("error.html");
 		
 		response.sendRedirect("index.html");

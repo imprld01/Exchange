@@ -65,4 +65,16 @@ public class Type {
 	public String toString() {
 		return "Type [typeCode=" + typeCode + ", typeName=" + typeName + ", kindCode=" + kindCode + "]";
 	}
+	
+	public static void main(String[] args){
+		
+		//空的
+		System.out.println(new Type());
+		
+		//給全參數
+		System.out.println(new Type(new Code("MUS_001"),"吉他",new Code("MUS")));
+		
+		//從資料庫找
+		System.out.println(new Type("游泳"));
+	}
 }
