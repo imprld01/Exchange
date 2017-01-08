@@ -15,7 +15,7 @@ public class Test {
 		DataBaseAdmin.changeDBAccount("root","a2n5h011oj");
 		
 		//////////////////////////
-		BasicAlgorithm basicAlgorithm =new BasicAlgorithm("yow831102"); //傳遞帳號與技能ID過去
+		BasicAlgorithm basicAlgorithm =new BasicAlgorithm("vegetable",1); //傳遞帳號與技能ID過去
 		basicAlgorithm.creatMateSet();
 		
 	
