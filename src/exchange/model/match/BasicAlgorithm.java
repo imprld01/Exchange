@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.Collections;
 import exchange.model.skill.*;
 import exchange.model.account.*;
 import exchange.model.database.DataBaseAdmin;
@@ -45,9 +45,14 @@ public  class BasicAlgorithm extends MatchMaker {
 										 {new Area(0,"花蓮"),new Area(2,"宜蘭"),new Area(3,"台北"),new Area(3,"台東"),new Area(4,"基隆"),new Area(4,"桃園"),new Area(4,"南投"),new Area(5,"桃園"),new Area(5,"台中"),new Area(5,"彰化"),new Area(6,"苗栗"),new Area(6,"雲林"),new Area(6,"屏東"),new Area(7,"嘉義"),new Area(7,"高雄"),new Area(8,"台南")},   //花蓮	
 										 {new Area(0,"台東"),new Area(3,"屏東"),new Area(3,"花蓮"),new Area(4,"高雄"),new Area(5,"台南"),new Area(5,"宜蘭"),new Area(6,"台北"),new Area(6,"嘉義"),new Area(7,"基隆"),new Area(7,"桃園"),new Area(7,"南投"),new Area(7,"雲林"),new Area(8,"新竹"),new Area(8,"台中"),new Area(8,"彰化"),new Area(9,"苗栗")},   //花蓮								 
 										};
-
+	private int cardNumber=0;
 	
-    public  void match(){};
+    public  void match(){
+    	
+    	
+    	
+    	
+    }
     public  void creatMateSet(){
     	try {
 			
@@ -58,6 +63,8 @@ public  class BasicAlgorithm extends MatchMaker {
 			getMatchSkill();
 			computeDistanceCoefficient();
 			computeSkillScore();
+			sort();
+	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -203,6 +210,10 @@ public  class BasicAlgorithm extends MatchMaker {
 		}
 	}
 	    
+	private void sort(){ //依照分數排序
+		Collections.sort(skillCard);
+	} 
+	
 	private void getMatchSkill() throws SQLException {
 
 		int nowdistance=0;

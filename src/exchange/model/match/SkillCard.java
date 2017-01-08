@@ -2,7 +2,7 @@ package exchange.model.match;
 
 import exchange.model.skill.Skill;
 
-public class SkillCard {
+public class SkillCard implements Comparable<SkillCard> {
 	Skill skill;	
 	int distance;     //距離
 	double distanceCoefficient; //分子
@@ -37,5 +37,14 @@ public class SkillCard {
 	public double getDistanceCoefficient(){
 		return this.distanceCoefficient;
 	}
+
+	@Override
+	public int compareTo(SkillCard otherSkill) {
+		// TODO Auto-generated method stub
+		
+		return Double.compare(this.score, otherSkill.score);
+	}
+
+
 	
 }
