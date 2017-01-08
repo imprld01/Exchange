@@ -173,25 +173,34 @@ public class SkillManager {
 
 	// 評斷是否黑單：
 	// 連續兩次評價分數5分，封鎖三天，且累積一次警告，再連續兩次評價5分，封鎖七天，累績二次警告，累積三次警告該技能永久封鎖。
+	// (現在做不到QAQ)
 	// 接收參數:skill_id、score
 	// 回傳型態:
 	static public void judgeBlock(int skillId, Score score) {
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM skills WHERE skill_id = '" + skillId + "'");
 
 		int warningTimes = 0;
+		int badTimes = 0;
 		try {
 			rs.next();
 			warningTimes = rs.getInt("warning_tag");
-			System.out.println("warningTimes:"+warningTimes);
+			badTimes = rs.getInt("bad_tag");
+			System.out.println("warningTimes:" + warningTimes + ", badTimes:" + badTimes);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if (warningTimes < 1) {
-			if (score.calSumScore() <= 5)
+		
+		if (score.calSumScore() <= 5) {
+			
+			if (warningTimes == 1 && badTimes == 0) {
+
+				DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
+				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='0' WHERE skill_id = '" + skillId + "'");
+			}else {
 				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='" + (warningTimes + 1) + "' WHERE skill_id = '"
 						+ skillId + "'");
-		} else {
-			DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '"+ skillId + "'");
+			}
+			
 		}
 
 	}
@@ -222,19 +231,19 @@ public class SkillManager {
 		int totalScore = skill.getScore().calSumScore();
 		int level = (totalScore >= 15) ? (totalScore - 15) / 25 + 1 : 0;
 		int newSkill = level / 5 + 3;
-		
+
 		DataBaseAdmin.updateDB("UPDATE skills SET skill_level='" + level + "' WHERE skill_id = '" + skillId + "'");
-		
+
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM skills WHERE skill_id = '" + skillId + "'");
-		
+
 		try {
 			rs.next();
-			DataBaseAdmin.updateDB("UPDATE accounts SET skill_max='" + newSkill + "' WHERE user_id = '" + rs.getString("user_id") + "'");
+			DataBaseAdmin.updateDB("UPDATE accounts SET skill_max='" + newSkill + "' WHERE user_id = '"
+					+ rs.getString("user_id") + "'");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -243,7 +252,7 @@ public class SkillManager {
 		SkillManager.createSkill(new Skill("bowen", "123123", "游泳", new ArrayList<String>(), new ArrayList<String>()));
 
 		// 測試取得資料庫中完整技能資料
-		System.out.println(SkillManager.findSkill(1));
+		System.out.println(SkillManager.findSkill(13));
 
 		// 新增使用者感興趣的技能類別
 		SkillManager.createFavoriteSkill("吉他", "vegetable");
@@ -265,9 +274,9 @@ public class SkillManager {
 
 		// 更新資料庫中的技能等級
 		SkillManager.updateSkillLevel(1);
-		
-		//評斷是否黑單
-		SkillManager.judgeBlock(13,new Score(0,0,0,0,0));
+
+		// 評斷是否黑單
+		SkillManager.judgeBlock(13, new Score(0, 0, 0, 0, 0));
 	}
 
 }
