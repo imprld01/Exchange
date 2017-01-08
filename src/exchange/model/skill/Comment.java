@@ -21,4 +21,8 @@ public class Comment {
 	public String toString() {
 		return "Comment [comment=" + comment + ", date=" + date + "]";
 	}
+	
+	public static void main(String[] args){
+		
+	}
 }

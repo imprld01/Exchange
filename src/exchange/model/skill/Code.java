@@ -51,4 +51,8 @@ public class Code {
 	public String toString() {
 		return "Code [code=" + code + "]";
 	}
+	
+	public static void main(String[] args){
+	
+	}
 }

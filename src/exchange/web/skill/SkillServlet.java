@@ -48,12 +48,8 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				try {
-					skill = new Skill(uid, ie, tp, img, vdo);
-					SkillManager.createSkill(skill);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				skill = new Skill(uid, ie, tp, img, vdo);
+				SkillManager.createSkill(skill);
 				
 				break;
 			case MODIFY_SKILL:
@@ -65,11 +61,7 @@ public class SkillServlet extends HttpServlet {
 				for(int i = 1; i <= in; ++i) img.add((String)request.getParameter("image" + i));
 				for(int i = 1; i <= vn; ++i) vdo.add((String)request.getParameter("video" + i));
 				
-				try {
-					skill = new Skill(cid, ie, tp, img, vdo);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				skill = new Skill(cid, ie, tp, img, vdo);
 				
 				SkillManager.modifySkill(skill);
 				break;
@@ -108,7 +100,7 @@ public class SkillServlet extends HttpServlet {
 				
 				try {
 					skilltoshow = SkillManager.findSkill(Integer.parseInt(id));
-				} catch (NumberFormatException | SQLException e) {
+				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
 				

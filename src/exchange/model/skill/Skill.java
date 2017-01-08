@@ -170,4 +170,8 @@ public class Skill {
 				+ ", skillLevel=" + skillLevel + ", times=" + times + ", score=" + score + ", warningTag=" + warningTag
 				+ ", badTag=" + badTag + ", image=" + image + ", video=" + video + ", comment=" + comment + "]";
 	}
+	
+	public static void main(String[] args){
+		
+	}
 }

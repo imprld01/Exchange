@@ -276,7 +276,7 @@ public class SkillManager {
 		SkillManager.updateSkillLevel(1);
 
 		// 評斷是否黑單
-		SkillManager.judgeBlock(13, new Score(0, 0, 0, 0, 0));
+		SkillManager.judgeBlock(13, new Score());
 	}
 
 }

@@ -31,4 +31,8 @@ public class Kind {
 	public String toString() {
 		return "Kind [kindCode=" + kindCode + ", kindName=" + kindName + "]";
 	}
+	
+	public static void main(String[] args){
+		
+	}
 }

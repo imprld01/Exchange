@@ -81,4 +81,8 @@ public class Score {
 		return "Score [attitude=" + attitude + ", profession=" + profession + ", teaching=" + teaching + ", frequency="
 				+ frequency + ", satisfication=" + satisfication + "]";
 	}
+	
+	public static void main(String[] args){
+		
+	}
 }
