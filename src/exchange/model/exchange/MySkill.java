@@ -9,22 +9,27 @@ import exchange.model.skill.Skill;
 
 public class MySkill extends Skill {
 
-	public MySkill() {
+	private String exchangeTypeName;
+	public MySkill(Skill skill , String exchangeTypeName) {
+		super(skill);
+		this.exchangeTypeName = exchangeTypeName;
 		// TODO Auto-generated constructor stub
 	}
-
-	public MySkill(int skillId, String userId, String typeName, String introExpr, int skillLevel, int times,
-			Score score, boolean badTag, boolean warningTag, ArrayList<Comment> comment, ArrayList<String> image,
-			ArrayList<String> video) {
-		super(skillId, userId, typeName, introExpr, skillLevel, times, score, badTag, warningTag, comment, image,
-				video);
-		// TODO Auto-generated constructor stub
+	public String getExchangeTypeName() {
+		return exchangeTypeName;
+	}
+	public void setExchangeTypeName(String exchangeTypeName) {
+		this.exchangeTypeName = exchangeTypeName;
+	}
+	@Override
+	public String toString() {
+		if(exchangeTypeName==""){
+			return "養精蓄銳中";
+		}
+		else{
+			return "與"+this.exchangeTypeName+"技能交流中";
+		}
 	}
 
-	public MySkill(String userId, String intorExper, String typeName, ArrayList<String> image, ArrayList<String> video)
-			throws SQLException {
-		super(userId, intorExper, typeName, image, video);
-		// TODO Auto-generated constructor stub
-	}
-
+	
 }
