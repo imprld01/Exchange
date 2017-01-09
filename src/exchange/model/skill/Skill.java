@@ -53,6 +53,22 @@ public class Skill {
 		this.video = video;
 	}
 
+	// 建構子(全參數)12個
+	public Skill(Skill skill) {
+		this.skillId = skill.getSkillId();
+		this.userId = skill.getUserId();
+		this.type = new Type(skill.getType().getTypeName());
+		this.introExpr = skill.getIntorExpr();
+		this.skillLevel = skill.getSkillLevel();
+		this.times = skill.getTimes();
+		this.warningTag = skill.isWarningTag();
+		this.badTag = skill.isBadTag();
+		this.score = new Score(skill.getScore());
+		this.comment = skill.getComment();
+		this.image = skill.getImage();
+		this.video = skill.getVideo();
+	}
+	
 	// 建構子() 用於新增技能
 	public Skill(String userId, String intorExper, String typeName, ArrayList<String> image, ArrayList<String> video) {
 		this(0, userId, typeName, intorExper, 0, 0, new Score(), false, false, null, image, video);
