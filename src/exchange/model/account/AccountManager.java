@@ -83,9 +83,9 @@ public class AccountManager {
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
 		if (rs.getInt("skill_number") >= rs.getInt("skill_max"))
-			result = false;
-		else 
 			result = true;
+		else 
+			result = false;
 		DataBaseAdmin.closeConnection();
 		return result;
 	}
