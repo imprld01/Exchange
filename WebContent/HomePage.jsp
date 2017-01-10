@@ -198,9 +198,11 @@
 
 					<div>
 						<h2 style="margin: 1em;">
-							點選右側圖示以移除 <input src="_homePage/images/no.png" type="image"
-								onclick="window.location.href='http://localhost:8080/Exchange/Skill.do?mark=4'"
-								style="position: absolute; right: 4%; bottom: 6%;">
+							點選右側圖示以移除<form method="get" action="http://localhost:8080/Exchange/Skill.do"> 
+							<input type="hidden" value="4" name="mark">
+							<input type="hidden" value="${favorite.typeName}" name="type">
+							<input type="image" src="_homePage/images/no.png" alt="Submit Form" 
+								style="position: absolute; right: 4%; bottom: 6%;"/>
 						</h2>
 					</div>
 					</article>
@@ -221,7 +223,7 @@
 
 								<h2>新增興趣技能</h2>
 								<br> <a class="close" href="#">&times;</a>
-								<form method="post" action="http://localhost:8080/Exchange/Skill.do" >
+								<form method="get" action="http://localhost:8080/Exchange/Skill.do" >
 									<select id="kind" name="類別">
 										<c:forEach var="kind" items="${kinds}">
 											<option value="${kind.kindCode}">${kind.kindName}</option>
