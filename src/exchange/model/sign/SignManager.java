@@ -18,43 +18,32 @@ public class SignManager {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		try {
-			if (am.isValid(secret.getId()) == true) {
-				result = true;
-				if (sm.CheckPassword(secret.getPassword()) == true) {
+			System.out.println("[帳號] -> ["+ secret.getPassword() +"]");
+			if (am.isValid(secret.getId()) == true) { // 帳號是否存在
+				System.out.println("[帳號存在，比對密碼]");
+				if (sm.CheckPassword(secret) == true) { // 密碼是否相同
 					result = true;
 					String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate + "'";
 					DataBaseAdmin.updateDB(query);
-				} else
-					result = false;
-			} else
-				result = false;
+				} 
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//DataBaseAdmin.closeConnection();
+		// DataBaseAdmin.closeConnection();
 		return result;
 	}
 
-	public boolean CheckPassword(String password) {
+	public boolean CheckPassword(Secret secret) {
 		boolean result = false;
-		String query = "SELECT * FROM accounts";
+		String query = "SELECT * FROM accounts where user_id='" + secret.getId() + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
 			rs.next();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			if (password.equals(rs.getString("password")))
+			System.out.println("["+secret.getPassword()+"] -> ["+ rs.getString("password") +"]");
+			if (secret.getPassword().equals(rs.getString("password")))
 				result = true;
-			else if (password == null)
-				result = false;
-			else
-				result = false;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
@@ -79,8 +68,7 @@ public class SignManager {
 		String query = "SELECT * FROM accounts";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
-			if (rs.next()) 
-			{
+			if (rs.next()) {
 				if (id.equals(rs.getString("user_id")))
 					result = false;
 				// else if (id.length() > 20)
@@ -100,7 +88,7 @@ public class SignManager {
 	static public void main(String args[]) {
 		SignManager sm = new SignManager();
 
-		System.out.println(sm.isAccountValid("0"));
+		System.out.println(sm.CheckPassword(new Secret("bobobo","bobobo")));
 	}
 
 }

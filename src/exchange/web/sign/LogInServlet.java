@@ -19,7 +19,7 @@ public class LogInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.invalidate();
 		session = request.getSession();
@@ -28,7 +28,7 @@ public class LogInServlet extends HttpServlet {
 
 		if (session.isNew()) {
 
-			System.out.println("session is new");// ->
+			System.out.println("[session is new]");// ->
 
 			String id = (String) request.getParameter("id");
 			String pwd = (String) request.getParameter("pwd");
@@ -41,10 +41,10 @@ public class LogInServlet extends HttpServlet {
 			if (checkResult) {
 				// session
 				session.setAttribute("uid", secret.getId());
-				System.out.println("session" + session.getAttribute("uid"));// ->
+				//System.out.println("session" + session.getAttribute("uid"));// ->
 				session.setMaxInactiveInterval(1800);
 			} else {
-				System.out.println("密碼錯誤");
+				System.out.println("檢查密碼錯誤["+ id +"]");
 				session.invalidate();
 				response.sendRedirect("Index.jsp#login");
 				return;
