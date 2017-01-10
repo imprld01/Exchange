@@ -8,7 +8,7 @@
 -->
 <html>
 	<head>
-		<title>Exchange List</title>
+		<title>個人頁面</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="_homePage/assets/js/ie/html5shiv.js"></script><![endif]-->
