@@ -118,7 +118,8 @@
 									<input type="text" name="fname" placeholder="地區"><br>
 									<input type="text" name="fname" placeholder="信箱"><br>
 								</form>
-								<a href="http://localhost:8080/Exchange/Account.do?mark=3" class="btn_more r5">確認修改</a>
+								<a href="http://localhost:8080/Exchange/Account.do?mark=3"
+									class="btn_more r5">確認修改</a>
 
 							</div>
 						</div>
@@ -128,56 +129,43 @@
 				<hr>
 				<br>
 				<h3 id="MINE">我的技能</h3>
-				<section class="tiles"> <c:foreach var="skill"
-					item="${skills}" varStatus="skillLoopCount">
-					<article class="style${skillLoopCount.count/5+1}"> <span
-						class="image"> <a
-						href="http://localhost:8080/Exchange/Skill.do?mark=2"> <img
-							src="_homePage/images/pic04.jpg" alt="" />
-					</a>
-					</span>
+				<section class="tiles"> 
+				<c:forEach var="skill"	item="${skills}" varStatus="skillLoopCount">
+					<article class="style${skillLoopCount.count/5+1}"> 
+						<span class="image"> 
+							<a href="http://localhost:8080/Exchange/Skill.do?mark=2"> 
+								<img src="_homePage/images/pic04.jpg" alt="" />
+							</a>
+						</span>
 
-					<h2 class="special">${skill.type.typeName}</h2>
-
-					<div>
-						<h2 style="margin: 1em;">${skill}
-							<input src="_homePage/images/chat.png" type="image"
-								onclick="window.location.href='http://localhost:8080/Exchange/Communication.do.html'"
-								style="position: absolute; right: 4%; bottom: 6%;"> <input
-								src="_homePage/images/doc.png" type="image"
-								onclick="window.location.href='../配對頁面/edit.html'"
-								style="position: absolute; right: 16%; bottom: 6%;">
-						</h2>
-					</div>
+						<h2 class="special">${skill.type.typeName}</h2>
+	
+						<div>
+							<h2 style="margin: 1em;">${skill}
+								<input src="_homePage/images/chat.png" type="image"
+									onclick="window.location.href='http://localhost:8080/Exchange/Communication.do.html'"
+									style="position: absolute; right: 4%; bottom: 6%;"> <input
+									src="_homePage/images/doc.png" type="image"
+									onclick="window.location.href='../配對頁面/edit.html'"
+									style="position: absolute; right: 16%; bottom: 6%;">
+							</h2>
+						</div>
 					</article>
-				</c:foreach> <!-- <article class="style4">
-										<span class="image">
-											<a href="generic.html">
-												<img src="_homePage/images/pic04.jpg" alt="" />
-											</a>
-										</span>
-
-										<h2 class = "special">歌唱</h2>
-
-										<div>
-											<h2 style="margin:1em;">正在養精蓄銳
-													<input src="_homePage/images/pair.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:4%; bottom:6%;">
-													<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:16%; bottom:6%;">
-											</h2>
-										</div>
-									</article> --> <article class="style0"> <span
-					class="image"> <a
-					href="
-												<%boolean isSkillsFull = (boolean) request.getAttribute("isSkillsFull");
-			if (isSkillsFull) {
-				out.print("#popup666");
-			} else {
-				out.print("http://localhost:8080/Exchange/Skill.do?mark=0");
-			}%>
-											">
-						<img src="_homePage/images/pic04.jpg" alt="" />
-				</a>
-				</span>
+				</c:forEach> 
+				
+				<article class="style0">
+					<span class="image"> 
+						<a href="
+							<%boolean isSkillsFull = (boolean) request.getAttribute("isSkillsFull");
+								if (isSkillsFull) {
+									out.print("#popup666");
+								} else {
+									out.print("http://localhost:8080/Exchange/Skill.do?mark=0");
+								}
+							%>">
+							<img src="_homePage/images/pic04.jpg" alt="" />
+						</a>
+					</span>
 
 				<h2 class="special">＋</h2>
 
@@ -197,8 +185,9 @@
 				</article> </section>
 				<hr>
 				<br>
+				
 				<h3 id="INTEREST">興趣技能</h3>
-				<section class="tiles"> <c:foreach var="favorite"
+				<section class="tiles"> <c:forEach var="favorite"
 					item="${favorites}">
 					<article class="style1"> <span class="image"> <a
 						href="#INTEREST"> <img src="_homePage/images/pic04.jpg" alt="" />
@@ -215,7 +204,7 @@
 						</h2>
 					</div>
 					</article>
-				</c:foreach> <article class="style0"> <span class="image"> <a
+				</c:forEach> <article class="style0"> <span class="image"> <a
 					class="button_popup" href="#popup1"> <img
 						src="_homePage/images/pic04.jpg" alt="" />
 				</a>
@@ -234,9 +223,9 @@
 								<br> <a class="close" href="#">&times;</a>
 								<form>
 									<select id="kind" name="類別">
-										<c:foreach var="kind" item="${kinds}">
+										<c:forEach var="kind" item="${kinds}">
 											<option value="${kind.kindCode}">${kind.kindName}</option>
-										</c:foreach>
+										</c:forEach>
 									</select> <select id="type" name="項目">
 										<option value="Taipei">吉他</option>
 										<option value="Taoyuan">小號</option>
@@ -244,7 +233,8 @@
 										<option value="Miaoli">錫口笛</option>
 									</select>
 								</form>
-								<a href="http://localhost:8080/Exchange/Skill.do?mark=3" class="btn_more r5">新增</a>
+								<a href="http://localhost:8080/Exchange/Skill.do?mark=3"
+									class="btn_more r5">新增</a>
 
 							</div>
 						</div>
