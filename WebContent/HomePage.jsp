@@ -225,13 +225,12 @@
 													<br>
 													<a class="close" href="#">&times;</a>
 													<form >
-														<select name="類別">
-														　<option value="Taipei">音樂</option>
-														　<option value="Taoyuan">運動</option>
-														　<option value="Hsinchu">電子競技</option>
-														　<option value="Miaoli">廚藝</option>
+														<select id="kind" name="類別">
+															<c:foreach var="kind" item="${types}">
+																<option value="${kind.kindName}">${kind.kindCode}</option>
+															</c:foreach>
 														</select>
-														<select name="項目">
+														<select id ="type" name="項目">
 														　<option value="Taipei">吉他</option>
 														　<option value="Taoyuan">小號</option>
 														　<option value="Hsinchu">薩克斯風</option>
@@ -296,6 +295,42 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			
+			<script>
+			
+				var req;
+			
+				function start(){
+					document.getElementById("kind").addEventListener("change", addActivityItem, false);
+				}
+	
+				function addActivityItem(){
+					var kind = document.getElementById("kind");
+					var url = "/Exchange/response?kind=" + kind.value;
+					
+					if(window.XMLHttpRequest){
+						req = new XMLHttpRequest();
+					}
+					else if(window.ActiveXObject){
+						req = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					
+					req.open("Get", url, true);
+					req.onreadystatechange = callback;
+					req.send(null);
+				}
+				
+				function callback(){
+					if(req.readyState == 4){
+						if(req.status == 200){
+							
+						}
+					}
+				}
+	
+				window.addEventListener("load", start, false);
+			
+			</script>
+			
 	</body>
 </html>
