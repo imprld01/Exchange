@@ -82,7 +82,7 @@ public class AccountManager {
 		DataBaseAdmin.closeConnection();
 		return result;
 	}
-//未測試
+
 	public boolean isValid(String id) throws SQLException {
 		boolean result;
 		String query = "SELECT * FROM accounts";
