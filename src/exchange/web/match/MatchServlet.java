@@ -26,14 +26,14 @@ public class MatchServlet extends HttpServlet {
 		if(session != null){
 			
 			String uid = (String)session.getAttribute("uid");
-			String cid = (String)request.getParameter("cardId");
+			int cid = Integer.parseInt((String)request.getParameter("cardId"));
 			
-			BasicAlgorithm ba = new BasicAlgorithm(uid);
-			//Skill skill = ba.match();
+			BasicAlgorithm ba = new BasicAlgorithm(uid, cid);
+			Skill skill = ba.match();
 			
 			request.setAttribute("para", "cardId");
 			request.setAttribute("cid", cid);
-			//request.setAttribute("skill", skill);
+			request.setAttribute("skill", skill);
 			
 			view = request.getRequestDispatcher("/MatchPage.jsp");
 			view.forward(request, response);
