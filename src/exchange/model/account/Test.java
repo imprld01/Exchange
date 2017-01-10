@@ -15,18 +15,34 @@ public class Test {
 		//System.out.println(now);
 		DataBaseAdmin db = new DataBaseAdmin();
 		db.changeDBAccount("root", "narutoap12");
-		
 		AccountManager am = new AccountManager();
+		
+		//getAccount method success
 		//System.out.println(am.getAccount("10567026"));
 		//System.out.println(am.getAccount("1234567"));
+		//System.out.println(am.getAccount("jec88899"));
 		
-		//am.addAccount("1234567", "859413", "Jeremy", "nick", 1, "251313", "1994-07-27", "台北", 3, 3);
-		//System.out.println(am.getAllUserId());
-		//System.out.println(am.isValid("10567026"));
-		//System.out.println(am.getRegion("10567026"));
+		//測試失敗
+		//am.addAccount("jec888899", "10567029", "Stanely", "Champion", 1, "@yahoo.com", "1994-07-27", "新北");
+
 		//System.out.println();
-		//Profile profile = new Profile("nickName", "email", "region");
-		//am.setProfile(profile);
+	    
+		//setProfile(id, profile) success 
+		//Profile profile = new Profile("nick2", "email1515", "region882");
+		//am.setProfile("10567026", profile);
+		
+		//setSecret(secret) success
+		//Secret secret = new Secret("10567026", "kc567894");
+		//am.setSecret(secret);
+		
+		//getAllUserId() success
+		//System.out.println(am.getAllUserId());
+		
+		//isSkillFull(id) success
+		//System.out.println(am.isSkillFull("1234567"));
+		
+		//getregion(id) success
+		//System.out.println(am.getRegion("1234567"));
 	}
 
 }

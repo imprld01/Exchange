@@ -7,6 +7,7 @@ import java.util.Date;
 import exchange.model.database.DataBaseAdmin;
 import exchange.model.skill.Score;
 import exchange.model.skill.Skill;
+import exchange.model.skill.SkillManager;
 
 public class EvaluationManager{
 	
@@ -21,7 +22,7 @@ public class EvaluationManager{
 
 	public static void saveScore(int skillId, Score score) throws SQLException
 	{
-		Skill skill = new Skill(skillId);
+		Skill skill = SkillManager.findSkill(skillId);
 		String query = "UPDATE skills SET attitude_score = '"+ (skill.getScore().getFrequency() + score.getAttitude()) +"',"
 				+ " profession_score = '"+ (skill.getScore().getProfession() + score.getProfession()) +"', "
 				+ "teaching_score = '"+(skill.getScore().getTeaching() + score.getTeaching())+"',"
