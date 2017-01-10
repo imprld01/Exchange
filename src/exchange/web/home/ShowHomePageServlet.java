@@ -48,6 +48,7 @@ public class ShowHomePageServlet extends HttpServlet {
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
 			request.setAttribute("favorites", favorites);
+			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("//")[0]));
 			
 			view = request.getRequestDispatcher("/HomePage.jsp");
 			view.forward(request, response);
