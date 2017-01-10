@@ -88,9 +88,9 @@
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>中路對線教學<em>(影片)</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>影片1</em>
 									</h3>
-									<p>基礎教學</p>
+									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
 									aria-hidden="true" data-icon="&#x35;"></i></a>
 							</li>
@@ -102,9 +102,9 @@
 							<li class="clearfix" style="position: relative; z-index: 1">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>S5世界冠軍獎盃<em>(證書)</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀1</em>
 									</h3>
-									<p>花椰菜頭雷茲</p>
+									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
 									aria-hidden="true" data-icon="&#x35;"></i></a>
 							</li>
@@ -327,12 +327,11 @@
 					
 					<div class="info_area info info_content">
 						<br>
+						<c:forEach var="image" items="${skill.commit}">
+							<p class="desc s5">${img}.${skill.commit.commit} }</}p>
+			
+						</c:forEach>
 						
-						<p class="desc s5">一 . 很細心</p>
-						<p class="desc s4">二 . 讚。</p>
-						<p class="desc s3">三 . 爛透了。</p>
-						<p class="desc s2">四 . 耶耶耶耶。</p>
-						<p class="desc s1">五 . yeeeeeeeeee。</p>
 					</div>
 				</div>
 
@@ -389,14 +388,14 @@
 						</div>
 						<div class="descprition">
 							<h3>
-								<i aria-hidden="true" data-icon="&#xe0e6;"></i>中路對線教學
+								<i aria-hidden="true" data-icon="&#xe0e6;"></i>影片
 							</h3>
-							<p>基礎篇 blablablabla</p>
+							
 							<p class="pic">
 								<iframe width="560" height="315"
 									src="https://www.youtube.com/embed/hjwR_S8WRjQ" frameborder="0"
 									allowfullscreen></iframe>
-								<span>中路教學</span>
+								<span></span>
 							</p>
 						</div>
 
@@ -411,11 +410,11 @@
 						</div>
 						<div class="descprition">
 							<h3>
-								<i aria-hidden="true" data-icon="&#xe013;"></i>S5世界冠軍
+								<i aria-hidden="true" data-icon="&#xe013;">證書/獎狀</i>
 							</h3>
-							<p>用雷茲就贏啦RRR</p>
+							<p></p>
 							<p class="pic">
-								<img src="_skill/images/win.png" alt="首?" /> <span>證書????</span>
+								<img src="_skill/images/win.png" alt="首?" /> <span></span>
 							</p>
 
 						</div>
