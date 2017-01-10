@@ -137,7 +137,7 @@
 									<h2 class = "special">${skill.type.typeName}</h2>
 
 									<div>
-										<h2 style="margin:1em;">與${skill}技能交換中
+										<h2 style="margin:1em;">${skill}
 											<input src="images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:4%; bottom:6%;">
 											<input src="images/doc.png" type="image" onclick="window.location.href='../配對頁面/edit.html'" style = "position: absolute; right:16%; bottom:6%;">
 										</h2>
