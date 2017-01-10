@@ -26,7 +26,7 @@ public class SkillServlet extends HttpServlet {
 	private static final int CREATE_FAVORITE = 3;
 	private static final int DELETE_FAVORITE = 4;
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
 		
@@ -77,21 +77,6 @@ public class SkillServlet extends HttpServlet {
 				
 				SkillManager.deleteFavoriteSkill(tp, uid);
 				break;
-			}
-			
-			response.sendRedirect("/Home.do");
-		}
-		else response.sendRedirect("index.html");
-	}
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession(false);
-		
-		if(session != null){
-			int mark = Integer.parseInt((String)request.getParameter("mark"));
-			
-			switch(mark){
 			case SHOW_SKILL:
 				RequestDispatcher view = null;
 
@@ -108,8 +93,10 @@ public class SkillServlet extends HttpServlet {
 				
 				view = request.getRequestDispatcher("/SkillPage.jsp");
 				view.forward(request, response);
-				break;
+				return;
 			}
+			
+			response.sendRedirect("/Home.do");
 		}
 		else response.sendRedirect("index.html");
 	}
