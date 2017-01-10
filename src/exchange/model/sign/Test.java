@@ -35,9 +35,9 @@ public class Test {
 		//System.out.println(sm.CheckPassword("kc567894"));
 		
 		//create()
-		Secret secret = new Secret("975183113", "62313513843");
-		Profile profile = new Profile("Tick", "nick", true, "email", "1516-05-13", "region");
-		sm.create(new Account(profile, secret));
+		//Secret secret = new Secret("975183113", "62313513843");
+		//Profile profile = new Profile("Tick", "nick", true, "email", "1516-05-13", "region");
+		//sm.create(new Account(profile, secret));
 	}
 
 }
