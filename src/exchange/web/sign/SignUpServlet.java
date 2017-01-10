@@ -20,9 +20,8 @@ public class SignUpServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String id = (String) request.getParameter("id");
 		String pwd = (String) request.getParameter("pwd");
 		String user = (String) request.getParameter("user");
@@ -40,9 +39,15 @@ public class SignUpServlet extends HttpServlet {
 		 * (ParseException e) { e.printStackTrace(); } //String DisplayDate=
 		 * formatDate.format(date);
 		 */
-
-		System.out.println(id);
-		System.out.println(pwd);
+		System.out.println("id:" + id);
+		System.out.println("pwd:" + pwd);
+		System.out.println("user:" + user);
+		System.out.println("nick:" + nick);
+		System.out.println("gender:" + gender);
+		System.out.println("email:" + email);
+		System.out.println("birth:" + birth);
+		System.out.println("region:" + region);
+		
 		Secret secret = new Secret(id, pwd);
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();

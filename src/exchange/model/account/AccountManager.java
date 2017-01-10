@@ -30,19 +30,21 @@ public class AccountManager {
 		Account account = null;
 		try {
 			ResultSet result = DataBaseAdmin.selectDB("SELECT * FROM accounts where user_id = '" + id + "'");
-			result.next();
 
-			Secret secret = new Secret(id, result.getString("password"));
-			Profile profile = new Profile(result.getString("user_name"), result.getString("nick_name"),
-					result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
-					result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
+			if (result.next()) {
 
-			account = new Account(secret, profile, result.getDate("recent_log"));
+				Secret secret = new Secret(id, result.getString("password"));
+				Profile profile = new Profile(result.getString("user_name"), result.getString("nick_name"),
+						result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
+						result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
+
+				account = new Account(secret, profile, result.getDate("recent_log"));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		//System.out.println("account->"+account);
 		return account;
 
 	}
@@ -84,17 +86,10 @@ public class AccountManager {
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
 		if (rs.getInt("skill_number") >= rs.getInt("skill_max"))
-<<<<<<< HEAD
 			result = false;
 		else
 			result = true;
 
-=======
-			result = true;
-		else 
-			result = false;
-		DataBaseAdmin.closeConnection();
->>>>>>> d7d6d973b5df8ccd6f3a3757d8dd2a9cc746176c
 		return result;
 	}
 

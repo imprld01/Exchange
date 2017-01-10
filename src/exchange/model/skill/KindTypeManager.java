@@ -53,6 +53,17 @@ public class KindTypeManager {
 		return typeList;
 	}
 
+	static public String getKindName(Code kindCode){
+		for(Kind k:kindList )
+		{
+			if( k.getKindCode() == kindCode)
+			{
+				return k.getKindName();
+			}
+		}
+		return null;
+	}
+	
 	static public ArrayList<Type> findTypeList(String kindName) {
 
 		ArrayList<Type> findTypeList = new ArrayList<Type>();
