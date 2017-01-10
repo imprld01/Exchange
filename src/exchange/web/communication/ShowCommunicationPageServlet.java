@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.skill.Skill;
+import exchange.model.skill.SkillManager;
+
 @WebServlet("/Communication.do")
 public class ShowCommunicationPageServlet extends HttpServlet {
 	
@@ -24,7 +27,17 @@ public class ShowCommunicationPageServlet extends HttpServlet {
 		
 		if(session != null){
 			
+			int id = Integer.parseInt((String)request.getParameter("id"));
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
+			Skill skilltoshow = null;
+			
+			try {
+				skilltoshow = SkillManager.findSkill(id);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("skill", skilltoshow);
 			
 			switch(mark){
 			case SHOW_MESSAGES:
