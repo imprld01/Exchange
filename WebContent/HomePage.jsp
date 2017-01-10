@@ -230,14 +230,12 @@
 														　<option value="Taoyuan">運動</option>
 														　<option value="Hsinchu">電子競技</option>
 														　<option value="Miaoli">廚藝</option>
-														　...
 														</select>
 														<select name="項目">
 														　<option value="Taipei">吉他</option>
 														　<option value="Taoyuan">小號</option>
 														　<option value="Hsinchu">薩克斯風</option>
 														　<option value="Miaoli">錫口笛</option>
-														　...
 														</select>
 													</form>
 													<a href="profile.html" class="btn_more r5" >新增</a>
