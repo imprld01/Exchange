@@ -20,8 +20,8 @@ public class Type {
 	// 建構子(Code,String,Code)：輸入全參數
 	public Type(Code typeCode, String typeName, Code kindCode) {
 		this.typeCode = new Code(typeCode);
-		this.kindCode = new Code(kindCode);
 		setTypeName(typeName);
+		this.kindCode = new Code(kindCode);
 	}
 
 	// 建構子(String)：只要取得type_name即可
@@ -42,7 +42,7 @@ public class Type {
 
 	// 建構子(Type)：接收同型態
 	public Type(Type type) {
-		this(type.getKindCode(), type.getTypeName(), type.getTypeCode());
+		this(type.getTypeCode(), type.getTypeName(), type.getKindCode());
 	}
 
 	public void setTypeName(String typeName) {
