@@ -92,7 +92,7 @@
 
 				<div class="content style4 fea-tured" >
 					<div class="container 75%" align="center">
-						<form method="post" action="../交流列表/profile.html">
+						<form method="post" action="/log.do">
 							<div class="12u">
 								<div class="6u 12u(mobile)"><input type="text" placeholder="Account" /></div>
 							</div>
@@ -126,7 +126,7 @@
 
 					<div class="content style4 fea-tured" >
 						<div class="container 75%" align="center">
-							<form method="post" action="index.html#login">
+							<form method="post" action="/Signup.do">
 								<div class="12u">
 									<div class="6u 12u(mobile)"><input type="text" placeholder="姓名" /></div>
 								</div>
@@ -161,7 +161,7 @@
 								<br>
 
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input type="text" placeholder="信箱" /></div>
+									<div class="6u 12u(mobile)"><input id =  type="text" placeholder="信箱" /></div>
 								</div>
 								<br>
 								<div class="row">
