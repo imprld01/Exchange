@@ -23,7 +23,7 @@ import exchange.model.skill.Type;
 /**
  * Servlet implementation class CreateSkillServlet
  */
-@WebServlet("/CreateSkillServlet")
+@WebServlet("/CreateSkill.do")
 public class CreateSkillServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
