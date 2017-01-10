@@ -54,6 +54,8 @@ public class ShowHomePageServlet extends HttpServlet {
 			request.setAttribute("favorites", favorites);
 			request.setAttribute("kinds", KindTypeManager.getKindList());
 			request.setAttribute("types", KindTypeManager.getTypeList());
+
+			System.out.println("[Kind List]" + KindTypeManager.getKindList());
 			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("-")[0]));
 
 			view = request.getRequestDispatcher("HomePage.jsp");

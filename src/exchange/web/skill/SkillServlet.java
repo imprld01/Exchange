@@ -98,8 +98,8 @@ public class SkillServlet extends HttpServlet {
 				return;
 			}
 			
-			response.sendRedirect("/Home.do");
+			response.sendRedirect("http://localhost:8080/Exchange/Home.do");
 		}
-		else response.sendRedirect("index.html");
+		else response.sendRedirect("Index.jsp");
 	}
 }
