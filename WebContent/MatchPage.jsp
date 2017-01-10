@@ -49,16 +49,16 @@
 			<div class="header clearfix">
 				<div class="avatar">
 					<a href="javascript:;" class="avatar_pic circle"><em
-						class="circle doing">尚未配對</em></a> <b class="doing r5">33</b>
+						class="circle doing">尚未配對</em></a> <b class="doing r5">${skill.getSkillLevel()}</b>
 				</div>
 				<div class="base">
 					
 					<p class="desc">Hello my skill is</p>
-					<h2>電子競技</h2>
-					<p>League of Legends</p>
+					<h2>${kindName}</h2>
+					<p>${skill.getType().getTypeName()}</p>
 					<span>
 						<p>
-							<i aria-hidden="true" data-icon="&#xe01d;"></i>在基隆市
+							<i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}
 						</p> <!-- &#xe036 板手 --> <br> <a href="/Invitation.do?mark=2&sdr=2&rcv=1" class="btn_exchange r5">Exchange</a>
 						<a href="MatchPage.jsp" class="btn_next r5">Next ></a> <a
 						href="HomePage.jsp" class="btn_exit r5" d>Exit</a>
@@ -77,20 +77,26 @@
 					<!-- 修改icon -->
 					<h5>技能的簡介/經歷</h5>
 
-					<p class="desc">${skill.introExpr}</p>
+					<p class="desc">${skill.getIntorExpr()}</p>
 					
-
+					
 					<h5>我的證照/影片</h5>
 					<ul>
-						<li class="clearfix" style="position: relative; z-index: 5;">
-							<div class="con">
-								<h3>
-									<i aria-hidden="true" data-icon="&#x5b;"></i>中路對線教學<em>(影片)</em>
-								</h3>
-								<p>基礎教學</p>
-							</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
-								aria-hidden="true" data-icon="&#x35;"></i></a>
-						</li>
+						 
+							<li class="clearfix" style="position: relative; z-index: 5;">
+								<div class="con">
+									<h3>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>中路對線教學<em>(影片)</em>
+									</h3>
+									<p>基礎教學</p>
+								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
+									aria-hidden="true" data-icon="&#x35;"></i></a>
+							</li>
+						
+						
+						
+						
+						
 						<li class="clearfix" style="position: relative; z-index: 1">
 							<div class="con">
 								<h3>

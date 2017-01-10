@@ -68,7 +68,7 @@ public  class BasicAlgorithm extends MatchMaker {
 			computeDistanceCoefficient();//計算距離係數
 			computeSkillScore(); //計算權重與分數
 			sort(); //排序
-
+			System.out.println(skillCard.get(1).getSkill().getType().getKindCode());
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
