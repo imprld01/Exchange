@@ -67,6 +67,17 @@ public class Profile
 		return result;
 	}
 	
+	public boolean getGenderb()
+	{ 
+		boolean male = true;
+		boolean female = false;
+		if(gender == male)
+			gender = true;
+		if(gender == female)
+			gender = false;
+		return gender;
+	}
+	
 	public String getEmail()
 	{
 		return email;
