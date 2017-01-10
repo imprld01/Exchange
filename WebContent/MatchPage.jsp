@@ -327,6 +327,7 @@
 					
 					<div class="info_area info info_content">
 						<br>
+						
 						<p class="desc s5">一 . 很細心</p>
 						<p class="desc s4">二 . 讚。</p>
 						<p class="desc s3">三 . 爛透了。</p>
