@@ -49,22 +49,23 @@
 			<div class="header clearfix">
 				<div class="avatar">
 					<a href="javascript:;" class="avatar_pic circle"><em
-						class="circle doing">尚未配對</em></a> <b class="doing r5">${skill.getSkillLevel()}</b>
+						class="circle doing">尚未配對</em></a> <b class="doing r5">${skill.skillLevel}</b>
 				</div>
 				<div class="base">
-					
+
 					<p class="desc">Hello my skill is</p>
 					<h2>${kindName}</h2>
-					<p>${skill.getType().getTypeName()}</p>
+					<p>${skill.type.typeName}</p>
 					<span>
 						<p>
 							<i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}
-						</p> <!-- &#xe036 板手 --> <br> <a href="/Invitation.do?mark=2&sdr=2&rcv=1" class="btn_exchange r5">Exchange</a>
+						</p> <!-- &#xe036 板手 --> <br> <a
+						href="/Invitation.do?mark=2&sdr=2&rcv=1" class="btn_exchange r5">Exchange</a>
 						<a href="MatchPage.jsp" class="btn_next r5">Next ></a> <a
 						href="HomePage.jsp" class="btn_exit r5" d>Exit</a>
 
 					</span>
-					
+
 				</div>
 			</div>
 
@@ -73,17 +74,17 @@
 
 				<!--left-->
 				<div class="info_area info_left info_content">
-					
+
 					<!-- 修改icon -->
 					<h5>技能的簡介/經歷</h5>
 
-					<p class="desc">${skill.getIntorExpr()}</p>
-					
-					
+					<p class="desc">${skill.intorExpr}</p>
+
+
 					<h5>我的證照/影片</h5>
 					<ul>
-						<c:forEach var="num" begin="5" end="10" step="1"> 
-						 
+						<c:forEach var="video" items="${skill.video}">
+
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
 									<h3>
@@ -93,20 +94,21 @@
 								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
 									aria-hidden="true" data-icon="&#x35;"></i></a>
 							</li>
-						
+
 						</c:forEach>
-						
-						
-						
-						<li class="clearfix" style="position: relative; z-index: 1">
-							<div class="con">
-								<h3>
-									<i aria-hidden="true" data-icon="&#x5b;"></i>S5世界冠軍獎盃<em>(證書)</em>
-								</h3>
-								<p>花椰菜頭雷茲</p>
-							</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
-								aria-hidden="true" data-icon="&#x35;"></i></a>
-						</li>
+
+
+						<c:forEach var="image" items="${skill.image}">
+							<li class="clearfix" style="position: relative; z-index: 1">
+								<div class="con">
+									<h3>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>S5世界冠軍獎盃<em>(證書)</em>
+									</h3>
+									<p>花椰菜頭雷茲</p>
+								</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
+									aria-hidden="true" data-icon="&#x35;"></i></a>
+							</li>
+						</c:forEach>
 					</ul>
 
 				</div>
@@ -114,17 +116,46 @@
 				<!--right-->
 				<div class="info_area info_right info_timeline">
 					<h5>評價</h5>
+
 					<dl class="clearfix">
 						<dt>教學態度</dt>
 						<dd>
 							<p>
 							<div id="star" style="float: right;">
-								<img src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">
+
+
+							<c:forEach var="num" begin="1" end="5" step="1">
+								<c:choose>
+									<c:when test="${num<=skill.score.attitude/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
+									<c:when test="${num>skill.score.attitude/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>									
+								</c:choose>	
+							</c:forEach>
+
+
 								<div>
+
 									</p>
 						</dd>
 					</dl>
@@ -133,11 +164,37 @@
 						<dd>
 							<p>
 							<div id="star" style="float: right;">
-								<img src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">
+							
+							<c:forEach var="num" begin="1" end="5" step="1">
+								<c:choose>
+									<c:when test="${num<=skill.score.profession/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
+									<c:when test="${num>skill.score.profession/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>									
+								</c:choose>	
+							</c:forEach>
+									
+									
 								<div>
 									</p>
 						</dd>
@@ -147,11 +204,36 @@
 						<dd>
 							<p>
 							<div id="star" style="float: right;">
-								<img src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">
+							
+							<c:forEach var="num" begin="1" end="5" step="1">
+								<c:choose>
+									<c:when test="${num<=skill.score.teaching/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
+									<c:when test="${num>skill.score.teaching/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>									
+								</c:choose>	
+							</c:forEach>
+									
 								<div>
 									</p>
 						</dd>
@@ -161,11 +243,39 @@
 						<dd>
 							<p>
 							<div id="star" style="float: right;">
-								<img src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">
+							
+							
+							<c:forEach var="num" begin="1" end="5" step="1">
+								<c:choose>
+									<c:when test="${num<=skill.score.frequency/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
+									<c:when test="${num>skill.score.frequency/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>									
+								</c:choose>	
+							</c:forEach>
+									
+									
+									
 								<div>
 									</p>
 						</dd>
@@ -175,15 +285,46 @@
 						<dd>
 							<p>
 							<div id="star" style="float: right;">
-								<img src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star.png">&nbsp&nbsp&nbsp<img
-									src="_skill/images/star_.png">
+							
+							
+							
+							<c:forEach var="num" begin="1" end="5" step="1">
+								<c:choose>
+									<c:when test="${num<=skill.score.satisfication/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
+									<c:when test="${num>skill.score.satisfication/skill.time}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>									
+								</c:choose>	
+							</c:forEach>
+									
+									
+									
 								<div>
 									</p>
 						</dd>
 					</dl>
+					
+					
 					<div class="info_area info info_content">
 						<br>
 						<p class="desc s5">一 . 很細心</p>
