@@ -126,8 +126,8 @@
 							<h3 id="MINE">我的技能</h3>
 							<section class="tiles" >
 								
-							<c:foreach var="skill" item="${skills}">
-								<article class="style1">
+							<c:foreach var="skill" item="${skills}" varStatus="skillLoopCount">
+								<article class="style${skillLoopCount.count/5+1}">
 									<span class="image">
 										<a href="../配對頁面/skillfile_eng.html">
 											<img src="images/pic04.jpg" alt="" />
