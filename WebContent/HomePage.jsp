@@ -26,7 +26,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Exchange</span>
+									<span class="symbol"><img src="_homePage/images/logo.svg" alt="" /></span><span class="title">Exchange</span>
 								</a>
 
 							<!-- Nav -->
@@ -64,7 +64,7 @@
 								<article class="style0">
 									<span class="image">
 										<a href="#popup87">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -100,7 +100,7 @@
 								</div>
 									<div>
 										<h2 style="margin:1em;">${profile.gender} ${age} ${profile.region}
-											<input src="images/doc.png" type="image" onclick="window.location.href='#popup0'" style = "position: absolute; right:4%; bottom:7%;">
+											<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='#popup0'" style = "position: absolute; right:4%; bottom:7%;">
 											<div id="popup0" class="overlay">
 												<div class="popup" style="color:black; height:70%;">
 
@@ -128,7 +128,7 @@
 								<article class="style${skillLoopCount.count/5+1}">
 									<span class="image">
 										<a href="../配對頁面/skillfile_eng.html">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -136,8 +136,8 @@
 
 									<div>
 										<h2 style="margin:1em;">${skill}
-											<input src="images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:4%; bottom:6%;">
-											<input src="images/doc.png" type="image" onclick="window.location.href='../配對頁面/edit.html'" style = "position: absolute; right:16%; bottom:6%;">
+											<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:4%; bottom:6%;">
+											<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='../配對頁面/edit.html'" style = "position: absolute; right:16%; bottom:6%;">
 										</h2>
 									</div>
 								</article>
@@ -146,7 +146,7 @@
 									<!-- <article class="style4">
 										<span class="image">
 											<a href="generic.html">
-												<img src="images/pic04.jpg" alt="" />
+												<img src="_homePage/images/pic04.jpg" alt="" />
 											</a>
 										</span>
 
@@ -154,15 +154,15 @@
 
 										<div>
 											<h2 style="margin:1em;">正在養精蓄銳
-													<input src="images/pair.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:4%; bottom:6%;">
-													<input src="images/doc.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:16%; bottom:6%;">
+													<input src="_homePage/images/pair.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:4%; bottom:6%;">
+													<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:16%; bottom:6%;">
 											</h2>
 										</div>
 									</article> -->
 								<article class="style0">
 									<span class="image">
 										<a href="#666">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -190,7 +190,7 @@
 									<article class="style1">
 										<span class="image">
 											<a href="#INTEREST">
-												<img src="images/pic04.jpg" alt="" />
+												<img src="_homePage/images/pic04.jpg" alt="" />
 											</a>
 										</span>
 	
@@ -198,7 +198,7 @@
 	
 										<div>
 											<h2 style="margin:1em;">點選右側圖示以移除
-													<input src="images/no.png" type="image" onclick="window.location.href='profile_0interest.html#INTEREST'" style = "position: absolute; right:4%; bottom:6%;">
+													<input src="_homePage/images/no.png" type="image" onclick="window.location.href='profile_0interest.html#INTEREST'" style = "position: absolute; right:4%; bottom:6%;">
 											</h2>
 										</div>
 									</article>
@@ -207,7 +207,7 @@
 								<article class="style0">
 									<span class="image">
 										<a class="button_popup" href="#popup1">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -223,7 +223,6 @@
 													<br>
 													<a class="close" href="#">&times;</a>
 													<form >
-<<<<<<< HEAD
 														<select name="類別">
 														　<option value="Taipei">音樂</option>
 														　<option value="Taoyuan">運動</option>
@@ -232,22 +231,11 @@
 														　...
 														</select>
 														<select name="項目">
-=======
-														<select id="kind" name="類別">
-															<c:foreach var="kind" item="${types}">
-																<option value="${kind.kindName}">${kind.kindCode}</option>
-															</c:foreach>
-														</select>
-														<select id ="type" name="項目">
->>>>>>> 1d2f62473d364f13f7b5bbfc5137a40529010602
 														　<option value="Taipei">吉他</option>
 														　<option value="Taoyuan">小號</option>
 														　<option value="Hsinchu">薩克斯風</option>
 														　<option value="Miaoli">錫口笛</option>
-<<<<<<< HEAD
 														　...
-=======
->>>>>>> 1d2f62473d364f13f7b5bbfc5137a40529010602
 														</select>
 													</form>
 													<a href="profile.html" class="btn_more r5" >新增</a>
