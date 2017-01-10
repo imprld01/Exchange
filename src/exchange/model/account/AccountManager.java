@@ -44,7 +44,7 @@ public class AccountManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("account->"+account);
+		//System.out.println("account->"+account);
 		return account;
 
 	}
