@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <!--
@@ -82,6 +82,7 @@
 					
 					<h5>我的證照/影片</h5>
 					<ul>
+						<c:forEach var="num" begin="5" end="10" step="1"> 
 						 
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
@@ -93,7 +94,7 @@
 									aria-hidden="true" data-icon="&#x35;"></i></a>
 							</li>
 						
-						
+						</c:forEach>
 						
 						
 						
