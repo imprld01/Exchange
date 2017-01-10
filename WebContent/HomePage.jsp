@@ -133,7 +133,7 @@
 				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count/5+1}"> 
 						<span class="image"> 
-							<a href="http://localhost:8080/Exchange/Skill.do?mark=2"> 
+							<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${skill.skillId}"> 
 								<img src="_homePage/images/pic04.jpg" alt="" />
 							</a>
 						</span>
@@ -221,21 +221,18 @@
 
 								<h2>新增興趣技能</h2>
 								<br> <a class="close" href="#">&times;</a>
-								<form>
+								<form method="post" action="http://localhost:8080/Exchange/Skill.do" >
 									<select id="kind" name="類別">
 										<c:forEach var="kind" items="${kinds}">
 											<option value="${kind.kindCode}">${kind.kindName}</option>
 										</c:forEach>
-									</select> <select id="type" name="項目">
-										<option value="Taipei">吉他</option>
-										<option value="Taoyuan">小號</option>
-										<option value="Hsinchu">薩克斯風</option>
-										<option value="Miaoli">錫口笛</option>
+									</select> <select id="type" name="type">
+										<option value="Taipei">請選擇類別</option>
 									</select>
+									<input type="hidden" value="3" name="mark">
+									<input type="submit" class="btn_more r5" value="新增">
 								</form>
-								<a href="http://localhost:8080/Exchange/Skill.do?mark=3"
-									class="btn_more r5">新增</a>
-
+								
 							</div>
 						</div>
 				</div>
@@ -313,8 +310,8 @@
 	<%ArrayList<Type> typeList = (ArrayList<Type>) request.getAttribute("types");
 			for (Type type : typeList) {
 
-				out.println("if(kind.value == '" + type.getKindCode() + "')" + "type.innerHTML+='<option value="
-						+ type.getTypeName() + ">" + type.getTypeName() + "</option>'");
+				out.println("if(kind.value == '" + type.getKindCode() + "')" + "type.innerHTML+='<option value=\""
+						+ type.getTypeName() + "\">" + type.getTypeName() + "</option>'");
 
 			}%>
 		}
