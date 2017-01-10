@@ -21,8 +21,15 @@ public class LogInServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		session.invalidate();
+		session= request.getSession();
+		
+		System.out.println("getSession"+request.getSession());//->
 		
 		if(session.isNew()){
+			
+			System.out.println("session is new");//->
+			
 			String id = (String)request.getParameter("id");
 			String pwd = (String)request.getParameter("pwd");
 			Secret secret = new Secret(id, pwd);
@@ -34,6 +41,7 @@ public class LogInServlet extends HttpServlet {
 			if(checkResult){
 				//session
 				session.setAttribute("uid", secret.getId());
+				System.out.println("session"+session.getAttribute("uid"));//->
 				session.setMaxInactiveInterval(1800);
 			}
 			else{

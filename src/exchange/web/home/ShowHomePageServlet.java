@@ -22,18 +22,17 @@ import exchange.model.skill.Type;
 
 @WebServlet("/Home.do")
 public class ShowHomePageServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession(false);
-		
-		if(session != null){
+
+		if (session != null) {
 			RequestDispatcher view = null;
-			
-			String uid = (String)session.getAttribute("uid");
-			
+			String uid = (String) session.getAttribute("uid");
+
 			AccountManager am = new AccountManager();
 			Profile profile = null;
 
@@ -46,10 +45,9 @@ public class ShowHomePageServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-	
+
 			ArrayList<Type> favorites = SkillManager.getAllFavoriteSkills(uid);
-			
-			
+
 			ArrayList<MySkill> skills = ExchangeManager.getAllMySkills(uid);
 			request.setAttribute("isSkillsFull", isSkillsFull);
 			request.setAttribute("profile", profile);
@@ -57,11 +55,11 @@ public class ShowHomePageServlet extends HttpServlet {
 			request.setAttribute("favorites", favorites);
 			request.setAttribute("kinds", KindTypeManager.getKindList());
 			request.setAttribute("types", KindTypeManager.getTypeList());
-			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("//")[0]));
-			
-			view = request.getRequestDispatcher("http://localhost:8080/Exchange/HomePage.jsp");
+			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("-")[0]));
+
+			view = request.getRequestDispatcher("HomePage.jsp");
 			view.forward(request, response);
-		}
-		else response.sendRedirect("Index.jsp");
+		} else
+			response.sendRedirect("Index.jsp");
 	}
 }
