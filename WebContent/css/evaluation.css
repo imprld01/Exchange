@@ -1,0 +1,22 @@
+.meter {
+
+}
+.meter li {
+  text-overflow: hidden;
+  text-indent: -100%;
+  white-space: nowrap;
+  background: lightgray;
+  display: inline-block;
+  width: 19%;
+  height: 20px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.meter li.active {
+  background: orange;
+}
+	@media screen and (max-width: 700px){
+		.meter li {
+				  width: 18.5%;
+				}
+		}
