@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import = "exchange.model.skill.Type,java.util.ArrayList" %>
-    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="exchange.model.skill.Type,java.util.ArrayList"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
@@ -96,8 +96,16 @@
 					</div>
 				</div>
 				<div>
-					<h2 style="margin: 1em;">${profile.gender}
-						${age} ${profile.region} <input src="_homePage/images/doc.png"
+					<h2 style="margin: 1em;">
+						<c:choose>
+							<c:when test="${profile.gender== true}">
+								<c:out value="男" />
+							</c:when>
+							<c:when test="${profile.gender== false}">
+								<c:out value="女" />
+							</c:when>
+						</c:choose>
+						 ${age}歲 ${profile.region} <input src="_homePage/images/doc.png"
 							type="image" onclick="window.location.href='#popup0'"
 							style="position: absolute; right: 4%; bottom: 7%;">
 						<div id="popup0" class="overlay">
