@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <!--
@@ -11,23 +11,23 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-        <!--favicon图标-->
+        <!--favicon??-->
         <link rel="icon" href="images/favicon.png" type="image/x-icon" />
         <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
 
-        <!--ios设备添加到主屏幕的图标-->
+        <!--ios??添加到主屏幕的??-->
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
 
         <!--loading css-->
         <link href="css/pace-theme-flash.css" rel="stylesheet" type="text/css">
 
-        <!--全局定义css-->
+        <!--全局定?css-->
         <link href="css/style.css" rel="stylesheet">
 
-        <!--自适应css-->
+        <!--自适?css-->
         <link href="css/responsive.css" rel="stylesheet">
 
-        <!--字体图标cdd-->
+        <!--字体??cdd-->
         <link href="css/font.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/evaluation.css">
         <title>配對頁面</title>
@@ -73,7 +73,7 @@
                         <h5>技能的簡介/經歷</h5>
 
                         <p class="desc">從小熱衷拼圖及電子遊戲，被譽為天才中的天才，並被大部分玩家認為是世界最強的英雄聯盟玩家，也是史上第一個三次奪得英雄聯盟世界總決賽冠軍的中路選手。 勝率高達73.7% 。</p>
-                        <!-- s1~s5 为对应右侧 时间点 -->
+                        <!-- s1~s5 ???右? ??? -->
                         <p class="desc s5"><em class="count">2013</em>被提拔成為SK Telecom T1的中路選手。</p>
                         <p class="desc s4"><em class="count">2013</em>S3世界總決賽第一名(SKT)。</p>
                         <p class="desc s3"><em class="count">2014</em>全明星賽第一名(SKT)  。</p>
@@ -158,10 +158,10 @@
 		<!--配對按鈕-->
 
         <div class="footer clearfix">
-            <p style="float:right;">已為您搜尋到一張匹配的技能卡 OUO<p>
+           <!--   <p style="float:right;">已為您搜尋到一張匹配的技能卡 OUO<p>-->
         </div>
 
-        <!--个人基本信息-->
+        <!--?人基本信息-->
         <div class="tip_avatar">
             <a href="javascript:;" class="tip_close" aria-hidden="true" data-icon="&#x4d;"></a>
             <div class="tip_avatar_con">
@@ -174,21 +174,21 @@
                     <p><i aria-hidden="true" data-icon="&#xe00b;"></i>加好友之後才看得到</p>
 
                 </div>
-                <!--如果依然使用该头像请不要删掉()里的内容-->
+                <!--如果依然使用??像?不要?掉()里的?容-->
                 <!-- <p class="desc">Cartoon just like me (Design by Jameskelly)</p> -->
             </div>
         </div>
         <div class="tip_avatar_bg"></div>
 
-        <!--作品内容-->
+        <!--作品?容-->
         <div class="tip_product sd">
 
-            <!--关闭作品展示-->
+            <!--??作品展示-->
             <a href="javascript:;" class="r5 tip_area_close" aria-hidden="true" data-icon="&#x4d;"></a>
 
             <div id="tip_carousel" class="carousel slide" data-ride="carousel">
 
-                <!-- 作品区域 -->
+                <!-- 作品?域 -->
                 <div class="carousel-inner">
 
                     <!--作品1-->
@@ -220,7 +220,7 @@
                             <h3><i aria-hidden="true" data-icon="&#xe013;"></i>S5世界冠軍</h3>
                             <p>用雷茲就贏啦RRR</p>
                             <p class="pic">
-                                <img src="images/win.png" alt="首页" />
+                                <img src="images/win.png" alt="首?" />
                                 <span>證書????</span>
                             </p>
 
@@ -252,10 +252,10 @@
         <!--jquery 局部打印-->
         <script type="text/javascript" src="js/jQuery.print.js"></script>
 
-        <!--jquery 动画-->
+        <!--jquery ??-->
         <script type="text/javascript" src="js/jquery.transit.min.js"></script>
 
-        <!--jquery 轮播-基于bootstrap carousel-->
+        <!--jquery ?播-基于bootstrap carousel-->
         <script type="text/javascript" src="js/carousel.min.js"></script>
 
         <!--jquery annyang sound control-->
@@ -269,3 +269,4 @@
         <script src="js/evaluation.js"></script>
     </body>
 </html>
+    
