@@ -20,7 +20,7 @@ public class InvitationServlet extends HttpServlet {
 	private static final int ACCEPT_INVITATION = 1;
 	private static final int SEND_INVITATION = 2;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
 		
