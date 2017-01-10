@@ -48,6 +48,4 @@ public class SignManager {
 		AccountManager am = new AccountManager();
 		return am.isValid(id);
 	}
-	
-	
 }
