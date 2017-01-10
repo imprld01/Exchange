@@ -78,7 +78,7 @@ public class AccountManager {
 	}
 
 	public static boolean isSkillFull(String id) throws SQLException {
-		boolean result;
+		boolean result = false;
 		String query = "select * from accounts where user_id = '" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();

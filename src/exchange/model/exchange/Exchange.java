@@ -7,7 +7,7 @@ public class Exchange {
 	private String yourSkillName;
 	@Override
 	public String toString() {
-		return "receiveSkill.getType().getTypeName()";
+		return yourSkillName;
 	}
 	public Skill getReceiveSkill() {
 		return receiveSkill;

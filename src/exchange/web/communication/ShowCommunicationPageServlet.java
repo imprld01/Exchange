@@ -24,6 +24,7 @@ public class ShowCommunicationPageServlet extends HttpServlet {
 		
 		if(session != null){
 			
+			int id = Integer.parseInt((String)request.getParameter("id"));
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			
 			switch(mark){

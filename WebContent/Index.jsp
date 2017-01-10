@@ -126,42 +126,42 @@
 
 					<div class="content style4 fea-tured" >
 						<div class="container 75%" align="center">
-							<form method="post" action="/Signup.do">
+							<form method="post" action="http://localhost:8080/Exchange/Signup.do">
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input type="text" placeholder="姓名" /></div>
+									<div class="6u 12u(mobile)"><input name="user" type="text" placeholder="姓名" /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input type="text" placeholder="暱稱" /></div>
+									<div class="6u 12u(mobile)"><input name="nick" type="text" placeholder="暱稱" /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input type="text" placeholder="生日(xxxx/xx/xx)" /></div>
+									<div class="6u 12u(mobile)"><input name="birth" type="text" placeholder="生日(xxxx/xx/xx)" /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input type="text" placeholder="性別" /></div>
+									<div class="6u 12u(mobile)"><input name="gender" type="text" placeholder="性別" /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input type="text" placeholder="地區" /></div>
+									<div class="6u 12u(mobile)"><input name="region" type="text" placeholder="地區" /></div>
 								</div>
 								<br>
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input type="text" placeholder="帳號" /></div>
+									<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="帳號" /></div>
 								</div>
 								<br>
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input type="password" placeholder="密碼" /></div>
+									<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="密碼" /></div>
 								</div>
 								<br>
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input type="password" placeholder="密碼確認" /></div>
+									<div class="6u 12u(mobile)"><input name="re_pwd" type="password" placeholder="密碼確認" /></div>
 								</div>
 								<br>
 
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input id =  type="text" placeholder="信箱" /></div>
+									<div class="6u 12u(mobile)"><input name="email" type="text" placeholder="信箱" /></div>
 								</div>
 								<br>
 								<div class="row">
