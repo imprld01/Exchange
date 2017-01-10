@@ -87,12 +87,10 @@ public class SkillServlet extends HttpServlet {
 				break;
 			case SHOW_SKILL:
 				RequestDispatcher view = null;
-<<<<<<< HEAD
+
 
 				String id = (String) request.getParameter("id");
-=======
-				String id = (String)request.getParameter("id");
->>>>>>> 4366a41437cd9f41a1673fbaf8aadc6801717fce
+
 				Skill skilltoshow = null;
 
 				try {
@@ -100,11 +98,9 @@ public class SkillServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
-<<<<<<< HEAD
 
-=======
 				request.setAttribute("kindName",KindTypeManager.getKindName(skilltoshow.getType().getKindCode()));
->>>>>>> 4366a41437cd9f41a1673fbaf8aadc6801717fce
+
 				request.setAttribute("skill", skilltoshow);
 
 				view = request.getRequestDispatcher("/SkillPage.jsp");
