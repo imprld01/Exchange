@@ -11,66 +11,96 @@ import exchange.model.database.DataBaseAdmin;
 
 public class SignManager {
 
-	public boolean check(Secret secret) throws SQLException{
-		boolean result;
+	public boolean check(Secret secret) {
+		boolean result = false;
 		AccountManager am = new AccountManager();
 		SignManager sm = new SignManager();
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
-		if(am.isValid(secret.getId()) == true)
-		{
-			result = true;
-			if(sm.CheckPassword(secret.getPassword()) == true)
-			{
+		try {
+			if (am.isValid(secret.getId()) == true) {
 				result = true;
-				String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate +"'" ;
-				DataBaseAdmin.updateDB(query);
-			}
-			else 
+				if (sm.CheckPassword(secret.getPassword()) == true) {
+					result = true;
+					String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate + "'";
+					DataBaseAdmin.updateDB(query);
+				} else
+					result = false;
+			} else
 				result = false;
-		}   		
-		else 
-			result = false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		DataBaseAdmin.closeConnection();
 		return result;
 	}
-	
-	public boolean CheckPassword(String password) throws SQLException
-	{
-		boolean result;
+
+	public boolean CheckPassword(String password) {
+		boolean result = false;
 		String query = "SELECT * FROM accounts";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		if(password.equals(rs.getString("password")))
-			result = true;
-		else if(password == null)
-			result = false;
-		else
-			result = false;
+		try {
+			rs.next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			if (password.equals(rs.getString("password")))
+				result = true;
+			else if (password == null)
+				result = false;
+			else
+				result = false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
-	
-	public void create(Account account) throws SQLException{
+
+	public void create(Account account) {
 		AccountManager am = new AccountManager();
-		am.addAccount(account.getSecret().getId(), account.getSecret().getPassword(),
-		account.getProfile().getUserName(), account.getProfile().getNickName(), account.getProfile().getGender(), 
-		account.getProfile().getEmail(), account.getProfile().getBirthday(), account.getProfile().getRegion());
+		try {
+			am.addAccount(account.getSecret().getId(), account.getSecret().getPassword(),
+					account.getProfile().getUserName(), account.getProfile().getNickName(),
+					account.getProfile().getGender(), account.getProfile().getEmail(),
+					account.getProfile().getBirthday(), account.getProfile().getRegion());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-//確認帳號格式，重複與否
-	public boolean isAccountValid(String id) throws SQLException{
-		boolean result;
+
+	// 確認帳號格式，重複與否
+	public boolean isAccountValid(String id) {
+		boolean result = true;
 		String query = "SELECT * FROM accounts";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		if (id.equals(rs.getString("user_id")))
-			result = false;
-		else if (id.length() > 20)
-			result = false;
-		else if(id == null)
-			result = false;
-		else
-			result = true;
+		try {
+			if (rs.next()) 
+			{
+				if (id.equals(rs.getString("user_id")))
+					result = false;
+				// else if (id.length() > 20)
+				// result = false;
+				// else if (id == null)
+				// result = false;
+				// else
+				// result = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
+
+	static public void main(String args[]) {
+		SignManager sm = new SignManager();
+
+		System.out.println(sm.isAccountValid("0"));
+	}
+
 }

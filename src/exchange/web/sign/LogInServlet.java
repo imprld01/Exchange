@@ -29,12 +29,7 @@ public class LogInServlet extends HttpServlet {
 			
 			SignManager sm = new SignManager();
 			boolean checkResult = false;
-			try {
-				checkResult = sm.check(secret);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			checkResult = sm.check(secret);
 			
 			if(checkResult){
 				//session

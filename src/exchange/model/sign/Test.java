@@ -14,7 +14,7 @@ public class Test {
 		// TODO Auto-generated method stub
 		
 		DataBaseAdmin db = new DataBaseAdmin();
-		db.changeDBAccount("root", "narutoap12");
+		db.changeDBAccount("root", "root");
 		SignManager sm = new SignManager();
 		
 		//System.out.println();
@@ -29,7 +29,7 @@ public class Test {
 		//System.out.println(sm.check(secret));
 		
 		//isAccountVaild(id) success
-		//System.out.println(sm.isAccountValid("151211"));
+		System.out.println(sm.isAccountValid("151211"));
 		
 		//CheckPassword(password)
 		//System.out.println(sm.CheckPassword("kc567894"));
