@@ -131,7 +131,7 @@
 				<section class="tiles"> <c:foreach var="skill"
 					item="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count/5+1}"> <span
-						class="image"> <a href="../配對頁面/skillfile_eng.html"> <img
+						class="image"> <a href="http://localhost:8080/Exchange/Match.do"> <img
 							src="_homePage/images/pic04.jpg" alt="" />
 					</a>
 					</span>
@@ -141,7 +141,7 @@
 					<div>
 						<h2 style="margin: 1em;">${skill}
 							<input src="_homePage/images/chat.png" type="image"
-								onclick="window.location.href='../messaging/index.html'"
+								onclick="window.location.href='http://localhost:8080/Exchange/Communication.do.html'"
 								style="position: absolute; right: 4%; bottom: 6%;"> <input
 								src="_homePage/images/doc.png" type="image"
 								onclick="window.location.href='../配對頁面/edit.html'"
