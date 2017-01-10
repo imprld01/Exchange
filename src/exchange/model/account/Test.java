@@ -43,6 +43,9 @@ public class Test {
 		
 		//getregion(id) success
 		//System.out.println(am.getRegion("1234567"));
+		
+		//isValid() success
+		//System.out.println(am.isValid("788845153"));
 	}
 
 }

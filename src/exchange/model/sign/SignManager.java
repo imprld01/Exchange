@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import exchange.model.account.Account;
 import exchange.model.account.AccountManager;
-import exchange.model.account.Profile;
 import exchange.model.account.Secret;
 import exchange.model.database.DataBaseAdmin;
 
@@ -31,9 +30,9 @@ public class SignManager {
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
 		if(password.equals(rs.getString("password")))
-			result = true;
-		else
 			result = false;
+		else
+			result = true;
 		return result;
 	}
 	
