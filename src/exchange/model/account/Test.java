@@ -23,7 +23,7 @@ public class Test {
 		//System.out.println(am.getAccount("jec88899"));
 		
 		//測試失敗
-		//am.addAccount("jec888899", "10567029", "Stanely", "Champion", 1, "@yahoo.com", "1994-07-27", "新北");
+		am.addAccount("jec888899", "10567029", "Stanely", "Champion", true, "@yahoo.com", "1994-07-27", "新北");
 
 		//System.out.println();
 	    
@@ -46,6 +46,8 @@ public class Test {
 		
 		//isValid() success
 		//System.out.println(am.isValid("788845153"));
+		//System.out.println(am.isValid("10567026"));
+		//System.out.println(am.isValid(""));
 	}
 
 }

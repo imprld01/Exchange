@@ -13,8 +13,15 @@ public class AccountManager {
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		int skillMax = 3;
 		int skillNumber = 0;
+		int gender_int=0;
+		if(gender){
+			gender_int=1;
+		}
+		else{
+			gender_int=0;
+		}
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
-				+ "', '" + gender + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
+				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
 				+ "', '" + skillMax + "', '" + sqlStartDate + "')";
 		DataBaseAdmin.updateDB(query);
 		DataBaseAdmin.closeConnection();
@@ -83,17 +90,20 @@ public class AccountManager {
 		return result;
 	}
 
+//驗證帳號登入
 	public boolean isValid(String id) throws SQLException {
 		boolean result;
 		String query = "SELECT * FROM accounts";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
 		if (id.equals(rs.getString("user_id")))
+			result = true;
+		else if(id.length() > 20)
 			result = false;
-		else if (id.length() > 20)
+		else if(id == null)
 			result = false;
 		else
-			result = true;
+			result = false;
 		return result;
 	}
 	public String getRegion(String id) throws SQLException
