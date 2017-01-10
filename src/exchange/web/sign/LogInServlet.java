@@ -43,6 +43,6 @@ public class LogInServlet extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("/Home.do");
+		response.sendRedirect("http://localhost:8080/Exchange/Home.do");
 	}
 }

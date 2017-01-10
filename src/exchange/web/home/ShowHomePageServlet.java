@@ -36,11 +36,7 @@ public class ShowHomePageServlet extends HttpServlet {
 			
 			AccountManager am = new AccountManager();
 			Profile profile = null;
-			try {
-				profile = am.getAccount(uid).getProfile();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			profile = am.getAccount(uid).getProfile();
 			
 			ArrayList<Type> favorites = SkillManager.getAllFavoriteSkills(uid);
 			
@@ -52,9 +48,9 @@ public class ShowHomePageServlet extends HttpServlet {
 			request.setAttribute("types", KindTypeManager.getTypeList());
 			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("//")[0]));
 			
-			view = request.getRequestDispatcher("/HomePage.jsp");
+			view = request.getRequestDispatcher("http://localhost:8080/Exchange/HomePage.jsp");
 			view.forward(request, response);
 		}
-		else response.sendRedirect("index.html");
+		else response.sendRedirect("Index.jsp");
 	}
 }

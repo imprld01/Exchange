@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
@@ -92,13 +92,13 @@
 
 				<div class="content style4 fea-tured" >
 					<div class="container 75%" align="center">
-						<form method="post" action="/log.do">
+						<form method="post" action="http://localhost:8080/Exchange/Login.do">
 							<div class="12u">
-								<div class="6u 12u(mobile)"><input type="text" placeholder="Account" /></div>
+								<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="Account" /></div>
 							</div>
 							<br>
 							<div class="12u" >
-								<div class="6u 12u(mobile)"><input type="password" placeholder="Password" /></div>
+								<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="Password" /></div>
 							</div>
 								<br>
 							<div class="row">

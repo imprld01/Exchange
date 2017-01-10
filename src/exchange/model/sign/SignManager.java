@@ -32,7 +32,7 @@ public class SignManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 		return result;
 	}
 

@@ -162,7 +162,12 @@
 									</article> -->
 								<article class="style0">
 									<span class="image">
-										<a href="#666">
+										<a href="
+												<% boolean isSkillsFull = (boolean)request.getAttribute("isSkillsFull");
+													if(isSkillsFull){out.print("#popup666");}
+													else{out.print("creat.html");}
+												%>
+											">
 											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>

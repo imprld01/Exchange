@@ -9,23 +9,23 @@ public class ExchangeManager {
 	public static void acceptInvitation(String mySkillID, String othersSkillID){
 		DataBaseAdmin.updateDB("INSERT INTO exchanges VALUES('"+othersSkillID+"','"+mySkillID+"','0')");
 		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"',ivt_reciever = '"+mySkillID+"'");
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 	}
 	//拒絕邀請, 刪除邀情Table中的邀請
 	public static void rejectInvitation(String mySkillID, String othersSkillID){
 		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"',ivt_reciever = '"+mySkillID+"'");
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 	}
 	//完成交流, 將end_flag改成1
 	public static void finishExchange(String mySkillID, String othersSkillID){
 		DataBaseAdmin.updateDB("UPDATE exchanges SET end_flag = '1' where (skill_a = '"+othersSkillID+"' AND skill_b = '"+mySkillID+"')"
 			+ "OR (skill_a = '"+mySkillID+"' AND skill_b = '"+othersSkillID+"')");
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 	}
 	//寄出邀請, 新增到邀請Table
 	public static void sendInvitation(String mySkillID, String othersSkillID){
 		DataBaseAdmin.updateDB("INSERT INTO invitations VALUES('"+mySkillID+"','"+othersSkillID+")");
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 	}
 	//拿到使用者的所有相關交流, 並存成ArrayList<Exchange>回傳
 	public static ArrayList<Exchange> getExchangings(String userID){
@@ -52,7 +52,7 @@ public class ExchangeManager {
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 		return exchangeList;
 	}
 	//列出所有收到的邀請並回傳ArrayList
@@ -71,7 +71,7 @@ public class ExchangeManager {
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 		return exchangeList;
 	}
 	//列出所有送出的邀請並回傳ArrayList
@@ -90,7 +90,7 @@ public class ExchangeManager {
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		DataBaseAdmin.closeConnection();
+		//DataBaseAdmin.closeConnection();
 		return exchangeList;
 	}
 	//拿到所有我的技能並且把所有與其交流的技能印出
@@ -128,7 +128,7 @@ public class ExchangeManager {
 				}catch(Exception e){
 					System.err.println(e.getMessage());
 				}
-				DataBaseAdmin.closeConnection();
+				//DataBaseAdmin.closeConnection();
 		return mySkills;
 	}
 	public static void main(String args[]){

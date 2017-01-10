@@ -13,36 +13,38 @@ public class AccountManager {
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		int skillMax = 3;
 		int skillNumber = 0;
-		int gender_int=0;
-		if(gender){
-			gender_int=1;
-		}
-		else{
-			gender_int=0;
+		int gender_int = 0;
+		if (gender) {
+			gender_int = 1;
+		} else {
+			gender_int = 0;
 		}
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
 				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
 				+ "', '" + skillMax + "', '" + sqlStartDate + "')";
 		DataBaseAdmin.updateDB(query);
-		DataBaseAdmin.closeConnection();
+
 	}
 
-	public Account getAccount(String id) throws SQLException {
-		
-		ResultSet result = DataBaseAdmin.selectDB("SELECT * FROM accounts where user_id = '" + id + "'");
-		result.next() ;
+	public Account getAccount(String id) {
+		Account account = null;
+		try {
+			ResultSet result = DataBaseAdmin.selectDB("SELECT * FROM accounts where user_id = '" + id + "'");
+			result.next();
 
-		Secret secret = new Secret(id, result.getString("password"));
-		Profile profile = new Profile(result.getString("user_name"), result.getString("nick_name"),
-				result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
-				result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
+			Secret secret = new Secret(id, result.getString("password"));
+			Profile profile = new Profile(result.getString("user_name"), result.getString("nick_name"),
+					result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
+					result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
 
-		Account account = new Account(secret, profile, result.getDate("recent_log"));
-		
-		DataBaseAdmin.closeConnection();
-		
+			account = new Account(secret, profile, result.getDate("recent_log"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return account;
-		
+
 	}
 
 	public ArrayList<Secret> getAllUserId() throws SQLException {
@@ -52,10 +54,9 @@ public class AccountManager {
 		result = DataBaseAdmin.selectDB(query);
 		while (result.next())
 			idlist.add(new Secret(result.getString("user_id")));
-		DataBaseAdmin.closeConnection();
+
 		return idlist;
 	}
-
 
 	// Profile修改
 	public void setProfile(String id, Profile profile) {
@@ -65,7 +66,7 @@ public class AccountManager {
 		String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
 				+ region + "' " + "where user_id = '" + id + "'";
 		DataBaseAdmin.updateDB(query);
-		DataBaseAdmin.closeConnection();
+
 	}
 
 	// Secret修改
@@ -74,7 +75,7 @@ public class AccountManager {
 		String password = secret.getPassword();
 		String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
 		DataBaseAdmin.updateDB(query);
-		DataBaseAdmin.closeConnection();
+
 	}
 
 	public static boolean isSkillFull(String id) throws SQLException {
@@ -84,13 +85,13 @@ public class AccountManager {
 		rs.next();
 		if (rs.getInt("skill_number") >= rs.getInt("skill_max"))
 			result = false;
-		else 
+		else
 			result = true;
-		DataBaseAdmin.closeConnection();
+
 		return result;
 	}
 
-//驗證帳號登入
+	// 驗證帳號登入
 	public boolean isValid(String id) throws SQLException {
 		boolean result;
 		String query = "SELECT * FROM accounts";
@@ -98,17 +99,17 @@ public class AccountManager {
 		rs.next();
 		if (id.equals(rs.getString("user_id")))
 			result = true;
-		else if(id.length() > 20)
+		else if (id.length() > 20)
 			result = false;
-		else if(id == null)
+		else if (id == null)
 			result = false;
 		else
 			result = false;
 		return result;
 	}
-	public String getRegion(String id) throws SQLException
-	{
-		String query = "SELECT * FROM accounts where user_id = '"+ id +"' ";
+
+	public String getRegion(String id) throws SQLException {
+		String query = "SELECT * FROM accounts where user_id = '" + id + "' ";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
 		return rs.getString("region");

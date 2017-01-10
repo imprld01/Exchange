@@ -50,17 +50,17 @@ public class DataBaseAdmin {
 
 	// 終止連線
 	// 使用完DB後需要使用者自行關閉
-	public static void closeConnection() {
-
-		try {
-			if (connection != null)
-				connection.close();
-			System.out.println("Connection closed !!");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
+//	public static void closeConnection() {
+//
+//		try {
+//			if (connection != null)
+//				connection.close();
+//			System.out.println("Connection closed !!");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 	// 用以下SELECT QUERY之method
 	// String query = "select * from table_name";
