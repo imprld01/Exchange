@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="exchange.model.skill.Type,java.util.ArrayList"%>
-
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
@@ -130,7 +130,7 @@
 				<br>
 				<h3 id="MINE">我的技能</h3>
 				<section class="tiles"> 
-				<c:forEach var="skill"	item="${skills}" varStatus="skillLoopCount">
+				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count/5+1}"> 
 						<span class="image"> 
 							<a href="http://localhost:8080/Exchange/Skill.do?mark=2"> 
@@ -188,7 +188,7 @@
 				
 				<h3 id="INTEREST">興趣技能</h3>
 				<section class="tiles"> <c:forEach var="favorite"
-					item="${favorites}">
+					items="${favorites}">
 					<article class="style1"> <span class="image"> <a
 						href="#INTEREST"> <img src="_homePage/images/pic04.jpg" alt="" />
 					</a>
@@ -223,7 +223,7 @@
 								<br> <a class="close" href="#">&times;</a>
 								<form>
 									<select id="kind" name="類別">
-										<c:forEach var="kind" item="${kinds}">
+										<c:forEach var="kind" items="${kinds}">
 											<option value="${kind.kindCode}">${kind.kindName}</option>
 										</c:forEach>
 									</select> <select id="type" name="項目">

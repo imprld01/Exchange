@@ -21,6 +21,8 @@ public class KindTypeManager {
 	// 取得資料哭中所有Kind
 	static public ArrayList<Kind> getKindList() {
 
+		kindList.clear();
+		
 		String query = "SELECT * FROM classes";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 
@@ -38,6 +40,8 @@ public class KindTypeManager {
 	// 取得資料庫中所有Type
 	static public ArrayList<Type> getTypeList() {
 
+		typeList.clear();
+		
 		String query = "SELECT * FROM types";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 
