@@ -105,7 +105,7 @@
 								<c:out value="女" />
 							</c:when>
 						</c:choose>
-						 ${age}歲 ${profile.region} <input src="_homePage/images/doc.png"
+						${age}歲 ${profile.region} <input src="_homePage/images/doc.png"
 							type="image" onclick="window.location.href='#popup0'"
 							style="position: absolute; right: 4%; bottom: 7%;">
 						<div id="popup0" class="overlay">
@@ -118,7 +118,7 @@
 									<input type="text" name="fname" placeholder="地區"><br>
 									<input type="text" name="fname" placeholder="信箱"><br>
 								</form>
-								<a href="profile.html#PROFILE" class="btn_more r5">確認修改</a>
+								<a href="http://localhost:8080/Exchange/Account.do?mark=3" class="btn_more r5">確認修改</a>
 
 							</div>
 						</div>
@@ -131,7 +131,8 @@
 				<section class="tiles"> <c:foreach var="skill"
 					item="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count/5+1}"> <span
-						class="image"> <a href="http://localhost:8080/Exchange/Match.do"> <img
+						class="image"> <a
+						href="http://localhost:8080/Exchange/Skill.do?mark=2"> <img
 							src="_homePage/images/pic04.jpg" alt="" />
 					</a>
 					</span>
@@ -171,7 +172,7 @@
 			if (isSkillsFull) {
 				out.print("#popup666");
 			} else {
-				out.print("creat.html");
+				out.print("http://localhost:8080/Exchange/Skill.do?mark=0");
 			}%>
 											">
 						<img src="_homePage/images/pic04.jpg" alt="" />
@@ -209,7 +210,7 @@
 					<div>
 						<h2 style="margin: 1em;">
 							點選右側圖示以移除 <input src="_homePage/images/no.png" type="image"
-								onclick="window.location.href='profile_0interest.html#INTEREST'"
+								onclick="window.location.href='http://localhost:8080/Exchange/Skill.do?mark=4'"
 								style="position: absolute; right: 4%; bottom: 6%;">
 						</h2>
 					</div>
@@ -243,7 +244,7 @@
 										<option value="Miaoli">錫口笛</option>
 									</select>
 								</form>
-								<a href="profile.html" class="btn_more r5">新增</a>
+								<a href="http://localhost:8080/Exchange/Skill.do?mark=3" class="btn_more r5">新增</a>
 
 							</div>
 						</div>

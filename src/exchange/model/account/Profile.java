@@ -55,15 +55,16 @@ public class Profile
 		return nickName;
 	}
 	
-	public boolean getGender()
+	public String getGender()
 	{
+		String result = null; 
 		boolean male = true;
 		boolean female = false;
 		if(gender == male)
-			gender = true;
+			result = "男性";
 		if(gender == female)
-			gender = false;
-		return gender;
+			result = "女性";
+		return result;
 	}
 	
 	public String getEmail()
