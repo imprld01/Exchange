@@ -60,6 +60,7 @@ public class SkillManager {
 
 	// 新增技能
 	// 限制每個帳號一開始只可以新增三個技能，交流後就不可刪除，且不可以重複創建同項技能。
+	// 新增成功accounts的
 	// 接收參數:skill
 	// 回傳型態:void
 	static public void createSkill(Skill skill) {
