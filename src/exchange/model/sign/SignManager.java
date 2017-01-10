@@ -18,8 +18,9 @@ public class SignManager {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		try {
+			System.out.println("[帳號] -> ["+ secret.getPassword() +"]");
 			if (am.isValid(secret.getId()) == true) { // 帳號是否存在
-
+				System.out.println("[帳號存在，比對密碼]");
 				if (sm.CheckPassword(secret) == true) { // 密碼是否相同
 					result = true;
 					String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate + "'";
@@ -39,7 +40,7 @@ public class SignManager {
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
 			rs.next();
-
+			System.out.println("["+secret.getPassword()+"] -> ["+ rs.getString("password") +"]");
 			if (secret.getPassword().equals(rs.getString("password")))
 				result = true;
 		} catch (SQLException e) {

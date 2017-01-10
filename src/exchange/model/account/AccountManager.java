@@ -44,7 +44,7 @@ public class AccountManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//System.out.println("account->"+account);
+		// System.out.println("account->"+account);
 		return account;
 
 	}
@@ -95,18 +95,19 @@ public class AccountManager {
 
 	// 驗證帳號登入
 	public boolean isValid(String id) throws SQLException {
-		boolean result;
-		String query = "SELECT * FROM accounts";
+		boolean result = false;
+		String query = "SELECT * FROM accounts where user_id='" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
+		System.out.println("[" + id + "] -> [" + rs.getString("user_id") + "]");
 		if (id.equals(rs.getString("user_id")))
 			result = true;
-		else if (id.length() > 20)
-			result = false;
-		else if (id == null)
-			result = false;
-		else
-			result = false;
+		// else if (id.length() > 20)
+		// result = false;
+		// else if (id == null)
+		// result = false;
+		// else
+		// result = false;
 		return result;
 	}
 

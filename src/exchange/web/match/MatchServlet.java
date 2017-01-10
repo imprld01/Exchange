@@ -23,7 +23,7 @@ public class MatchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession(false);
 		

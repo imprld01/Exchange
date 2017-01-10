@@ -26,8 +26,10 @@ public class SkillServlet extends HttpServlet {
 	private static final int CREATE_FAVORITE = 3;
 	private static final int DELETE_FAVORITE = 4;
 	
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){

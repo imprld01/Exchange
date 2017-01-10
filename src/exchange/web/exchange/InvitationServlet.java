@@ -21,7 +21,7 @@ public class InvitationServlet extends HttpServlet {
 	private static final int SEND_INVITATION = 2;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
