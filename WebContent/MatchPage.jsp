@@ -88,7 +88,7 @@
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>影片1</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>影片${video}}</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
@@ -102,7 +102,7 @@
 							<li class="clearfix" style="position: relative; z-index: 1">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀1</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀${image}</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
