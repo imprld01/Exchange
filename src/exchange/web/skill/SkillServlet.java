@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.skill.KindTypeManager;
 import exchange.model.skill.Skill;
 import exchange.model.skill.SkillManager;
 
@@ -82,7 +83,6 @@ public class SkillServlet extends HttpServlet {
 				break;
 			case SHOW_SKILL:
 				RequestDispatcher view = null;
-
 				String id = (String)request.getParameter("id");
 				Skill skilltoshow = null;
 				
@@ -91,7 +91,7 @@ public class SkillServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
-				
+				request.setAttribute("kindName",KindTypeManager.getKindName(skilltoshow.getType().getKindCode()));
 				request.setAttribute("skill", skilltoshow);
 				
 				view = request.getRequestDispatcher("/SkillPage.jsp");
