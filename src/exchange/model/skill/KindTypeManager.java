@@ -7,21 +7,20 @@ import java.util.ArrayList;
 
 public class KindTypeManager {
 
-	ArrayList<Kind> kindList;
-	ArrayList<Type> typeList;
+	static ArrayList<Kind> kindList = new ArrayList<Kind>();
+	static ArrayList<Type> typeList = new ArrayList<Type>();
 
 	//建構子
 	public KindTypeManager(){
-		kindList = new ArrayList<Kind>();
-		typeList = new ArrayList<Type>();
-
-		updateKindList();
-		updateTypeList();
+		//kindList = new ArrayList<Kind>();
+		//typeList = new ArrayList<Type>();
+		//updateKindList();
+		//updateTypeList();
 	}
 
 	//取得資料哭中所有Kind
-	public void updateKindList(){
-
+	static public ArrayList<Kind> getKindList(){
+			
 		String query = "SELECT * FROM classes";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		
@@ -32,14 +31,15 @@ public class KindTypeManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return kindList;
 	}
 
 	//取得資料庫中所有Type
-	public void updateTypeList(){
-
+	static public ArrayList<Type> getTypeList(){
+		
 		String query = "SELECT * FROM types";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		
 		
 		try {
 			while (rs.next()) {
@@ -50,6 +50,8 @@ public class KindTypeManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return typeList;
 	}
 
 	@Override
@@ -59,5 +61,10 @@ public class KindTypeManager {
 	
 	public static void main(String[] args){
 		
+		for(Kind k:KindTypeManager.getKindList())
+			System.out.println(k);
+		
+		for(Type t:KindTypeManager.getTypeList())
+			System.out.println(t);
 	}
 }
