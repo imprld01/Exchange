@@ -161,7 +161,7 @@
 								<br>
 
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input type="text" placeholder="信箱" /></div>
+									<div class="6u 12u(mobile)"><input id =  type="text" placeholder="信箱" /></div>
 								</div>
 								<br>
 								<div class="row">
