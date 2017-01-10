@@ -36,11 +36,23 @@ public class ShowHomePageServlet extends HttpServlet {
 			
 			AccountManager am = new AccountManager();
 			Profile profile = null;
+<<<<<<< HEAD
 			profile = am.getAccount(uid).getProfile();
+=======
+			boolean isSkillsFull = false;
+			try {
+				isSkillsFull = AccountManager.isSkillFull(uid);
+				profile = am.getAccount(uid).getProfile();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+>>>>>>> d7d6d973b5df8ccd6f3a3757d8dd2a9cc746176c
 			
 			ArrayList<Type> favorites = SkillManager.getAllFavoriteSkills(uid);
 			
+			
 			ArrayList<MySkill> skills = ExchangeManager.getAllMySkills(uid);
+			request.setAttribute("isSkillsFull", isSkillsFull);
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
 			request.setAttribute("favorites", favorites);
