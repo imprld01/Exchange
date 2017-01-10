@@ -113,14 +113,14 @@
 
 								<h2>修改個人資料</h2>
 								<br> <a class="close" href="#">&times;</a>
-								<form>
-									<input type="text" name="fname" placeholder="暱稱"><br>
-									<input type="text" name="fname" placeholder="地區"><br>
-									<input type="text" name="fname" placeholder="信箱"><br>
+								<form method="get" action="http://localhost:8080/Exchange/Account.do"> 
+									<input type="text" name="nick" placeholder="暱稱"><br>
+									<input type="text" name="region" placeholder="地區"><br>
+									<input type="text" name="email" placeholder="信箱"><br>
+								
+									<input type="hidden" value="1" name="mark">
+									<input type="submit" class="btn_more r5" value="確認">
 								</form>
-								<a href="http://localhost:8080/Exchange/Account.do?mark=3"
-									class="btn_more r5">確認修改</a>
-
 							</div>
 						</div>
 					</h2>

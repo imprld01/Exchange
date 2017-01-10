@@ -39,7 +39,7 @@ public class AccountServlet extends HttpServlet {
 				
 				am.setSecret(secret);
 				
-				response.sendRedirect("/Home.do");
+				response.sendRedirect("http://localhost:8080/Exchange/Home.do");
 				break;
 			case PROFILE_MODIFICATION:
 				String nick = (String)request.getParameter("nick");
@@ -50,7 +50,7 @@ public class AccountServlet extends HttpServlet {
 				
 				am.setProfile(id, profile);
 				
-				response.sendRedirect("/Home.do");
+				response.sendRedirect("http://localhost:8080/Exchange/Home.do");
 				break;
 			}
 		}
