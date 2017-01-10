@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -126,7 +126,7 @@
 
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
-									<c:when test="${num<=skill.score.attitude/skill.time}">
+									<c:when test="${num<=skill.score.attitude/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star.png">
@@ -138,7 +138,7 @@
 													
 												</c:choose>
 									</c:when>
-									<c:when test="${num>skill.score.attitude/skill.time}">
+									<c:when test="${num>skill.score.attitude/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star_.png">
@@ -167,7 +167,7 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
-									<c:when test="${num<=skill.score.profession/skill.time}">
+									<c:when test="${num<=skill.score.profession/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star.png">
@@ -179,7 +179,7 @@
 													
 												</c:choose>
 									</c:when>
-									<c:when test="${num>skill.score.profession/skill.time}">
+									<c:when test="${num>skill.score.profession/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star_.png">
@@ -207,7 +207,7 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
-									<c:when test="${num<=skill.score.teaching/skill.time}">
+									<c:when test="${num<=skill.score.teaching/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star.png">
@@ -219,7 +219,7 @@
 													
 												</c:choose>
 									</c:when>
-									<c:when test="${num>skill.score.teaching/skill.time}">
+									<c:when test="${num>skill.score.teaching/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star_.png">
@@ -247,7 +247,7 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
-									<c:when test="${num<=skill.score.frequency/skill.time}">
+									<c:when test="${num<=skill.score.frequency/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star.png">
@@ -259,7 +259,7 @@
 													
 												</c:choose>
 									</c:when>
-									<c:when test="${num>skill.score.frequency/skill.time}">
+									<c:when test="${num>skill.score.frequency/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star_.png">
@@ -290,7 +290,7 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
-									<c:when test="${num<=skill.score.satisfication/skill.time}">
+									<c:when test="${num<=skill.score.satisfication/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star.png">
@@ -302,7 +302,7 @@
 													
 												</c:choose>
 									</c:when>
-									<c:when test="${num>skill.score.satisfication/skill.time}">
+									<c:when test="${num>skill.score.satisfication/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
 														<img src="_skill/images/star_.png">
@@ -327,8 +327,8 @@
 					
 					<div class="info_area info info_content">
 						<br>
-						<c:forEach var="image" items="${skill.commit}">
-							<p class="desc s5">${img}.${skill.commit.commit} }</}p>
+						<c:forEach var="comment" items="${skill.comment}">
+							<p class="desc s5">${comment} </p>
 			
 						</c:forEach>
 						

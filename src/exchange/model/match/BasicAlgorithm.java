@@ -67,8 +67,16 @@ public  class BasicAlgorithm extends MatchMaker {
 			getMatchSkill();	  //撈取資料
 			computeDistanceCoefficient();//計算距離係數
 			computeSkillScore(); //計算權重與分數
+			/*for(int i=0;i<skillCard.size();i++){
+				System.out.println(skillCard.get(i).getScore());
+			}*/
+			
 			sort(); //排序
-			System.out.println(skillCard.get(1).getSkill().getType().getKindCode());
+			
+			/*for(int i=0;i<skillCard.size();i++){
+				System.out.println(skillCard.get(i).getScore());
+			}*/
+			//System.out.println(skillCard.get(1).getSkill().getType().getKindCode());
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -223,7 +231,7 @@ public  class BasicAlgorithm extends MatchMaker {
 		do{
 			// SQL
 			//String sql = "select skills.*,accounts.region from skills,accounts where skills.account=accounts.user_id and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and accounts.user_id!='"+account+"' ";
-			String sql = "select skills.skill_id from skills,accounts where skills.user_id=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <3 and skills.user_id!='"+user_id+"' ";
+			String sql = "select skills.skill_id from skills,accounts where skills.user_id=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <=3 and skills.user_id!='"+user_id+"' ";
 		
 			for(int i=0;i<favoritesSkill.size();i++){  //加入興趣技能
 				
