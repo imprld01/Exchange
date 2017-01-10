@@ -32,7 +32,7 @@ Hope you like it :)
 <div class="chat">
   <div class="chat-title">
     <h1>Faker</h1>
-    <h2>電子競技 - LOL</h2>
+    <h2>${skill.type.typeName}</h2>
     <figure class="avatar">
       <img src="images/cartoon.png" /></figure>
   </div>
