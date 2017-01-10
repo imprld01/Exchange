@@ -45,11 +45,11 @@ public class ShowHomePageServlet extends HttpServlet {
 			ArrayList<Type> favorites = SkillManager.getAllFavoriteSkills(uid);
 			
 			ArrayList<MySkill> skills = ExchangeManager.getAllMySkills(uid);
-			
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
 			request.setAttribute("favorites", favorites);
-			request.setAttribute("types", KindTypeManager.getKindList());
+			request.setAttribute("kinds", KindTypeManager.getKindList());
+			request.setAttribute("types", KindTypeManager.getTypeList());
 			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("//")[0]));
 			
 			view = request.getRequestDispatcher("/HomePage.jsp");

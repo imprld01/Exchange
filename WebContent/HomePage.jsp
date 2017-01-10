@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import = "exchange.model.skill.Type,java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
 	Phantom by HTML5 UP
@@ -223,19 +224,16 @@
 													<br>
 													<a class="close" href="#">&times;</a>
 													<form >
-														<select name="類別">
-														　<option value="Taipei">音樂</option>
-														　<option value="Taoyuan">運動</option>
-														　<option value="Hsinchu">電子競技</option>
-														　<option value="Miaoli">廚藝</option>
-														　...
+														<select id="kind" name="類別">
+														　	<c:foreach var="kind" item="${kinds}">
+																<option value="${kind.kindCode}">${kind.kindName}</option>
+															</c:foreach>
 														</select>
-														<select name="項目">
+														<select id ="type" name="項目">
 														　<option value="Taipei">吉他</option>
 														　<option value="Taoyuan">小號</option>
 														　<option value="Hsinchu">薩克斯風</option>
 														　<option value="Miaoli">錫口笛</option>
-														　...
 														</select>
 													</form>
 													<a href="profile.html" class="btn_more r5" >新增</a>
@@ -290,7 +288,7 @@
 
 			</div>
 
-		<!-- Scripts -->
+		<!-- Scripts ->
 			<script src="_homePage/assets/js/jquery.min.js"></script>
 			<script src="_homePage/assets/js/skel.min.js"></script>
 			<script src="_homePage/assets/js/util.js"></script>
@@ -298,35 +296,24 @@
 			<script src="_homePage/assets/js/main.js"></script>
 			
 			<script>
-			
-				var req;
-			
 				function start(){
 					document.getElementById("kind").addEventListener("change", addActivityItem, false);
 				}
 	
 				function addActivityItem(){
 					var kind = document.getElementById("kind");
-					var url = "/Exchange/response?kind=" + kind.value;
+					var type = document.getElementById("type");
+					type.innerHTML="";
+					<%
+					ArrayList<Type> typeList = (ArrayList<Type>) request.getAttribute("types");
+					for(Type type : typeList){
+						
+						out.println("if(kind.value == '"+type.getKindCode()+"')"
+								+"type.innerHTML+='<option value="+type.getTypeName()+">"+type.getTypeName()+"</option>'");
+						
+					}
 					
-					if(window.XMLHttpRequest){
-						req = new XMLHttpRequest();
-					}
-					else if(window.ActiveXObject){
-						req = new ActiveXObject("Microsoft.XMLHTTP");
-					}
-					
-					req.open("Get", url, true);
-					req.onreadystatechange = callback;
-					req.send(null);
-				}
-				
-				function callback(){
-					if(req.readyState == 4){
-						if(req.status == 200){
-							
-						}
-					}
+					%>
 				}
 	
 				window.addEventListener("load", start, false);
