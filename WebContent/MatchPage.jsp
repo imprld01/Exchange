@@ -52,17 +52,19 @@
 						class="circle doing">尚未配對</em></a> <b class="doing r5">33</b>
 				</div>
 				<div class="base">
+					
 					<p class="desc">Hello my skill is</p>
 					<h2>電子競技</h2>
 					<p>League of Legends</p>
 					<span>
 						<p>
 							<i aria-hidden="true" data-icon="&#xe01d;"></i>在基隆市
-						</p> <!-- &#xe036 板手 --> <br> <a href="#" class="btn_exchange r5">Exchange</a>
-						<a href="javascript:;" class="btn_next r5">Next ></a> <a
-						href="../交流列表/profile.html#MINE" class="btn_exit r5" d>Exit</a>
+						</p> <!-- &#xe036 板手 --> <br> <a href="/Invitation.do?mark=2&sdr=2&rcv=1" class="btn_exchange r5">Exchange</a>
+						<a href="MatchPage.jsp" class="btn_next r5">Next ></a> <a
+						href="HomePage.jsp" class="btn_exit r5" d>Exit</a>
 
 					</span>
+					
 				</div>
 			</div>
 
@@ -71,28 +73,12 @@
 
 				<!--left-->
 				<div class="info_area info_left info_content">
-
+					
 					<!-- 修改icon -->
 					<h5>技能的簡介/經歷</h5>
 
-					<p class="desc">從小熱衷拼圖及電子遊戲，被譽為天才中的天才，並被大部分玩家認為是世界最強的英雄聯盟玩家，也是史上第一個三次奪得英雄聯盟世界總決賽冠軍的中路選手。
-						勝率高達73.7% 。</p>
-					<!-- s1~s5 ???右? ??? -->
-					<p class="desc s5">
-						<em class="count">2013</em>被提拔成為SK Telecom T1的中路選手。
-					</p>
-					<p class="desc s4">
-						<em class="count">2013</em>S3世界總決賽第一名(SKT)。
-					</p>
-					<p class="desc s3">
-						<em class="count">2014</em>全明星賽第一名(SKT) 。
-					</p>
-					<p class="desc s2">
-						<em class="count">2015</em>S4世界總決賽第一名(SKT)。
-					</p>
-					<p class="desc s1">
-						<em class="count">2016</em>S6世界總決賽第一名(SKT)。
-					</p>
+					<p class="desc">${skill.introExpr}</p>
+					
 
 					<h5>我的證照/影片</h5>
 					<ul>
