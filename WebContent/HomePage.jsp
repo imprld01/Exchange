@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
@@ -12,13 +11,12 @@
 		<title>個人頁面</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-			<link rel="stylesheet" href="assets/css/popup.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="_homePage/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="_homePage/assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="_homePage/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="_homePage/assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body >
+<body >
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -28,7 +26,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Exchange</span>
+									<span class="symbol"><img src="_homePage/images/logo.svg" alt="" /></span><span class="title">Exchange</span>
 								</a>
 
 							<!-- Nav -->
@@ -66,7 +64,7 @@
 								<article class="style0">
 									<span class="image">
 										<a href="#popup87">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -102,7 +100,7 @@
 								</div>
 									<div>
 										<h2 style="margin:1em;">${profile.gender} ${age} ${profile.region}
-											<input src="images/doc.png" type="image" onclick="window.location.href='#popup0'" style = "position: absolute; right:4%; bottom:7%;">
+											<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='#popup0'" style = "position: absolute; right:4%; bottom:7%;">
 											<div id="popup0" class="overlay">
 												<div class="popup" style="color:black; height:70%;">
 
@@ -130,7 +128,7 @@
 								<article class="style${skillLoopCount.count/5+1}">
 									<span class="image">
 										<a href="../配對頁面/skillfile_eng.html">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -138,8 +136,8 @@
 
 									<div>
 										<h2 style="margin:1em;">${skill}
-											<input src="images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:4%; bottom:6%;">
-											<input src="images/doc.png" type="image" onclick="window.location.href='../配對頁面/edit.html'" style = "position: absolute; right:16%; bottom:6%;">
+											<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:4%; bottom:6%;">
+											<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='../配對頁面/edit.html'" style = "position: absolute; right:16%; bottom:6%;">
 										</h2>
 									</div>
 								</article>
@@ -148,7 +146,7 @@
 									<!-- <article class="style4">
 										<span class="image">
 											<a href="generic.html">
-												<img src="images/pic04.jpg" alt="" />
+												<img src="_homePage/images/pic04.jpg" alt="" />
 											</a>
 										</span>
 
@@ -156,15 +154,15 @@
 
 										<div>
 											<h2 style="margin:1em;">正在養精蓄銳
-													<input src="images/pair.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:4%; bottom:6%;">
-													<input src="images/doc.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:16%; bottom:6%;">
+													<input src="_homePage/images/pair.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:4%; bottom:6%;">
+													<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='http://google.com'" style = "position: absolute; right:16%; bottom:6%;">
 											</h2>
 										</div>
 									</article> -->
 								<article class="style0">
 									<span class="image">
 										<a href="#666">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -192,7 +190,7 @@
 									<article class="style1">
 										<span class="image">
 											<a href="#INTEREST">
-												<img src="images/pic04.jpg" alt="" />
+												<img src="_homePage/images/pic04.jpg" alt="" />
 											</a>
 										</span>
 	
@@ -200,7 +198,7 @@
 	
 										<div>
 											<h2 style="margin:1em;">點選右側圖示以移除
-													<input src="images/no.png" type="image" onclick="window.location.href='profile_0interest.html#INTEREST'" style = "position: absolute; right:4%; bottom:6%;">
+													<input src="_homePage/images/no.png" type="image" onclick="window.location.href='profile_0interest.html#INTEREST'" style = "position: absolute; right:4%; bottom:6%;">
 											</h2>
 										</div>
 									</article>
@@ -209,7 +207,7 @@
 								<article class="style0">
 									<span class="image">
 										<a class="button_popup" href="#popup1">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -293,11 +291,46 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
+			<script src="_homePage/assets/js/jquery.min.js"></script>
+			<script src="_homePage/assets/js/skel.min.js"></script>
+			<script src="_homePage/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
+			<script src="_homePage/assets/js/main.js"></script>
+			
+			<script>
+			
+				var req;
+			
+				function start(){
+					document.getElementById("kind").addEventListener("change", addActivityItem, false);
+				}
+	
+				function addActivityItem(){
+					var kind = document.getElementById("kind");
+					var url = "/Exchange/response?kind=" + kind.value;
+					
+					if(window.XMLHttpRequest){
+						req = new XMLHttpRequest();
+					}
+					else if(window.ActiveXObject){
+						req = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					
+					req.open("Get", url, true);
+					req.onreadystatechange = callback;
+					req.send(null);
+				}
+				
+				function callback(){
+					if(req.readyState == 4){
+						if(req.status == 200){
+							
+						}
+					}
+				}
+	
+				window.addEventListener("load", start, false);
+			
+			</script>
 	</body>
 </html>

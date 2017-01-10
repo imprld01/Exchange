@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
 	Phantom by HTML5 UP
@@ -13,6 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+			<link rel="stylesheet" href="assets/css/popup.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -26,7 +27,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Exchange</span>
+									<span class="symbol"><img src="_homePage/images/logo.svg" alt="" /></span><span class="title">Exchange</span>
 								</a>
 
 							<!-- Nav -->
@@ -65,7 +66,7 @@
                                 <article class="style${exchangeLoopCount.count/5+1}">
 									<span class="image">
 										<a href="../配對頁面/skillfile_chinese.html">
-											<img src="images/pic04.jpg" alt="" />
+											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
@@ -73,8 +74,8 @@
 
 									<div>
 										<h2 style="margin:1em;">以${Exchanging}技能交換
-												<input src="images/star.png" type="image" onclick="window.location.href='../配對頁面/skillfile_chinese.html#popup2'" style = "position: absolute; right:4%; bottom:6%;">
-												<input src="images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:16%; bottom:5%;">
+												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='../配對頁面/skillfile_chinese.html#popup2'" style = "position: absolute; right:4%; bottom:6%;">
+												<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:16%; bottom:5%;">
 										</h2>
 									</div>
 								</article>
@@ -87,7 +88,7 @@
                                     <article class="style5">
                                         <span class="image">
                                             <a href="generic.html">
-                                                <img src="images/pic04.jpg" alt="" />
+                                                <img src="_homePage/images/pic04.jpg" alt="" />
                                             </a>
                                         </span>
 
@@ -95,8 +96,8 @@
 
                                         <div>
                                             <h2 style="margin:1em;">${ReceiveInvitation}技能受到邀請
-                                                    <input src="images/no.png" type="image" onclick="window.location.href='#YA'" style = "position: absolute; right:4%; bottom:6%;">
-                                                    <input src="images/yes.png" type="image" onclick="window.location.href='#ING'" style = "position: absolute; right:16%; bottom:5%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='#YA'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/yes.png" type="image" onclick="window.location.href='#ING'" style = "position: absolute; right:16%; bottom:5%;">
                                             </h2>
                                         </div>
                                     </article>
@@ -109,7 +110,7 @@
                                     <article class="style0">
                                         <span class="image">
                                             <a href="generic.html">
-                                                <img src="images/pic04.jpg" alt="" />
+                                                <img src="_homePage/images/pic04.jpg" alt="" />
                                             </a>
                                         </span>
 
@@ -117,7 +118,7 @@
 
                                         <div>
                                             <h2 style="margin:1em;">以${SendInvitation}技能邀請中
-                                                    <input src="images/no.png" type="image" onclick="window.location.href='#GET'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='#GET'" style = "position: absolute; right:4%; bottom:6%;">
 
                                             </h2>
                                         </div>
