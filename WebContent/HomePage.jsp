@@ -223,6 +223,7 @@
 													<br>
 													<a class="close" href="#">&times;</a>
 													<form >
+<<<<<<< HEAD
 														<select name="類別">
 														　<option value="Taipei">音樂</option>
 														　<option value="Taoyuan">運動</option>
@@ -231,11 +232,22 @@
 														　...
 														</select>
 														<select name="項目">
+=======
+														<select id="kind" name="類別">
+															<c:foreach var="kind" item="${types}">
+																<option value="${kind.kindName}">${kind.kindCode}</option>
+															</c:foreach>
+														</select>
+														<select id ="type" name="項目">
+>>>>>>> 1d2f62473d364f13f7b5bbfc5137a40529010602
 														　<option value="Taipei">吉他</option>
 														　<option value="Taoyuan">小號</option>
 														　<option value="Hsinchu">薩克斯風</option>
 														　<option value="Miaoli">錫口笛</option>
+<<<<<<< HEAD
 														　...
+=======
+>>>>>>> 1d2f62473d364f13f7b5bbfc5137a40529010602
 														</select>
 													</form>
 													<a href="profile.html" class="btn_more r5" >新增</a>
@@ -294,8 +306,43 @@
 			<script src="_homePage/assets/js/jquery.min.js"></script>
 			<script src="_homePage/assets/js/skel.min.js"></script>
 			<script src="_homePage/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="_homePage/assets/js/ie/respond.min.js"></script><![endif]-->
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="_homePage/assets/js/main.js"></script>
-
+			
+			<script>
+			
+				var req;
+			
+				function start(){
+					document.getElementById("kind").addEventListener("change", addActivityItem, false);
+				}
+	
+				function addActivityItem(){
+					var kind = document.getElementById("kind");
+					var url = "/Exchange/response?kind=" + kind.value;
+					
+					if(window.XMLHttpRequest){
+						req = new XMLHttpRequest();
+					}
+					else if(window.ActiveXObject){
+						req = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					
+					req.open("Get", url, true);
+					req.onreadystatechange = callback;
+					req.send(null);
+				}
+				
+				function callback(){
+					if(req.readyState == 4){
+						if(req.status == 200){
+							
+						}
+					}
+				}
+	
+				window.addEventListener("load", start, false);
+			
+			</script>
 	</body>
 </html>
