@@ -5,7 +5,7 @@
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Free forEach personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 	<head>
@@ -63,7 +63,7 @@
 							<hr><br>
 							<h3 id="ING">進行中交流</h3>
 							<section class="tiles">
-                                <c:foreach var="exchange" item="${Exchanging}" varStatus="exchangeLoopCount">
+                                <c:forEacheach var="exchange" item="${Exchanging}" varStatus="exchangeLoopCount">
                                 <article class="style${exchangeLoopCount.count/5+1}">
 									<span class="image">
 										<a href="../配對頁面/skillfile_chinese.html">
@@ -80,12 +80,12 @@
 										</h2>
 									</div>
 								</article>
-                                </c:foreach>
+                                </c:forEacheach>
 							</section>
 							<hr><br>
 							<h3 id="YA">受到的邀請</h3>
 							<section class="tiles">
-                                <c:foreach var="receiveInvitation" item="${ReceiveInvitation}">
+                                <c:forEacheach var="receiveInvitation" item="${ReceiveInvitation}">
                                     <article class="style5">
                                         <span class="image">
                                             <a href="generic.html">
@@ -102,12 +102,12 @@
                                             </h2>
                                         </div>
                                     </article>
-                                </c:foreach>
+                                </c:forEacheach>
 							</section>
 							<hr><br>
 							<h3 id="GET">送出的邀請</h3>
 							<section class="tiles">
-                                 <c:foreach var="sendInvitation" item="${SendInvitation}">
+                                 <c:forEacheach var="sendInvitation" item="${SendInvitation}">
                                     <article class="style0">
                                         <span class="image">
                                             <a href="generic.html">
@@ -124,7 +124,7 @@
                                             </h2>
                                         </div>
                                     </article>
-                                 </c:foreach>
+                                 </c:forEacheach>
 							</section>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 						<div class="inner">
 							<section>
 								<h2>Get in touch</h2>
-								<form method="post" action="#">
+								<forEachm method="post" action="#">
 									<div class="field half first">
 										<input type="text" name="name" id="name" placeholder="Name" />
 									</div>
@@ -147,7 +147,7 @@
 									<ul class="actions">
 										<li><input type="submit" value="Send" class="special" /></li>
 									</ul>
-								</form>
+								</forEachm>
 							</section>
 							<section>
 								<h2>Follow</h2>

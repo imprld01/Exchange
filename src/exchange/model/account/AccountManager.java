@@ -81,14 +81,13 @@ public class AccountManager {
 	}
 
 	public static boolean isSkillFull(String id) throws SQLException {
-		boolean result = false;
+		boolean result = true;
 		String query = "select * from accounts where user_id = '" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
-		if (rs.getInt("skill_number") >= rs.getInt("skill_max"))
+		if (rs.getInt("skill_number") < rs.getInt("skill_max"))
 			result = false;
-		else
-			result = true;
+
 
 		return result;
 	}

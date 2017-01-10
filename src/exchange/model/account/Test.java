@@ -13,8 +13,8 @@ public class Test {
 		//Date recentLog = new Date();
 		//java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		//System.out.println(now);
-		DataBaseAdmin db = new DataBaseAdmin();
-		db.changeDBAccount("root", "narutoap12");
+		//DataBaseAdmin db = new DataBaseAdmin();
+		//db.changeDBAccount("root", "narutoap12");
 		AccountManager am = new AccountManager();
 		
 		//getAccount method success
@@ -23,7 +23,7 @@ public class Test {
 		//System.out.println(am.getAccount("jec88899"));
 		
 		//測試失敗
-		am.addAccount("jec888899", "10567029", "Stanely", "Champion", true, "@yahoo.com", "1994-07-27", "新北");
+		//am.addAccount("jec888899", "10567029", "Stanely", "Champion", true, "@yahoo.com", "1994-07-27", "新北");
 
 		//System.out.println();
 	    
@@ -39,7 +39,7 @@ public class Test {
 		//System.out.println(am.getAllUserId());
 		
 		//isSkillFull(id) success
-		//System.out.println(am.isSkillFull("1234567"));
+		System.out.println(am.isSkillFull("bobobo"));
 		
 		//getregion(id) success
 		//System.out.println(am.getRegion("1234567"));

@@ -52,9 +52,10 @@
                         <p class="desc">Hello my skill is</p>
 						<form method="get" action="http://localhost:8080/Exchange/Skill.do?mark=0" >
 						<select id="kind"  name="類別" style="width:10%; text-align:center;" >
-						  <c:foreach var="kind" item="${kinds}">
-											<option value="${kind.kindCode}">${kind.kindName}</option>
-							</c:foreach></select>
+						  	<c:forEach var="kind" items="${kinds}">
+									<option value="${kind.kindCode}">${kind.kindName}</option>
+							</c:forEach>
+							</select>
 						</select >
                         <select id="type" name="項目"  style="width:10%;">
 						  <option value="volvo">吉他</option>

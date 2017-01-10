@@ -160,7 +160,7 @@
 								if (isSkillsFull) {
 									out.print("#popup666");
 								} else {
-									out.print("http://localhost:8080/Exchange/Skill.do?mark=0");
+									out.print("create.jsp");
 								}
 							%>">
 							<img src="_homePage/images/pic04.jpg" alt="" />
