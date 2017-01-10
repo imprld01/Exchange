@@ -16,6 +16,7 @@ import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
 import exchange.model.exchange.ExchangeManager;
 import exchange.model.exchange.MySkill;
+import exchange.model.skill.KindTypeManager;
 import exchange.model.skill.SkillManager;
 import exchange.model.skill.Type;
 
@@ -48,6 +49,8 @@ public class ShowHomePageServlet extends HttpServlet {
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);
 			request.setAttribute("favorites", favorites);
+			request.setAttribute("types", KindTypeManager.getKindList());
+			request.setAttribute("age", 2017 - Integer.parseInt(profile.getBirthday().split("//")[0]));
 			
 			view = request.getRequestDispatcher("/HomePage.jsp");
 			view.forward(request, response);
