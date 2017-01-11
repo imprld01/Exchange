@@ -14,23 +14,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
         <!--favicon图标-->
-        <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="_exchange/images/favicon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="_exchange/images/favicon.png" type="image/x-icon" />
 
         <!--ios设备添加到主屏幕的图标-->
-        <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="_exchange/images/apple-touch-icon-precomposed.png">
 
         <!--loading css-->
-        <link href="css/pace-theme-flash.css" rel="stylesheet" type="text/css">
+        <link href="_exchange/css/pace-theme-flash.css" rel="stylesheet" type="text/css">
 
         <!--全局定义css-->
-        <link href="css/style.css" rel="stylesheet">
+        <link href="_exchange/css/style.css" rel="stylesheet">
 
         <!--自适应css-->
-        <link href="css/responsive.css" rel="stylesheet">
+        <link href="_exchange/css/responsive.css" rel="stylesheet">
 
         <!--字体图标cdd-->
-        <link href="css/font.css" rel="stylesheet" type="text/css">
+        <link href="_exchange/css/font.css" rel="stylesheet" type="text/css">
 
         <title>Profile</title>
     </head>
@@ -50,24 +50,23 @@
                     </div>
                     <div class="base">
                         <p class="desc">Hello my skill is</p>
-						<form method="get" action="http://localhost:8080/Exchange/Skill.do?mark=0" >
-						<select id="kind"  name="類別" style="width:10%; text-align:center;" >
+						<form method="get" action="http://localhost:8080/Exchange/Skill.do" >
+						<select id="kind"  name="kind" style="width:10%; text-align:center;" >
 						  	<c:forEach var="kind" items="${kinds}">
 									<option value="${kind.kindCode}">${kind.kindName}</option>
 							</c:forEach>
 							</select>
 						</select >
-                        <select id="type" name="項目"  style="width:10%;">
-						  <option value="volvo">吉他</option>
-						  <option value="saab">鋼琴</option>
-						  <option value="mercedes">歌唱</option>
-						  <option value="audi">嗩吶</option>
+                        <select id="type" name="type"  style="width:10%;">
+						  <option value="volvo">請選擇類別</option>
+
 						</select>
                         <span>
                             <p><i aria-hidden="true" data-icon="&#xe01d;"></i>在基隆市</p>
                             <!-- <p><i aria-hidden="true" data-icon="&#xe031;"></i>評價</p> -->
                             <br>
                             <!-- <a href="../交流列表/profile_3skill.html" class="btn_exchange r5" >Save</a> -->
+                            <input type="hidden" value="0" name="mark">
                             <input value="Submit" type="submit" class="btn_next r5" >
                             <a href="../交流列表/profile.html#MINE" class="btn_exit r5" d>Cancel</a>
                         </span>
@@ -81,11 +80,11 @@
                     <div class="info_area info_left info_content">
 
                         <h5>技能的簡介/<i aria-hidden="true" data-icon="&#x7d;"></i>經歷</h5>
-						<textarea cols="50" rows="20"  placehoder = "輸入技能簡介及經歷...">
+						<textarea cols="50" rows="20" name="introExper"  placehoder = "輸入技能簡介及經歷...">
 						</textarea>
                         <h5>我的證照/影片</h5>
-                        輸入連結以嵌入影片 <input type="text"  > <img src="images/plus.png" style="margin-top:2px;"><br>
-						輸入連結以嵌入圖片 <input type="text"  > <img src="images/plus.png" style="margin-top:2px;"><br>
+                        輸入連結以嵌入影片 <input type="text"  name="video1"> <img src="_exchange/images/plus.png" style="margin-top:2px;"><br>
+						輸入連結以嵌入圖片 <input type="text"  name="image1"> <img src="_exchange/images/plus.png" style="margin-top:2px;"><br>
 
                     </div>
 					</form>
@@ -96,7 +95,7 @@
                             <dt>分數</dt>
                             <dd>
                               <p>
-                                <div id="star"><img src="images/star_.png"><img src="images/star_.png"><img src="images/star_.png"><img src="images/star_.png"><img src="images/star_.png"><div>
+                                <div id="star"><img src="_exchange/images/star_.png"><img src="_exchange/images/star_.png"><img src="_exchange/images/star_.png"><img src="_exchange/images/star_.png"><img src="_exchange/images/star_.png"><div>
                               </p>
                             </dd>
                         </dl>
@@ -174,7 +173,7 @@
                             <h3><i aria-hidden="true" data-icon="&#xe013;"></i>S5世界冠軍</h3>
                             <p>用雷茲就贏啦RRR</p>
                             <p class="pic">
-                                <img src="images/win.png" alt="首页" />
+                                <img src="_exchange/images/win.png" alt="首页" />
                                 <span>證書????</span>
                             </p>
 
@@ -199,25 +198,25 @@
         </div>
 
         <!--Jquery 2.1 不支持ie6、7、8-->
-        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="_exchange/js/jquery-2.1.1.min.js"></script>
 
         <!--jquery 局部打印-->
-        <script type="text/javascript" src="js/jQuery.print.js"></script>
+        <script type="text/javascript" src="_exchange/js/jQuery.print.js"></script>
 
         <!--jquery 动画-->
-        <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+        <script type="text/javascript" src="_exchange/js/jquery.transit.min.js"></script>
 
         <!--jquery 轮播-基于bootstrap carousel-->
-        <script type="text/javascript" src="js/carousel.min.js"></script>
+        <script type="text/javascript" src="_exchange/js/carousel.min.js"></script>
 
         <!--jquery annyang sound control-->
-        <script type="text/javascript" src="js/annyang.min.js"></script>
+        <script type="text/javascript" src="_exchange/js/annyang.min.js"></script>
 
         <!--jquery loadding-->
-        <script type="text/javascript" src="js/pace.min.js"></script>
+        <script type="text/javascript" src="_exchange/js/pace.min.js"></script>
 
         <!--effect-->
-        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="_exchange/js/common.js"></script>
 		<script>
 		function start() {
 			document.getElementById("kind").addEventListener("change",

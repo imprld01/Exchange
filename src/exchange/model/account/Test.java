@@ -39,7 +39,7 @@ public class Test {
 		//System.out.println(am.getAllUserId());
 		
 		//isSkillFull(id) success
-		System.out.println(am.isSkillFull("bobobo"));
+		System.out.println(am.isSkillFull("0"));
 		
 		//getregion(id) success
 		//System.out.println(am.getRegion("1234567"));

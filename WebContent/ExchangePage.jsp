@@ -12,11 +12,11 @@
 		<title>Exchange List</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-			<link rel="stylesheet" href="assets/css/popup.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="_homePage/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="_homePage/assets/css/main.css" />
+			<link rel="stylesheet" href="_homePage/assets/css/popup.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="_homePage/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="_homePage/assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
 		<!-- Wrapper -->
@@ -63,8 +63,8 @@
 							<hr><br>
 							<h3 id="ING">進行中交流</h3>
 							<section class="tiles">
-                                <c:forEacheach var="exchange" item="${Exchanging}" varStatus="exchangeLoopCount">
-                                <article class="style${exchangeLoopCount.count/5+1}">
+                                <c:forEach var="exchange" items="${Exchanging}" varStatus="exchangeLoopCount">
+                                <article class="style${exchangeLoopCount.count%5+1}">
 									<span class="image">
 										<a href="../配對頁面/skillfile_chinese.html">
 											<img src="_homePage/images/pic04.jpg" alt="" />
@@ -80,12 +80,12 @@
 										</h2>
 									</div>
 								</article>
-                                </c:forEacheach>
+                                </c:forEach>
 							</section>
 							<hr><br>
 							<h3 id="YA">受到的邀請</h3>
 							<section class="tiles">
-                                <c:forEacheach var="receiveInvitation" item="${ReceiveInvitation}">
+                                <c:forEach var="receiveInvitation" items="${ReceiveInvitation}">
                                     <article class="style5">
                                         <span class="image">
                                             <a href="generic.html">
@@ -102,12 +102,12 @@
                                             </h2>
                                         </div>
                                     </article>
-                                </c:forEacheach>
+                                </c:forEach>
 							</section>
 							<hr><br>
 							<h3 id="GET">送出的邀請</h3>
 							<section class="tiles">
-                                 <c:forEacheach var="sendInvitation" item="${SendInvitation}">
+                                 <c:forEach var="sendInvitation" items="${SendInvitation}">
                                     <article class="style0">
                                         <span class="image">
                                             <a href="generic.html">
@@ -124,7 +124,7 @@
                                             </h2>
                                         </div>
                                     </article>
-                                 </c:forEacheach>
+                                 </c:forEach>
 							</section>
 						</div>
 					</div>
@@ -171,11 +171,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="_homePage/assets/js/jquery.min.js"></script>
+			<script src="_homePage/assets/js/skel.min.js"></script>
+			<script src="_homePage/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="_homePage/assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="_homePage/assets/js/main.js"></script>
 
 	</body>
 </html>

@@ -22,7 +22,7 @@ public class Exchange {
 		this.yourSkillName = yourSkillName;
 	}
 	public Exchange(Skill receiveSkill, String yourSkillName) {
-		this.receiveSkill = receiveSkill;
+		this.receiveSkill = new Skill(receiveSkill);
 		this.yourSkillName = yourSkillName;
 	}
 	

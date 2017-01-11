@@ -46,14 +46,15 @@ public class SkillServlet extends HttpServlet {
 				tp = (String) request.getParameter("type");
 				uid = (String) session.getAttribute("uid");
 				ie = (String) request.getParameter("introExper");
-				vn = Integer.parseInt((String) request.getParameter("vnum"));
-				in = Integer.parseInt((String) request.getParameter("inum"));
-				for (int i = 1; i <= in; ++i)
+				//vn = Integer.parseInt((String) request.getParameter("vnum"));
+				//in = Integer.parseInt((String) request.getParameter("inum"));
+				for (int i = 1; i <= 1; ++i)
 					img.add((String) request.getParameter("image" + i));
-				for (int i = 1; i <= vn; ++i)
+				for (int i = 1; i <= 1; ++i)
 					vdo.add((String) request.getParameter("video" + i));
 
 				skill = new Skill(uid, ie, tp, img, vdo);
+				System.out.println("[skill]->" + skill);
 				SkillManager.createSkill(skill);
 
 				break;
@@ -88,7 +89,6 @@ public class SkillServlet extends HttpServlet {
 			case SHOW_SKILL:
 				RequestDispatcher view = null;
 
-
 				String id = (String) request.getParameter("id");
 
 				Skill skilltoshow = null;
@@ -99,7 +99,7 @@ public class SkillServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 
-				request.setAttribute("kindName",KindTypeManager.getKindName(skilltoshow.getType().getKindCode()));
+				request.setAttribute("kindName", KindTypeManager.getKindName(skilltoshow.getType().getKindCode()));
 
 				request.setAttribute("skill", skilltoshow);
 

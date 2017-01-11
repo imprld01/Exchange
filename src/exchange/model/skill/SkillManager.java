@@ -70,7 +70,7 @@ public class SkillManager {
 		String typeName = skill.getType().getTypeName();
 
 		try {
-			if (AccountManager.isSkillFull(userId)) {
+			if (!AccountManager.isSkillFull(userId)) {
 				// 資料庫會自動判斷是否已存在
 				/*
 				 * ResultSet rs = DataBaseAdmin.
@@ -89,11 +89,11 @@ public class SkillManager {
 				if (rs.next())
 					skillId = rs.getInt("skill_id");
 
-				for (String vedio : skill.getVideo())
-					DataBaseAdmin.updateDB("INSERT INTO vedio VALUES('" + skillId + "','" + vedio + "')");
+				for (String video : skill.getVideo())
+					DataBaseAdmin.updateDB("INSERT INTO videos VALUES('" + skillId + "','" + video + "')");
 
 				for (String image : skill.getImage())
-					DataBaseAdmin.updateDB("INSERT INTO image VALUES('" + skillId + "','" + image + "')");
+					DataBaseAdmin.updateDB("INSERT INTO images VALUES('" + skillId + "','" + image + "')");
 				System.out.println("新增技能成功");
 			} else {
 				System.out.println(userId + " 技能已達上限");

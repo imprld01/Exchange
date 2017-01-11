@@ -50,7 +50,7 @@
 			<li><a href="#PROFILE">個人資料</a></li>
 			<li><a href="#MINE">我的技能列表</a></li>
 			<li><a href="#INTEREST">興趣技能列表</a></li>
-			<li><a href="ExchangePage.jsp">交流列表 ></a></li>
+			<li><a href="http://localhost:8080/Exchange/Exchange.do">交流列表 ></a></li>
 			<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
 			<li><a href="Index.jsp">登出 </a></li>
 		</ul>
@@ -131,7 +131,7 @@
 				<h3 id="MINE">我的技能</h3>
 				<section class="tiles"> 
 				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
-					<article class="style${skillLoopCount.count/5+1}"> 
+					<article class="style${skillLoopCount.count%5+1}"> 
 						<span class="image"> 
 							<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${skill.skillId}"> 
 								<img src="_homePage/images/pic04.jpg" alt="" />
@@ -140,16 +140,20 @@
 
 						<h2 class="special">${skill.type.typeName}</h2>
 	
+						 
 						<div>
 							<h2 style="margin: 1em;">${skill}
+							<!-- 
 								<input src="_homePage/images/chat.png" type="image"
-									onclick="window.location.href='http://localhost:8080/Exchange/Communication.do.html'"
+									onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?id=${skill.skillId}'"
 									style="position: absolute; right: 4%; bottom: 6%;"> <input
 									src="_homePage/images/doc.png" type="image"
 									onclick="window.location.href='../配對頁面/edit.html'"
 									style="position: absolute; right: 16%; bottom: 6%;">
+							-->
 							</h2>
 						</div>
+						
 					</article>
 				</c:forEach> 
 				
@@ -160,7 +164,7 @@
 								if (isSkillsFull) {
 									out.print("#popup666");
 								} else {
-									out.print("create.jsp");
+									out.print("http://localhost:8080/Exchange/CreateSkill.do");
 								}
 							%>">
 							<img src="_homePage/images/pic04.jpg" alt="" />

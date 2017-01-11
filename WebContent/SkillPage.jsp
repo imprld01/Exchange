@@ -125,6 +125,18 @@
 
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.attitude/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -166,6 +178,18 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.profession/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -206,6 +230,18 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.teaching/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -246,6 +282,18 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.frequency/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -289,6 +337,19 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+								
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.satisfication/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">

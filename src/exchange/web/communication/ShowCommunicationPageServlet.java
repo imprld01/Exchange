@@ -63,6 +63,6 @@ public class ShowCommunicationPageServlet extends HttpServlet {
 				break;
 			}
 		}
-		else response.sendRedirect("index.html");
+		else response.sendRedirect("Index.jsp");
 	}
 }
