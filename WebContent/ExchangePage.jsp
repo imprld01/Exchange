@@ -66,16 +66,16 @@
                                 <c:forEach var="exchange" items="${Exchanging}" varStatus="exchangeLoopCount">
                                 <article class="style${exchangeLoopCount.count%5+1}">
 									<span class="image">
-										<a href="../配對頁面/skillfile_chinese.html">
+										<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${exchange.receiveSkill.skillId}">
 											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
 
-                                    <h2 class = "special">${Exchanging.receiveSkill.typeName}</h2>
+                                    <h2 class = "special">${exchange.receiveSkill.type.getTypeName()}</h2>
 
 									<div>
-										<h2 style="margin:1em;">以${Exchanging}技能交換
-												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='../配對頁面/skillfile_chinese.html#popup2'" style = "position: absolute; right:4%; bottom:6%;">
+										<h2 style="margin:1em;">以${exchange}技能交換
+												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Evaluation.do'" style = "position: absolute; right:4%; bottom:6%;">
 												<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:16%; bottom:5%;">
 										</h2>
 									</div>
@@ -88,15 +88,15 @@
                                 <c:forEach var="receiveInvitation" items="${ReceiveInvitation}">
                                     <article class="style5">
                                         <span class="image">
-                                            <a href="generic.html">
+                                            <a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${receiveInvitation.receiveSkill.skillId}">
                                                 <img src="_homePage/images/pic04.jpg" alt="" />
                                             </a>
                                         </span>
 
-                                        <h2 class = "special">${ReceiveInvitation.receiveSkill.typeName}</h2>
+                                        <h2 class = "special">${receiveInvitation.receiveSkill.type.getTypeName()}</h2>
 
                                         <div>
-                                            <h2 style="margin:1em;">${ReceiveInvitation}技能受到邀請
+                                            <h2 style="margin:1em;">${receiveInvitation}技能受到邀請
                                                     <input src="_homePage/images/no.png" type="image" onclick="window.location.href='#YA'" style = "position: absolute; right:4%; bottom:6%;">
                                                     <input src="_homePage/images/yes.png" type="image" onclick="window.location.href='#ING'" style = "position: absolute; right:16%; bottom:5%;">
                                             </h2>
@@ -110,15 +110,15 @@
                                  <c:forEach var="sendInvitation" items="${SendInvitation}">
                                     <article class="style0">
                                         <span class="image">
-                                            <a href="generic.html">
+                                            <a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${sendInvitation.receiveSkill.skillId}">
                                                 <img src="_homePage/images/pic04.jpg" alt="" />
                                             </a>
                                         </span>
 
-                                        <h2 class = "special">${SendInvitation.receiveSkill.typeName}</h2>
+                                        <h2 class = "special">${sendInvitation.receiveSkill.type.getTypeName()}</h2>
 
                                         <div>
-                                            <h2 style="margin:1em;">以${SendInvitation}技能邀請中
+                                            <h2 style="margin:1em;">以${sendInvitation}技能邀請中
                                                     <input src="_homePage/images/no.png" type="image" onclick="window.location.href='#GET'" style = "position: absolute; right:4%; bottom:6%;">
 
                                             </h2>
