@@ -124,7 +124,7 @@ public class SkillManager {
 	// 接收參數:該類別的type_name、user_id
 	// 回傳型態:void
 	static public void createFavoriteSkill(String typeName, String userId) {
-		System.out.println("[typeName]->" + typeName + "\n[userId]" + userId);
+		System.out.println("[createFavoriteSkill]：[typeName]->" + typeName + ",[userId]" + userId);
 		DataBaseAdmin.updateDB("INSERT INTO favorites VALUES('" + typeName + "','" + userId + "')");
 	}
 

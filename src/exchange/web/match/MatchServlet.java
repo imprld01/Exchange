@@ -43,8 +43,9 @@ public class MatchServlet extends HttpServlet {
 			}
 			System.out.println("[ba]->" + ba.match());
 			Skill skill = ba.match();
-			System.out.println("[skill]->" + skill);
-			region = am.getRegion(uid);
+			
+			region = am.getRegion(skill.getUserId());
+			System.out.println("[skill("+region+")]->" + skill);
 			request.setAttribute("para", "cardId");
 			request.setAttribute("cid", cid);
 			request.setAttribute("skill", skill);

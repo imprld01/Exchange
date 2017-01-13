@@ -208,7 +208,7 @@
 					<div>
 						<h2 style="margin: 1em;">
 							點選右側圖示以移除<form method="get" action="http://localhost:8080/Exchange/Skill.do"> 
-							<input type="hidden" value="3" name="mark">
+							<input type="hidden" value="4" name="mark">
 							<input type="hidden" value="${favorite.typeName}" name="type">
 							<input type="image" src="_homePage/images/no.png" alt="Submit Form" 
 								style="position: absolute; right: 4%; bottom: 6%;"/>
@@ -238,7 +238,7 @@
 											<option value="${kind.kindCode}">${kind.kindName}</option>
 										</c:forEach>
 									</select> <select id="type" name="type">
-										<option value="Taipei">請選擇類別</option>
+										<option value=" ">請選擇類別</option>
 									</select>
 									<input type="hidden" value="3" name="mark">
 									<input type="submit" class="btn_more r5" value="新增">
