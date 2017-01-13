@@ -153,13 +153,13 @@
 							<c:choose>
 							 	<c:when test = "${skill.othersSkill.skillId != 0}">
 									<input src="_homePage/images/chat.png" type="image"
-										onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?mark=0&id=${skill.getSkillId()}'"
+										onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?mark=0&id=${skill.mySkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;"> 
 								</c:when>
 								<c:when test = "${skill.othersSkill.skillId == 0}">
 									<input
 										src="_homePage/images/pair.png" type="image"
-										onclick="window.location.href='http://localhost:8080/Exchange/Match.do?cardId=${skill.getSkillId()}'"
+										onclick="window.location.href='http://localhost:8080/Exchange/Match.do?cardId=${skill.mySkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;">
 								</c:when>
 							</c:choose>

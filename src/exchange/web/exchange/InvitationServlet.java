@@ -29,26 +29,22 @@ public class InvitationServlet extends HttpServlet {
 			String sender = (String)request.getParameter("sdr");
 			String receiver = (String)request.getParameter("rcv");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
-			System.out.println("0");
 			switch(mark){
 			case REJECT_INVITATION:
+				System.out.println("REJECT_INVITATION");
 				ExchangeManager.rejectInvitation(sender, receiver);
 				break;
 			case ACCEPT_INVITATION:
 				ExchangeManager.acceptInvitation(sender, receiver);
 				break;
 			case SEND_INVITATION:
-				System.out.println("1");
 				ExchangeManager.sendInvitation(sender, receiver);
 				break;
-			case DELETE_INVITATION:
-				System.out.println("1");
-				ExchangeManager.rejectInvitation(receiver, sender);
-				break;
+
 			}
-			System.out.println("2");
 			response.sendRedirect("http://localhost:8080/Exchange/Exchange.do");
 		}
 		else response.sendRedirect("Index.jsp");
+		
 	}
 }

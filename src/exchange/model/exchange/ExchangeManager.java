@@ -9,12 +9,12 @@ public class ExchangeManager {
 	//接受邀請, 新增到交流Table ,將邀請Table中原本的row刪除
 	public static void acceptInvitation(String mySkillID, String othersSkillID){
 		DataBaseAdmin.updateDB("INSERT INTO exchanges VALUES('"+othersSkillID+"','"+mySkillID+"','0')");
-		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"',ivt_reciever = '"+mySkillID+"'");
+		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"'AND ivt_receiver = '"+mySkillID+"'");
 		//DataBaseAdmin.closeConnection();
 	}
 	//拒絕邀請, 刪除邀情Table中的邀請
 	public static void rejectInvitation(String mySkillID, String othersSkillID){
-		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"',ivt_reciever = '"+mySkillID+"'");
+		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"'AND ivt_receiver = '"+mySkillID+"'");
 		//DataBaseAdmin.closeConnection();
 	}
 	//完成交流, 將end_flag改成1
