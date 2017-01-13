@@ -27,7 +27,39 @@ public class SignManagerTest {
 	public void tearDown() throws Exception {
 		signmanager = null;
 	}
+	
+	@Test
+	public void testCheck1() {
+		Secret input = new Secret("10567026", "kc567894");
+		boolean output = true;
+		SignManager sm = new SignManager();
+		assertEquals(sm.CheckPassword(input), output);
+	}
 
+	@Test
+	public void testCheck2() {
+		Secret input = new Secret("105676", "kc567894");
+		boolean output = false;
+		SignManager sm = new SignManager();
+		assertEquals(sm.CheckPassword(input), output);
+	}
+	
+	@Test
+	public void testCheck3() {
+		Secret input = new Secret("10567026", "kc5674");
+		boolean output = false;
+		SignManager sm = new SignManager();
+		assertEquals(sm.CheckPassword(input), output);
+	}
+	
+	@Test
+	public void testCheck4() {
+		Secret input = new Secret("105026", "kc5674");
+		boolean output = false;
+		SignManager sm = new SignManager();
+		assertEquals(sm.CheckPassword(input), output);
+	}
+	
 	@Test
 	public void testCheckPassword1() {
 		Secret input = new Secret("10567026", "kc567894");
@@ -60,19 +92,19 @@ public class SignManagerTest {
 		assertEquals(sm.isAccountValid(input), output);
 	}
 	
-//	@Test
-//	public void testCreate1(){
-//		Secret secret = new Secret("15561315", "gd55kdls");
-//		Profile profile = new Profile("ck66ja", "slmcs66mc",
-//				true, "djjf66kkfd", "2016-09-06", "台北", 3, 0);
-//		Date recentLog = new Date();
-//		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
-//		Account input = new Account(secret, profile, sqlStartDate);
-//		//0為失敗 其他數字為成功
-//		boolean output = true;
-//		SignManager sm = new SignManager();
-//		assertEquals(sm.create(input), output);
-//      }
+	@Test
+	public void testCreate1(){
+		Secret secret = new Secret("15561315", "gd55kdls");
+		Profile profile = new Profile("ck66ja", "slmcs66mc",
+				true, "djjf66kkfd", "2016-09-06", "台北", 3, 0);
+		Date recentLog = new Date();
+		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
+		Account input = new Account(secret, profile, sqlStartDate);
+		//0為失敗 其他數字為成功
+		boolean output = true;
+		SignManager sm = new SignManager();
+		assertEquals(sm.create(input), output);
+      }
 	
 	@Test
 	public void testCreate2(){
