@@ -114,7 +114,7 @@ public class AccountManager {
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
 			rs.next();
-			System.out.println("[region]->"+rs.getString("region"));
+			//System.out.println("[region]->"+rs.getString("region"));
 			return rs.getString("region");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

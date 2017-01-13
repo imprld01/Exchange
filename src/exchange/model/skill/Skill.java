@@ -79,6 +79,15 @@ public class Skill {
 		// this.video = new ArrayList<String>(video);
 	}
 
+	public Skill(String userId, String intorExper,int times, Score score, String typeName, ArrayList<String> image, ArrayList<String> video) {
+		this(0, userId, typeName, intorExper, 0, times, score, false, false, null, image, video);
+		// this.userId = userId;
+		// this.introExpr = new String(intorExper);
+		// this.type = new Type(typeName);
+		// this.image = new ArrayList<String>(image);
+		// this.video = new ArrayList<String>(video);
+	}
+	
 	public int getSkillId() {
 		return skillId;
 	}

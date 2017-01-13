@@ -101,7 +101,7 @@ public class BasicAlgorithm extends MatchMaker {
 		} else {
 			Skill skill = skillCard.get(cardNumber).getSkill();
 			cardNumber++;
-			System.out.println("[cardNumber]->" + cardNumber);
+			//System.out.println("[cardNumber]->" + cardNumber);
 			return skill;
 		}
 	};

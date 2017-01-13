@@ -81,6 +81,7 @@ public class SkillServlet extends HttpServlet {
 				SkillManager.createFavoriteSkill(tp, uid);
 				break;
 			case DELETE_FAVORITE:
+				System.out.println("[DELETE_FAVORITE]");
 				tp = (String) request.getParameter("type");
 				uid = (String) session.getAttribute("uid");
 
