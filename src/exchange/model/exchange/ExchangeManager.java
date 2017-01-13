@@ -109,19 +109,19 @@ public class ExchangeManager {
 					//處理我送出的邀請所進行的交流 並放進ArrayList
 					while(resultExchangeA.next()){
 						MySkill mySkill = new MySkill(SkillManager.findSkill(resultExchangeA.getInt("skill_a")), resultExchangeA.getString("type_name"));
-						System.out.println("A"+resultExchangeA.getInt("skill_a")+resultExchangeA.getString("type_name"));
+						//System.out.println("A"+resultExchangeA.getInt("skill_a")+resultExchangeA.getString("type_name"));
 						mySkills.add(mySkill);
 					}
 					//處理我收到的邀請所進行的交流 並放進ArrayList
 					while(resultExchangeB.next()){
 						MySkill mySkill = new MySkill(SkillManager.findSkill(resultExchangeB.getInt("skill_b")), resultExchangeB.getString("type_name"));
-						System.out.println("A"+resultExchangeB.getInt("skill_b")+resultExchangeB.getString("type_name"));
+						//System.out.println("A"+resultExchangeB.getInt("skill_b")+resultExchangeB.getString("type_name"));
 						mySkills.add(mySkill);
 					}
 					//處理我閒置的技能並放進ArrayList
 					while(resultIdleSkill.next()){
 						MySkill mySkill = new MySkill(SkillManager.findSkill(resultIdleSkill.getInt("skill_id")), "");
-						System.out.println(resultIdleSkill.getInt("skill_id"));
+						//System.out.println(resultIdleSkill.getInt("skill_id"));
 						mySkills.add(mySkill);
 					}
 					

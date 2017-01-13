@@ -45,7 +45,7 @@ public class MatchServlet extends HttpServlet {
 			}
 			//System.out.println("[ba]->" + ba.match());
 			Skill skill = ba.match();
-			System.out.println("[skill]->" + skill);
+			//System.out.println("[skill]->" + skill);
 			if(skill == null) {
 				ba = new BasicAlgorithm(uid, cid);
 				ba.creatMateSet();
@@ -54,9 +54,9 @@ public class MatchServlet extends HttpServlet {
 			}
 			if(skill != null)
 			{
-				System.out.println("><");
+				
 				region = am.getRegion(skill.getUserId());
-				//System.out.println("[skill("+region+")]->" + skill);
+				System.out.println("[skill("+region+")]->" + skill);// <-----
 				request.setAttribute("para", "cardId");
 				request.setAttribute("cid", cid);
 				request.setAttribute("skill", skill);

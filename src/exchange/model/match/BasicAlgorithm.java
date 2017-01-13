@@ -91,7 +91,7 @@ public class BasicAlgorithm extends MatchMaker {
 	public BasicAlgorithm(String user_id, int skill_id) {
 		this.user_id = user_id;
 		this.mySkill = SkillManager.findSkill(skill_id);
-		System.out.println("[this.mySkill]->" + this.mySkill);
+		//System.out.println("[this.mySkill]->" + this.mySkill);
 	}
 
 	public Skill match() {
@@ -314,7 +314,7 @@ public class BasicAlgorithm extends MatchMaker {
 
 			sql = sql + " order by rand(now()) limit " + limit + "; ";
 
-			System.out.println("[sql]->" + sql);
+			//System.out.println("[sql]->" + sql);
 
 			ResultSet result = DataBaseAdmin.selectDB(sql);
 
