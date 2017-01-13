@@ -83,6 +83,10 @@ public class DataBaseAdmin {
 	// INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield',
 	// 2001)
 	// DELETE FROM Registration " +"WHERE id = 101";
+	/**
+	 * @param query
+	 * @return
+	 */
 	public static int updateDB(String query) {
 		int change = 0;
 		DataBaseAdmin.openConnection(DataBaseAdmin.userID, DataBaseAdmin.pwd); // 登入,帳號密碼

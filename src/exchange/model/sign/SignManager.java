@@ -65,8 +65,8 @@ public class SignManager {
 	// 確認帳號格式，重複與否
 	public boolean isAccountValid(String id) {
 		boolean result = true;
-		String query = "SELECT * FROM accounts";
-		ResultSet rs = DataBaseAdmin.selectDB(query);
+
+		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM accounts WHERE user_id='"+ id +"'");
 		try {
 			if (rs.next()) {
 				if (id.equals(rs.getString("user_id")))
@@ -79,7 +79,6 @@ public class SignManager {
 				// result = true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;

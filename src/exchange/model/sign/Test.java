@@ -29,7 +29,7 @@ public class Test {
 		//System.out.println(sm.check(secret));
 		
 		//isAccountVaild(id) success
-		System.out.println(sm.isAccountValid("151211"));
+		System.out.println(sm.isAccountValid("test"));
 		
 		//CheckPassword(password)
 		//System.out.println(sm.CheckPassword("kc567894"));
