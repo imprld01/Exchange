@@ -7,7 +7,7 @@ import java.util.Date;
 import exchange.model.database.DataBaseAdmin;
 
 public class AccountManager {
-	public void addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
+	public boolean addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
 			String birthday, String region) throws SQLException {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
@@ -23,7 +23,7 @@ public class AccountManager {
 				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
 				+ "', '" + skillMax + "', '" + sqlStartDate + "')";
 		DataBaseAdmin.updateDB(query);
-
+		return true;
 	}
 
 	public Account getAccount(String id) {
