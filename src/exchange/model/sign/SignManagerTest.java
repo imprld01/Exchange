@@ -2,10 +2,14 @@ package exchange.model.sign;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import exchange.model.account.Account;
+import exchange.model.account.Profile;
 import exchange.model.account.Secret;
 import exchange.model.database.DataBaseAdmin;
 
@@ -45,7 +49,6 @@ public class SignManagerTest {
 		String input = "1234567";
 		boolean output = false;
 		SignManager sm = new SignManager();
-		System.out.println(sm.isAccountValid(input));
 		assertEquals(sm.isAccountValid(input), output);
 	}
 
@@ -55,5 +58,33 @@ public class SignManagerTest {
 		boolean output = true;
 		SignManager sm = new SignManager();
 		assertEquals(sm.isAccountValid(input), output);
+	}
+	
+//	@Test
+//	public void testCreate1(){
+//		Secret secret = new Secret("15561315", "gd55kdls");
+//		Profile profile = new Profile("ck66ja", "slmcs66mc",
+//				true, "djjf66kkfd", "2016-09-06", "台北", 3, 0);
+//		Date recentLog = new Date();
+//		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
+//		Account input = new Account(secret, profile, sqlStartDate);
+//		//0為失敗 其他數字為成功
+//		boolean output = true;
+//		SignManager sm = new SignManager();
+//		assertEquals(sm.create(input), output);
+//      }
+	
+	@Test
+	public void testCreate2(){
+		Secret secret = new Secret("15631315", "gddlkdls");
+		Profile profile = new Profile("ckja", "slmcsmc",
+				true, "djjfkkfd", "2016-09-06", "台北", 3, 0);
+		Date recentLog = new Date();
+		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
+		Account input = new Account(secret, profile, sqlStartDate);
+		//0為失敗 其他數字為成功
+		boolean output = false;
+		SignManager sm = new SignManager();
+		assertEquals(sm.create(input), output);
 	}
 }

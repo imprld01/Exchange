@@ -14,7 +14,7 @@ public class Test {
 		// TODO Auto-generated method stub
 		
 		DataBaseAdmin db = new DataBaseAdmin();
-		db.changeDBAccount("root", "root");
+		db.changeDBAccount("root", "narutoap12");
 		SignManager sm = new SignManager();
 		
 		//System.out.println();
@@ -29,15 +29,16 @@ public class Test {
 		//System.out.println(sm.check(secret));
 		
 		//isAccountVaild(id) success
-		System.out.println(sm.isAccountValid("test"));
+//		System.out.println(sm.isAccountValid("test"));
 		
 		//CheckPassword(password)
 		//System.out.println(sm.CheckPassword("kc567894"));
 		
-		//create()
-		//Secret secret = new Secret("975183113", "62313513843");
-		//Profile profile = new Profile("Tick", "nick", true, "email", "1516-05-13", "region");
-		//sm.create(new Account(profile, secret));
+		//create()1
+		Secret secret = new Secret("9751831121213", "62313513843");
+		Profile profile = new Profile("Tick", "nick", true, "email", "1516-05-13", "region");
+		System.out.println(sm.create(new Account(profile, secret)));
+		
 	}
 
 }

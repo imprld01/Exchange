@@ -49,17 +49,20 @@ public class SignManager {
 		return result;
 	}
 
-	public void create(Account account) {
+	public boolean create(Account account) {
 		AccountManager am = new AccountManager();
+		boolean result = false;
 		try {
-			am.addAccount(account.getSecret().getId(), account.getSecret().getPassword(),
+			result = am.addAccount(account.getSecret().getId(), account.getSecret().getPassword(),
 					account.getProfile().getUserName(), account.getProfile().getNickName(),
 					account.getProfile().getGender(), account.getProfile().getEmail(),
 					account.getProfile().getBirthday(), account.getProfile().getRegion());
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return result;
 	}
 
 	// 確認帳號格式，重複與否

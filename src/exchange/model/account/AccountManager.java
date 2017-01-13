@@ -9,6 +9,7 @@ import exchange.model.database.DataBaseAdmin;
 public class AccountManager {
 	public boolean addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
 			String birthday, String region) throws SQLException {
+		int result = 0;
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		int skillMax = 3;
@@ -22,8 +23,8 @@ public class AccountManager {
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
 				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
 				+ "', '" + skillMax + "', '" + sqlStartDate + "')";
-		DataBaseAdmin.updateDB(query);
-		return true;
+		result = DataBaseAdmin.updateDB(query);
+		return (result==0)? false:true;
 	}
 
 	public Account getAccount(String id) {
