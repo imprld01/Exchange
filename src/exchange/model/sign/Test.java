@@ -38,7 +38,6 @@ public class Test {
 		Secret secret = new Secret("9751831121213", "62313513843");
 		Profile profile = new Profile("Tick", "nick", true, "email", "1516-05-13", "region");
 		System.out.println(sm.create(new Account(profile, secret)));
-		
 	}
 
 }

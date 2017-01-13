@@ -98,7 +98,7 @@ public class AccountManager {
 		String query = "SELECT * FROM accounts where user_id='" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		rs.next();
-		System.out.println("[" + id + "] -> [" + rs.getString("user_id") + "]");
+		//System.out.println("[" + id + "] -> [" + rs.getString("user_id") + "]");
 		if (id.equals(rs.getString("user_id")))
 			result = true;
 		// else if (id.length() > 20)

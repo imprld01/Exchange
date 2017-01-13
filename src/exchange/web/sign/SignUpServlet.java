@@ -39,14 +39,14 @@ public class SignUpServlet extends HttpServlet {
 		 * (ParseException e) { e.printStackTrace(); } //String DisplayDate=
 		 * formatDate.format(date);
 		 */
-		System.out.println("id:" + id);
-		System.out.println("pwd:" + pwd);
-		System.out.println("user:" + user);
-		System.out.println("nick:" + nick);
-		System.out.println("gender:" + gender);
-		System.out.println("email:" + email);
-		System.out.println("birth:" + birth);
-		System.out.println("region:" + region);
+//		System.out.println("id:" + id);
+//		System.out.println("pwd:" + pwd);
+//		System.out.println("user:" + user);
+//		System.out.println("nick:" + nick);
+//		System.out.println("gender:" + gender);
+//		System.out.println("email:" + email);
+//		System.out.println("birth:" + birth);
+//		System.out.println("region:" + region);
 		
 		Secret secret = new Secret(id, pwd);
 		Profile profile = new Profile(user, nick, gender, email, birth, region);

@@ -60,7 +60,7 @@
 						<p>
 							<i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}
 						</p> <!-- &#xe036 板手 --> <br> <a
-						href="/Invitation.do?mark=2&sdr=2&rcv=1" class="btn_exchange r5">Exchange</a>
+						href="http://localhost:8080/Exchange/Invitation.do?mark=2&sdr=2&rcv=1" class="btn_exchange r5">Exchange</a>
 						<a href="Match.do?${para}=${cid}" class="btn_next r5">Next ></a> <a
 						href="Home.do" class="btn_exit r5" d>Exit</a>
 
