@@ -60,7 +60,7 @@ public class SkillManager {
 
 	// 新增技能
 	// 限制每個帳號一開始只可以新增三個技能，交流後就不可刪除，且不可以重複創建同項技能。
-	// 新增成功accounts的
+	// 新增成功accounts的skill_number
 	// 接收參數:skill
 	// 回傳型態:void
 	static public void createSkill(Skill skill) {
@@ -80,6 +80,8 @@ public class SkillManager {
 				 * rs.getString("type_name")){ System.out.println("已建立'"+
 				 * skill.getType().getTypeName() + "'類別的興趣技能"); return; }
 				 */
+				DataBaseAdmin.updateDB("UPDATE accounts SET skill_number = (select skill_number where user_id='"
+						+ userId + "')+1 where user_id ='" + userId + "'");
 
 				DataBaseAdmin.updateDB("INSERT INTO skills VALUES('0','" + userId + "','" + typeName + "','"
 						+ skill.getIntorExpr() + "','0','0','0','0','0','0','0','0','0')");
@@ -248,6 +250,23 @@ public class SkillManager {
 
 	}
 
+	static public void updateSkillNumber() {
+		String userId = null;
+		ResultSet rs = DataBaseAdmin.selectDB("SELECT user_id FROM accounts");
+
+		try {
+			while (rs.next()) {
+				userId = rs.getString("user_id");
+				DataBaseAdmin.updateDB(
+						"UPDATE accounts SET skill_number = (SELECT count(user_id) FROM skills where user_id='"
+								+ userId + "')  where user_id ='" + userId + "'");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	static public void deleteCreate(int skillId) {
 		DataBaseAdmin.updateDB("DELETE FROM skills Where skill_id = '" + skillId + "'");
 		// DataBaseAdmin.closeConnection();
@@ -255,46 +274,50 @@ public class SkillManager {
 
 	public static void main(String[] args) {
 
-		// 資料庫中的94個type_name
-		String type[] = { "素描", "電繪", "書法", "雕塑", "戲劇", "水彩", "油畫", "料理", "烘焙", "調酒", "橋牌", "象棋", "圍棋", "跳棋", "西洋棋",
-				"原住民舞蹈", "民俗舞蹈", "現代舞", "芭蕾舞", "髮型設計", "廣告設計", "服裝設計", "英文", "中文", "日文", "德文", "泰文", "法文", "西班牙文",
-				"拉丁文", "韓文", "越南文", "希臘文", "阿拉伯文", "俄文", "夏威夷文", "挪威文", "馬來文", "菲律賓文", "瑞典文", "荷蘭文", "歌唱", "吉他", "鋼琴",
-				"小提琴", "中提琴", "大提琴", "口琴", "電吉他", "爵士鼓", "法國號", "喇叭", "貝斯", "定音鼓", "笙", "蕭", "單簧管", "豎笛", "直笛", "嗩吶",
-				"二胡", "古箏", "C", "Java", "Python", "C++", "R", "C#", "PHP", "Javascript", "Ruby", "Go", "Matlab",
-				"Swift", "VB", "Perl", "Html", "Android", "魔術", "扯鈴", "跳水", "游泳", "水上芭蕾", "水球", "輕艇", "自行車", "體操", "排球",
-				"場地障礙賽", "射箭", "田徑", "羽毛球", "籃球", "拳擊" };
-		// System.out.println(type.length);
-
-		// deleteCreate(40);
-
-		int times[] = new int[5000];
-		Score score[] = new Score[5000];
-		// 測試是否能夠成功新增技能
-		for (int i = 0; i < 5000; i++) {
-			times[i] = (int) (Math.random() * 100);
-			score[i] = new Score((int) (Math.random() * 5 + 1) * times[i], (int) (Math.random() * 5 + 1) * times[i],
-					(int) (Math.random() * 5 + 1) * times[i], (int) (Math.random() * 5 + 1) * times[i],
-					(int) (Math.random() * 5 + 1) * times[i]);
-			System.out.println("[" + i + "]" + score[i] + "->" + times[i]);
-		}
-
-		for (int i = 150; i < 5150; i++) {
-
-			// public Skill(String userId, String intorExper,int times, Score
-			// score, String typeName, ArrayList<String> image,
-			// ArrayList<String> video)
-			SkillManager.createSkill(new Skill("test" + i, "自介@test" + i, times[i - 150], score[i - 150],
-					type[(int) (Math.random() * 94)], new ArrayList<String>(), new ArrayList<String>()));
-			
-			DataBaseAdmin.updateDB("UPDATE skills SET times='" + times[i - 150] + "' ,attitude_score='"
-					+ score[i - 150].getAttitude() + "' ,profession_score='" + score[i - 150].getProfession()
-					+ "' ,teaching_score='" + score[i - 150].getTeaching() + "' ,frequency_score='"
-					+ score[i - 150].getFrequency() + "' ,satisfication_score='" + score[i - 150].getSatisfication()
-					+ "' WHERE skill_id = '" + (i - 10) + "'");
-			updateSkillLevel(i - 10);
-
-				createFavoriteSkill(type[(int) (Math.random() * 94)], "test" + (i));
-		}
+		SkillManager.updateSkillNumber();
+		/*
+		 * // 資料庫中的94個type_name String type[] = { "素描", "電繪", "書法", "雕塑", "戲劇",
+		 * "水彩", "油畫", "料理", "烘焙", "調酒", "橋牌", "象棋", "圍棋", "跳棋", "西洋棋", "原住民舞蹈",
+		 * "民俗舞蹈", "現代舞", "芭蕾舞", "髮型設計", "廣告設計", "服裝設計", "英文", "中文", "日文", "德文",
+		 * "泰文", "法文", "西班牙文", "拉丁文", "韓文", "越南文", "希臘文", "阿拉伯文", "俄文", "夏威夷文",
+		 * "挪威文", "馬來文", "菲律賓文", "瑞典文", "荷蘭文", "歌唱", "吉他", "鋼琴", "小提琴", "中提琴",
+		 * "大提琴", "口琴", "電吉他", "爵士鼓", "法國號", "喇叭", "貝斯", "定音鼓", "笙", "蕭", "單簧管",
+		 * "豎笛", "直笛", "嗩吶", "二胡", "古箏", "C", "Java", "Python", "C++", "R",
+		 * "C#", "PHP", "Javascript", "Ruby", "Go", "Matlab", "Swift", "VB",
+		 * "Perl", "Html", "Android", "魔術", "扯鈴", "跳水", "游泳", "水上芭蕾", "水球",
+		 * "輕艇", "自行車", "體操", "排球", "場地障礙賽", "射箭", "田徑", "羽毛球", "籃球", "拳擊" }; //
+		 * System.out.println(type.length);
+		 * 
+		 * // deleteCreate(40);
+		 * 
+		 * int times[] = new int[5000]; Score score[] = new Score[5000]; //
+		 * 測試是否能夠成功新增技能 for (int i = 0; i < 5000; i++) { times[i] = (int)
+		 * (Math.random() * 100); score[i] = new Score((int) (Math.random() * 5
+		 * + 1) * times[i], (int) (Math.random() * 5 + 1) * times[i], (int)
+		 * (Math.random() * 5 + 1) * times[i], (int) (Math.random() * 5 + 1) *
+		 * times[i], (int) (Math.random() * 5 + 1) * times[i]);
+		 * System.out.println("[" + i + "]" + score[i] + "->" + times[i]); }
+		 * 
+		 * for (int i = 150; i < 5150; i++) {
+		 * 
+		 * // public Skill(String userId, String intorExper,int times, Score //
+		 * score, String typeName, ArrayList<String> image, // ArrayList<String>
+		 * video) SkillManager.createSkill(new Skill("test" + i, "自介@test" + i,
+		 * times[i - 150], score[i - 150], type[(int) (Math.random() * 94)], new
+		 * ArrayList<String>(), new ArrayList<String>()));
+		 * 
+		 * DataBaseAdmin.updateDB("UPDATE skills SET times='" + times[i - 150] +
+		 * "' ,attitude_score='" + score[i - 150].getAttitude() +
+		 * "' ,profession_score='" + score[i - 150].getProfession() +
+		 * "' ,teaching_score='" + score[i - 150].getTeaching() +
+		 * "' ,frequency_score='" + score[i - 150].getFrequency() +
+		 * "' ,satisfication_score='" + score[i - 150].getSatisfication() +
+		 * "' WHERE skill_id = '" + (i - 10) + "'"); updateSkillLevel(i - 10);
+		 * 
+		 * createFavoriteSkill(type[(int) (Math.random() * 94)], "test" + (i));
+		 * }
+		 * 
+		 */
 		/*
 		 *
 		 * // 測試取得資料庫中完整技能資料 System.out.println(SkillManager.findSkill(13));
