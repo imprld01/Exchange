@@ -3,27 +3,27 @@ package exchange.model.exchange;
 import exchange.model.skill.Skill;
 
 public class Exchange {
-	private Skill receiveSkill;
-	private String yourSkillName;
+	private Skill othersSkill;
+	private Skill mySkill;
+	public Exchange(Skill mySkill,Skill othersSkill){
+		this.mySkill = mySkill;
+		this.othersSkill = othersSkill;
+	}
 	@Override
 	public String toString() {
-		return yourSkillName;
+		return othersSkill.getType().getTypeName();
 	}
-	public Skill getReceiveSkill() {
-		return receiveSkill;
+	public Skill getOthersSkill() {
+		return othersSkill;
 	}
-	public void setReceiveSkill(Skill receiveSkill) {
-		this.receiveSkill = receiveSkill;
+	public void setOthersSkill(Skill othersSkill) {
+		this.othersSkill = othersSkill;
 	}
-	public String getYourSkillName() {
-		return yourSkillName;
+	public Skill getMySkill() {
+		return mySkill;
 	}
-	public void setYourSkillName(String yourSkillName) {
-		this.yourSkillName = yourSkillName;
+	public void setMySkill(Skill mySkill) {
+		this.mySkill = mySkill;
 	}
-	public Exchange(Skill receiveSkill, String yourSkillName) {
-		this.receiveSkill = new Skill(receiveSkill);
-		this.yourSkillName = yourSkillName;
-	}
-	
+
 }

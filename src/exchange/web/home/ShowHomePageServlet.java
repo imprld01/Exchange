@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import exchange.model.account.AccountManager;
 import exchange.model.account.Profile;
+import exchange.model.exchange.Exchange;
 import exchange.model.exchange.ExchangeManager;
-import exchange.model.exchange.MySkill;
 import exchange.model.skill.KindTypeManager;
 import exchange.model.skill.SkillManager;
 import exchange.model.skill.Type;
@@ -47,7 +47,7 @@ public class ShowHomePageServlet extends HttpServlet {
 
 			ArrayList<Type> favorites = SkillManager.getAllFavoriteSkills(uid);
 
-			ArrayList<MySkill> skills = ExchangeManager.getAllMySkills(uid);
+			ArrayList<Exchange> skills = ExchangeManager.getAllMySkills(uid);
 			request.setAttribute("isSkillsFull", isSkillsFull);
 			request.setAttribute("profile", profile);
 			request.setAttribute("skills", skills);

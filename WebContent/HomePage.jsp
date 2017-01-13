@@ -133,23 +133,30 @@
 				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count%5+1}"> 
 						<span class="image"> 
-							<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${skill.skillId}"> 
+							<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${skill.mySkill.skillId}"> 
 								<img src="_homePage/images/pic04.jpg" alt="" />
 							</a>
 						</span>
 
-						<h2 class="special">${skill.type.typeName}</h2>
+						<h2 class="special">${skill.mySkill.type.typeName}</h2>
 	
 						 
 						<div>
-							<h2 style="margin: 1em;">${skill}
+						<c:choose>
+							<c:when test = "${skill.othersSkill.skillId == 0}">
+								<h2 style="margin: 1em;">養精蓄銳中
+							</c:when>
+							<c:when test = "${skill.othersSkill.skillId != 0}">
+								<h2 style="margin: 1em;">與${skill.othersSkill.type.typeName}技能交換中
+							</c:when>
+						</c:choose>
 							<c:choose>
-							 	<c:when test = "${skill != '養精蓄銳中'}">
+							 	<c:when test = "${skill.othersSkill.skillId != 0}">
 									<input src="_homePage/images/chat.png" type="image"
 										onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?mark=0&id=${skill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;"> 
 								</c:when>
-								<c:when test = "${skill == '養精蓄銳中'}">
+								<c:when test = "${skill.othersSkill.skillId == 0}">
 									<input
 										src="_homePage/images/pair.png" type="image"
 										onclick="window.location.href='http://localhost:8080/Exchange/Match.do?cardId=${skill.getSkillId()}'"
