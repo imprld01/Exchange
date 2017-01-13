@@ -102,10 +102,18 @@ public class ExchangeManager {
 		//由我收到邀請而產生的交流
 				ResultSet resultExchangeB = DataBaseAdmin.selectDB("SELECT skill_a,skill_b FROM exchanges where end_flag = '0' AND  "
 						+"(skill_b in (select skill_id from skills where user_id = '"+userID+"'));");
-				//
+				//我的送出邀請的技能
+				ResultSet resultSendingSkills = DataBaseAdmin.selectDB("SELECT ivt_sender,ivt_receiver FROM invitations where  "
+						+"(ivt_sender in (select skill_id from skills where user_id = '"+userID+"'));");
+				//我的收到邀請的技能
+				ResultSet resultReceivingSkills = DataBaseAdmin.selectDB("SELECT DISTINCT  ivt_receiver FROM invitations where  "
+						+"(ivt_receiver in (select skill_id from skills where user_id = '"+userID+"'));");
+				//閒置中的技能
 				ResultSet resultIdleSkill = DataBaseAdmin.selectDB("SELECT skill_id FROM skills where user_id = '"+userID+"'"
 						+"AND (skill_id not in (select skill_a from exchanges where end_flag = '0')) "
-						+"AND (skill_id not in (select skill_b from exchanges where end_flag = '0'))");
+						+"AND (skill_id not in (select skill_b from exchanges where end_flag = '0'))"
+						+"AND (skill_id not in (select ivt_sender from invitations ))"
+						+"AND (skill_id not in (select ivt_receiver from invitations ))");
 				try{
 					//處理我送出的邀請所進行的交流 並放進ArrayList
 					while(resultExchangeA.next()){
@@ -121,8 +129,18 @@ public class ExchangeManager {
 					}
 					//處理我閒置的技能並放進ArrayList
 					while(resultIdleSkill.next()){
-						Exchange mySkill = new Exchange(SkillManager.findSkill(resultIdleSkill.getInt("skill_id")), new Skill());
+						Exchange mySkill = new Exchange(SkillManager.findSkill(resultIdleSkill.getInt("skill_id")), 0);
 						//System.out.println(resultIdleSkill.getInt("skill_id"));
+						mySkills.add(mySkill);
+					}
+					//處理我的送出邀請的技能
+					while(resultSendingSkills.next()){
+						Exchange mySkill = new Exchange(SkillManager.findSkill(resultSendingSkills.getInt("ivt_sender")), 2);
+						mySkills.add(mySkill);
+					}
+					//處理我的收到邀請的技能
+					while(resultReceivingSkills.next()){
+						Exchange mySkill = new Exchange(SkillManager.findSkill(resultReceivingSkills.getInt("ivt_receiver")), 3);
 						mySkills.add(mySkill);
 					}
 					
