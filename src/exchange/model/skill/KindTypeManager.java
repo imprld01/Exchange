@@ -91,10 +91,11 @@ public class KindTypeManager {
 		// for (Kind k : KindTypeManager.getKindList())
 		// System.out.println(k);
 		//
-		// for (Type t : KindTypeManager.getTypeList())
-		// System.out.println(t);
-
-		for (Type t : KindTypeManager.findTypeList("SPT"))
-			System.out.println(t);
+		 for (Type t : KindTypeManager.getTypeList())
+		 {
+			 System.out.print(t.getTypeName()+"\",\"");
+		 }
+//		for (Type t : KindTypeManager.findTypeList("SPT"))
+//			System.out.println(t);
 	}
 }
