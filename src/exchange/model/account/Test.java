@@ -14,8 +14,8 @@ public class Test {
 		// Date recentLog = new Date();
 		// java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		// System.out.println(now);
-		// DataBaseAdmin db = new DataBaseAdmin();
-		// db.changeDBAccount("root", "narutoap12");
+		 DataBaseAdmin db = new DataBaseAdmin();
+		 db.changeDBAccount("root", "narutoap12");
 		AccountManager am = new AccountManager();
 
 		// getAccount method success
@@ -24,13 +24,13 @@ public class Test {
 		// System.out.println(am.getAccount("jec88899"));
 
 		// 測試失敗
-		String area[] = { "基隆", "台北", "桃園", "新竹", "苗栗", "台中", "彰化", "南投", "雲林", "嘉義", "台南", "高雄", "屏東", "宜蘭", "花蓮",
-				"台東" };
-
-		for (int i = 150; i < 5150; i++) {
-			am.addAccount("test" + i, "test" + i, "test" + i, "test" + i, true, "@test", "1111-11-11",
-					area[(int) (Math.random() * 16)]);
-		}
+//		String area[] = { "基隆", "台北", "桃園", "新竹", "苗栗", "台中", "彰化", "南投", "雲林", "嘉義", "台南", "高雄", "屏東", "宜蘭", "花蓮",
+//				"台東" };
+//
+//		for (int i = 150; i < 5150; i++) {
+//			am.addAccount("test" + i, "test" + i, "test" + i, "test" + i, true, "@test", "1111-11-11",
+//					area[(int) (Math.random() * 16)]);
+//		}
 
 		// System.out.println();
 
@@ -55,6 +55,7 @@ public class Test {
 		// System.out.println(am.isValid("788845153"));
 		// System.out.println(am.isValid("10567026"));
 		// System.out.println(am.isValid(""));
+		am.addAccount("16511", "15111", "16516161", "65151", false, "156131", "2016-01-11", "台北");
 	}
 
 }

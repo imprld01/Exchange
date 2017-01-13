@@ -11,15 +11,12 @@ import org.junit.Test;
 import exchange.model.account.Account;
 import exchange.model.account.Profile;
 import exchange.model.account.Secret;
-import exchange.model.database.DataBaseAdmin;
 
 public class SignManagerTest {
 	private SignManager signmanager;
 
 	@Before
 	public void setUp() throws Exception {
-		DataBaseAdmin db = new DataBaseAdmin();
-		db.changeDBAccount("root", "narutoap12");
 		signmanager = new SignManager();
 	}
 
@@ -100,7 +97,6 @@ public class SignManagerTest {
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		Account input = new Account(secret, profile, sqlStartDate);
-		//0為失敗 其他數字為成功
 		boolean output = true;
 		SignManager sm = new SignManager();
 		assertEquals(sm.create(input), output);
