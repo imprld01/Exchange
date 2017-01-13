@@ -24,7 +24,7 @@ public class ExchangeManager {
 	}
 	//寄出邀請, 新增到邀請Table
 	public static void sendInvitation(String mySkillID, String othersSkillID){
-		System.out.println("[mySkillID]:"+mySkillID+",[othersSkillID]:"+othersSkillID);
+		//System.out.println("[mySkillID]:"+mySkillID+",[othersSkillID]:"+othersSkillID);
 		DataBaseAdmin.updateDB("INSERT INTO invitations VALUES('"+mySkillID+"','"+othersSkillID+"')");
 		//DataBaseAdmin.closeConnection();
 	}
