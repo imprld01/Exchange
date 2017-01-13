@@ -54,7 +54,7 @@ public class SkillServlet extends HttpServlet {
 					vdo.add((String) request.getParameter("video" + i));
 
 				skill = new Skill(uid, ie, tp, img, vdo);
-				System.out.println("[skill]->" + skill);
+				//System.out.println("[skill]->" + skill);
 				SkillManager.createSkill(skill);
 
 				break;

@@ -28,7 +28,7 @@ public class LogInServlet extends HttpServlet {
 
 		if (session.isNew()) {
 
-			System.out.println("[session is new]");// ->
+			//System.out.println("[session is new]");// ->
 
 			String id = (String) request.getParameter("id");
 			String pwd = (String) request.getParameter("pwd");
@@ -44,7 +44,7 @@ public class LogInServlet extends HttpServlet {
 				//System.out.println("session" + session.getAttribute("uid"));// ->
 				session.setMaxInactiveInterval(1800);
 			} else {
-				System.out.println("檢查密碼錯誤["+ id +"]");
+				//System.out.println("檢查密碼錯誤["+ id +"]");
 				session.invalidate();
 				response.sendRedirect("Index.jsp#login");
 				return;
