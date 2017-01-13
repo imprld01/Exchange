@@ -32,7 +32,7 @@ public class MatchServlet extends HttpServlet {
 			String uid = (String) session.getAttribute("uid");
 
 			int cid = Integer.parseInt((String) request.getParameter("cardId"));
-			System.out.println("[cid]->" + cid);
+			//System.out.println("[cid]->" + cid);
 			AccountManager am = new AccountManager();
 			BasicAlgorithm ba = (BasicAlgorithm) session.getAttribute("algorithm");
 			String region = "";
@@ -41,19 +41,21 @@ public class MatchServlet extends HttpServlet {
 				ba.creatMateSet();
 				session.setAttribute("algorithm", ba);
 			}
-			System.out.println("[ba]->" + ba.match());
+			//System.out.println("[ba]->" + ba.match());
 			Skill skill = ba.match();
-			
-			region = am.getRegion(skill.getUserId());
-			System.out.println("[skill("+region+")]->" + skill);
-			request.setAttribute("para", "cardId");
-			request.setAttribute("cid", cid);
-			request.setAttribute("skill", skill);
-			request.setAttribute("region", region);
-			request.setAttribute("kindName", KindTypeManager.getKindName(skill.getType().getKindCode()));
-			view = request.getRequestDispatcher("/MatchPage.jsp");
-			view.forward(request, response);
+			if(skill != null)
+			{
+				region = am.getRegion(skill.getUserId());
+				System.out.println("[skill("+region+")]->" + skill);
+				request.setAttribute("para", "cardId");
+				request.setAttribute("cid", cid);
+				request.setAttribute("skill", skill);
+				request.setAttribute("region", region);
+				request.setAttribute("kindName", KindTypeManager.getKindName(skill.getType().getKindCode()));
+				view = request.getRequestDispatcher("/MatchPage.jsp");
+				view.forward(request, response);
+			}
 		} else
-			response.sendRedirect("Index.jsp");
+			response.sendRedirect("http://localhost:8080/Exchange/Home.do");
 	}
 }
