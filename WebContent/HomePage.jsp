@@ -142,21 +142,15 @@
 	
 						 
 						<div>
-						<c:choose>
-							<c:when test = "${skill.othersSkill.skillId == 0}">
-								<h2 style="margin: 1em;">養精蓄銳中
-							</c:when>
-							<c:when test = "${skill.othersSkill.skillId != 0}">
-								<h2 style="margin: 1em;">與${skill.othersSkill.type.typeName}技能交換中
-							</c:when>
-						</c:choose>
+
+								<h2 style="margin: 1em;">${skill.mySkillStatus()}
 							<c:choose>
-							 	<c:when test = "${skill.othersSkill.skillId != 0}">
+							 	<c:when test = "${skill.status == 1}">
 									<input src="_homePage/images/chat.png" type="image"
 										onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?mark=0&id=${skill.mySkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;"> 
 								</c:when>
-								<c:when test = "${skill.othersSkill.skillId == 0}">
+								<c:when test = "${skill.status == 0}">
 									<input
 										src="_homePage/images/pair.png" type="image"
 										onclick="window.location.href='http://localhost:8080/Exchange/Match.do?cardId=${skill.mySkill.getSkillId()}'"
