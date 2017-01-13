@@ -21,7 +21,7 @@ public class AccountManagerTest {
 	@Before
 	public void setUp() throws Exception {
 		DataBaseAdmin db = new DataBaseAdmin();
-		db.changeDBAccount("root", "narutoap12");
+		db.changeDBAccount("root", "root");
 		accountmanager = new AccountManager();
 	}
 

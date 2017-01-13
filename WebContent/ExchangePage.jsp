@@ -97,8 +97,8 @@
 
                                         <div>
                                             <h2 style="margin:1em;">${receiveInvitation.mySkill.type.typeName}技能受到邀請
-                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do/mark=0&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
-                                                    <input src="_homePage/images/yes.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do/mark=1&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'"" style = "position: absolute; right:16%; bottom:5%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=0&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/yes.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=1&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'"" style = "position: absolute; right:16%; bottom:5%;">
                                             </h2>
                                         </div>
                                     </article>
@@ -119,7 +119,7 @@
 
                                         <div>
                                             <h2 style="margin:1em;">以${sendInvitation.mySkill.type.typeName}技能邀請中
-                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do/mark=0&sdr=${sendInvitation.mySkill.skillId}&rcv=${sendInvitation.othersSkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=0&sdr=${sendInvitation.othersSkill.skillId}&rcv=${sendInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
 
                                             </h2>
                                         </div>
