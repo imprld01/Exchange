@@ -136,7 +136,7 @@
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="birth" type="text" placeholder="生日(xxxx/xx/xx)" /></div>
+									<div class="6u 12u(mobile)"><input name="birth" type="text" id="date" placeholder="1111-11-11" /></div>
 								</div>
 								<br>
 								<div class="12u">

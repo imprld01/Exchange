@@ -88,7 +88,6 @@ public class AccountManager {
 		if (rs.getInt("skill_number") < rs.getInt("skill_max"))
 			result = false;
 
-
 		return result;
 	}
 
@@ -110,10 +109,17 @@ public class AccountManager {
 		return result;
 	}
 
-	public String getRegion(String id) throws SQLException {
+	public String getRegion(String id) {
 		String query = "SELECT * FROM accounts where user_id = '" + id + "' ";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		return rs.getString("region");
+		try {
+			rs.next();
+			System.out.println("[region]->"+rs.getString("region"));
+			return rs.getString("region");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

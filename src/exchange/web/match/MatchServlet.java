@@ -19,41 +19,40 @@ import exchange.model.skill.Skill;
 
 @WebServlet("/Match.do")
 public class MatchServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession(false);
-		
-		if(session != null){
-			
-			String uid = (String)session.getAttribute("uid");
-			int cid = Integer.parseInt((String)request.getParameter("cardId"));
-			AccountManager am=new AccountManager();
-			BasicAlgorithm ba = (BasicAlgorithm)session.getAttribute("algorithm");
-			String region="";
-			if(ba == null){
+
+		if (session != null) {
+
+			String uid = (String) session.getAttribute("uid");
+
+			int cid = Integer.parseInt((String) request.getParameter("cardId"));
+			System.out.println("[cid]->" + cid);
+			AccountManager am = new AccountManager();
+			BasicAlgorithm ba = (BasicAlgorithm) session.getAttribute("algorithm");
+			String region = "";
+			if (ba == null) {
 				ba = new BasicAlgorithm(uid, cid);
+				ba.creatMateSet();
 				session.setAttribute("algorithm", ba);
 			}
-			
+			System.out.println("[ba]->" + ba.match());
 			Skill skill = ba.match();
-			try {
-				region=am.getRegion(skill.getUserId());
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			System.out.println("[skill]->" + skill);
+			region = am.getRegion(uid);
 			request.setAttribute("para", "cardId");
 			request.setAttribute("cid", cid);
 			request.setAttribute("skill", skill);
 			request.setAttribute("region", region);
-			request.setAttribute("kindName",KindTypeManager.getKindName(skill.getType().getKindCode()));
+			request.setAttribute("kindName", KindTypeManager.getKindName(skill.getType().getKindCode()));
 			view = request.getRequestDispatcher("/MatchPage.jsp");
 			view.forward(request, response);
-		}
-		else response.sendRedirect("index.html");
+		} else
+			response.sendRedirect("Index.jsp");
 	}
 }

@@ -12,7 +12,7 @@ public class Test {
 
 		// TODO Auto-generated method stub
 
-		DataBaseAdmin.changeDBAccount("root","a2n5h011oj");
+		DataBaseAdmin.changeDBAccount("root","root");
 		
 		//////////////////////////
 		BasicAlgorithm basicAlgorithm =new BasicAlgorithm("vegetable",1); //傳遞帳號與技能ID過去

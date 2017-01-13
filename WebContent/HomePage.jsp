@@ -143,14 +143,19 @@
 						 
 						<div>
 							<h2 style="margin: 1em;">${skill}
-							<!-- 
-								<input src="_homePage/images/chat.png" type="image"
-									onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?id=${skill.skillId}'"
-									style="position: absolute; right: 4%; bottom: 6%;"> <input
-									src="_homePage/images/doc.png" type="image"
-									onclick="window.location.href='../配對頁面/edit.html'"
-									style="position: absolute; right: 16%; bottom: 6%;">
-							-->
+							<c:choose>
+							 	<c:when test = "${skill != '養精蓄銳中'}">
+									<input src="_homePage/images/chat.png" type="image"
+										onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?mark=0&id=${skill.getSkillId()}'"
+										style="position: absolute; right: 4%; bottom: 6%;"> 
+								</c:when>
+								<c:when test = "${skill == '養精蓄銳中'}">
+									<input
+										src="_homePage/images/pair.png" type="image"
+										onclick="window.location.href='http://localhost:8080/Exchange/Match.do?cardId=${skill.getSkillId()}'"
+										style="position: absolute; right: 4%; bottom: 6%;">
+								</c:when>
+							</c:choose>
 							</h2>
 						</div>
 						
@@ -203,7 +208,7 @@
 					<div>
 						<h2 style="margin: 1em;">
 							點選右側圖示以移除<form method="get" action="http://localhost:8080/Exchange/Skill.do"> 
-							<input type="hidden" value="4" name="mark">
+							<input type="hidden" value="3" name="mark">
 							<input type="hidden" value="${favorite.typeName}" name="type">
 							<input type="image" src="_homePage/images/no.png" alt="Submit Form" 
 								style="position: absolute; right: 4%; bottom: 6%;"/>
