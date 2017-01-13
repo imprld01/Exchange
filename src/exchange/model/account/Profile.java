@@ -18,8 +18,8 @@ public class Profile
 		this.email = email;
 		this.birthday = birthday;
 		this.region = region;
-		this.skillMax = 3;
-		this.skillNumber = 0;
+		this.skillMax = skillMax;
+		this.skillNumber = skillNumber;
 		this.gender = gender;
 		
 	}

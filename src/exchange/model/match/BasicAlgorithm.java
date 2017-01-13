@@ -245,11 +245,11 @@ public class BasicAlgorithm extends MatchMaker {
 			if (time == 0) {
 				score = 0;
 			} else {
-				score = ((double) skillCard.get(i).getSkill().getScore().getAttitude() / time * attitudeWeights
-						+ (double) skillCard.get(i).getSkill().getScore().getProfession() / time * professionWeights
-						+ (double) skillCard.get(i).getSkill().getScore().getTeaching() / time * teachingWeights
-						+ (double) skillCard.get(i).getSkill().getScore().getFrequency() / time * frequencyWeights
-						+ (double) skillCard.get(i).getSkill().getScore().getSatisfication() / time
+				score = ( skillCard.get(i).getSkill().getScore().getAttitude() / time * attitudeWeights
+						+  skillCard.get(i).getSkill().getScore().getProfession() / time * professionWeights
+						+  skillCard.get(i).getSkill().getScore().getTeaching() / time * teachingWeights
+						+  skillCard.get(i).getSkill().getScore().getFrequency() / time * frequencyWeights
+						+  skillCard.get(i).getSkill().getScore().getSatisfication() / time
 								* satisficationWeights)
 						* skillCard.get(i).getDistanceCoefficient() / skillCard.get(i).getDistanceCoefficientSum();
 

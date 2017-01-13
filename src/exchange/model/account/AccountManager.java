@@ -40,7 +40,7 @@ public class AccountManager {
 				Profile profile = new Profile(result.getString("user_name"), result.getString("nick_name"),
 						result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
 						result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
-
+				
 				account = new Account(secret, profile, result.getDate("recent_log"));
 			}
 		} catch (SQLException e) {

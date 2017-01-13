@@ -128,7 +128,7 @@
 				</article> </section>
 				<hr>
 				<br>
-				<h3 id="MINE">我的技能</h3>
+				<h3 id="MINE">我的技能(${profile.skillNumber}/${profile.skillMax})</h3>
 				<section class="tiles"> 
 				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count%5+1}"> 
