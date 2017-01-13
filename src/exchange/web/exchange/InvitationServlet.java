@@ -19,6 +19,7 @@ public class InvitationServlet extends HttpServlet {
 	private static final int REJECT_INVITATION = 0;
 	private static final int ACCEPT_INVITATION = 1;
 	private static final int SEND_INVITATION = 2;
+	private static final int DELETE_INVITATION = 3;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -28,7 +29,7 @@ public class InvitationServlet extends HttpServlet {
 			String sender = (String)request.getParameter("sdr");
 			String receiver = (String)request.getParameter("rcv");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
-			
+			System.out.println("0");
 			switch(mark){
 			case REJECT_INVITATION:
 				ExchangeManager.rejectInvitation(sender, receiver);
@@ -37,10 +38,15 @@ public class InvitationServlet extends HttpServlet {
 				ExchangeManager.acceptInvitation(sender, receiver);
 				break;
 			case SEND_INVITATION:
+				System.out.println("1");
 				ExchangeManager.sendInvitation(sender, receiver);
 				break;
+			case DELETE_INVITATION:
+				System.out.println("1");
+				ExchangeManager.rejectInvitation(receiver, sender);
+				break;
 			}
-			
+			System.out.println("2");
 			response.sendRedirect("http://localhost:8080/Exchange/Exchange.do");
 		}
 		else response.sendRedirect("Index.jsp");

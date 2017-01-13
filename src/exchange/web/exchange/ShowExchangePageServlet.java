@@ -26,7 +26,6 @@ public class ShowExchangePageServlet extends HttpServlet {
 		if(session != null){
 			RequestDispatcher view = null;
 			String uid = (String)session.getAttribute("uid");
-			
 			ArrayList<Exchange> exchange = ExchangeManager.getExchangings(uid);
 			ArrayList<Exchange> receive = ExchangeManager.getReceiveInvitations(uid);
 			ArrayList<Exchange> send = ExchangeManager.getSendInvitations(uid);

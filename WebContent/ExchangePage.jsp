@@ -27,7 +27,7 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="index.html" class="logo">
+								<a href="#" class="logo">
 									<span class="symbol"><img src="_homePage/images/logo.svg" alt="" /></span><span class="title">Exchange</span>
 								</a>
 
@@ -48,9 +48,9 @@
 							<li><a href="#ING">進行中交流</a></li>
 							<li><a href="#YA">受到的邀請</a></li>
 							<li><a href="#GET">送出的邀請</a></li>
-							<li><a href="profile.html">個人頁面 ></a></li>
+							<li><a href="http://localhost:8080/Exchange/Home.do">個人頁面 ></a></li>
 							<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
-							<li><a href="../首頁/index.html">登出 </a></li>
+							<li><a href="Index.jsp">登出 </a></li>
 						</ul>
 					</nav>
 
@@ -119,7 +119,7 @@
 
                                         <div>
                                             <h2 style="margin:1em;">以${sendInvitation}技能邀請中
-                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='#GET'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=3&sdr=${SendInvitation.skillId}&rcv=${sendInvitation.receiveSkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
 
                                             </h2>
                                         </div>
