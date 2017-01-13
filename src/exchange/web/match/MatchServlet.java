@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.batch.Main;
+
 import exchange.model.account.AccountManager;
 import exchange.model.match.BasicAlgorithm;
 import exchange.model.skill.FavoriteSkill;
@@ -44,6 +46,12 @@ public class MatchServlet extends HttpServlet {
 			//System.out.println("[ba]->" + ba.match());
 			Skill skill = ba.match();
 			System.out.println("[skill]->" + skill);
+			if(skill == null) {
+				ba = new BasicAlgorithm(uid, cid);
+				ba.creatMateSet();
+				session.setAttribute("algorithm", ba);
+				response.sendRedirect("http://localhost:8080/Exchange/Home.do");
+			}
 			if(skill != null)
 			{
 				System.out.println("><");
@@ -60,4 +68,5 @@ public class MatchServlet extends HttpServlet {
 		} else
 			response.sendRedirect("http://localhost:8080/Exchange/Home.do");
 	}
+	
 }

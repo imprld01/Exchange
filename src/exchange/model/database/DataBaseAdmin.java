@@ -83,16 +83,17 @@ public class DataBaseAdmin {
 	// INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield',
 	// 2001)
 	// DELETE FROM Registration " +"WHERE id = 101";
-	public static void updateDB(String query) {
+	public static int updateDB(String query) {
+		int change = 0;
 		DataBaseAdmin.openConnection(DataBaseAdmin.userID, DataBaseAdmin.pwd); // 登入,帳號密碼
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-				statement.executeUpdate(query);
+			change = statement.executeUpdate(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		// closeConnection(); //待使用結束由使用者自行關閉
-		return;
+		return change;
 	}
 
 	public static void main(String[] args) throws SQLException {
@@ -102,13 +103,13 @@ public class DataBaseAdmin {
 		ResultSet result = null; // 用以存放SELECT結果
 		DataBaseAdmin.changeDBAccount("root", "root");// 更改DB帳號密碼
 		// SELECT 範例
-		result = DataBaseAdmin.selectDB("SELECT * FROM accounts");
-		while (result.next()) {
-			System.out.println(result.getString("user_id") + " " + result.getString("user_name"));
-		}
+//		result = DataBaseAdmin.selectDB("SELECT * FROM accounts");
+//		while (result.next()) {
+//			System.out.println(result.getString("user_id") + " " + result.getString("user_name"));
+//		}
 		// 修改範例
-		//String query = "UPDATE favorites SET type_name = 'guitar' where user_id = 'admin'"; // QUERY
-		//DataBaseAdmin.updateDB(query);
+		String query = "UPDATE favorites SET type_name = '吉他' where user_id = '0'"; // QUERY
+		System.out.println(DataBaseAdmin.updateDB(query));
 
 	}
 
