@@ -1,5 +1,6 @@
 package exchange.model.match.algorithm;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -24,26 +25,25 @@ public class BasicAlgorithm implements MatchMaker {
 	private SkillScoreSet skillScore;
 	private DistanceWeightSet distanceWeight;
 	private SkillRetrievalSet skillRetrieval;
+	private final static int sizeLimitation = 50;
 	
-	private String user_id;
-	private String skill_id;
-	
-	public BasicAlgorithm(String user_id, String skill_id){
+	public BasicAlgorithm(String user_id, int skill_id){
 		
 		this.skillQueue = new LinkedList<Skill>();
 		
-		this.regionMatrix = new RealDistanceOrder();
-		this.skillScore = new SumEvalScoreWithFitLvWt();
-		this.distanceWeight = new NormalizationWeight();
-		this.skillRetrieval = new FavoriteRegionRetrieval();
+		// (1) prpare distance matrix.
+		AccountManager am = new AccountManager();
+		Area [] area = this.getRegionMatrix(am.toRegionObj(am.getRegion(user_id)));
 		
-		this.user_id = user_id;
-		this.skill_id = skill_id;
+		this.regionMatrix = new RealDistanceOrder();
+		this.skillScore = new SumEvalScoreWithFitLvWt(user_id, skill_id);
+		this.distanceWeight = new NormalizationWeight();
+		this.skillRetrieval = new FavoriteRegionRetrieval(area, user_id);
 	}
 	
 	public BasicAlgorithm(RegionMatrixSet regionMatrix, SkillScoreSet skillScore,
 			DistanceWeightSet distanceWeight, SkillRetrievalSet skillRetrieval,
-			String user_id, String skill_id){
+			String user_id, int skill_id){
 		
 		this.skillQueue = new LinkedList<Skill>();
 		
@@ -51,9 +51,6 @@ public class BasicAlgorithm implements MatchMaker {
 		this.skillScore = skillScore;
 		this.distanceWeight = distanceWeight;
 		this.skillRetrieval = skillRetrieval;
-		
-		this.user_id = user_id;
-		this.skill_id = skill_id;
 	}
 	
 	public Skill toMatch(){
@@ -61,30 +58,41 @@ public class BasicAlgorithm implements MatchMaker {
 		return this.skillQueue.poll();
 	}
 	
-	public void sortSkills(){
+	public void sortSkills(ArrayList<CandidateSkill> candidates){
 		
-		// sorting array[50].
+		Collections.sort(candidates);
 	}
 	
 	public void getSkillArray(){
 		
+		// (0) declare one arrayList which type is CandidateSkill.
 		ArrayList<CandidateSkill> skillArray = new ArrayList<CandidateSkill>();
 		
-		AccountManager am = new AccountManager();
-		//region = ;
-		//getRegionMatrix(Region region);
-		// (0.5) prpare distance matrix.
-		// (1) (loop) retrieve skills from db many times until array full.
-		// (2) compute all skills' score.
-		// (3) compute all skills' distance weight.
-		// (4) call method calculateTotalScore in XXX.
-		// (5) sorting the array by total score(attribute) in XXX.
-		// (6) put elements in array into queue.
+		// (2) (loop) retrieve skills from db many times until array full.
+		do {
+			ArrayList<CandidateSkill> round = this.retrieveSkills();
+			for(CandidateSkill cs : round) skillArray.add(cs);
+		} while (skillArray.size() < sizeLimitation);
+		
+		// (3) compute all skills' score.
+		this.computeSkillScore(skillArray);
+		
+		// (4) compute all skills' distance weight.
+		this.computeDistanceWeight(skillArray);
+			
+		// (5) call method calculateTotalScore in CandidateSkill.
+		for(CandidateSkill cs : skillArray) cs.calculateTotalScore();
+		
+		// (6) sorting the array by total score(attribute) in CandidateSkill.
+		this.sortSkills(skillArray);
+		
+		// (7) put elements in array into queue.
+		for(CandidateSkill cs : skillArray) skillQueue.add(cs.getSkill());
 	}
 	
-	public void retrieveSkills(){
+	public ArrayList<CandidateSkill> retrieveSkills(){
 		
-		this.skillRetrieval.retrieveSkills();
+		return this.skillRetrieval.retrieveSkills();
 	}
 	
 	public Area [] getRegionMatrix(Region region){
@@ -92,14 +100,14 @@ public class BasicAlgorithm implements MatchMaker {
 		return this.regionMatrix.getRegionMatrix(region);
 	}
 	
-	public void computeSkillScore(){
+	public void computeSkillScore(ArrayList<CandidateSkill> cs){
 		
-		this.skillScore.computeSkillScore();
+		this.skillScore.computeSkillScore(cs);
 	}
 	
-	public void computeDistanceWeight(){
+	public void computeDistanceWeight(ArrayList<CandidateSkill> cs){
 		
-		this.distanceWeight.computeDistanceWeight();
+		this.distanceWeight.computeDistanceWeight(cs);
 	}
 	
 	public void changeSkillRetrievalMethod(SkillRetrievalSet skillRetrieval){

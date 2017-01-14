@@ -6,7 +6,7 @@ public class CandidateSkill implements Comparable<CandidateSkill> {
 
 	private Skill skill;						// 候選技能
 	private int distance;						// 技能距離順位
-	private int skillScore;						// 技能分數
+	private double skillScore;						// 技能分數
 	private double distanceWeight_numerator;	// 距離權重分子
 	private double distanceWeight_denominator;	// 距離權重分母
 	private double totalScore;					// 總分
@@ -40,12 +40,12 @@ public class CandidateSkill implements Comparable<CandidateSkill> {
 		this.distance = distance;
 	}
 
-	public int getSkillScore() {
+	public double getSkillScore() {
 		
 		return skillScore;
 	}
 
-	public void setSkillScore(int skillScore) {
+	public void setSkillScore(double skillScore) {
 		
 		this.skillScore = skillScore;
 	}
@@ -70,14 +70,10 @@ public class CandidateSkill implements Comparable<CandidateSkill> {
 		this.distanceWeight_denominator = distanceWeight_denominator;
 	}
 
-	public double getTotalScore() {
+	public void calculateTotalScore() {
 		
-		return totalScore;
-	}
-
-	public void setTotalScore(double totalScore) {
-		
-		this.totalScore = totalScore;
+		if(skillScore == 0) this.totalScore = 0;
+		this.totalScore = skillScore * (distanceWeight_numerator / distanceWeight_denominator);
 	}
 	
 	@Override

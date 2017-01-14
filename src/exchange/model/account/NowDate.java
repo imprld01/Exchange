@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class date {
+public class NowDate {
 
 	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
