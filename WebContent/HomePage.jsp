@@ -145,7 +145,7 @@
 						<div>
 
 								<h2 style="margin: 1em;">${skill.mySkillStatus()}
-								<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='CreateSkill.do?mark=1'" style="position: absolute; right:16%; bottom:6%;">
+								<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='CreateSkill.do'" style="position: absolute; right:16%; bottom:6%;">
 							<c:choose>
 							 	<c:when test = "${skill.status == 1}">
 									<input src="_homePage/images/chat.png" type="image"
@@ -172,7 +172,7 @@
 								if (isSkillsFull) {
 									out.print("#popup666");
 								} else {
-									out.print("CreateSkill.do?mark=0");
+									out.print("CreateSkill.do");
 								}
 							%>">
 							<img src="_homePage/images/pic04.jpg" alt="" />

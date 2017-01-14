@@ -28,11 +28,15 @@ public class ShowHomePageServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(false);
-
+		
+		System.out.println(session);
+		//session.invalidate();
+		//System.out.println("isNew? " + session.isNew());
+		
 		if (session != null) {
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
-
+			
 			AccountManager am = new AccountManager();
 			Profile profile = null;
 
@@ -60,7 +64,7 @@ public class ShowHomePageServlet extends HttpServlet {
 
 			view = request.getRequestDispatcher("HomePage.jsp");
 			view.forward(request, response);
-		} else
-			response.sendRedirect("Index.jsp");
+			
+		} else response.sendRedirect("Index.jsp");
 	}
 }

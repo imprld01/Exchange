@@ -68,7 +68,7 @@
                             <!-- <a href="../交流列表/profile_3skill.html" class="btn_exchange r5" >Save</a> -->
                             <input type="hidden" value="0" name="mark">
                             <input value="Submit" type="submit" class="btn_next r5" >
-                            <a href="../交流列表/profile.html#MINE" class="btn_exit r5" d>Cancel</a>
+                            <a href="Home.do#PROFILE" class="btn_exit r5" d>Cancel</a>
                         </span>
                     </div>
                 </div>
@@ -222,20 +222,16 @@
 			document.getElementById("kind").addEventListener("change",
 					addActivityItem, false);
 		}
-
 		function addActivityItem() {
 			var kind = document.getElementById("kind");
 			var type = document.getElementById("type");
 			type.innerHTML = "";
 	<%ArrayList<Type> typeList = (ArrayList<Type>) request.getAttribute("types");
 			for (Type type : typeList) {
-
 				out.println("if(kind.value == '" + type.getKindCode() + "')" + "type.innerHTML+='<option value="
 						+ type.getTypeName() + ">" + type.getTypeName() + "</option>'");
-
 			}%>
 		}
-
 		window.addEventListener("load", start, false);
 	</script>
     </body>
