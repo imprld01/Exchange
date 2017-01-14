@@ -63,22 +63,36 @@ public class AccountManager {
 	}
 
 	// Profile修改
-	public void setProfile(String id, Profile profile) {
+	public boolean setProfile(String id, Profile profile) {
+		boolean result = false;
 		String nickName = profile.getNickName();
 		String email = profile.getEmail();
 		String region = profile.getRegion();
-		String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
-				+ region + "' " + "where user_id = '" + id + "'";
-		DataBaseAdmin.updateDB(query);
+		try{
+			String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
+					+ region + "' " + "where user_id = '" + id + "'";
+			DataBaseAdmin.updateDB(query);
+			result = true;
+		}catch(Exception e){
+			
+		}
+		return result;
 
 	}
 
 	// Secret修改
-	public void setSecret(Secret secret) {
+	public boolean setSecret(Secret secret) {
+		boolean result = false;
 		String id = secret.getId();
 		String password = secret.getPassword();
-		String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
-		DataBaseAdmin.updateDB(query);
+		try{
+			String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
+			DataBaseAdmin.updateDB(query);
+			result = true;
+		}catch(Exception e){
+			
+		}
+		return result;
 
 	}
 

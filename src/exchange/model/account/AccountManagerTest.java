@@ -63,15 +63,17 @@ public class AccountManagerTest {
 				input_userName, input_nickName, input_gender, input_email, 
 				input_birthday, input_region), output);
 	}
+//	
+//	@Test
+//	public void testGetAccount() throws ParseException{
+//		AccountManager am = new AccountManager();
+//		String input = "16511";
+//		Account output = new Account(new Secret("16511", "15111"), new Profile("16516161", "65151", false, "156131", "2016-01-11", "台北"), );
+//		assertEquals(am.getAccount(input), output);
+//	}
 	
 	@Test
-	public void testGetAccount() throws ParseException{
-		AccountManager am = new AccountManager();
-		String input = "16511";
-		Account output = new Account(new Secret("16511", "15111"), new Profile("16516161", "65151", false, "156131", "2016-01-11", "台北"), );
-		assertEquals(am.getAccount(input), output);
-		
-		
-	}
+	public void testAddAccount2()
+	
 	
 }
