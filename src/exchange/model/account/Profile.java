@@ -133,30 +133,6 @@ public class Profile
 		this.skillNumber = skillNumber;
 	}
 	
-	public Region getRegionObj(){
-		
-		switch(this.region){
-		case "基隆": return Region.KEELUNG;
-		case "台北": return Region.TAIPEI;
-		case "桃園": return Region.TAOYUAN;
-		case "新竹": return Region.HSINCHU;
-		case "苗栗": return Region.MIAOLI;
-		case "台中": return Region.TAICHUNG;
-		case "彰化": return Region.CHANGHUA;
-		case "南投": return Region.NANTOU;
-		case "雲林": return Region.YUNLIN;
-		case "嘉義": return Region.CHIAYI;
-		case "台南": return Region.TAINAN;
-		case "高雄": return Region.KAOHSIUNG;
-		case "屏東": return Region.PINGTUNG;
-		case "宜蘭": return Region.ILAN;
-		case "花蓮": return Region.HUALIEN;
-		case "台東": return Region.TAITUNG;
-		}
-		
-		return null;
-	}
-	
 	public String toString()
 	{
 		return String.format("Profile[userName: %s, nickName: %s, gender: %b, Email: %s, birthday: %s, region: %s, skillMax: %d, skillNumber: %d]",
