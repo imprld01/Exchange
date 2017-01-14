@@ -11,24 +11,23 @@ import exchange.model.skill.SkillManager;
 
 public class EvaluationManager{
 	
-	public static boolean saveComment(int skillId, String comment) throws SQLException
+	public static int saveComment(int skillId, String comment) throws SQLException
 	{
-		boolean result = false;
+		int result = 0;
 		Date recentLog = new Date();
 		java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		try{
-			String query = "INSERT comments SET skill_id = '"+ skillId +"', comment = '"+ comment +"',date = '"+ now +"'";
-		    DataBaseAdmin.updateDB(query);
-		    result = true;
+			String query = "INSERT comments INTO skill_id = '"+ skillId +"', comment = '"+ comment +"',date = '"+ now +"'";
+		    result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		return result;
 	}
 
-	public static boolean saveScore(int skillId, Score score) throws SQLException
+	public static int saveScore(int skillId, Score score) throws SQLException
 	{
-		boolean result = false;
+		int result = 0;
 		Skill skill = SkillManager.findSkill(skillId);
 		try{
 			String query = "UPDATE skills SET attitude_score = '"+ (skill.getScore().getFrequency() + score.getAttitude()) +"',"
@@ -37,8 +36,7 @@ public class EvaluationManager{
 			+ " frequency_score = '"+(skill.getScore().getFrequency() + score.getFrequency()) +"', "
 			+ "satisfication_score = '"+ (skill.getScore().getSatisfication() + score.getSatisfication()) +"'"
 			+ "where skill_id = '"+skillId+"'";
-		    DataBaseAdmin.updateDB(query);
-		    result = true;
+			result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
 			
 		}
