@@ -48,7 +48,7 @@
 		<h2>Menu</h2>
 		<ul>
 			<li><a href="#PROFILE">個人資料</a></li>
-			<li><a href="#MINE">我的技能列表</a></li>
+			<li><a href="#MYSKILL">我的技能列表</a></li>
 			<li><a href="#INTEREST">興趣技能列表</a></li>
 			<li><a href="Exchange.do">交流列表 ></a></li>
 			<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
@@ -66,17 +66,17 @@
 				<br>
 				<h3 id="PROFILE">個人資料</h3>
 				<section class="tiles"> <article class="style0">
-				<span class="image"> <a href="#popup87"> <img
+				<span class="image"> <a href="#popupPROFILE"> <img
 						src="_homePage/images/pic04.jpg" alt="" />
 				</a>
 				</span>
 
 				<h2 class="special">${profile.userName}</h2>
-				<div id="popup87" class="overlay">
+				<div id="popupPROFILE" class="overlay">
 					<div class="popup" style="color: black; height: 70%">
 
 						<h2>個人資料</h2>
-						<br> <a class="close" href="#">&times;</a>
+						<br> <a class="close" href="#PROFILE">&times;</a>
 						<form>
 							<select>
 								<option value="Taipei">${profile.userName}</option>
@@ -112,8 +112,8 @@
 							<div class="popup" style="color: black; height: 70%;">
 
 								<h2>修改個人資料</h2>
-								<br> <a class="close" href="#">&times;</a>
-								<form method="get" action="Account.do"> 
+								<br> <a class="close" href="#PROFILE">&times;</a>
+								<form method="get" action="Account.do#PROFILE"> 
 									<input type="text" name="nick" placeholder="暱稱"><br>
 									<input type="text" name="region" placeholder="地區"><br>
 									<input type="text" name="email" placeholder="信箱"><br>
@@ -128,12 +128,12 @@
 				</article> </section>
 				<hr>
 				<br>
-				<h3 id="MINE">我的技能(${profile.skillNumber}/${profile.skillMax})</h3>
+				<h3 id="MYSKILL">我的技能(${profile.skillNumber}/${profile.skillMax})</h3>
 				<section class="tiles"> 
 				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count%5+1}"> 
 						<span class="image"> 
-							<a href="Skill.do?mark=2&id=${skill.mySkill.skillId}"> 
+							<a href="Skill.do?mark=2&id=${skill.mySkill.skillId}#MYSKILL"> 
 								<img src="_homePage/images/pic04.jpg" alt="" />
 							</a>
 						</span>
@@ -209,7 +209,7 @@
 					<div>
 						<h2 style="margin: 1em;">
 							點選右側圖示以移除
-							<form method="get" action="Skill.do"> 
+							<form method="get" action="Skill.do#INTEREST"> 
 							<input type="hidden" value="4" name="mark">
 							<input type="hidden" value="${favorite.typeName}" name="type">
 							<input type="image" src="_homePage/images/no.png" alt="Submit Form" 
@@ -234,8 +234,8 @@
 							<div class="popup" style="color: black;">
 
 								<h2>新增興趣技能</h2>
-								<br> <a class="close" href="#">&times;</a>
-								<form method="get" action="Skill.do" >
+								<br> <a class="close" href="#INTEREST">&times;</a>
+								<form method="get" action="Skill.do#INTEREST" >
 									<select id="kind" name="kind">
 										<c:forEach var="kind" items="${kinds}">
 											<option value="${kind.kindCode}">${kind.kindName}</option>
