@@ -21,6 +21,7 @@ public class AccountManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
+		DataBaseAdmin.openConnection("root", "narutoap12");
 		accountmanager = new AccountManager();
 	}
 
@@ -59,9 +60,10 @@ public class AccountManagerTest {
 		String input_birthday = "1994-07-27"; 
 		String input_region = "region882";
 		boolean output = false;
-		assertEquals(am.addAccount(input_id, input_password, 
+		boolean input = am.addAccount(input_id, input_password, 
 				input_userName, input_nickName, input_gender, input_email, 
-				input_birthday, input_region), output);
+				input_birthday, input_region);
+		assertEquals(input, output);
 	}
 	
 	@Test //測試修改成功 輸入已存在user_id

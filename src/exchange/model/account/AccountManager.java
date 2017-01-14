@@ -120,10 +120,14 @@ public class AccountManager {
 
 	public String getRegion(String id) {
 		String query = "SELECT * FROM accounts where user_id = '" + id + "' ";
+		System.out.println(id);
+		System.out.println(query);
+		
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
 			rs.next();
 			//System.out.println("[region]->"+rs.getString("region"));
+			System.out.println(rs.getString("region"));
 			return rs.getString("region");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
