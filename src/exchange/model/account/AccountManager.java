@@ -64,34 +64,32 @@ public class AccountManager {
 	}
 
 	// Profile修改
-	public boolean setProfile(String id, Profile profile) {
-		boolean result = false;
+	public int setProfile(String id, Profile profile) {
+		int result = 0;
 		String nickName = profile.getNickName();
 		String email = profile.getEmail();
 		String region = profile.getRegion();
 		try{
 			String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
 					+ region + "' " + "where user_id = '" + id + "'";
-			DataBaseAdmin.updateDB(query);
-			result = true;
+			result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		return result;
 
 	}
 
 	// Secret修改
-	public boolean setSecret(Secret secret) {
-		boolean result = false;
+	public int setSecret(Secret secret) {
+		int result = 0;
 		String id = secret.getId();
 		String password = secret.getPassword();
 		try{
 			String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
-			DataBaseAdmin.updateDB(query);
-			result = true;
+			result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		return result;
 
@@ -101,9 +99,9 @@ public class AccountManager {
 		boolean result = true;
 		String query = "select * from accounts where user_id = '" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		if (rs.getInt("skill_number") < rs.getInt("skill_max"))
-			result = false;
+		if(rs.next())
+			if (rs.getInt("skill_number") < rs.getInt("skill_max"))
+				result = false;
 
 		return result;
 	}
@@ -113,16 +111,10 @@ public class AccountManager {
 		boolean result = false;
 		String query = "SELECT * FROM accounts where user_id='" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		//System.out.println("[" + id + "] -> [" + rs.getString("user_id") + "]");
-		if (id.equals(rs.getString("user_id")))
-			result = true;
-		// else if (id.length() > 20)
-		// result = false;
-		// else if (id == null)
-		// result = false;
-		// else
-		// result = false;
+		if(rs.next()) 
+			if (id.equals(rs.getString("user_id")))
+				result = true;
+//		System.out.println("[" + id + "] -> [" + rs.getString("user_id") + "]");
 		return result;
 	}
 

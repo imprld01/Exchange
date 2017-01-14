@@ -55,7 +55,7 @@ public class Test {
 		// System.out.println(am.isValid("788845153"));
 		// System.out.println(am.isValid("10567026"));
 		// System.out.println(am.isValid(""));
-		am.addAccount("16511", "15111", "16516161", "65151", false, "156131", "2016-01-11", "台北");
+		//am.addAccount("16511", "15111", "16516161", "65151", false, "156131", "2016-01-11", "台北");
 	}
 
 }
