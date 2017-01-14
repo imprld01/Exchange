@@ -50,7 +50,7 @@ public class MatchServlet extends HttpServlet {
 				ba = new BasicAlgorithm(uid, cid);
 				ba.creatMateSet();
 				session.setAttribute("algorithm", ba);
-				response.sendRedirect("http://localhost:8080/Exchange/Home.do");
+				response.sendRedirect("Home.do");
 			}
 			if(skill != null)
 			{
@@ -66,7 +66,7 @@ public class MatchServlet extends HttpServlet {
 				view.forward(request, response);
 			}
 		} else
-			response.sendRedirect("http://localhost:8080/Exchange/Home.do");
+			response.sendRedirect("Home.do");
 	}
 	
 }

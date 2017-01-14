@@ -92,7 +92,7 @@
 
 				<div class="content style4 fea-tured" >
 					<div class="container 75%" align="center">
-						<form method="post" action="http://localhost:8080/Exchange/Login.do">
+						<form method="post" action="Login.do">
 							<div class="12u">
 								<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="Account" /></div>
 							</div>
@@ -126,7 +126,7 @@
 
 					<div class="content style4 fea-tured" >
 						<div class="container 75%" align="center">
-							<form method="post" action="http://localhost:8080/Exchange/Signup.do">
+							<form method="post" action="Signup.do">
 								<div class="12u">
 									<div class="6u 12u(mobile)"><input name="user" type="text" placeholder="姓名" /></div>
 								</div>

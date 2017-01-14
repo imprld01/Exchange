@@ -43,7 +43,7 @@ Hope you like it :)
     <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
     <button type="submit" class="message-submit">Send</button>
   </div>
-  <button type="submit" class="message-submit" onclick="window.location.href='http://localhost:8080/Exchange/Home.do'">back</button>
+  <button type="submit" class="message-submit" onclick="window.location.href='Home.do'">back</button>
 </div>
 <div class="bg"></div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

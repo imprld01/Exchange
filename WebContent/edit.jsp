@@ -60,8 +60,8 @@
 						<p>
 							<i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}
 						</p> <!-- &#xe036 板手 --> <br> <a
-						href="http://localhost:8080/Exchange/Skill.do?mark=1" class="btn_exchange r5">Modify</a>
-					 		<a	href="http://localhost:8080/Exchange/Home.do" class="btn_exit r5" d>Back ></a>
+						href="Skill.do?mark=1" class="btn_exchange r5">Modify</a>
+					 		<a	href="Home.do" class="btn_exit r5" d>Back ></a>
 
 					</span>
 
@@ -76,7 +76,7 @@
 
 					<!-- 修改icon -->
 					<h5>技能的簡介/經歷</h5>
-                    <form method="get" action="http://localhost:8080/Exchange/Skill.do" >
+                    <form method="get" action="Skill.do" >
                     <input type="hidden" value="1" name="mark">
                     <textarea cols="50" rows="20" name="intorExpr" placehoder = "輸入技能簡介及經歷...">
 						${skill.intorExpr}</textarea>
