@@ -73,7 +73,9 @@ public class AccountManagerTest {
 //	}
 	
 	@Test
-	public void testAddAccount2()
+	public void testSetProfie1(){
+		
+	}
 	
 	
 }
