@@ -36,19 +36,18 @@ public class FavoriteRegionRetrieval implements SkillRetrievalSet {
 			String sql = "select skills.skill_id from skills,accounts where skills.user_id=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <=3 and skills.user_id!='"
 					+ user_id + "' ";
 
-			for (int i = 0; i < favoritesSkill.size(); i++) { // 加入興趣技能
-
-				if (favoritesSkill.size() > 1) {
-					if (i == 0) {
-						sql = sql + "and (skills.type_name='" + favoritesSkill.get(i).getTypeName() + "' "; // 多個興趣開頭+小括號
-					} else if (i == favoritesSkill.size() - 1) {
-						sql = sql + "or skills.type_name='" + favoritesSkill.get(i).getTypeName() + "') ";// 多個興趣結尾+小括號
-					} else {
-						sql = sql + "or skills.type_name='" + favoritesSkill.get(i).getTypeName() + "' ";
-					}
-				} else {
-					sql = sql + "and skills.type_name='" + favoritesSkill.get(i).getTypeName() + "' ";
+			for (int i = 0; i < favoritesSkill.size(); i++) {
+				if(i==0){
+					sql = sql + "and ( ";
 				}
+				sql = sql + "skills.type_name='" + favoritesSkill.get(i).getTypeName() + "' ";
+				if(i!= favoritesSkill.size()-1){
+					sql = sql + "or ";
+				}
+				else{
+					sql = sql + ") ";
+				}
+				
 			}
 
 			// ----------------------------------------------------------------------------------
