@@ -11,7 +11,7 @@ import exchange.model.skill.SkillManager;
 
 public class EvaluationManager{
 	
-	public static boolean saveComment(int skillId, String comment) throws SQLException
+	public static boolean SaveComment(int skillId, String comment) throws SQLException
 	{
 		boolean result = false;
 		Date recentLog = new Date();
@@ -26,7 +26,7 @@ public class EvaluationManager{
 		return result;
 	}
 
-	public static boolean saveScore(int skillId, Score score) throws SQLException
+	public static boolean SaveScore(int skillId, Score score) throws SQLException
 	{
 		boolean result = false;
 		Skill skill = SkillManager.findSkill(skillId);
