@@ -11,9 +11,8 @@ public class AccountManager {
 	public boolean addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
 			String birthday, String region) throws SQLException {
 		int result = 0;
-		Date d=new Date();
-	    SimpleDateFormat sdf=new SimpleDateFormat();
-	    sdf.applyPattern("yyyy-MM-dd");
+		Date recentLog = new Date();
+		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
 		int skillMax = 3;
 		int skillNumber = 0;
 		int gender_int = 0;
@@ -24,7 +23,7 @@ public class AccountManager {
 		}
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
 				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
-				+ "', '" + skillMax + "', '" + sdf.format(d) + "')";
+				+ "', '" + skillMax + "', '" + sqlStartDate + "')";
 		result = DataBaseAdmin.updateDB(query);
 		return (result==0)? false:true;
 	}
