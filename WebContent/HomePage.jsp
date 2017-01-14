@@ -170,7 +170,7 @@
 						<a href="
 							<%boolean isSkillsFull = (boolean) request.getAttribute("isSkillsFull");
 								if (isSkillsFull) {
-									out.print("#popup666");
+									out.print("#popupLimit");
 								} else {
 									out.print("CreateSkill.do");
 								}
@@ -184,7 +184,7 @@
 				<div>
 					<h2 style="margin: 1em;">
 						點選以新增技能
-						<div id="popup666" class="overlay">
+						<div id="popupLimit" class="overlay">
 							<div class="popup" style="color: black; height: 40%">
 								<h2>錯誤警告</h2>
 								<br> <a class="close" href="#">&times;</a>
