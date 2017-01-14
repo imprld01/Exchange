@@ -28,7 +28,7 @@ public class LogInServlet extends HttpServlet {
 
 		System.out.println("getSession" + request.getSession());// ->
 
-		if (session.isNew()) {
+		if (session != null && session.getAttribute("uid") == null) {
 
 			//System.out.println("[session is new]");// ->
 
