@@ -18,7 +18,7 @@ public class IndexServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		
-		if(session != null) response.sendRedirect("Home.do");
+		if(session != null && session.getAttribute("uid") != null) response.sendRedirect("Home.do");
 		else response.sendRedirect("Index.jsp");
 	}
 }

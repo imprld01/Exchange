@@ -28,12 +28,9 @@ public class ShowHomePageServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(false);
-		
-		System.out.println(session);
-		//session.invalidate();
-		//System.out.println("isNew? " + session.isNew());
-		
-		if (session != null) {
+
+		if (session != null && session.getAttribute("uid") != null) {
+			
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
 			
