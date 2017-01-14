@@ -29,7 +29,7 @@ public class ShowHomePageServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 
-		if (session != null) {
+		if (session != null && session.getAttribute("uid") != null) {
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
 
