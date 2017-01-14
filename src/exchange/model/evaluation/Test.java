@@ -13,10 +13,10 @@ public class Test {
 		DataBaseAdmin db = new DataBaseAdmin();
 		db.changeDBAccount("root", "narutoap12");		
 		EvaluationManager em = new EvaluationManager();
-//		em.SaveComment(5313, "You are suck!");
+//		em.saveComment(5313, "You are suck!");
 //		SkillManager sm = new SkillManager();
 		
-		em.SaveScore(1, new Score(1, 1, 1, 1, 1));
+		em.saveScore(1, new Score(1, 1, 1, 1, 1));
 		
 
 	}
