@@ -7,10 +7,11 @@ import exchange.model.match.distanceWeight.DistanceWeightSet;
 import exchange.model.match.regionMatrix.RegionMatrixSet;
 import exchange.model.match.skillRetrieval.SkillRetrievalSet;
 import exchange.model.match.skillScore.SkillScoreSet;
+import exchange.model.skill.Skill;
 
 public class BasicAlgorithm implements MatchMaker {
 
-	private Queue<String> skillArray;
+	private Queue<Skill> skillArray;
 	private RegionMatrixSet regionMatrix;
 	private SkillScoreSet skillScore;
 	private DistanceWeightSet distanceWeight;
@@ -23,7 +24,7 @@ public class BasicAlgorithm implements MatchMaker {
 		this.skillScore = skillScore;
 		this.distanceWeight = distanceWeight;
 		this.skillRetrieval = skillRetrieval;
-		skillArray = new LinkedList<String>();
+		skillArray = new LinkedList<Skill>();
 	}
 	
 	public void toMatch(){
