@@ -26,7 +26,7 @@ public class LogInServlet extends HttpServlet {
 		//session.invalidate();
 		//session = request.getSession();
 
-		System.out.println("getSession" + request.getSession());// ->
+		//System.out.println("getSession" + request.getSession());// ->
 
 		if (session != null && session.getAttribute("uid") == null) {
 
