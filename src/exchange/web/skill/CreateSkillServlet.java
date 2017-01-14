@@ -24,7 +24,10 @@ import exchange.model.skill.Type;
  */
 @WebServlet("/CreateSkill.do")
 public class CreateSkillServlet extends HttpServlet {
-
+	
+	private static final int CREATE_SKILL = 0;
+	private static final int MODIFY_SKILL = 1;
+	
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,11 +37,15 @@ public class CreateSkillServlet extends HttpServlet {
 		if (session != null) {
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
-
-			request.setAttribute("kinds", KindTypeManager.getKindList());
-			request.setAttribute("types", KindTypeManager.getTypeList());
-
-			view = request.getRequestDispatcher("create.jsp");
+			
+			int mark = Integer.parseInt((String) request.getParameter("mark"));
+			
+			if( mark == CREATE_SKILL)
+			{
+				request.setAttribute("kinds", KindTypeManager.getKindList());
+				request.setAttribute("types", KindTypeManager.getTypeList());
+			}
+			view = request.getRequestDispatcher("Create.jsp");
 			view.forward(request, response);
 		} else
 			response.sendRedirect("Index.jsp");

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="exchange.model.skill.Type,java.util.ArrayList"%>
+
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -51,8 +52,8 @@
 			<li><a href="#MYSKILL">我的技能列表</a></li>
 			<li><a href="#INTEREST">興趣技能列表</a></li>
 			<li><a href="Exchange.do">交流列表 ></a></li>
-			<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
-			<li><a href="Index.jsp">登出 </a></li>
+			<li><a href="#">帳戶管理 ></a></li>
+			<li><a href="Logout.do">登出 </a></li>
 		</ul>
 		</nav>
 
@@ -144,6 +145,7 @@
 						<div>
 
 								<h2 style="margin: 1em;">${skill.mySkillStatus()}
+								<input src="_homePage/images/doc.png" type="image" onclick="window.location.href='CreateSkill.do?mark=1'" style="position: absolute; right:16%; bottom:6%;">
 							<c:choose>
 							 	<c:when test = "${skill.status == 1}">
 									<input src="_homePage/images/chat.png" type="image"
@@ -170,7 +172,7 @@
 								if (isSkillsFull) {
 									out.print("#popup666");
 								} else {
-									out.print("CreateSkill.do");
+									out.print("CreateSkill.do?mark=0");
 								}
 							%>">
 							<img src="_homePage/images/pic04.jpg" alt="" />
@@ -197,9 +199,8 @@
 				<br>
 				
 				<h3 id="INTEREST">興趣技能</h3>
-				<section class="tiles"> <c:forEach var="favorite"
-					items="${favorites}">
-					<article class="style1"> <span class="image"> <a
+				<section class="tiles"> <c:forEach var="favorite" items="${favorites}" varStatus="favoritesLoop">
+					<article class="style${favoritesLoop.count%5+1}"> <span class="image"> <a
 						href="#INTEREST"> <img src="_homePage/images/pic04.jpg" alt="" />
 					</a>
 					</span>
@@ -254,54 +255,7 @@
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<footer id="footer">
-		<div class="inner">
-			<section>
-			<h2>Get in touch</h2>
-			<form method="post" action="#">
-				<div class="field half first">
-					<input type="text" name="name" id="name" placeholder="Name" />
-				</div>
-				<div class="field half">
-					<input type="email" name="email" id="email" placeholder="Email" />
-				</div>
-				<div class="field">
-					<textarea name="message" id="message" placeholder="Message"></textarea>
-				</div>
-				<ul class="actions">
-					<li><input type="submit" value="Send" class="special" /></li>
-				</ul>
-			</form>
-			</section>
-			<section>
-			<h2>Follow</h2>
-			<ul class="icons">
-				<li><a href="#" class="icon style2 fa-twitter"><span
-						class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon style2 fa-facebook"><span
-						class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon style2 fa-instagram"><span
-						class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon style2 fa-dribbble"><span
-						class="label">Dribbble</span></a></li>
-				<li><a href="#" class="icon style2 fa-github"><span
-						class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon style2 fa-500px"><span
-						class="label">500px</span></a></li>
-				<li><a href="#" class="icon style2 fa-phone"><span
-						class="label">Phone</span></a></li>
-				<li><a href="#" class="icon style2 fa-envelope-o"><span
-						class="label">Email</span></a></li>
-			</ul>
-			</section>
-			<ul class="copyright">
-				<li>&copy; Untitled. All rights reserved</li>
-				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</div>
-		</footer>
-
+		
 	</div>
 
 	<!-- Scripts -->

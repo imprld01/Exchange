@@ -39,7 +39,7 @@ public class SkillServlet extends HttpServlet {
 			String cid, ie, uid, tp;
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
-			System.out.println("[mark]->" + (String) request.getParameter("mark"));
+			//System.out.println("[mark]->" + (String) request.getParameter("mark"));
 			int mark = Integer.parseInt((String) request.getParameter("mark"));
 
 			switch (mark) {

@@ -50,7 +50,7 @@
 							<li><a href="#GET">送出的邀請</a></li>
 							<li><a href="Home.do">個人頁面 ></a></li>
 							<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
-							<li><a href="Index.jsp">登出 </a></li>
+							<li><a href="Logout.do">登出 </a></li>
 						</ul>
 					</nav>
 
@@ -85,8 +85,8 @@
 							<hr><br>
 							<h3 id="YA">受到的邀請</h3>
 							<section class="tiles">
-                                <c:forEach var="receiveInvitation" items="${ReceiveInvitation}">
-                                    <article class="style5">
+                                <c:forEach var="receiveInvitation" items="${ReceiveInvitation}" varStatus="receiveLoop">
+                                    <article class="style${receiveLoop.count%5+1}">
                                         <span class="image">
                                             <a href="Skill.do?mark=2&id=${receiveInvitation.othersSkill.skillId}">
                                                 <img src="_homePage/images/pic04.jpg" alt="" />
@@ -107,8 +107,8 @@
 							<hr><br>
 							<h3 id="GET">送出的邀請</h3>
 							<section class="tiles">
-                                 <c:forEach var="sendInvitation" items="${SendInvitation}">
-                                    <article class="style0">
+                                 <c:forEach var="sendInvitation" items="${SendInvitation}" varStatus="sendLoop">
+                                    <article class="style${sendLoop.count%5+1}">
                                         <span class="image">
                                             <a href="Skill.do?mark=2&id=${sendInvitation.othersSkill.skillId}">
                                                 <img src="_homePage/images/pic04.jpg" alt="" />
@@ -129,44 +129,6 @@
 						</div>
 					</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<forEachm method="post" action="#">
-									<div class="field half first">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="field half">
-										<input type="email" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="field">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="special" /></li>
-									</ul>
-								</forEachm>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-									<li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
-									<li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
-									<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
 
 			</div>
 
