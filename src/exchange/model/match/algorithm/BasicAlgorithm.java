@@ -35,7 +35,7 @@ public class BasicAlgorithm implements MatchMaker {
 		AccountManager am = new AccountManager();
 
 	
-		this.regionMatrix = new RealDistanceOrder(); 
+		this.regionMatrix = new RealDistanceOrder();   //原順序錯誤  無建立物件下行將無法執行 已修改
 		Area [] area = this.getRegionMatrix(am.toRegionObj(am.getRegion(user_id)));  //取得地區陣列
 
 		this.skillScore = new SumEvalScoreWithFitLvWt(user_id, skill_id);
