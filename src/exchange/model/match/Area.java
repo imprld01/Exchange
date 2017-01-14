@@ -1,11 +1,11 @@
 package exchange.model.match;
 
-class Area{ //依照表格排序地區  (魔術數字)
+public class Area{ //依照表格排序地區  (魔術數字)
 	
 	private int distance;
 	private String placeName;
 	
-	Area(int distance, String placeName) {
+	public Area(int distance, String placeName) {
 		
 		this.distance=distance; this.placeName=placeName;
 	}
