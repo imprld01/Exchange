@@ -48,7 +48,7 @@
 							<li><a href="#ING">進行中交流</a></li>
 							<li><a href="#YA">受到的邀請</a></li>
 							<li><a href="#GET">送出的邀請</a></li>
-							<li><a href="http://localhost:8080/Exchange/Home.do">個人頁面 ></a></li>
+							<li><a href="Home.do">個人頁面 ></a></li>
 							<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
 							<li><a href="Index.jsp">登出 </a></li>
 						</ul>
@@ -66,7 +66,7 @@
                                 <c:forEach var="exchange" items="${Exchanging}" varStatus="exchangeLoopCount">
                                 <article class="style${exchangeLoopCount.count%5+1}">
 									<span class="image">
-										<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${exchange.othersSkill.skillId}">
+										<a href="Skill.do?mark=2&id=${exchange.othersSkill.skillId}">
 											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
@@ -75,7 +75,7 @@
 
 									<div>
 										<h2 style="margin:1em;">以${exchange.mySkill.type.getTypeName()}技能交換
-												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Evaluation.do'" style = "position: absolute; right:4%; bottom:6%;">
+												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='Evaluation.do'" style = "position: absolute; right:4%; bottom:6%;">
 												<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:16%; bottom:5%;">
 										</h2>
 									</div>
@@ -88,7 +88,7 @@
                                 <c:forEach var="receiveInvitation" items="${ReceiveInvitation}">
                                     <article class="style5">
                                         <span class="image">
-                                            <a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${receiveInvitation.othersSkill.skillId}">
+                                            <a href="Skill.do?mark=2&id=${receiveInvitation.othersSkill.skillId}">
                                                 <img src="_homePage/images/pic04.jpg" alt="" />
                                             </a>
                                         </span>
@@ -97,8 +97,8 @@
 
                                         <div>
                                             <h2 style="margin:1em;">${receiveInvitation.mySkill.type.typeName}技能受到邀請
-                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=0&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
-                                                    <input src="_homePage/images/yes.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=1&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'"" style = "position: absolute; right:16%; bottom:5%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='Invitation.do?mark=0&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/yes.png" type="image" onclick="window.location.href='Invitation.do?mark=1&sdr=${receiveInvitation.othersSkill.skillId}&rcv=${receiveInvitation.mySkill.skillId}'"" style = "position: absolute; right:16%; bottom:5%;">
                                             </h2>
                                         </div>
                                     </article>
@@ -110,7 +110,7 @@
                                  <c:forEach var="sendInvitation" items="${SendInvitation}">
                                     <article class="style0">
                                         <span class="image">
-                                            <a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${sendInvitation.othersSkill.skillId}">
+                                            <a href="Skill.do?mark=2&id=${sendInvitation.othersSkill.skillId}">
                                                 <img src="_homePage/images/pic04.jpg" alt="" />
                                             </a>
                                         </span>
@@ -119,7 +119,7 @@
 
                                         <div>
                                             <h2 style="margin:1em;">以${sendInvitation.mySkill.type.typeName}技能邀請中
-                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='http://localhost:8080/Exchange/Invitation.do?mark=0&sdr=${sendInvitation.othersSkill.skillId}&rcv=${sendInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='Invitation.do?mark=0&sdr=${sendInvitation.othersSkill.skillId}&rcv=${sendInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
 
                                             </h2>
                                         </div>

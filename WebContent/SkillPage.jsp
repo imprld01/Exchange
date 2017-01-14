@@ -61,9 +61,9 @@
 							<i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}
 						</p> <!-- &#xe036 板手 --> <br>
 						 <!--
-						 	<a href="http://localhost:8080/Exchange/Skill.do?mark=1" class="btn_exchange r5">Modify</a>
+						 	<a href="Skill.do?mark=1" class="btn_exchange r5">Modify</a>
 					 	-->	
-					 		<a	href="http://localhost:8080/Exchange/Home.do" class="btn_exit r5" d>Back ></a>
+					 		<a	href="Home.do" class="btn_exit r5" d>Back ></a>
 
 					</span>
 

@@ -18,7 +18,7 @@ public class IndexServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		
-		if(session != null) response.sendRedirect("/Home.do");
-		else response.sendRedirect("index.html");
+		if(session != null) response.sendRedirect("Home.do");
+		else response.sendRedirect("Index.jsp");
 	}
 }

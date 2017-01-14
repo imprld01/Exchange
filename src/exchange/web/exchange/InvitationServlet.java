@@ -42,7 +42,7 @@ public class InvitationServlet extends HttpServlet {
 				break;
 
 			}
-			response.sendRedirect("http://localhost:8080/Exchange/Exchange.do");
+			response.sendRedirect("Exchange.do");
 		}
 		else response.sendRedirect("Index.jsp");
 		

@@ -50,7 +50,7 @@
                     </div>
                     <div class="base">
                         <p class="desc">Hello my skill is</p>
-						<form method="get" action="http://localhost:8080/Exchange/Skill.do" >
+						<form method="get" action="Skill.do" >
 						<select id="kind"  name="kind" style="width:10%; text-align:center;" >
 						  	<c:forEach var="kind" items="${kinds}">
 									<option value="${kind.kindCode}">${kind.kindName}</option>

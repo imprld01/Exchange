@@ -50,7 +50,7 @@
 			<li><a href="#PROFILE">個人資料</a></li>
 			<li><a href="#MINE">我的技能列表</a></li>
 			<li><a href="#INTEREST">興趣技能列表</a></li>
-			<li><a href="http://localhost:8080/Exchange/Exchange.do">交流列表 ></a></li>
+			<li><a href="Exchange.do">交流列表 ></a></li>
 			<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
 			<li><a href="Index.jsp">登出 </a></li>
 		</ul>
@@ -113,7 +113,7 @@
 
 								<h2>修改個人資料</h2>
 								<br> <a class="close" href="#">&times;</a>
-								<form method="get" action="http://localhost:8080/Exchange/Account.do"> 
+								<form method="get" action="Account.do"> 
 									<input type="text" name="nick" placeholder="暱稱"><br>
 									<input type="text" name="region" placeholder="地區"><br>
 									<input type="text" name="email" placeholder="信箱"><br>
@@ -133,7 +133,7 @@
 				<c:forEach var="skill"	items="${skills}" varStatus="skillLoopCount">
 					<article class="style${skillLoopCount.count%5+1}"> 
 						<span class="image"> 
-							<a href="http://localhost:8080/Exchange/Skill.do?mark=2&id=${skill.mySkill.skillId}"> 
+							<a href="Skill.do?mark=2&id=${skill.mySkill.skillId}"> 
 								<img src="_homePage/images/pic04.jpg" alt="" />
 							</a>
 						</span>
@@ -147,13 +147,13 @@
 							<c:choose>
 							 	<c:when test = "${skill.status == 1}">
 									<input src="_homePage/images/chat.png" type="image"
-										onclick="window.location.href='http://localhost:8080/Exchange/Communication.do?mark=0&id=${skill.mySkill.getSkillId()}'"
+										onclick="window.location.href='Communication.do?mark=0&id=${skill.mySkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;"> 
 								</c:when>
 								<c:when test = "${skill.status == 0}">
 									<input
 										src="_homePage/images/pair.png" type="image"
-										onclick="window.location.href='http://localhost:8080/Exchange/Match.do?cardId=${skill.mySkill.getSkillId()}'"
+										onclick="window.location.href='Match.do?cardId=${skill.mySkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;">
 								</c:when>
 							</c:choose>
@@ -170,7 +170,7 @@
 								if (isSkillsFull) {
 									out.print("#popup666");
 								} else {
-									out.print("http://localhost:8080/Exchange/CreateSkill.do");
+									out.print("CreateSkill.do");
 								}
 							%>">
 							<img src="_homePage/images/pic04.jpg" alt="" />
@@ -209,7 +209,7 @@
 					<div>
 						<h2 style="margin: 1em;">
 							點選右側圖示以移除
-							<form method="get" action="http://localhost:8080/Exchange/Skill.do"> 
+							<form method="get" action="Skill.do"> 
 							<input type="hidden" value="4" name="mark">
 							<input type="hidden" value="${favorite.typeName}" name="type">
 							<input type="image" src="_homePage/images/no.png" alt="Submit Form" 
@@ -235,7 +235,7 @@
 
 								<h2>新增興趣技能</h2>
 								<br> <a class="close" href="#">&times;</a>
-								<form method="get" action="http://localhost:8080/Exchange/Skill.do" >
+								<form method="get" action="Skill.do" >
 									<select id="kind" name="kind">
 										<c:forEach var="kind" items="${kinds}">
 											<option value="${kind.kindCode}">${kind.kindName}</option>
