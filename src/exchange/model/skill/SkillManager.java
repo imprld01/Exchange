@@ -145,7 +145,6 @@ public class SkillManager {
 	static public void modifySkill(Skill skill) {
 		
 		int skillId = skill.getSkillId();
-		try{
 			DataBaseAdmin.updateDB(
 					"UPDATE skills SET intro_expr='" + skill.getIntorExpr() + "' where (skill_id = '" + skillId + "')");
 			for (String vedio : skill.getVideo())
@@ -154,9 +153,6 @@ public class SkillManager {
 			for (String image : skill.getImage())
 			DataBaseAdmin.updateDB(
 					"UPDATE images SET image='" + image + "' where (skill_id = '" + skillId + "')");
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 		//return count;
 	}
@@ -178,16 +174,10 @@ public class SkillManager {
 
 	// 刪除使用者感興趣的技能類別
 	// 接收參數:該類別的type_name、user_id
-	// 回傳型態:boolean
-	static public boolean deleteFavoriteSkill(String typeName, String userId) {
-		int flag = 0;
-		try{
-			flag = DataBaseAdmin.
-					updateDB("DELETE FROM favorites Where user_id= '" + userId + "'AND type_name = '" + typeName + "'");
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return (flag == 0)? false:true;
+	// 回傳型態:void
+	static public void deleteFavoriteSkill(String typeName, String userId) {
+		DataBaseAdmin.
+				updateDB("DELETE FROM favorites Where user_id= '" + userId + "'AND type_name = '" + typeName + "'");
 	}
 
 	// 取得使用者所有技能

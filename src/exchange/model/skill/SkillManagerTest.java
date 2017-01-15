@@ -46,7 +46,7 @@ public class SkillManagerTest {
 		image.add(a);
 		ArrayList<String> video = new ArrayList<String>();
 		video.add(a);
-		boolean input = skillmanager.createSkill(new Skill("test1023", "我想回家ˊˋ", "吉他", image, video));
+		boolean input = skillmanager.createSkill(new Skill("test1099", "我想回家ˊˋ", "吉他", image, video));
 		boolean output = true; 
 		assertEquals(input, output);
 	}
@@ -77,49 +77,19 @@ public class SkillManagerTest {
 		assertEquals(input, output);
 	}
 	
-	@Test //測試修改技能成功
-	public void testModifySkill1() {
-		int input_skillId = 1;
-		String a = "@URL";String b = "@URL_1";String c = "@URL_2";
-		ArrayList<String> image = new ArrayList<String>();
-		image.add(a);image.add(b);
-		ArrayList<String> video = new ArrayList<String>();
-		video.add(a);video.add(b);video.add(c);
-		ArrayList<Comment> comment = new ArrayList<Comment>();
-		String d = "You are suck!"; String e = "2017-01-15";
-		Comment testComment =new Comment(d,e);
-		comment.add(testComment);
-		String input = skillmanager.modifySkill((new Skill(1, "vegetable", "吉他", "施博文是87", 57, 87, 
-				new Score(258, 442, 360, 258, 120), false, true, comment,image, video))).toString();
-		String output = ; 
+	
+	@Test //測試新增興趣技能成功
+	public void testCreateFavoriteSkill1() {
+		boolean input = skillmanager.createFavoriteSkill("吉他", "10567026");
+		boolean output = true;
 		assertEquals(input, output);
 	}
 	
-//	@Test //測試新增興趣技能成功
-//	public void testCreateFavoriteSkill1() {
-//		boolean input = skillmanager.createFavoriteSkill("吉他", "10567026");
-//		boolean output = true;
-//		assertEquals(input, output);
-//	}
-//	
-//	@Test //測試輸入已建立的user_id，新增興趣技能失敗
-//	public void testCreateFavoriteSkill2() {
-//		boolean input = skillmanager.createFavoriteSkill("吉他", "test100");
-//		boolean output = false;
-//		assertEquals(input, output);
-//	}
-//	
-//	@Test //測試刪除興趣技能成功
-//	public void testDeleteFavoriteSkill1() {
-//		boolean input = skillmanager.createFavoriteSkill("髮型設計", "test100");
-//		boolean output = true;
-//		assertEquals(input, output);
-//	}
-//	
-//	@Test //測試刪除不存在興趣技能，刪除興趣技能失敗
-//	public void testDeleteFavoriteSkill2() {
-//		boolean input = skillmanager.createFavoriteSkill("吉他", "test10000");
-//		boolean output = false;
-//		assertEquals(input, output);
+	@Test //測試輸入已建立的user_id，新增興趣技能失敗
+	public void testCreateFavoriteSkill2() {
+		boolean input = skillmanager.createFavoriteSkill("吉他", "test100");
+		boolean output = false;
+		assertEquals(input, output);
 	}
+	
 }
