@@ -88,6 +88,7 @@ public class SkillManager {
 				if (flag != 0) {
 					DataBaseAdmin.updateDB("UPDATE accounts SET skill_number = (select skill_number where user_id='"
 							+ userId + "')+1 where user_id ='" + userId + "'");
+					
 					ResultSet rs = DataBaseAdmin.selectDB(
 							"SELECT * FROM skills where user_id = '" + userId + "' AND type_name ='" + typeName + "'");
 
@@ -111,6 +112,32 @@ public class SkillManager {
 		return (flag == 0) ? false : true;
 	}
 
+	//判斷是否是重複技能卡
+	//要新增的資料沒有在資料庫中 => 回傳TRUE可以新增!
+	static public boolean checkSkillDuplicate(Skill skill)
+	{
+		int count = 0; 
+		String userId = skill.getUserId();
+		String typeName = skill.getType().getTypeName();
+		
+		ResultSet rs = DataBaseAdmin.selectDB(
+				"SELECT * FROM skills where user_id = '" + userId + "'");
+		
+		try {
+			while(rs.next())
+			{
+				if(rs.getString("type_name").equals(typeName)) count++;
+				System.out.println("["+rs.getString("type_name")+"]->["+typeName+"]");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//return count;
+		return (count == 0)? true:false;
+	}
+	
+	
 	// 修改技能資訊
 	// 接收參數:skill
 	// 回傳型態:void
@@ -279,7 +306,9 @@ public class SkillManager {
 
 	public static void main(String[] args) {
 
-		SkillManager.updateSkillNumber();
+		System.out.println("[test]"+SkillManager.checkSkillDuplicate(new Skill("vegetable","Java")));
+		
+		//SkillManager.updateSkillNumber();
 		/*
 		 * // 資料庫中的94個type_name String type[] = { "素描", "電繪", "書法", "雕塑", "戲劇",
 		 * "水彩", "油畫", "料理", "烘焙", "調酒", "橋牌", "象棋", "圍棋", "跳棋", "西洋棋", "原住民舞蹈",
