@@ -26,6 +26,7 @@ public class BasicAlgorithm implements MatchMaker {
 	private Queue<Skill> skillQueue;
 	private SkillScoreSet skillScore;
 	private RegionMatrixSet regionMatrix;
+
 	private DistanceWeightSet distanceWeight;
 	private SkillRetrievalSet skillRetrieval;
 	private final static int sizeLimitation = 50;
@@ -42,11 +43,9 @@ public class BasicAlgorithm implements MatchMaker {
 		this.skillScore = new SumEvalScoreWithFitLvWt(user_id, skill_id);
 		this.distanceWeight = new NormalizationWeight();
 		this.skillRetrieval = new FavoriteRegionRetrieval(this.area, user_id, BasicAlgorithm.sizeLimitation);
-		
-		getSkillArray(user_id);
 	}
 	
-	public BasicAlgorithm(RegionMatrixSet regionMatrix, SkillScoreSet skillScore,
+	/*public BasicAlgorithm(RegionMatrixSet regionMatrix, SkillScoreSet skillScore,
 			DistanceWeightSet distanceWeight, SkillRetrievalSet skillRetrieval,
 			String user_id, int skill_id){
 		
@@ -56,7 +55,7 @@ public class BasicAlgorithm implements MatchMaker {
 		this.skillScore = skillScore;
 		this.distanceWeight = distanceWeight;
 		this.skillRetrieval = skillRetrieval;
-	}
+	}*/
 	
 	public Skill toMatch(){
 		
@@ -68,7 +67,7 @@ public class BasicAlgorithm implements MatchMaker {
 		Collections.sort(candidates);
 	}
 	
-	public void getSkillArray(String user_id){
+	public ArrayList<CandidateSkill> getSkillArray(String user_id){
 		
 		// (0) declare one arrayList which type is CandidateSkill.
 		ArrayList<CandidateSkill> skillArray = new ArrayList<CandidateSkill>();
@@ -104,7 +103,9 @@ public class BasicAlgorithm implements MatchMaker {
 		this.sortSkills(skillArray);
 		
 		// (7) put elements in array into queue.
-		for(CandidateSkill cs : skillArray) skillQueue.add(cs.getSkill());
+		for(CandidateSkill cs : skillArray) this.skillQueue.add(cs.getSkill());
+		
+		return skillArray;
 	}
 	
 	public ArrayList<CandidateSkill> retrieveSkills(){
@@ -133,4 +134,10 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		this.skillRetrieval = skillRetrieval;
 	}
+	
+	public Queue<Skill> getSkillQueue() {
+		return skillQueue;
+	}
+
+	
 }

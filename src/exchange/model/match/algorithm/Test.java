@@ -2,9 +2,8 @@ package exchange.model.match.algorithm;
 
 import java.sql.SQLException;
 
-import exchange.model.account.AccountManager;
 import exchange.model.database.DataBaseAdmin;
-import exchange.model.skill.Skill;
+import exchange.model.match.MatchMaker;
 
 public class Test {
 
@@ -16,7 +15,7 @@ public class Test {
 		DataBaseAdmin.changeDBAccount("root", "a2n5h011oj");
 
 		//////////////////////////
-		BasicAlgorithm ba = new BasicAlgorithm("vegetable",1); // 傳遞帳號與技能ID過去
+		MatchMaker ba = new BasicAlgorithm("vegetable",1); // 傳遞帳號與技能ID過去
 		System.out.println(ba.toMatch());
 		System.out.println(ba.toMatch());
 		System.out.println(ba.toMatch());
