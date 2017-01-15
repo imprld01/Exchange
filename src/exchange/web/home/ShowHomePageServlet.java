@@ -29,10 +29,11 @@ public class ShowHomePageServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 
-		if (session != null) {
+		if (session != null && session.getAttribute("uid") != null) {
+			
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
-
+			
 			AccountManager am = new AccountManager();
 			Profile profile = null;
 
@@ -60,7 +61,7 @@ public class ShowHomePageServlet extends HttpServlet {
 
 			view = request.getRequestDispatcher("HomePage.jsp");
 			view.forward(request, response);
-		} else
-			response.sendRedirect("Index.jsp");
+			
+		} else response.sendRedirect("Index.jsp");
 	}
 }

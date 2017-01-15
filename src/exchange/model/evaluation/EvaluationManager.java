@@ -38,7 +38,7 @@ public class EvaluationManager{
 			+ "where skill_id = '"+skillId+"'";
 			result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		return result;
 	}

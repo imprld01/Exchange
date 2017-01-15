@@ -63,8 +63,9 @@ public class SkillManager {
 	// 新增成功accounts的skill_number
 	// 接收參數:skill
 	// 回傳型態:void
-	static public void createSkill(Skill skill) {
+	static public boolean createSkill(Skill skill) {
 		// 判斷是否可新增技能
+		int flag = 0;
 		int skillId = 0;
 		String userId = skill.getUserId();
 		String typeName = skill.getType().getTypeName();
@@ -80,32 +81,63 @@ public class SkillManager {
 				 * rs.getString("type_name")){ System.out.println("已建立'"+
 				 * skill.getType().getTypeName() + "'類別的興趣技能"); return; }
 				 */
-				DataBaseAdmin.updateDB("UPDATE accounts SET skill_number = (select skill_number where user_id='"
-						+ userId + "')+1 where user_id ='" + userId + "'");
 
-				DataBaseAdmin.updateDB("INSERT INTO skills VALUES('0','" + userId + "','" + typeName + "','"
+				flag = DataBaseAdmin.updateDB("INSERT INTO skills VALUES('0','" + userId + "','" + typeName + "','"
 						+ skill.getIntorExpr() + "','0','0','0','0','0','0','0','0','0')");
-				ResultSet rs = DataBaseAdmin.selectDB(
-						"SELECT * FROM skills where user_id = '" + userId + "' AND type_name ='" + typeName + "'");
 
-				if (rs.next())
-					skillId = rs.getInt("skill_id");
+				if (flag != 0) {
+					DataBaseAdmin.updateDB("UPDATE accounts SET skill_number = (select skill_number where user_id='"
+							+ userId + "')+1 where user_id ='" + userId + "'");
+					
+					ResultSet rs = DataBaseAdmin.selectDB(
+							"SELECT * FROM skills where user_id = '" + userId + "' AND type_name ='" + typeName + "'");
 
-				for (String video : skill.getVideo())
-					DataBaseAdmin.updateDB("INSERT INTO videos VALUES('" + skillId + "','" + video + "')");
+					if (rs.next())
+						skillId = rs.getInt("skill_id");
 
-				for (String image : skill.getImage())
-					DataBaseAdmin.updateDB("INSERT INTO images VALUES('" + skillId + "','" + image + "')");
-				System.out.println("新增技能成功");
+					for (String video : skill.getVideo())
+						DataBaseAdmin.updateDB("INSERT INTO videos VALUES('" + skillId + "','" + video + "')");
+
+					for (String image : skill.getImage())
+						DataBaseAdmin.updateDB("INSERT INTO images VALUES('" + skillId + "','" + image + "')");
+					System.out.println("新增技能成功");
+				}
+
 			} else {
 				System.out.println(userId + " 技能已達上限");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		return (flag == 0) ? false : true;
 	}
 
+	//判斷是否是重複技能卡
+	//要新增的資料沒有在資料庫中 => 回傳TRUE可以新增!
+	static public boolean checkSkillDuplicate(Skill skill)
+	{
+		int count = 0; 
+		String userId = skill.getUserId();
+		String typeName = skill.getType().getTypeName();
+		
+		ResultSet rs = DataBaseAdmin.selectDB(
+				"SELECT * FROM skills where user_id = '" + userId + "'");
+		
+		try {
+			while(rs.next())
+			{
+				if(rs.getString("type_name").equals(typeName)) count++;
+				//System.out.println("["+rs.getString("type_name")+"]->["+typeName+"]");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//return count;
+		return (count == 0)? true:false;
+	}
+	
+	
 	// 修改技能資訊
 	// 接收參數:skill
 	// 回傳型態:void
@@ -258,8 +290,8 @@ public class SkillManager {
 			while (rs.next()) {
 				userId = rs.getString("user_id");
 				DataBaseAdmin.updateDB(
-						"UPDATE accounts SET skill_number = (SELECT count(user_id) FROM skills where user_id='"
-								+ userId + "')  where user_id ='" + userId + "'");
+						"UPDATE accounts SET skill_number = (SELECT count(user_id) FROM skills where user_id='" + userId
+								+ "')  where user_id ='" + userId + "'");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -274,7 +306,9 @@ public class SkillManager {
 
 	public static void main(String[] args) {
 
-		SkillManager.updateSkillNumber();
+		System.out.println("[test]"+SkillManager.checkSkillDuplicate(new Skill("vegetable","Java")));
+		
+		//SkillManager.updateSkillNumber();
 		/*
 		 * // 資料庫中的94個type_name String type[] = { "素描", "電繪", "書法", "雕塑", "戲劇",
 		 * "水彩", "油畫", "料理", "烘焙", "調酒", "橋牌", "象棋", "圍棋", "跳棋", "西洋棋", "原住民舞蹈",

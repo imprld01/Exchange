@@ -33,12 +33,19 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		// (1) prpare distance matrix.
 		AccountManager am = new AccountManager();
-		Area [] area = this.getRegionMatrix(am.toRegionObj(am.getRegion(user_id)));
-		
-		this.regionMatrix = new RealDistanceOrder();
+
+	
+		this.regionMatrix = new RealDistanceOrder();   //原順序錯誤  無建立物件下行將無法執行 已修改
+		Area [] area = this.getRegionMatrix(am.toRegionObj(am.getRegion(user_id)));  //取得地區陣列
+
 		this.skillScore = new SumEvalScoreWithFitLvWt(user_id, skill_id);
 		this.distanceWeight = new NormalizationWeight();
-		this.skillRetrieval = new FavoriteRegionRetrieval(area, user_id);
+		this.skillRetrieval = new FavoriteRegionRetrieval(area, user_id, BasicAlgorithm.sizeLimitation);
+		getSkillArray();
+		
+		for(int i=0;i<skillQueue.size();i++){
+			
+		}
 	}
 	
 	public BasicAlgorithm(RegionMatrixSet regionMatrix, SkillScoreSet skillScore,
@@ -47,7 +54,7 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		this.skillQueue = new LinkedList<Skill>();
 		
-		this.regionMatrix = regionMatrix;
+		this.regionMatrix = regionMatrix; 
 		this.skillScore = skillScore;
 		this.distanceWeight = distanceWeight;
 		this.skillRetrieval = skillRetrieval;
@@ -71,8 +78,9 @@ public class BasicAlgorithm implements MatchMaker {
 		// (2) (loop) retrieve skills from db many times until array full.
 		do {
 			ArrayList<CandidateSkill> round = this.retrieveSkills();
+			if(round == null) break;
 			for(CandidateSkill cs : round) skillArray.add(cs);
-		} while (skillArray.size() < sizeLimitation);
+		} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
 		
 		// (3) compute all skills' score.
 		this.computeSkillScore(skillArray);
@@ -97,7 +105,9 @@ public class BasicAlgorithm implements MatchMaker {
 	
 	public Area [] getRegionMatrix(Region region){
 		
-		return this.regionMatrix.getRegionMatrix(region);
+		//System.out.println(this.regionMatrix.getRegionMatrix(region)[1]);
+
+		return this.regionMatrix.getRegionMatrix(region); //似乎執行不到
 	}
 	
 	public void computeSkillScore(ArrayList<CandidateSkill> cs){

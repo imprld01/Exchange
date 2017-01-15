@@ -63,7 +63,7 @@
 						 <!--
 						 	<a href="Skill.do?mark=1" class="btn_exchange r5">Modify</a>
 					 	-->	
-					 		<a	href="Home.do" class="btn_exit r5" d>Back ></a>
+					 		<a	href="Home.do#MYSKILL" class="btn_exit r5" d>Back ></a>
 
 					</span>
 
@@ -520,6 +520,6 @@
 
 		<!--effect-->
 		<script type="text/javascript" src="_skill/js/common.js"></script>
-		<script src="_skill/js/evaluation.js"></script>
+		
 </body>
 </html>

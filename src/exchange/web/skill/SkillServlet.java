@@ -26,6 +26,7 @@ public class SkillServlet extends HttpServlet {
 	private static final int SHOW_SKILL = 2;
 	private static final int CREATE_FAVORITE = 3;
 	private static final int DELETE_FAVORITE = 4;
+	private static final int SHOW_OTHER_SKILL = 5;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("[type]->" + (String) request.getParameter("type"));
@@ -38,7 +39,7 @@ public class SkillServlet extends HttpServlet {
 			String cid, ie, uid, tp;
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
-			System.out.println("[mark]->" + (String) request.getParameter("mark"));
+			//System.out.println("[mark]->" + (String) request.getParameter("mark"));
 			int mark = Integer.parseInt((String) request.getParameter("mark"));
 
 			switch (mark) {
@@ -55,6 +56,12 @@ public class SkillServlet extends HttpServlet {
 
 				skill = new Skill(uid, ie, tp, img, vdo);
 				//System.out.println("[skill]->" + skill);
+				if(SkillManager.checkSkillDuplicate(skill) == false) 
+				{
+					System.out.println("[重複]");
+					response.sendRedirect("Home.do#popupDuplicate");
+					return;
+				}
 				SkillManager.createSkill(skill);
 
 				break;
@@ -105,6 +112,26 @@ public class SkillServlet extends HttpServlet {
 				request.setAttribute("skill", skilltoshow);
 
 				view = request.getRequestDispatcher("/SkillPage.jsp");
+				view.forward(request, response);
+				return;
+			case SHOW_OTHER_SKILL:
+				RequestDispatcher viewOther = null;
+
+				String idOther = (String) request.getParameter("id");
+
+				Skill skilltoshowOther = null;
+
+				try {
+					skilltoshowOther = SkillManager.findSkill(Integer.parseInt(idOther));
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				}
+
+				request.setAttribute("kindName", KindTypeManager.getKindName(skilltoshowOther.getType().getKindCode()));
+
+				request.setAttribute("skill", skilltoshowOther);
+
+				view = request.getRequestDispatcher("/OtherSkillPage.jsp");
 				view.forward(request, response);
 				return;
 			}

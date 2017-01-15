@@ -9,8 +9,8 @@ import exchange.model.database.DataBaseAdmin;
 import exchange.model.match.Region;
 
 public class AccountManager {
-	public boolean addAccount(String id, String password, String userName, String nickName, boolean gender, String email,
-			String birthday, String region) throws SQLException {
+	public boolean addAccount(String id, String password, String userName, String nickName, boolean gender,
+			String email, String birthday, String region) throws SQLException {
 		int result = 0;
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
@@ -26,7 +26,7 @@ public class AccountManager {
 				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
 				+ "', '" + skillMax + "', '" + sqlStartDate + "')";
 		result = DataBaseAdmin.updateDB(query);
-		return (result==0)? false:true;
+		return (result == 0) ? false : true;
 	}
 
 	public Account getAccount(String id) {
@@ -40,7 +40,7 @@ public class AccountManager {
 				Profile profile = new Profile(result.getString("user_name"), result.getString("nick_name"),
 						result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
 						result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
-				
+
 				account = new Account(secret, profile, result.getDate("recent_log"));
 			}
 		} catch (SQLException e) {
@@ -64,34 +64,32 @@ public class AccountManager {
 	}
 
 	// Profile修改
-	public boolean setProfile(String id, Profile profile) {
-		boolean result = false;
+	public int setProfile(String id, Profile profile) {
+		int result = 0;
 		String nickName = profile.getNickName();
 		String email = profile.getEmail();
 		String region = profile.getRegion();
-		try{
+		try {
 			String query = "UPDATE accounts SET nick_name = '" + nickName + "', email = '" + email + "', region = '"
 					+ region + "' " + "where user_id = '" + id + "'";
-			DataBaseAdmin.updateDB(query);
-			result = true;
-		}catch(Exception e){
-			
+			result = DataBaseAdmin.updateDB(query);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return result;
 
 	}
 
 	// Secret修改
-	public boolean setSecret(Secret secret) {
-		boolean result = false;
+	public int setSecret(Secret secret) {
+		int result = 0;
 		String id = secret.getId();
 		String password = secret.getPassword();
-		try{
+		try {
 			String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
-			DataBaseAdmin.updateDB(query);
-			result = true;
-		}catch(Exception e){
-			
+			result = DataBaseAdmin.updateDB(query);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return result;
 
@@ -101,37 +99,42 @@ public class AccountManager {
 		boolean result = true;
 		String query = "select * from accounts where user_id = '" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		if (rs.getInt("skill_number") < rs.getInt("skill_max"))
-			result = false;
+		if (rs.next())
+			if (rs.getInt("skill_number") < rs.getInt("skill_max"))
+				result = false;
 
 		return result;
 	}
 
 	// 驗證帳號登入
-	public boolean isValid(String id) throws SQLException {
-		boolean result = false;
+	public boolean isValid(String id) {
+		
 		String query = "SELECT * FROM accounts where user_id='" + id + "'";
 		ResultSet rs = DataBaseAdmin.selectDB(query);
-		rs.next();
-		//System.out.println("[" + id + "] -> [" + rs.getString("user_id") + "]");
-		if (id.equals(rs.getString("user_id")))
-			result = true;
-		// else if (id.length() > 20)
-		// result = false;
-		// else if (id == null)
-		// result = false;
-		// else
-		// result = false;
-		return result;
+		//System.out.println("[" + id + "] -> [" + rs +"]");
+		try {
+			if (rs.next()) {
+				
+				if (id.equals(rs.getString("user_id")))
+					return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 	public String getRegion(String id) {
 		String query = "SELECT * FROM accounts where user_id = '" + id + "' ";
+		//System.out.println(id);
+		//System.out.println(query);
+
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
 			rs.next();
-			//System.out.println("[region]->"+rs.getString("region"));
+			// System.out.println("[region]->"+rs.getString("region"));
+			System.out.println(rs.getString("region"));
 			return rs.getString("region");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -139,28 +142,44 @@ public class AccountManager {
 		}
 		return null;
 	}
-	
-	public Region toRegionObj(String region){
-		
-		switch(region){
-		case "基隆": return Region.KEELUNG;
-		case "台北": return Region.TAIPEI;
-		case "桃園": return Region.TAOYUAN;
-		case "新竹": return Region.HSINCHU;
-		case "苗栗": return Region.MIAOLI;
-		case "台中": return Region.TAICHUNG;
-		case "彰化": return Region.CHANGHUA;
-		case "南投": return Region.NANTOU;
-		case "雲林": return Region.YUNLIN;
-		case "嘉義": return Region.CHIAYI;
-		case "台南": return Region.TAINAN;
-		case "高雄": return Region.KAOHSIUNG;
-		case "屏東": return Region.PINGTUNG;
-		case "宜蘭": return Region.ILAN;
-		case "花蓮": return Region.HUALIEN;
-		case "台東": return Region.TAITUNG;
+
+	public Region toRegionObj(String region) {
+
+		switch (region) {
+		case "基隆":
+			return Region.KEELUNG;
+		case "台北":
+			return Region.TAIPEI;
+		case "桃園":
+			return Region.TAOYUAN;
+		case "新竹":
+			return Region.HSINCHU;
+		case "苗栗":
+			return Region.MIAOLI;
+		case "台中":
+			return Region.TAICHUNG;
+		case "彰化":
+			return Region.CHANGHUA;
+		case "南投":
+			return Region.NANTOU;
+		case "雲林":
+			return Region.YUNLIN;
+		case "嘉義":
+			return Region.CHIAYI;
+		case "台南":
+			return Region.TAINAN;
+		case "高雄":
+			return Region.KAOHSIUNG;
+		case "屏東":
+			return Region.PINGTUNG;
+		case "宜蘭":
+			return Region.ILAN;
+		case "花蓮":
+			return Region.HUALIEN;
+		case "台東":
+			return Region.TAITUNG;
 		}
-		
+
 		return null;
 	}
 }

@@ -48,28 +48,27 @@
                         <a href="javascript:;" class="avatar_pic circle"><em class="circle doing">Justin</em></a>
                         <b class="doing r5">技能</b>
                     </div>
-                    <div class="base">
+                	<div class="base">
                         <p class="desc">Hello my skill is</p>
 						<form method="get" action="Skill.do" >
-						<select id="kind"  name="kind" style="width:10%; text-align:center;" >
-						  	<c:forEach var="kind" items="${kinds}">
-									<option value="${kind.kindCode}">${kind.kindName}</option>
-							</c:forEach>
+							<select id="kind"  name="kind" style="width:10%; text-align:center;" >
+							  	<c:forEach var="kind" items="${kinds}">
+										<option value="${kind.kindCode}">${kind.kindName}</option>
+								</c:forEach>
 							</select>
-						</select >
-                        <select id="type" name="type"  style="width:10%;">
-						  <option value="volvo">請選擇類別</option>
-
-						</select>
-                        <span>
-                            <p><i aria-hidden="true" data-icon="&#xe01d;"></i>在基隆市</p>
-                            <!-- <p><i aria-hidden="true" data-icon="&#xe031;"></i>評價</p> -->
-                            <br>
-                            <!-- <a href="../交流列表/profile_3skill.html" class="btn_exchange r5" >Save</a> -->
-                            <input type="hidden" value="0" name="mark">
-                            <input value="Submit" type="submit" class="btn_next r5" >
-                            <a href="../交流列表/profile.html#MINE" class="btn_exit r5" d>Cancel</a>
-                        </span>
+						
+	                        <select id="type" name="type"  style="width:10%;">
+							  <option value="volvo">請選擇類別</option>
+	
+							</select>
+	                        <span>
+	                            <p><i aria-hidden="true" data-icon="&#xe01d;"></i>在基隆市</p>
+	                            <!-- <p><i aria-hidden="true" data-icon="&#xe031;"></i>評價</p> -->
+	                            <br>
+	                            <input type="hidden" value="0" name="mark">
+	                            <input value="Submit" type="submit" class="btn_next r5" >
+	                            <a href="Home.do#PROFILE" class="btn_exit r5" d>Cancel</a>
+	                        </span>
                     </div>
                 </div>
 
@@ -222,20 +221,16 @@
 			document.getElementById("kind").addEventListener("change",
 					addActivityItem, false);
 		}
-
 		function addActivityItem() {
 			var kind = document.getElementById("kind");
 			var type = document.getElementById("type");
 			type.innerHTML = "";
 	<%ArrayList<Type> typeList = (ArrayList<Type>) request.getAttribute("types");
 			for (Type type : typeList) {
-
 				out.println("if(kind.value == '" + type.getKindCode() + "')" + "type.innerHTML+='<option value="
 						+ type.getTypeName() + ">" + type.getTypeName() + "</option>'");
-
 			}%>
 		}
-
 		window.addEventListener("load", start, false);
 	</script>
     </body>

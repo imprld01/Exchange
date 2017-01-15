@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -59,10 +59,61 @@
 					<span>
 						<p>
 							<i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}
-						</p> <!-- &#xe036 板手 --> <br> <a
-						href="http://localhost:8080/Exchange/Invitation.do?mark=2&sdr=${cid}&rcv=${skill.skillId}" class="btn_exchange r5">Exchange</a>
-						<a href="Match.do?${para}=${cid}" class="btn_next r5">Next ></a> <a
-						href="Home.do#MYSKILL" class="btn_exit r5" d>Exit</a>
+						</p> <!-- &#xe036 板手 --> <br>
+						 <p><a class="button" href="#popup2"><i aria-hidden="true" data-icon="&#xe031;"></i>評價</a></p>
+                              <div id="popup2" class="overlay">
+                                <div class="popup">
+                                  <p>評價</p>
+                                  <a class="close" href="#">&times;</a>
+
+                                  <ul class="meter" id ="test1">
+                                    <p>教學態度</p>
+                                    <li data-value="1"></li>
+                                    <li data-value="2"></li>
+                                    <li data-value="3"></li>
+                                    <li data-value="4"></li>
+                                    <li data-value="5"></li>
+                                  </ul>
+                                  <ul class="meter" id ="test2">
+                                    <p>技能程度</p>
+                                    <li data-value="1"></li>
+                                    <li data-value="2"></li>
+                                    <li data-value="3"></li>
+                                    <li data-value="4"></li>
+                                    <li data-value="5"></li>
+                                  </ul>
+                                  <ul class="meter" id ="test3">
+                                    <p>教學技巧</p>
+                                    <li data-value="1"></li>
+                                    <li data-value="2"></li>
+                                    <li data-value="3"></li>
+                                    <li data-value="4"></li>
+                                    <li data-value="5"></li>
+                                  </ul>
+                                  <ul class="meter" id ="test4">
+                                    <p>教學頻率</p>
+                                    <li data-value="1"></li>
+                                    <li data-value="2"></li>
+                                    <li data-value="3"></li>
+                                    <li data-value="4"></li>
+                                    <li data-value="5"></li>
+                                  </ul>
+                                  <ul class="meter" id ="test5">
+                                    <p>整體滿意度</p>
+                                    <li data-value="1"></li>
+                                    <li data-value="2"></li>
+                                    <li data-value="3"></li>
+                                    <li data-value="4"></li>
+                                    <li data-value="5"></li>
+                                  </ul>
+                                  <br>
+                                  <textarea id="TextArea"ng- placeholder="This is an auto expanding textarea with just angularjs ... try typing something.">
+                                  </textarea>
+                                  <a href="" class="btn_more r5" >Confirm</a>
+
+                                </div>
+                            </div>
+					 		<a	href="Home.do" class="btn_exit r5" d>Back ></a>
 
 					</span>
 
@@ -88,7 +139,7 @@
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>影片${video}}</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>影片1</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
@@ -102,7 +153,7 @@
 							<li class="clearfix" style="position: relative; z-index: 1">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀${image}</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀1</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
@@ -126,6 +177,18 @@
 
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.attitude/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -167,6 +230,18 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.profession/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -207,6 +282,18 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.teaching/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -247,6 +334,18 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.frequency/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -290,6 +389,19 @@
 							
 							<c:forEach var="num" begin="1" end="5" step="1">
 								<c:choose>
+								
+									<c:when test="${skill.times == 0}">
+												<c:choose>
+													<c:when test="${num == 5}">
+														<img src="_skill/images/star_.png">
+													</c:when>
+													
+													<c:when test="${num != 5}">
+														<img src="_skill/images/star_.png">&nbsp&nbsp
+													</c:when>
+													
+												</c:choose>
+									</c:when>
 									<c:when test="${num<=skill.score.satisfication/skill.times}">
 												<c:choose>
 													<c:when test="${num == 5}">
@@ -328,7 +440,7 @@
 					<div class="info_area info info_content">
 						<br>
 						<c:forEach var="comment" items="${skill.comment}">
-							<p class="desc s5">${comment} </p>
+							<p class="desc s5">${comment}</p>
 			
 						</c:forEach>
 						
@@ -458,6 +570,67 @@
 
 		<!--effect-->
 		<script type="text/javascript" src="_skill/js/common.js"></script>
-		<script src="_skill/js/evaluation.js"></script>
+		<script>
+					$("#test1 li").on("click", function(){
+			  var meterItems = $("#test1 li");
+			  var targetValue = $(this).data("value"); // Find value of target item. Used below as parameter in loop
+			  var arr = $.makeArray( meterItems ); // Had to create array of <li> to loop through them
+
+			  meterItems.removeClass("active"); // Clears prior active states
+
+			  for (i = 0; i <= targetValue - 1; i++) {
+				  $(arr[i]).addClass("active");
+			  }
+
+			});
+			$("#test2 li").on("click", function(){
+			  var meterItems = $("#test2 li");
+			  var targetValue = $(this).data("value"); // Find value of target item. Used below as parameter in loop
+			  var arr = $.makeArray( meterItems ); // Had to create array of <li> to loop through them
+
+			  meterItems.removeClass("active"); // Clears prior active states
+
+			  for (i = 0; i <= targetValue - 1; i++) {
+				  $(arr[i]).addClass("active");
+			  }
+
+			});
+			$("#test3 li").on("click", function(){
+			  var meterItems = $("#test3 li");
+			  var targetValue = $(this).data("value"); // Find value of target item. Used below as parameter in loop
+			  var arr = $.makeArray( meterItems ); // Had to create array of <li> to loop through them
+
+			  meterItems.removeClass("active"); // Clears prior active states
+
+			  for (i = 0; i <= targetValue - 1; i++) {
+				  $(arr[i]).addClass("active");
+			  }
+
+			});
+			$("#test4 li").on("click", function(){
+			  var meterItems = $("#test4 li");
+			  var targetValue = $(this).data("value"); // Find value of target item. Used below as parameter in loop
+			  var arr = $.makeArray( meterItems ); // Had to create array of <li> to loop through them
+
+			  meterItems.removeClass("active"); // Clears prior active states
+
+			  for (i = 0; i <= targetValue - 1; i++) {
+				  $(arr[i]).addClass("active");
+			  }
+
+			});
+			$("#test5 li").on("click", function(){
+			  var meterItems = $("#test5 li");
+			  var targetValue = $(this).data("value"); // Find value of target item. Used below as parameter in loop
+			  var arr = $.makeArray( meterItems ); // Had to create array of <li> to loop through them
+
+			  meterItems.removeClass("active"); // Clears prior active states
+
+			  for (i = 0; i <= targetValue - 1; i++) {
+				  $(arr[i]).addClass("active");
+			  }
+
+			});
+		</script>
 </body>
 </html>

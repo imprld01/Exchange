@@ -19,19 +19,24 @@ public class LogInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		session.invalidate();
-		session = request.getSession();
+		
+		//session.invalidate();
+		//session = request.getSession();
 
-		System.out.println("getSession" + request.getSession());// ->
+		//System.out.println("getSession" + request.getSession());// ->
 
-		if (session.isNew()) {
+		if (session != null && session.getAttribute("uid") == null) {
 
 			//System.out.println("[session is new]");// ->
 
 			String id = (String) request.getParameter("id");
 			String pwd = (String) request.getParameter("pwd");
+			
+			if(id == null || pwd == null) response.sendRedirect("Index.jsp#login");
+			
 			Secret secret = new Secret(id, pwd);
 
 			SignManager sm = new SignManager();

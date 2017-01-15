@@ -38,7 +38,7 @@ public class CreateSkillServlet extends HttpServlet {
 			request.setAttribute("kinds", KindTypeManager.getKindList());
 			request.setAttribute("types", KindTypeManager.getTypeList());
 
-			view = request.getRequestDispatcher("create.jsp");
+			view = request.getRequestDispatcher("Create.jsp");
 			view.forward(request, response);
 		} else
 			response.sendRedirect("Index.jsp");
