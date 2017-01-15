@@ -49,7 +49,7 @@
 							<li><a href="#RECEIVE">受到的邀請</a></li>
 							<li><a href="#INVITE">送出的邀請</a></li>
 							<li><a href="Home.do">個人頁面 ></a></li>
-							<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
+							<li><a href="ChangePwd.jsp">帳戶管理 ></a></li>
 							<li><a href="Logout.do">登出 </a></li>
 						</ul>
 					</nav>

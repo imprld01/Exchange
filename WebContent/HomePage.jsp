@@ -52,7 +52,7 @@
 			<li><a href="#MYSKILL">我的技能列表</a></li>
 			<li><a href="#INTEREST">興趣技能列表</a></li>
 			<li><a href="Exchange.do">交流列表 ></a></li>
-			<li><a href="#">帳戶管理 ></a></li>
+			<li><a href="ChangePwd.jsp">帳戶管理 ></a></li>
 			<li><a href="Logout.do">登出 </a></li>
 		</ul>
 		</nav>
