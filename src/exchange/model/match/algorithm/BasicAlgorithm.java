@@ -40,7 +40,7 @@ public class BasicAlgorithm implements MatchMaker {
 
 		this.skillScore = new SumEvalScoreWithFitLvWt(user_id, skill_id);
 		this.distanceWeight = new NormalizationWeight();
-		this.skillRetrieval = new FavoriteRegionRetrieval(area, user_id);
+		this.skillRetrieval = new FavoriteRegionRetrieval(area, user_id, BasicAlgorithm.sizeLimitation);
 		getSkillArray();
 		
 		for(int i=0;i<skillQueue.size();i++){
@@ -76,10 +76,11 @@ public class BasicAlgorithm implements MatchMaker {
 		ArrayList<CandidateSkill> skillArray = new ArrayList<CandidateSkill>();
 		
 		// (2) (loop) retrieve skills from db many times until array full.
-		//do {
+		do {
 			ArrayList<CandidateSkill> round = this.retrieveSkills();
+			if(round == null) break;
 			for(CandidateSkill cs : round) skillArray.add(cs);
-		//} while (skillArray.size() < sizeLimitation); //這裡有問題 應該不需要while 否則會一直抓重複地到結束 不然就要改裡面的dowhile 改掉
+		} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
 		
 		// (3) compute all skills' score.
 		this.computeSkillScore(skillArray);
