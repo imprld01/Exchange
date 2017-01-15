@@ -149,7 +149,7 @@
 							<c:choose>
 							 	<c:when test = "${skill.status == 1}">
 									<input src="_homePage/images/chat.png" type="image"
-										onclick="window.location.href='Communication.do?othersID=${skill.othersSkill.getSkillId()}&id=${skill.mySkill.getSkillId()}'"
+										onclick="window.location.href='Communication.do?id=${skill.mySkill.getSkillId()}&othersID=${skill.othersSkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;"> 
 								</c:when>
 								<c:when test = "${skill.status == 0}">

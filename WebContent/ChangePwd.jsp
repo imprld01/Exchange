@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="_index/assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<link rel="stylesheet" href="_homePage/assets/css/popup.css" />
 	</head>
 	<body>
 
@@ -54,7 +55,23 @@
 						</div>
 					</div>
 				</section>
-
+						<div id="popupNotMatch" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>錯誤警告</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">原始密碼不符合！
+								<p>
+							</div>
+						</div>
+						<div id="popupNotSame" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>錯誤警告</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">變更密碼不相同！
+								<p>
+							</div>
+						</div>
+						
 		<!-- Scripts -->
 			<script src="_index/assets/js/jquery.min.js"></script>
 			<script src="_index/assets/js/jquery.scrolly.min.js"></script>

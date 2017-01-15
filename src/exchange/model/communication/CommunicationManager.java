@@ -11,9 +11,9 @@ public class CommunicationManager {
 	//給ID拿到與其配對的ID
 	public static int getOthersID(int id){
 		int othersID = 0;
-		ResultSet resultSdrID = DataBaseAdmin.selectDB("SELECT skill_a From exchanges where end_flag = '0' "
+		ResultSet resultSdrID = DataBaseAdmin.selectDB("SELECT skill_a From exchanges where end_a = '0' AND end_b = '0'"
 				+"AND skill_b = '"+id+"'");
-		ResultSet resultRcvID = DataBaseAdmin.selectDB("SELECT skill_b From exchanges where end_flag = '0' "
+		ResultSet resultRcvID = DataBaseAdmin.selectDB("SELECT skill_b From exchanges where end_a = '0' AND end_b = '0'"
 				+"AND skill_a = '"+id+"'");
 		try{
 		while(resultSdrID.next()){othersID = resultSdrID.getInt("skill_a");}

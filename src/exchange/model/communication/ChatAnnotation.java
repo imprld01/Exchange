@@ -50,10 +50,6 @@ public class ChatAnnotation {
 	private static final AtomicInteger connectionIds = new AtomicInteger(0);
 	public static Map<String, Session> clients = new HashMap<>();
 
-	
-
-
-	
 
 	public static int getKey(String key){
 		return Integer.parseInt(key);

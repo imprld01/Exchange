@@ -16,20 +16,19 @@ import exchange.model.skill.SkillManager;
 
 @WebServlet("/Communication.do")
 public class ShowCommunicationPageServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
-	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
-		
-		if(session != null){
-			
-			int id = Integer.parseInt((String)request.getParameter("id"));
-			int othersID = Integer.parseInt((String)request.getParameter("othersID"));
+
+		if (session != null) {
+
+			int id = Integer.parseInt((String) request.getParameter("id"));
+			int othersID = Integer.parseInt((String) request.getParameter("othersID"));
 			Skill skilltoshow = null;
-			
+
 			try {
 				skilltoshow = SkillManager.findSkill(othersID);
 			} catch (NumberFormatException e) {
@@ -40,25 +39,24 @@ public class ShowCommunicationPageServlet extends HttpServlet {
 			request.setAttribute("skill", skilltoshow);
 			request.setAttribute("myNickName", myNickName);
 			request.setAttribute("othersNickName", othersNickName);
-			request.setAttribute("id",id);
+			request.setAttribute("id", id);
 
-				RequestDispatcher view = null;
-				
-				//CommunicationManager cm = new CommunicationManager();
-				//ArrayList<String> messages = cm.getAllMessages();
-				
-				//request.setAttribute("messages", messages);
-				
-				view = request.getRequestDispatcher("/CommunicationPage.jsp");
-				view.forward(request, response);
-				
-				
-				//String message = (String)request.getParameter("msg");
-				
-				//CommunicationManager cm = new CommunicationManager();
-				//cm.saveMessage(message);
+			RequestDispatcher view = null;
 
-		}
-		else response.sendRedirect("Index.jsp");
+			// CommunicationManager cm = new CommunicationManager();
+			// ArrayList<String> messages = cm.getAllMessages();
+
+			// request.setAttribute("messages", messages);
+
+			view = request.getRequestDispatcher("CommunicationPage.jsp");
+			view.forward(request, response);
+
+			// String message = (String)request.getParameter("msg");
+
+			// CommunicationManager cm = new CommunicationManager();
+			// cm.saveMessage(message);
+
+		} else
+			response.sendRedirect("Index.jsp");
 	}
 }
