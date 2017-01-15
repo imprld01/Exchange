@@ -84,6 +84,7 @@ public class SkillManager {
 
 				flag = DataBaseAdmin.updateDB("INSERT INTO skills VALUES('0','" + userId + "','" + typeName + "','"
 						+ skill.getIntorExpr() + "','0','0','0','0','0','0','0','0','0')");
+				System.out.println("建立技能");
 
 				if (flag != 0) {
 					DataBaseAdmin.updateDB("UPDATE accounts SET skill_number = (select skill_number where user_id='"
@@ -140,34 +141,55 @@ public class SkillManager {
 	
 	// 修改技能資訊
 	// 接收參數:skill
-	// 回傳型態:void
-	static public void modifySkill(Skill skill) {
-
+	// 回傳型態:boolean
+	static public boolean modifySkill(Skill skill) {
+		
+		int flag = 0;
 		int skillId = skill.getSkillId();
-		DataBaseAdmin.updateDB(
-				"UPDATE skills SET intro_expr='" + skill.getIntorExpr() + "' where (skill_id = '" + skillId + "')");
-
-		for (String vedio : skill.getVideo())
-			DataBaseAdmin.updateDB("UPDATE videos SET vedio='" + vedio + "' where (skill_id = '" + skillId + "')");
-
-		for (String image : skill.getImage())
-			DataBaseAdmin.updateDB("UPDATE images SET image='" + image + "' where (skill_id = '" + skillId + "')");
+		try{
+			flag = DataBaseAdmin.updateDB(
+					"UPDATE skills SET intro_expr='" + skill.getIntorExpr() + "' where (skill_id = '" + skillId + "')");
+			if(flag != 0)
+			{
+				for (String vedio : skill.getVideo())
+				DataBaseAdmin.updateDB("UPDATE videos SET vedio='" + vedio + "' where (skill_id = '" + skillId + "')");
+				for (String image : skill.getImage())
+				DataBaseAdmin.updateDB("UPDATE images SET image='" + image + "' where (skill_id = '" + skillId + "')");
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//return count;
+		return (flag == 0)? true:false;
 	}
 
 	// 新增使用者感興趣的技能類別
 	// 接收參數:該類別的type_name、user_id
-	// 回傳型態:void
-	static public void createFavoriteSkill(String typeName, String userId) {
+	// 回傳型態:boolean
+	static public boolean createFavoriteSkill(String typeName, String userId) {
+		int flag = 0;
 		//System.out.println("[createFavoriteSkill]：[typeName]->" + typeName + ",[userId]" + userId);
-		DataBaseAdmin.updateDB("INSERT INTO favorites VALUES('" + typeName + "','" + userId + "')");
+		try{
+			flag = DataBaseAdmin.updateDB("INSERT INTO favorites VALUES('" + typeName + "','" + userId + "')");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return (flag == 0)? true:false;
 	}
 
 	// 刪除使用者感興趣的技能類別
 	// 接收參數:該類別的type_name、user_id
-	// 回傳型態:void
-	static public void deleteFavoriteSkill(String typeName, String userId) {
-		DataBaseAdmin
-				.updateDB("DELETE FROM favorites Where user_id= '" + userId + "'AND type_name = '" + typeName + "'");
+	// 回傳型態:boolean
+	static public boolean deleteFavoriteSkill(String typeName, String userId) {
+		int flag = 0;
+		try{
+			flag = DataBaseAdmin.
+					updateDB("DELETE FROM favorites Where user_id= '" + userId + "'AND type_name = '" + typeName + "'");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return (flag == 0)? true:false;
 	}
 
 	// 取得使用者所有技能
@@ -211,10 +233,11 @@ public class SkillManager {
 	// 連續兩次評價分數5分，封鎖三天，且累積一次警告，再連續兩次評價5分，封鎖七天，累績二次警告，累積三次警告該技能永久封鎖。
 	// (現在做不到QAQ)
 	// 接收參數:skill_id、score
-	// 回傳型態:
-	static public void judgeBlock(int skillId, Score score) {
+	// 回傳型態:封鎖回傳true!
+	static public boolean judgeBlock(int skillId, Score score) {
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM skills WHERE skill_id = '" + skillId + "'");
 
+		int flag = 0;
 		int warningTimes = 0;
 		int badTimes = 0;
 		try {
@@ -230,15 +253,18 @@ public class SkillManager {
 
 			if (warningTimes == 1 && badTimes == 0) {
 
-				DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
-				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='0' WHERE skill_id = '" + skillId + "'");
+				flag = 
+					DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
+				if(flag != 0){
+					DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='0' WHERE skill_id = '" + skillId + "'");
+				}
 			} else {
 				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='" + (warningTimes + 1) + "' WHERE skill_id = '"
 						+ skillId + "'");
 			}
 
 		}
-
+		return (flag == 0)? true:false;
 	}
 
 	// 判斷卡片是否在邀請別人
@@ -262,13 +288,15 @@ public class SkillManager {
 	// 任一個技能上升5個等級就增加一個新增技能欄位。
 	// 接收參數:skill_id
 	// 回傳型態:void
-	static public void updateSkillLevel(int skillId) {
+	static public boolean updateSkillLevel(int skillId) {
+		int flag = 0;
 		Skill skill = findSkill(skillId);
 		int totalScore = skill.getScore().calSumScore();
 		int level = (totalScore >= 15) ? (totalScore - 15) / 25 + 1 : 0;
 		int newSkill = level / 5 + 3;
 
-		DataBaseAdmin.updateDB("UPDATE skills SET skill_level='" + level + "' WHERE skill_id = '" + skillId + "'");
+		flag = 
+				DataBaseAdmin.updateDB("UPDATE skills SET skill_level='" + level + "' WHERE skill_id = '" + skillId + "'");
 
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM skills WHERE skill_id = '" + skillId + "'");
 
@@ -280,16 +308,18 @@ public class SkillManager {
 			e.printStackTrace();
 		}
 
+		return (flag == 0)? true:false;
 	}
 
-	static public void updateSkillNumber() {
+	static public boolean updateSkillNumber() {
+		int flag = 0;
 		String userId = null;
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT user_id FROM accounts");
 
 		try {
 			while (rs.next()) {
 				userId = rs.getString("user_id");
-				DataBaseAdmin.updateDB(
+				flag = DataBaseAdmin.updateDB(
 						"UPDATE accounts SET skill_number = (SELECT count(user_id) FROM skills where user_id='" + userId
 								+ "')  where user_id ='" + userId + "'");
 			}
@@ -297,6 +327,7 @@ public class SkillManager {
 			e.printStackTrace();
 		}
 
+		return (flag == 0)? true:false;
 	}
 
 	static public void deleteCreate(int skillId) {
