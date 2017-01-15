@@ -7,6 +7,7 @@ import java.util.Queue;
 import exchange.model.account.AccountManager;
 import exchange.model.match.Area;
 import exchange.model.match.CandidateSkill;
+import exchange.model.match.MatchMaker;
 import exchange.model.match.Region;
 import exchange.model.match.distanceWeight.DistanceWeightSet;
 import exchange.model.match.distanceWeight.NormalizationWeight;
@@ -76,21 +77,19 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		do {
 			ArrayList<CandidateSkill> round = this.retrieveSkills();
-			if(round == null) break;
+			
+			if(round == null){
+					if( !(this.skillRetrieval instanceof RegionRetrieval)) {
+						this.changeSkillRetrievalMethod(new RegionRetrieval(this.area, user_id, BasicAlgorithm.sizeLimitation, skillArray));
+						continue;
+					} 
+					else{
+						break;
+					}
+			}
 			for(CandidateSkill cs : round) skillArray.add(cs);
 		} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
 		
-		//System.out.println(skillArray.size());
-		
-		if(skillArray.size() < BasicAlgorithm.sizeLimitation){
-			// random select no duplicate skills.
-			this.changeSkillRetrievalMethod(new RegionRetrieval(this.area, user_id, BasicAlgorithm.sizeLimitation, skillArray));
-			do {
-				ArrayList<CandidateSkill> round = this.retrieveSkills();
-				if(round == null) break;
-				for(CandidateSkill cs : round) skillArray.add(cs);
-			} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
-		}
 		
 		// (3) compute all skills' score.
 		this.computeSkillScore(skillArray);

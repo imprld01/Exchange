@@ -31,7 +31,7 @@ public class FavoriteRegionRetrieval implements SkillRetrievalSet {
 	
 	public ArrayList<CandidateSkill> retrieveSkills(){
 
-		if(this.nowRegionNum < RealDistanceOrder.areaQuantity()){
+		if(this.nowRegionNum < RealDistanceOrder.areaQuantity() && this.favoritesSkill.size() > 0) {
 			
 			int nowdistance = 0;
 			
