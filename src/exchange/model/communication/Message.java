@@ -3,12 +3,12 @@ package exchange.model.communication;
 import java.util.Comparator;
 
 public class Message {
-	String sender;
-	String receiver;
+	int sender;
+	int receiver;
 	boolean isRead;
 	String content;
 	int MsgID;
-	public Message(int MsgID,String sender,String receiver,String content,boolean isRead) {
+	public Message(int MsgID,int sender,int receiver,String content,boolean isRead) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.isRead = isRead;
@@ -27,19 +27,23 @@ public class Message {
 	 };
 	 return comp;
 	}  
-	public String getSender() {
+	public int getSender() {
 		return sender;
 	}
-	public void setSender(String sender) {
+	public void setSender(int sender) {
 		this.sender = sender;
 	}
-	public String getReceiver() {
+	public int getReceiver() {
 		return receiver;
 	}
-	public void setReceiver(String receiver) {
+	public void setReceiver(int receiver) {
 		this.receiver = receiver;
 	}
 
+	@Override
+	public String toString() {
+		return  CommunicationManager.getNickName(sender)+": "+content;
+	}
 	public boolean isRead() {
 		return isRead;
 	}
