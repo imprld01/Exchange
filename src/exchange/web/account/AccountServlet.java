@@ -33,9 +33,9 @@ public class AccountServlet extends HttpServlet {
 			
 			switch(mark){
 			case SECRET_MODIFICATION:
-				String pwd = (String)request.getParameter("old_pwd");
+				String oldPwd = (String)request.getParameter("old_pwd");
 				String pwd = (String)request.getParameter("pwd");
-				String pwd = (String)request.getParameter("re_pwd");
+				String rePwd = (String)request.getParameter("re_pwd");
 				Secret secret = new Secret(id, pwd);
 				
 				am.setSecret(secret);
