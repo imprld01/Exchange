@@ -138,9 +138,7 @@ public class BasicAlgorithm implements MatchMaker {
 		this.skillRetrieval = skillRetrieval;
 	}
 	
-	public Queue<Skill> getSkillQueue() {
-		return skillQueue;
-	}
+
 
 	
 }

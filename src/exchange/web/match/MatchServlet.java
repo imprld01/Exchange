@@ -37,6 +37,7 @@ public class MatchServlet extends HttpServlet {
 			String region = "";
 			if (mm == null) {
 				mm = new BasicAlgorithm(uid, cid);
+				mm.getSkillArray(uid);
 				session.setAttribute("algorithm", mm);
 			}
 			//System.out.println("[ba]->" + ba.match());
@@ -45,6 +46,7 @@ public class MatchServlet extends HttpServlet {
 			if(skill == null) {
 				System.out.println("[skill]->NULL");
 				mm = new BasicAlgorithm(uid, cid);
+				mm.getSkillArray(uid);
 				session.setAttribute("algorithm", mm);
 				skill = mm.toMatch();
 			}
