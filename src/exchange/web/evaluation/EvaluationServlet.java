@@ -20,14 +20,14 @@ public class EvaluationServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
 			
-			String my = (String)request.getParameter("my");
-			String other = (String)request.getParameter("other");
+			int my = Integer.parseInt((String)request.getParameter("my"));
+			int other = Integer.parseInt((String)request.getParameter("other"));
 			int attitude = Integer.parseInt((String)request.getParameter("atd"));
 			int profession = Integer.parseInt((String)request.getParameter("pfn"));
 			int teaching = Integer.parseInt((String)request.getParameter("tch"));
@@ -38,22 +38,22 @@ public class EvaluationServlet extends HttpServlet {
 			Score score = new Score(attitude, profession, teaching, frequency, satisfication);
 			
 			try {
-				EvaluationManager.saveScore(Integer.parseInt(other), score);
+				EvaluationManager.saveScore(other, score);
 			} catch (NumberFormatException | SQLException e1) {
 				e1.printStackTrace();
 			}
 			try {
-				EvaluationManager.saveComment(Integer.parseInt(other), comment);
+				EvaluationManager.saveComment(other, comment);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			
-			SkillManager.judgeBlock(Integer.parseInt(other), score);
-			SkillManager.updateSkillLevel(Integer.parseInt(other));
+			SkillManager.judgeBlock(other, score);
+			SkillManager.updateSkillLevel(other);
 			
 			ExchangeManager.finishExchange(my, other);
 			
-			response.sendRedirect("/Exchange.do");
+			response.sendRedirect("Exchange.do");
 		}
 		else response.sendRedirect("index.html");
 	}

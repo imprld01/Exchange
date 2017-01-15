@@ -29,7 +29,7 @@ public class SkillServlet extends HttpServlet {
 	private static final int SHOW_OTHER_SKILL = 5;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("[type]->" + (String) request.getParameter("type"));
+		//System.out.println("[type]->" + (String) request.getParameter("type"));
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 
@@ -117,18 +117,18 @@ public class SkillServlet extends HttpServlet {
 			case SHOW_OTHER_SKILL:
 				RequestDispatcher viewOther = null;
 
-				String idOther = (String) request.getParameter("id");
+				int idOther = Integer.parseInt((String) request.getParameter("otherId"));
 
 				Skill skilltoshowOther = null;
 
 				try {
-					skilltoshowOther = SkillManager.findSkill(Integer.parseInt(idOther));
+					skilltoshowOther = SkillManager.findSkill(idOther);
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
 
 				request.setAttribute("kindName", KindTypeManager.getKindName(skilltoshowOther.getType().getKindCode()));
-
+				request.setAttribute("myId", Integer.parseInt((String) request.getParameter("myId")));
 				request.setAttribute("skill", skilltoshowOther);
 
 				view = request.getRequestDispatcher("/OtherSkillPage.jsp");

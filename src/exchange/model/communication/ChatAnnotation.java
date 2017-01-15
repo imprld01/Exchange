@@ -18,7 +18,11 @@ package exchange.model.communication;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -27,6 +31,7 @@ import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import javax.websocket.EndpointConfig;
 
@@ -35,66 +40,72 @@ import javax.websocket.EndpointConfig;
 
 import util.HTMLFilter;
 
-@ServerEndpoint(value = "/websocket/chat")
+@ServerEndpoint(value = "/websocket/chat/{sdr}")
 public class ChatAnnotation {
 
 	// private static final Log log = LogFactory.getLog(ChatAnnotation.class);
 
 	private static final String GUEST_PREFIX = "Guest";
 	private static final AtomicInteger connectionIds = new AtomicInteger(0);
-	private static final Set<ChatAnnotation> connections = new CopyOnWriteArraySet<>();
+	public static Map<String, Session> clients = new HashMap<>();
 
-	private final String nickname;
-	private Session session;
+	
+
 	
 	
-	public ChatAnnotation() {
-		nickname = GUEST_PREFIX + connectionIds.getAndIncrement();
+
+	public static int getKey(String key){
+		return Integer.parseInt(key);
 	}
-
 	@OnOpen
-	public void start(Session session, EndpointConfig config) {
-		this.session = session;
-		connections.add(this);
-		String message = String.format("* %s %s", nickname, "has joined.");
-		broadcast(message);
+	public void start(@PathParam("sdr") int sender,Session session) {
+		clients.put(Integer.toString(sender), session);
+		//String message = String.format("* %s %s", nickname, "has joined.");
+		ArrayList<Message> messages = CommunicationManager.getAllmessages(sender);
+		broadcast(messages);
 	}
 
 	@OnClose
-	public void end() {
-		connections.remove(this);
-		String message = String.format("* %s %s", nickname, "has disconnected.");
-		broadcast(message);
+	public void end(@PathParam("sdr") int sender) {
+		clients.remove(sender);
+		//String message = String.format("* %s %s", "", "has disconnected.");
+		//broadcast(message);
 	}
 
 	@OnMessage
-	public void incoming(String message) {
+	public void incoming(@PathParam("sdr") int sender,String message) {
 		// Never trust the client
-		String filteredMessage = String.format("%s: %s", nickname, HTMLFilter.filter(message.toString()));
-		broadcast(filteredMessage);
+		CommunicationManager.newMsg(sender, message);
+		ArrayList<Message> messages =  CommunicationManager.receiveMessages(CommunicationManager.getOthersID(sender));
+		//String filteredMessage = String.format("%s: %s", nickname, HTMLFilter.filter(message.toString()));
+		broadcast(messages);
 	}
 
 	@OnError
-	public void onError(Throwable t) throws Throwable {
+	public void onError(@PathParam("sdr") int sender,Throwable t) throws Throwable {
 		// log.error("Chat Error: " + t.toString(), t);
+		clients.remove(sender);
 	}
 
-	private static void broadcast(String msg) {
-		for (ChatAnnotation client : connections) {
+	private static void broadcast(ArrayList<Message> messages) {
+		for (String client :  clients.keySet() ) {
 			try {
 				synchronized (client) {
-					client.session.getBasicRemote().sendText(msg);
+					for(Message msg:messages){
+					if(Integer.parseInt(client)==msg.getSender() || Integer.parseInt(client)==msg.getReceiver())
+						clients.get(client).getBasicRemote().sendText(msg.toString());
+					}
 				}
 			} catch (IOException e) {
 				// log.debug("Chat Error: Failed to send message to client", e);
-				connections.remove(client);
+				clients.remove(client);
 				try {
-					client.session.close();
+					clients.get(client).close();
 				} catch (IOException e1) {
 					// Ignore
 				}
-				String message = String.format("* %s %s", client.nickname, "has been disconnected.");
-				broadcast(message);
+				//String message = String.format("* %s %s", client.nickname, "has been disconnected.");
+				//broadcast(message);
 			}
 		}
 	}

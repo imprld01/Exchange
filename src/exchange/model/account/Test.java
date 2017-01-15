@@ -14,8 +14,7 @@ public class Test {
 		// Date recentLog = new Date();
 		// java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		// System.out.println(now);
-		 DataBaseAdmin db = new DataBaseAdmin();
-		 db.changeDBAccount("root", "narutoap12");
+		 DataBaseAdmin.openConnection("root", "narutoap12");
 		AccountManager am = new AccountManager();
 
 		// getAccount method success
@@ -46,7 +45,7 @@ public class Test {
 		// System.out.println(am.getAllUserId());
 
 		// isSkillFull(id) success
-		// System.out.println(am.isSkillFull("0"));
+		 System.out.println(am.isSkillFull("0"));
 
 		// getregion(id) success
 		// System.out.println(am.getRegion("1234567"));

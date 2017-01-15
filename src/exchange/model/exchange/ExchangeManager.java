@@ -9,16 +9,19 @@ public class ExchangeManager {
 	//接受邀請, 新增到交流Table ,將邀請Table中原本的row刪除
 	public static void acceptInvitation(String mySkillID, String othersSkillID){
 		DataBaseAdmin.updateDB("INSERT INTO exchanges VALUES('"+othersSkillID+"','"+mySkillID+"','0')");
-		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"'AND ivt_receiver = '"+mySkillID+"'");
+		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+mySkillID+"'AND ivt_receiver = '"+othersSkillID+"'");
 		//DataBaseAdmin.closeConnection();
 	}
 	//拒絕邀請, 刪除邀情Table中的邀請
 	public static void rejectInvitation(String mySkillID, String othersSkillID){
-		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+othersSkillID+"'AND ivt_receiver = '"+mySkillID+"'");
+		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+mySkillID+"'AND ivt_receiver = '"+othersSkillID+"'");
 		//DataBaseAdmin.closeConnection();
 	}
 	//完成交流, 將end_flag改成1
-	public static void finishExchange(String mySkillID, String othersSkillID){
+	public static void finishExchange(int mySkillID, int othersSkillID){
+		
+		//ResultSet isSend = DataBaseAdmin.selectDB("(SELECT skill_id FROM exchanges WHERE skill_a = '"+mySkillID+"'))");
+		
 		DataBaseAdmin.updateDB("UPDATE exchanges SET end_flag = '1' where (skill_a = '"+othersSkillID+"' AND skill_b = '"+mySkillID+"')"
 			+ "OR (skill_a = '"+mySkillID+"' AND skill_b = '"+othersSkillID+"')");
 		//DataBaseAdmin.closeConnection();
@@ -33,15 +36,15 @@ public class ExchangeManager {
 	public static ArrayList<Exchange> getExchangings(String userID){
 		ArrayList<Exchange> exchangeList = new ArrayList<Exchange>(); //回傳用
 		//由我發出邀請的Exchange
-		ResultSet exchangeResultA = DataBaseAdmin.selectDB("SELECT skill_b,skill_a FROM exchanges  where end_flag = '0' AND"
+		ResultSet exchangeResultA = DataBaseAdmin.selectDB("SELECT skill_b,skill_a FROM exchanges  where (end_flag = '0' OR end_flag = '1') AND"
 				+"(skill_a in (select skill_id from skills where user_id = '"+userID+"'))");
 		//別人邀請我的Exchange
-		ResultSet exchangeResultB = DataBaseAdmin.selectDB("SELECT skill_a,skill_b FROM exchanges  where end_flag = '0' AND"
+		ResultSet exchangeResultB = DataBaseAdmin.selectDB("SELECT skill_a,skill_b FROM exchanges  where (end_flag = '0' OR end_flag = '1') AND"
 				+"(skill_b in (select skill_id from skills where user_id = '"+userID+"'))");
 		try{
 			//處理我送出的邀請所進行的交流 並放進ArrayList
 			while(exchangeResultA.next()){
-				Exchange exchange = new Exchange(SkillManager.findSkill(exchangeResultA.getInt("skill_a")), SkillManager.findSkill(exchangeResultA.getInt("skill_a")));
+				Exchange exchange = new Exchange(SkillManager.findSkill(exchangeResultA.getInt("skill_a")), SkillManager.findSkill(exchangeResultA.getInt("skill_b")));
 				//System.out.println("A"+exchangeResultA.getInt("skill_b")+exchangeResultA.getString("type_name"));
 				exchangeList.add(exchange);
 			}

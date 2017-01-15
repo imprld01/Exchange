@@ -12,6 +12,7 @@ import exchange.model.database.DataBaseAdmin;
 public class Test {
 
 	public static void main(String[] args){
+		DataBaseAdmin.openConnection("root", "narutoap12");
 		// TODO Auto-generated method stub
 //		Code code = new Code("123");
 //		Code otherCode = new Code("1233");
@@ -43,7 +44,7 @@ public class Test {
 //		Skill skill = new Skill(2);
 //		System.out.println(skill);
 //
-		SkillManager sm = new SkillManager();
+//		SkillManager sm = new SkillManager();
 //		System.out.println(sm.getAllFavoriteSkills("vegetable"));
 
 		//System.out.println(sm.getAllSkills("vegetable"));
@@ -52,7 +53,10 @@ public class Test {
 		//SkillManager.deleteFavoriteSkill("游泳", "bowen");
 		//SkillManager.createSkill(new Skill("bowen","123123","吉他", new ArrayList<String>(), new ArrayList<String>()));
 		
-		SkillManager.updateSkillLevel(1);
+//		SkillManager.updateSkillLevel(1);
+
+		KindTypeManager ktm = new KindTypeManager();
+		System.out.println(ktm.getKindList());
 	}
 
 }

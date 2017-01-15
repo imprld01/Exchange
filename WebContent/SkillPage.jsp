@@ -485,7 +485,14 @@
 
 
 				</div>
-
+				<div class="info_area info info_content">
+						<br>
+						<c:forEach var="comment" items="${skill.comment}" varStatus="commentLoop">
+							<p class="desc s5">${commentLoop.getCount()}. ${comment.comment} [${comment.date}]</p>
+			
+						</c:forEach>
+						
+					</div>
 				<!-- 左右控制 -->
 				<a class="carousel-control left" href="#tip_carousel"
 					data-slide="prev"> <i aria-hidden="true" data-icon="&#x34;"></i>
