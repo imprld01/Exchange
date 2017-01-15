@@ -10,7 +10,7 @@ public class CandidateSkill implements Comparable<CandidateSkill> {
 	private double distanceWeight_numerator;	// 距離權重分子
 	private double distanceWeight_denominator;	// 距離權重分母
 	private double totalScore;					// 總分
-
+	private static boolean distanceSort=true;
 	public CandidateSkill(Skill skill, int distance) {
 		
 		this.skill = skill;
@@ -83,10 +83,18 @@ public class CandidateSkill implements Comparable<CandidateSkill> {
 		if(skillScore == 0) this.totalScore = 0;
 		this.totalScore = skillScore * (distanceWeight_numerator / distanceWeight_denominator);
 	}
+
+	public static void setDistanceSort(boolean distanceSort) {
+		CandidateSkill.distanceSort = distanceSort;
+	}
 	
 	@Override
 	public int compareTo(CandidateSkill other) {
-		
-		return -Double.compare(this.totalScore, other.totalScore);
+		if(distanceSort){
+			return Integer.compare(this.distance, other.distance);
+		}
+		else{
+			return -Double.compare(this.totalScore, other.totalScore);
+		}
 	}
 }
