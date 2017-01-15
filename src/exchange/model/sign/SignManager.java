@@ -12,7 +12,7 @@ import exchange.model.database.DataBaseAdmin;
 public class SignManager {
 
 	public boolean check(Secret secret) {
-		boolean result = false;
+		int result = 0;
 		AccountManager am = new AccountManager();
 		SignManager sm = new SignManager();
 		Date recentLog = new Date();
@@ -21,13 +21,13 @@ public class SignManager {
 		if (am.isValid(secret.getId()) == true) { // 帳號是否存在
 			//System.out.println("[帳號存在，比對密碼]");
 			if (sm.CheckPassword(secret) == true) { // 密碼是否相同
-				result = true;
+				
 				String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate + "'";
-				DataBaseAdmin.updateDB(query);
+				result = DataBaseAdmin.updateDB(query);
 			} 
 		}
 		// DataBaseAdmin.closeConnection();
-		return result;
+		return (result == 0)? false:true;
 	}
 
 	public boolean CheckPassword(Secret secret) {
