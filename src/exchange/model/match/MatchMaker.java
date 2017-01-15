@@ -15,5 +15,4 @@ public interface MatchMaker {
 	public void computeSkillScore(ArrayList<CandidateSkill> cs);
 	public void computeDistanceWeight(ArrayList<CandidateSkill> cs);
 	public void changeSkillRetrievalMethod(SkillRetrievalSet skillRetrieval);
-	
 }

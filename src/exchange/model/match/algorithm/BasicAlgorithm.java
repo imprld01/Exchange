@@ -67,6 +67,7 @@ public class BasicAlgorithm implements MatchMaker {
 	
 	public void sortSkills(ArrayList<CandidateSkill> candidates){
 		
+		
 		Collections.sort(candidates);
 	}
 	
@@ -104,13 +105,17 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		// (6) sorting the array by total score(attribute) in CandidateSkill.
 		this.sortSkills(skillArray);
-		
+			
 		// (7) put elements in array into queue.
 		for(CandidateSkill cs : skillArray) this.skillQueue.add(cs.getSkill());
 		
 		return skillArray;
 	}
 	
+	public Queue<Skill> getSkillQueue() {
+		return skillQueue;
+	}
+
 	public ArrayList<CandidateSkill> retrieveSkills(){
 		
 		return this.skillRetrieval.retrieveSkills();
@@ -120,7 +125,7 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		//System.out.println(this.regionMatrix.getRegionMatrix(region)[1]);
 
-		return this.regionMatrix.getRegionMatrix(region); //似乎執行不到
+		return this.regionMatrix.getRegionMatrix(region); 
 	}
 	
 	public void computeSkillScore(ArrayList<CandidateSkill> cs){
