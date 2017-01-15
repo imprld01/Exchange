@@ -1,7 +1,6 @@
 package exchange.web.match;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.jdt.internal.compiler.batch.Main;
-
 import exchange.model.account.AccountManager;
-import exchange.model.match.BasicAlgorithm;
-import exchange.model.skill.FavoriteSkill;
+import exchange.model.match.MatchMaker;
+import exchange.model.match.algorithm.BasicAlgorithm;
 import exchange.model.skill.KindTypeManager;
 import exchange.model.skill.Skill;
 
@@ -34,27 +31,25 @@ public class MatchServlet extends HttpServlet {
 			String uid = (String) session.getAttribute("uid");
 
 			int cid = Integer.parseInt((String) request.getParameter("cardId"));
-			//System.out.println("[cid]->" + cid);
+			
 			AccountManager am = new AccountManager();
-			BasicAlgorithm ba = (BasicAlgorithm) session.getAttribute("algorithm");
+			MatchMaker mm = (BasicAlgorithm) session.getAttribute("algorithm");
 			String region = "";
-			if (ba == null) {
-				ba = new BasicAlgorithm(uid, cid);
-				ba.creatMateSet();
-				session.setAttribute("algorithm", ba);
+			if (mm == null) {
+				mm = new BasicAlgorithm(uid, cid);
+				session.setAttribute("algorithm", mm);
 			}
 			//System.out.println("[ba]->" + ba.match());
-			Skill skill = ba.match();
+			Skill skill = mm.toMatch();
 			//System.out.println("[skill]->" + skill);
 			if(skill == null) {
-				ba = new BasicAlgorithm(uid, cid);
-				ba.creatMateSet();
-				session.setAttribute("algorithm", ba);
-				response.sendRedirect("Home.do");
+				System.out.println("[skill]->NULL");
+				mm = new BasicAlgorithm(uid, cid);
+				session.setAttribute("algorithm", mm);
+				skill = mm.toMatch();
 			}
-			if(skill != null)
-			{
-				
+			//else if(skill != null)
+			{	
 				region = am.getRegion(skill.getUserId());
 				System.out.println("[skill("+region+")]->" + skill);// <-----
 				request.setAttribute("para", "cardId");

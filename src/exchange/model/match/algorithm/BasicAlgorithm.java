@@ -59,6 +59,9 @@ public class BasicAlgorithm implements MatchMaker {
 	}
 	
 	public Skill toMatch(){
+		//Skill temp = new Skill(this.skillQueue.poll());
+		//this.skillQueue.add(temp);
+		//return temp;
 		
 		return this.skillQueue.poll();
 	}
