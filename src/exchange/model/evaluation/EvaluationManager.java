@@ -32,11 +32,11 @@ public class EvaluationManager{
 		Skill skill = SkillManager.findSkill(skillId);
 		try{
 			System.out.println("[評分完成]:"+score);//<--------------------------
-			String query = "UPDATE skills SET "
-			+ " attitude_score = '"+ (skill.getScore().getFrequency() + score.getAttitude()) +"',"
-			+ " profession_score = '"+ (skill.getScore().getProfession() + score.getProfession()) +"', "
+			String query = "UPDATE skills SET times = times + 1,"
+			+ " attitude_score = '"+ (skill.getScore().getAttitude() + score.getAttitude()) +"',"
+			+ " profession_score = '"+ (skill.getScore().getProfession() + score.getProfession()) +"',"
 			+ " teaching_score = '"+(skill.getScore().getTeaching() + score.getTeaching())+"',"
-			+ " frequency_score = '"+(skill.getScore().getFrequency() + score.getFrequency()) +"', "
+			+ " frequency_score = '"+(skill.getScore().getFrequency() + score.getFrequency()) +"',"
 			+ " satisfication_score = '"+ (skill.getScore().getSatisfication() + score.getSatisfication()) +"'"
 			+ " where skill_id = '"+skillId+"'";
 			result = DataBaseAdmin.updateDB(query);
