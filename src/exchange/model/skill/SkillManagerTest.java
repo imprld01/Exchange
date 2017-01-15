@@ -27,19 +27,13 @@ public class SkillManagerTest {
 
 	@Test //測試取得技能
 	public void testFindSkill() {
-		int input_skillId = 1;
+		int input_skillId = 2;
 		String input = skillmanager.findSkill(input_skillId).toString();
-		String a = "@URL";String b = "@URL_1";String c = "@URL_2";
 		ArrayList<String> image = new ArrayList<String>();
-		image.add(a);image.add(b);
 		ArrayList<String> video = new ArrayList<String>();
-		video.add(a);video.add(b);video.add(c);
 		ArrayList<Comment> comment = new ArrayList<Comment>();
-		String d = "You are suck!"; String e = "2017-01-15";
-		Comment testComment =new Comment(d,e);
-		comment.add(testComment);
-		String output = new Skill(1, "vegetable", "吉他", "施博文是87", 57, 87, 
-				new Score(258, 442, 360, 258, 120), false, true, comment,image, video).toString();
+		String output = new Skill(2,"yow831102", "吉他", "紅豆", 3, 12, 
+				new Score(12, 13, 21, 21, 12), false, false, comment,image, video).toString();
 //		System.out.println(input);
 //		System.out.println(output);
 		assertEquals(input, output);
@@ -58,7 +52,7 @@ public class SkillManagerTest {
 	}
 	
 	@Test //測試技能達到上限，技能建立失敗
-	public void testCreateSkill() {
+	public void testCreateSkill2() {
 		String a = "www.youtube.com";
 		ArrayList<String> image = new ArrayList<String>();
 		image.add(a);
@@ -83,12 +77,49 @@ public class SkillManagerTest {
 		assertEquals(input, output);
 	}
 	
-	@Test //測試修改技能成功
-	public void testModifySkill1() {
-		boolean input = skillmanager.modifySkill((new Skill("vegetable", "吉他")));
-		boolean output = true; 
-		System.out.println(input);
+//	@Test //測試修改技能成功
+//	public void testModifySkill1() {
+//		int input_skillId = 1;
+//		String a = "@URL";String b = "@URL_1";String c = "@URL_2";
+//		ArrayList<String> image = new ArrayList<String>();
+//		image.add(a);image.add(b);
+//		ArrayList<String> video = new ArrayList<String>();
+//		video.add(a);video.add(b);video.add(c);
+//		ArrayList<Comment> comment = new ArrayList<Comment>();
+//		String d = "You are suck!"; String e = "2017-01-15";
+//		Comment testComment =new Comment(d,e);
+//		comment.add(testComment);
+//		String input = skillmanager.modifySkill((new Skill(1, "vegetable", "吉他", "施博文是87", 57, 87, 
+//				new Score(258, 442, 360, 258, 120), false, true, comment,image, video))).toString();
+//		String output = ; 
+//		assertEquals(input, output);
+//	}
+	
+	@Test //測試新增興趣技能成功
+	public void testCreateFavoriteSkill1() {
+		boolean input = skillmanager.createFavoriteSkill("吉他", "10567026");
+		boolean output = true;
 		assertEquals(input, output);
 	}
 	
+	@Test //測試輸入已建立的user_id，新增興趣技能失敗
+	public void testCreateFavoriteSkill2() {
+		boolean input = skillmanager.createFavoriteSkill("吉他", "test100");
+		boolean output = false;
+		assertEquals(input, output);
+	}
+	
+	@Test //測試刪除興趣技能成功
+	public void testDeleteFavoriteSkill1() {
+		boolean input = skillmanager.createFavoriteSkill("髮型設計", "test100");
+		boolean output = true;
+		assertEquals(input, output);
+	}
+	
+	@Test //測試刪除不存在興趣技能，刪除興趣技能失敗
+	public void testDeleteFavoriteSkill2() {
+		boolean input = skillmanager.createFavoriteSkill("吉他", "test10000");
+		boolean output = false;
+		assertEquals(input, output);
+	}
 }

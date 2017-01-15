@@ -142,15 +142,14 @@ public class SkillManager {
 	// 修改技能資訊
 	// 接收參數:skill
 	// 回傳型態:boolean
-	static public boolean modifySkill(Skill skill) {
+	static public void modifySkill(Skill skill) {
 		
-		int flag = 0;
 		int skillId = skill.getSkillId();
 		try{
-			flag = DataBaseAdmin.updateDB(
+			DataBaseAdmin.updateDB(
 					"UPDATE skills SET intro_expr='" + skill.getIntorExpr() + "' where (skill_id = '" + skillId + "')");
 			for (String vedio : skill.getVideo())
-			flag = DataBaseAdmin.updateDB(
+			DataBaseAdmin.updateDB(
 					"UPDATE videos SET vedio='" + vedio + "' where (skill_id = '" + skillId + "')");
 			for (String image : skill.getImage())
 			DataBaseAdmin.updateDB(
@@ -160,7 +159,6 @@ public class SkillManager {
 		}
 		
 		//return count;
-		return (flag == 0)? true:false;
 	}
 
 	// 新增使用者感興趣的技能類別
@@ -174,7 +172,8 @@ public class SkillManager {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return (flag == 0)? true:false;
+		System.out.println(flag);
+		return (flag == 0)? false:true;
 	}
 
 	// 刪除使用者感興趣的技能類別
@@ -188,7 +187,7 @@ public class SkillManager {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return (flag == 0)? true:false;
+		return (flag == 0)? false:true;
 	}
 
 	// 取得使用者所有技能
