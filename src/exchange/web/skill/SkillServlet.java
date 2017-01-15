@@ -128,6 +128,7 @@ public class SkillServlet extends HttpServlet {
 				}
 
 				request.setAttribute("kindName", KindTypeManager.getKindName(skilltoshowOther.getType().getKindCode()));
+				System.out.println("[skill]:"+Integer.parseInt((String) request.getParameter("myId")));
 				request.setAttribute("myId", Integer.parseInt((String) request.getParameter("myId")));
 				request.setAttribute("skill", skilltoshowOther);
 
