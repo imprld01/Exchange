@@ -107,17 +107,17 @@
                                     <li data-value="5"></li>
                                   </ul>
                                   <br>
-                                  <form method="get" action="Evaluation.do">
-                                  <textarea id="TextArea" name="comment" ></textarea>
-                                  <input type="hidden" value="1" name="atd" atd="atd">
-                                  <input type="hidden" value="1" name="pfn" atd="pfn">
-                                  <input type="hidden" value="1" name="tch" atd="tch">
-                                  <input type="hidden" value="1" name="fqc" atd="fqc">
-                                  <input type="hidden" value="1" name="sfn" atd="sfn">
-                                  <input type="hidden" value="${myId}" name="my">
-                                  <input type="hidden" value="${skill.skillId}" name="other">
-                                  <input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" value="確認">
-								
+	                                  <form method="get" action="Evaluation.do">
+	                                  <textarea id="TextArea" name="comment" ></textarea>
+	                                  <input type="hidden" value="1" name="atd" id="atd">
+	                                  <input type="hidden" value="1" name="pfn" id="pfn">
+	                                  <input type="hidden" value="1" name="tch" id="tch">
+	                                  <input type="hidden" value="1" name="fqc" id="fqc">
+	                                  <input type="hidden" value="1" name="sfn" id="sfn">
+	                                  <input type="hidden" value="${myId}" name="my">
+	                                  <input type="hidden" value="${skill.skillId}" name="other">
+	                                 <input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" value="確認">
+									</intput>
 								</form>
                                 </div>
                             </div>
@@ -586,7 +586,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-				 $("#atd").val(targetValue);
+
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -598,7 +598,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-				$("#pfn").val(targetValue);
+				 $("#RRRRR").html(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -610,7 +610,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-				$("#tch").val(targetValue);
+
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -622,7 +622,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-				$("#fqc").val(targetValue);
+
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -634,7 +634,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-				$("#sfn").val(targetValue);
+
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}

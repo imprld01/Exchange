@@ -36,7 +36,7 @@ public class EvaluationServlet extends HttpServlet {
 			String comment = (String)request.getParameter("comment");
 			
 			Score score = new Score(attitude, profession, teaching, frequency, satisfication);
-			
+			System.out.println(score);//<--------------------
 			try {
 				EvaluationManager.saveScore(other, score);
 			} catch (NumberFormatException | SQLException e1) {
