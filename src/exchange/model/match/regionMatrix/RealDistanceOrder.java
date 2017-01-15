@@ -5,7 +5,7 @@ import exchange.model.match.Region;
 
 public class RealDistanceOrder implements RegionMatrixSet {
 	
-	private Area matrix[][] = {
+	private final static Area matrix[][] = {
 			// 基隆
 			{	new Area(0, "基隆"), new Area(1, "台北"), new Area(2, "桃園"), new Area(2, "宜蘭"),
 				new Area(3, "新竹"), new Area(4, "苗栗"), new Area(4, "花蓮"), new Area(5, "台中"),
@@ -90,5 +90,10 @@ public class RealDistanceOrder implements RegionMatrixSet {
 	public Area[] getRegionMatrix(Region region){
 		
 		return matrix[region.ordinal()];
+	}
+	
+	public static int areaQuantity(){
+		
+		return matrix.length;
 	}
 }
