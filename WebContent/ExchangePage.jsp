@@ -66,7 +66,7 @@
                                 <c:forEach var="exchange" items="${Exchanging}" varStatus="exchangeLoopCount">
                                 <article class="style${exchangeLoopCount.count%5+1}">
 									<span class="image">
-										<a href="Skill.do?mark=5&id=${exchange.othersSkill.skillId}">
+										<a href="Skill.do?mark=5&myId=${exchange.mySkill.skillId}&otherId=${exchange.othersSkill.skillId}">
 											<img src="_homePage/images/pic04.jpg" alt="" />
 										</a>
 									</span>
@@ -75,7 +75,7 @@
 
 									<div>
 										<h2 style="margin:1em;">以${exchange.mySkill.type.getTypeName()}技能交換
-												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='Skill.do?mark=5&id=${exchange.othersSkill.skillId}#popup2'" style = "position: absolute; right:4%; bottom:6%;">
+												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='Skill.do?mark=5&myId=${exchange.mySkill.skillId}&otherId=${exchange.othersSkill.skillId}#popup2'" style = "position: absolute; right:4%; bottom:6%;">
 												<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:16%; bottom:5%;">
 										</h2>
 									</div>

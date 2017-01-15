@@ -117,18 +117,18 @@ public class SkillServlet extends HttpServlet {
 			case SHOW_OTHER_SKILL:
 				RequestDispatcher viewOther = null;
 
-				String idOther = (String) request.getParameter("id");
+				int idOther = Integer.parseInt((String) request.getParameter("otherId"));
 
 				Skill skilltoshowOther = null;
 
 				try {
-					skilltoshowOther = SkillManager.findSkill(Integer.parseInt(idOther));
+					skilltoshowOther = SkillManager.findSkill(idOther);
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
 
 				request.setAttribute("kindName", KindTypeManager.getKindName(skilltoshowOther.getType().getKindCode()));
-
+				request.setAttribute("myId", Integer.parseInt((String) request.getParameter("myId")));
 				request.setAttribute("skill", skilltoshowOther);
 
 				view = request.getRequestDispatcher("/OtherSkillPage.jsp");

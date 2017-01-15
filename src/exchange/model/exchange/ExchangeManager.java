@@ -18,7 +18,7 @@ public class ExchangeManager {
 		//DataBaseAdmin.closeConnection();
 	}
 	//完成交流, 將end_flag改成1
-	public static void finishExchange(String mySkillID, String othersSkillID){
+	public static void finishExchange(int mySkillID, int othersSkillID){
 		DataBaseAdmin.updateDB("UPDATE exchanges SET end_flag = '1' where (skill_a = '"+othersSkillID+"' AND skill_b = '"+mySkillID+"')"
 			+ "OR (skill_a = '"+mySkillID+"' AND skill_b = '"+othersSkillID+"')");
 		//DataBaseAdmin.closeConnection();
@@ -41,7 +41,7 @@ public class ExchangeManager {
 		try{
 			//處理我送出的邀請所進行的交流 並放進ArrayList
 			while(exchangeResultA.next()){
-				Exchange exchange = new Exchange(SkillManager.findSkill(exchangeResultA.getInt("skill_a")), SkillManager.findSkill(exchangeResultA.getInt("skill_a")));
+				Exchange exchange = new Exchange(SkillManager.findSkill(exchangeResultA.getInt("skill_a")), SkillManager.findSkill(exchangeResultA.getInt("skill_b")));
 				//System.out.println("A"+exchangeResultA.getInt("skill_b")+exchangeResultA.getString("type_name"));
 				exchangeList.add(exchange);
 			}

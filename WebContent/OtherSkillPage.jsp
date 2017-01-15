@@ -63,7 +63,7 @@
 						 <p><a class="button" href="#popup2"><i aria-hidden="true" data-icon="&#xe031;"></i>評價</a></p>
                               <div id="popup2" class="overlay">
                                 <div class="popup">
-                                  <p>評價</p>
+                                  <p >評價</p>
                                   <a class="close" href="#">&times;</a>
 
                                   <ul class="meter" id ="test1">
@@ -107,9 +107,18 @@
                                     <li data-value="5"></li>
                                   </ul>
                                   <br>
-                                  <textarea id="TextArea"ng- placeholder="This is an auto expanding textarea with just angularjs ... try typing something."></textarea>
-                                  <a href="" class="btn_more r5" >Confirm</a>
-
+                                  <form method="get" action="Evaluation.do">
+                                  <textarea id="TextArea" name="comment" ></textarea>
+                                  <input type="hidden" value="1" name="atd" atd="atd">
+                                  <input type="hidden" value="1" name="pfn" atd="pfn">
+                                  <input type="hidden" value="1" name="tch" atd="tch">
+                                  <input type="hidden" value="1" name="fqc" atd="fqc">
+                                  <input type="hidden" value="1" name="sfn" atd="sfn">
+                                  <input type="hidden" value="${myId}" name="my">
+                                  <input type="hidden" value="${skill.skillId}" name="other">
+                                  <input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" value="確認">
+								
+								</form>
                                 </div>
                             </div>
 					 		<a	href="Exchange.do#EXCHANGE" class="btn_exit r5" d>Back ></a>
@@ -119,8 +128,8 @@
 				</div>
 			</div>
 
-			<!--information-->
-			<div class="information clearfix">
+		<!--information-->
+		<div class="information clearfix">
 
 				<!--left-->
 				<div class="info_area info_left info_content">
@@ -133,12 +142,12 @@
 
 					<h5>我的證照/影片</h5>
 					<ul>
-						<c:forEach var="video" items="${skill.video}">
+						<c:forEach var="video" items="${skill.video}" varStatus="vedioLoop">
 
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>影片1</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>影片 - ${vedioLoop.getCount()}</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
@@ -148,11 +157,11 @@
 						</c:forEach>
 
 
-						<c:forEach var="image" items="${skill.image}">
+						<c:forEach var="image" items="${skill.image}" varStatus="imageLoop">
 							<li class="clearfix" style="position: relative; z-index: 1">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀1</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀 - ${imageLoop.getCount()}</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
@@ -478,7 +487,7 @@
 		</div>
 		<div class="tip_avatar_bg"></div>
 
-		<!--作品?容-->
+		<!--列出證書-->
 		<div class="tip_product sd">
 
 			<!--??作品展示-->
@@ -589,7 +598,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-
+				 $("#RRRRR").html(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
