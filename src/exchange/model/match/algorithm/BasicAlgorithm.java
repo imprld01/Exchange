@@ -13,6 +13,7 @@ import exchange.model.match.distanceWeight.NormalizationWeight;
 import exchange.model.match.regionMatrix.RealDistanceOrder;
 import exchange.model.match.regionMatrix.RegionMatrixSet;
 import exchange.model.match.skillRetrieval.FavoriteRegionRetrieval;
+import exchange.model.match.skillRetrieval.RegionRetrieval;
 import exchange.model.match.skillRetrieval.SkillRetrievalSet;
 import exchange.model.match.skillScore.SkillScoreSet;
 import exchange.model.match.skillScore.SumEvalScoreWithFitLvWt;
@@ -20,9 +21,10 @@ import exchange.model.skill.Skill;
 
 public class BasicAlgorithm implements MatchMaker {
 
+	private Area [] area;
 	private Queue<Skill> skillQueue;
-	private RegionMatrixSet regionMatrix;
 	private SkillScoreSet skillScore;
+	private RegionMatrixSet regionMatrix;
 	private DistanceWeightSet distanceWeight;
 	private SkillRetrievalSet skillRetrieval;
 	private final static int sizeLimitation = 50;
@@ -33,19 +35,14 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		// (1) prpare distance matrix.
 		AccountManager am = new AccountManager();
-
-	
 		this.regionMatrix = new RealDistanceOrder();   //原順序錯誤  無建立物件下行將無法執行 已修改
-		Area [] area = this.getRegionMatrix(am.toRegionObj(am.getRegion(user_id)));  //取得地區陣列
+		this.area = this.getRegionMatrix(am.toRegionObj(am.getRegion(user_id)));  //取得地區陣列
 
 		this.skillScore = new SumEvalScoreWithFitLvWt(user_id, skill_id);
 		this.distanceWeight = new NormalizationWeight();
-		this.skillRetrieval = new FavoriteRegionRetrieval(area, user_id, BasicAlgorithm.sizeLimitation);
-		getSkillArray();
+		this.skillRetrieval = new FavoriteRegionRetrieval(this.area, user_id, BasicAlgorithm.sizeLimitation);
 		
-		for(int i=0;i<skillQueue.size();i++){
-			
-		}
+		getSkillArray(user_id);
 	}
 	
 	public BasicAlgorithm(RegionMatrixSet regionMatrix, SkillScoreSet skillScore,
@@ -70,17 +67,30 @@ public class BasicAlgorithm implements MatchMaker {
 		Collections.sort(candidates);
 	}
 	
-	public void getSkillArray(){
+	public void getSkillArray(String user_id){
 		
 		// (0) declare one arrayList which type is CandidateSkill.
 		ArrayList<CandidateSkill> skillArray = new ArrayList<CandidateSkill>();
 		
 		// (2) (loop) retrieve skills from db many times until array full.
+		
 		do {
 			ArrayList<CandidateSkill> round = this.retrieveSkills();
 			if(round == null) break;
 			for(CandidateSkill cs : round) skillArray.add(cs);
 		} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
+		
+		//System.out.println(skillArray.size());
+		
+		if(skillArray.size() < BasicAlgorithm.sizeLimitation){
+			// random select no duplicate skills.
+			this.changeSkillRetrievalMethod(new RegionRetrieval(this.area, user_id, BasicAlgorithm.sizeLimitation, skillArray));
+			do {
+				ArrayList<CandidateSkill> round = this.retrieveSkills();
+				if(round == null) break;
+				for(CandidateSkill cs : round) skillArray.add(cs);
+			} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
+		}
 		
 		// (3) compute all skills' score.
 		this.computeSkillScore(skillArray);

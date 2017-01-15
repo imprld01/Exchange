@@ -21,6 +21,16 @@ public class Test {
 		System.out.println(ba.toMatch());
 		System.out.println(ba.toMatch());
 		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		System.out.println(ba.toMatch());
+		
 
 		//Skill skill = new Skill();
 		//System.out.println("-------------------------");
