@@ -18,9 +18,11 @@ import exchange.model.skill.Skill;
 
 public class matchTest {
 	BasicAlgorithm ba;
-	double distanceCoefficient[]={4,3,3,2}; //分子
-	double distanceCoefficientSum=12;  //分母
-	double score[]={11.3,10.5,6.75,0};
+	double distanceCoefficient[]={5,4,4,3,2}; //分子
+	double distanceCoefficientSum=18;  //分母
+	double totalScore[]={10.625,10.5,6.75,0,46};
+	double skillScore[]={34,42,27,0,46};
+	
 	ArrayList<CandidateSkill> cs;
 	
 	
@@ -91,15 +93,37 @@ public class matchTest {
 		ba=new BasicAlgorithm("vegetable", 1);
 		cs=ba.getSkillArray("vegetable");
 		
-		
-		
-		for(int i=0;i<cs.size();i++){
-			System.out.println(cs.get(i).getSkill());
-			//assertEquals(cs.get(i).getDistanceWeight_numerator(), distanceCoefficient[i],0);
-			//assertEquals(cs.get(i).getDistanceWeight_denominator(),distanceCoefficientSum,0);
+				
+		for(int i=0;i<cs.size()-1;i++){
+			assertEquals(cs.get(i).getDistanceWeight_numerator(), distanceCoefficient[i],0);
+			assertEquals(cs.get(i).getDistanceWeight_denominator(),distanceCoefficientSum,0);
 		}
 	}
 	
 	
+	
+	@Test
+	public void scoreTest(){
+		ba=new BasicAlgorithm("vegetable", 1);
+		cs=ba.getSkillArray("vegetable");
+		
+		for(int i=0;i<cs.size();i++){
+			assertEquals(cs.get(i).getSkillScore(), skillScore[i],0);
+		}
+	}
+	
+	
+	@Test
+	public void totalScoreTest(){
+		ba=new BasicAlgorithm("vegetable", 1);
+		cs=ba.getSkillArray("vegetable");
+		
+		for(int i=0;i<cs.size();i++){
+			assertEquals(cs.get(i).getTotalScore(), totalScore[i],0.1);
+		}
+	}
+	
+	
+
 
 }
