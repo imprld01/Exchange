@@ -7,6 +7,7 @@ public class Exchange {
 	public static final int EXCHANGING = 1;
 	public static final int SENDING_INVITATION = 2;
 	public static final int RECEIVING_INVITATION = 3;
+	public static final int UNFINISH_EXCHANGE = 4;
 	private int status;
 	
 	private Skill othersSkill;
@@ -37,8 +38,11 @@ public class Exchange {
 		case RECEIVING_INVITATION:
 			statusString = "受到邀請中";
 			break;
-			default:
-				statusString = "養精蓄銳中";
+		case UNFINISH_EXCHANGE:
+			statusString = "受到邀請中";
+			break;	
+		default:
+			statusString = "養精蓄銳中";
 			break;
 		}
 		return statusString;

@@ -1,5 +1,6 @@
 package exchange.model.exchange;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import exchange.model.database.DataBaseAdmin;
 import exchange.model.exchange.Exchange;
@@ -18,6 +19,17 @@ public class ExchangeManager {
 		//DataBaseAdmin.closeConnection();
 	}
 	//完成交流, 將end_flag改成1
+	public static boolean whichExchange(int mySkillID, int othersSkillID)
+	{
+		ResultSet rs = DataBaseAdmin.selectDB("SELECT skill_a FROM exchanges WHERE skill_a = '"+mySkillID+"'");
+		try {
+			rs.next();
+			if(rs.getInt("skill_a") == mySkillID) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public static void finishExchange(int mySkillID, int othersSkillID){
 		
 		//ResultSet isSend = DataBaseAdmin.selectDB("(SELECT skill_id FROM exchanges WHERE skill_a = '"+mySkillID+"'))");
@@ -103,57 +115,57 @@ public class ExchangeManager {
 		ResultSet resultExchangeA = DataBaseAdmin.selectDB("SELECT skill_a,skill_b FROM exchanges  where end_flag = '0' AND  "
 				+"(skill_a in (select skill_id from skills where user_id = '"+userID+"'));");
 		//由我收到邀請而產生的交流
-				ResultSet resultExchangeB = DataBaseAdmin.selectDB("SELECT skill_a,skill_b FROM exchanges where end_flag = '0' AND  "
-						+"(skill_b in (select skill_id from skills where user_id = '"+userID+"'));");
-				//我的送出邀請的技能
-				ResultSet resultSendingSkills = DataBaseAdmin.selectDB("SELECT ivt_sender,ivt_receiver FROM invitations where  "
-						+"(ivt_sender in (select skill_id from skills where user_id = '"+userID+"'));");
-				//我的收到邀請的技能
-				ResultSet resultReceivingSkills = DataBaseAdmin.selectDB("SELECT DISTINCT  ivt_receiver FROM invitations where  "
-						+"(ivt_receiver in (select skill_id from skills where user_id = '"+userID+"'));");
-				//閒置中的技能
-				ResultSet resultIdleSkill = DataBaseAdmin.selectDB("SELECT skill_id FROM skills where user_id = '"+userID+"'"
-						+"AND (skill_id not in (select skill_a from exchanges where end_flag = '0')) "
-						+"AND (skill_id not in (select skill_b from exchanges where end_flag = '0'))"
-						+"AND (skill_id not in (select ivt_sender from invitations ))"
-						+"AND (skill_id not in (select ivt_receiver from invitations ))");
-				try{
-					//處理我送出的邀請所進行的交流 並放進ArrayList
-					while(resultExchangeA.next()){
-						Exchange exchange = new Exchange(SkillManager.findSkill(resultExchangeA.getInt("skill_a")), SkillManager.findSkill(resultExchangeA.getInt("skill_b")));
-						//System.out.println("A"+resultExchangeA.getInt("skill_a")+resultExchangeA.getString("type_name"));
-						mySkills.add(exchange);
-					}
-					//處理我收到的邀請所進行的交流 並放進ArrayList
-					while(resultExchangeB.next()){
-						Exchange exchange = new Exchange(SkillManager.findSkill(resultExchangeB.getInt("skill_b")), SkillManager.findSkill(resultExchangeB.getInt("skill_a")));
-						//System.out.println("A"+resultExchangeB.getInt("skill_b")+resultExchangeB.getString("type_name"));
-						mySkills.add(exchange);
-					}
-					//處理我閒置的技能並放進ArrayList
-					while(resultIdleSkill.next()){
-						Exchange mySkill = new Exchange(SkillManager.findSkill(resultIdleSkill.getInt("skill_id")), 0);
-						//System.out.println(resultIdleSkill.getInt("skill_id"));
-						mySkills.add(mySkill);
-					}
-					//處理我的送出邀請的技能
-					while(resultSendingSkills.next()){
-						Exchange mySkill = new Exchange(SkillManager.findSkill(resultSendingSkills.getInt("ivt_sender")), 2);
-						mySkills.add(mySkill);
-					}
-					//處理我的收到邀請的技能
-					while(resultReceivingSkills.next()){
-						Exchange mySkill = new Exchange(SkillManager.findSkill(resultReceivingSkills.getInt("ivt_receiver")), 3);
-						mySkills.add(mySkill);
-					}
-					
-				}catch(Exception e){
-					System.err.println(e.getMessage());
-				}
-				//DataBaseAdmin.closeConnection();
+		ResultSet resultExchangeB = DataBaseAdmin.selectDB("SELECT skill_a,skill_b FROM exchanges where end_flag = '0' AND  "
+				+"(skill_b in (select skill_id from skills where user_id = '"+userID+"'));");
+		//我的送出邀請的技能
+		ResultSet resultSendingSkills = DataBaseAdmin.selectDB("SELECT ivt_sender,ivt_receiver FROM invitations where  "
+				+"(ivt_sender in (select skill_id from skills where user_id = '"+userID+"'));");
+		//我的收到邀請的技能
+		ResultSet resultReceivingSkills = DataBaseAdmin.selectDB("SELECT DISTINCT  ivt_receiver FROM invitations where  "
+				+"(ivt_receiver in (select skill_id from skills where user_id = '"+userID+"'));");
+		//閒置中的技能
+		ResultSet resultIdleSkill = DataBaseAdmin.selectDB("SELECT skill_id FROM skills where user_id = '"+userID+"'"
+				+"AND (skill_id not in (select skill_a from exchanges where end_flag = '0')) "
+				+"AND (skill_id not in (select skill_b from exchanges where end_flag = '0'))"
+				+"AND (skill_id not in (select ivt_sender from invitations ))"
+				+"AND (skill_id not in (select ivt_receiver from invitations ))");
+		try{
+			//處理我送出的邀請所進行的交流 並放進ArrayList
+			while(resultExchangeA.next()){
+				Exchange exchange = new Exchange(SkillManager.findSkill(resultExchangeA.getInt("skill_a")), SkillManager.findSkill(resultExchangeA.getInt("skill_b")));
+				//System.out.println("A"+resultExchangeA.getInt("skill_a")+resultExchangeA.getString("type_name"));
+				mySkills.add(exchange);
+			}
+			//處理我收到的邀請所進行的交流 並放進ArrayList
+			while(resultExchangeB.next()){
+				Exchange exchange = new Exchange(SkillManager.findSkill(resultExchangeB.getInt("skill_b")), SkillManager.findSkill(resultExchangeB.getInt("skill_a")));
+				//System.out.println("A"+resultExchangeB.getInt("skill_b")+resultExchangeB.getString("type_name"));
+				mySkills.add(exchange);
+			}
+			//處理我閒置的技能並放進ArrayList
+			while(resultIdleSkill.next()){
+				Exchange mySkill = new Exchange(SkillManager.findSkill(resultIdleSkill.getInt("skill_id")), 0);
+				//System.out.println(resultIdleSkill.getInt("skill_id"));
+				mySkills.add(mySkill);
+			}
+			//處理我的送出邀請的技能
+			while(resultSendingSkills.next()){
+				Exchange mySkill = new Exchange(SkillManager.findSkill(resultSendingSkills.getInt("ivt_sender")), 2);
+				mySkills.add(mySkill);
+			}
+			//處理我的收到邀請的技能
+			while(resultReceivingSkills.next()){
+				Exchange mySkill = new Exchange(SkillManager.findSkill(resultReceivingSkills.getInt("ivt_receiver")), 3);
+				mySkills.add(mySkill);
+			}			
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+		//DataBaseAdmin.closeConnection();
 		return mySkills;
 	}
 	public static void main(String args[]){
 		ExchangeManager.getAllMySkills("vegetable");
+		System.out.println(ExchangeManager.whichExchange(34, 1));
 	}
 }
