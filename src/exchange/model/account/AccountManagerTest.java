@@ -21,6 +21,7 @@ public class AccountManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
+		DataBaseAdmin.openConnection("root", "narutoap12");
 		accountmanager = new AccountManager();
 	}
 
@@ -63,6 +64,15 @@ public class AccountManagerTest {
 				input_userName, input_nickName, input_gender, input_email, 
 				input_birthday, input_region);
 		assertEquals(input, output);
+	}
+	
+	@Test //測試讀取已存在資料庫的帳號
+	public void testgetAccount1(){
+		AccountManager am = new AccountManager();
+		Account input = am.getAccount("10567026");
+		Account output = new Account(new Secret("10567026", "dsdsdsds"), 
+				new Profile("鍾子健", "nick3223", false, "345434", "1994-07-27", "台北", 3, 0), "2017-01-15");
+		assertEquals(input.toString(), output.toString());
 	}
 	
 	@Test //測試修改成功 輸入已存在user_id

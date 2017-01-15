@@ -304,78 +304,78 @@ public class SkillManager {
 		// DataBaseAdmin.closeConnection();
 	}
 
-	public static void main(String[] args) {
-
-		System.out.println("[test]"+SkillManager.checkSkillDuplicate(new Skill("vegetable","Java")));
-		
-		//SkillManager.updateSkillNumber();
-		/*
-		 * // 資料庫中的94個type_name String type[] = { "素描", "電繪", "書法", "雕塑", "戲劇",
-		 * "水彩", "油畫", "料理", "烘焙", "調酒", "橋牌", "象棋", "圍棋", "跳棋", "西洋棋", "原住民舞蹈",
-		 * "民俗舞蹈", "現代舞", "芭蕾舞", "髮型設計", "廣告設計", "服裝設計", "英文", "中文", "日文", "德文",
-		 * "泰文", "法文", "西班牙文", "拉丁文", "韓文", "越南文", "希臘文", "阿拉伯文", "俄文", "夏威夷文",
-		 * "挪威文", "馬來文", "菲律賓文", "瑞典文", "荷蘭文", "歌唱", "吉他", "鋼琴", "小提琴", "中提琴",
-		 * "大提琴", "口琴", "電吉他", "爵士鼓", "法國號", "喇叭", "貝斯", "定音鼓", "笙", "蕭", "單簧管",
-		 * "豎笛", "直笛", "嗩吶", "二胡", "古箏", "C", "Java", "Python", "C++", "R",
-		 * "C#", "PHP", "Javascript", "Ruby", "Go", "Matlab", "Swift", "VB",
-		 * "Perl", "Html", "Android", "魔術", "扯鈴", "跳水", "游泳", "水上芭蕾", "水球",
-		 * "輕艇", "自行車", "體操", "排球", "場地障礙賽", "射箭", "田徑", "羽毛球", "籃球", "拳擊" }; //
-		 * System.out.println(type.length);
-		 * 
-		 * // deleteCreate(40);
-		 * 
-		 * int times[] = new int[5000]; Score score[] = new Score[5000]; //
-		 * 測試是否能夠成功新增技能 for (int i = 0; i < 5000; i++) { times[i] = (int)
-		 * (Math.random() * 100); score[i] = new Score((int) (Math.random() * 5
-		 * + 1) * times[i], (int) (Math.random() * 5 + 1) * times[i], (int)
-		 * (Math.random() * 5 + 1) * times[i], (int) (Math.random() * 5 + 1) *
-		 * times[i], (int) (Math.random() * 5 + 1) * times[i]);
-		 * System.out.println("[" + i + "]" + score[i] + "->" + times[i]); }
-		 * 
-		 * for (int i = 150; i < 5150; i++) {
-		 * 
-		 * // public Skill(String userId, String intorExper,int times, Score //
-		 * score, String typeName, ArrayList<String> image, // ArrayList<String>
-		 * video) SkillManager.createSkill(new Skill("test" + i, "自介@test" + i,
-		 * times[i - 150], score[i - 150], type[(int) (Math.random() * 94)], new
-		 * ArrayList<String>(), new ArrayList<String>()));
-		 * 
-		 * DataBaseAdmin.updateDB("UPDATE skills SET times='" + times[i - 150] +
-		 * "' ,attitude_score='" + score[i - 150].getAttitude() +
-		 * "' ,profession_score='" + score[i - 150].getProfession() +
-		 * "' ,teaching_score='" + score[i - 150].getTeaching() +
-		 * "' ,frequency_score='" + score[i - 150].getFrequency() +
-		 * "' ,satisfication_score='" + score[i - 150].getSatisfication() +
-		 * "' WHERE skill_id = '" + (i - 10) + "'"); updateSkillLevel(i - 10);
-		 * 
-		 * createFavoriteSkill(type[(int) (Math.random() * 94)], "test" + (i));
-		 * }
-		 * 
-		 */
-		/*
-		 *
-		 * // 測試取得資料庫中完整技能資料 System.out.println(SkillManager.findSkill(13));
-		 * 
-		 * // 新增使用者感興趣的技能類別 SkillManager.createFavoriteSkill("吉他", "vegetable");
-		 * 
-		 * // 刪除使用者感興趣的技能類別 SkillManager.deleteFavoriteSkill("吉他", "vegetable");
-		 * 
-		 * // 取得使用者所有技能
-		 * System.out.println(SkillManager.getAllSkills("vegetable"));
-		 * 
-		 * // 取得使用者所有感興趣的技能類別
-		 * System.out.println(SkillManager.getAllFavoriteSkills("vegetable"));
-		 * 
-		 * // 測試修改技能資訊modifySkill // System.out.println(modifySkill(new
-		 * skill()));
-		 * 
-		 * // 測試卡片是否在邀請別人 System.out.println(SkillManager.isSendingInvation(1));
-		 * 
-		 * // 更新資料庫中的技能等級 SkillManager.updateSkillLevel(1);
-		 * 
-		 * // 評斷是否黑單 SkillManager.judgeBlock(13, new Score());
-		 * 
-		 */
-	}
+//	public static void main(String[] args) {
+//
+//		System.out.println("[test]"+SkillManager.checkSkillDuplicate(new Skill("vegetable","Java")));
+//		
+//		//SkillManager.updateSkillNumber();
+//		/*
+//		 * // 資料庫中的94個type_name String type[] = { "素描", "電繪", "書法", "雕塑", "戲劇",
+//		 * "水彩", "油畫", "料理", "烘焙", "調酒", "橋牌", "象棋", "圍棋", "跳棋", "西洋棋", "原住民舞蹈",
+//		 * "民俗舞蹈", "現代舞", "芭蕾舞", "髮型設計", "廣告設計", "服裝設計", "英文", "中文", "日文", "德文",
+//		 * "泰文", "法文", "西班牙文", "拉丁文", "韓文", "越南文", "希臘文", "阿拉伯文", "俄文", "夏威夷文",
+//		 * "挪威文", "馬來文", "菲律賓文", "瑞典文", "荷蘭文", "歌唱", "吉他", "鋼琴", "小提琴", "中提琴",
+//		 * "大提琴", "口琴", "電吉他", "爵士鼓", "法國號", "喇叭", "貝斯", "定音鼓", "笙", "蕭", "單簧管",
+//		 * "豎笛", "直笛", "嗩吶", "二胡", "古箏", "C", "Java", "Python", "C++", "R",
+//		 * "C#", "PHP", "Javascript", "Ruby", "Go", "Matlab", "Swift", "VB",
+//		 * "Perl", "Html", "Android", "魔術", "扯鈴", "跳水", "游泳", "水上芭蕾", "水球",
+//		 * "輕艇", "自行車", "體操", "排球", "場地障礙賽", "射箭", "田徑", "羽毛球", "籃球", "拳擊" }; //
+//		 * System.out.println(type.length);
+//		 * 
+//		 * // deleteCreate(40);
+//		 * 
+//		 * int times[] = new int[5000]; Score score[] = new Score[5000]; //
+//		 * 測試是否能夠成功新增技能 for (int i = 0; i < 5000; i++) { times[i] = (int)
+//		 * (Math.random() * 100); score[i] = new Score((int) (Math.random() * 5
+//		 * + 1) * times[i], (int) (Math.random() * 5 + 1) * times[i], (int)
+//		 * (Math.random() * 5 + 1) * times[i], (int) (Math.random() * 5 + 1) *
+//		 * times[i], (int) (Math.random() * 5 + 1) * times[i]);
+//		 * System.out.println("[" + i + "]" + score[i] + "->" + times[i]); }
+//		 * 
+//		 * for (int i = 150; i < 5150; i++) {
+//		 * 
+//		 * // public Skill(String userId, String intorExper,int times, Score //
+//		 * score, String typeName, ArrayList<String> image, // ArrayList<String>
+//		 * video) SkillManager.createSkill(new Skill("test" + i, "自介@test" + i,
+//		 * times[i - 150], score[i - 150], type[(int) (Math.random() * 94)], new
+//		 * ArrayList<String>(), new ArrayList<String>()));
+//		 * 
+//		 * DataBaseAdmin.updateDB("UPDATE skills SET times='" + times[i - 150] +
+//		 * "' ,attitude_score='" + score[i - 150].getAttitude() +
+//		 * "' ,profession_score='" + score[i - 150].getProfession() +
+//		 * "' ,teaching_score='" + score[i - 150].getTeaching() +
+//		 * "' ,frequency_score='" + score[i - 150].getFrequency() +
+//		 * "' ,satisfication_score='" + score[i - 150].getSatisfication() +
+//		 * "' WHERE skill_id = '" + (i - 10) + "'"); updateSkillLevel(i - 10);
+//		 * 
+//		 * createFavoriteSkill(type[(int) (Math.random() * 94)], "test" + (i));
+//		 * }
+//		 * 
+//		 */
+//		/*
+//		 *
+//		 * // 測試取得資料庫中完整技能資料 System.out.println(SkillManager.findSkill(13));
+//		 * 
+//		 * // 新增使用者感興趣的技能類別 SkillManager.createFavoriteSkill("吉他", "vegetable");
+//		 * 
+//		 * // 刪除使用者感興趣的技能類別 SkillManager.deleteFavoriteSkill("吉他", "vegetable");
+//		 * 
+//		 * // 取得使用者所有技能
+//		 * System.out.println(SkillManager.getAllSkills("vegetable"));
+//		 * 
+//		 * // 取得使用者所有感興趣的技能類別
+//		 * System.out.println(SkillManager.getAllFavoriteSkills("vegetable"));
+//		 * 
+//		 * // 測試修改技能資訊modifySkill // System.out.println(modifySkill(new
+//		 * skill()));
+//		 * 
+//		 * // 測試卡片是否在邀請別人 System.out.println(SkillManager.isSendingInvation(1));
+//		 * 
+//		 * // 更新資料庫中的技能等級 SkillManager.updateSkillLevel(1);
+//		 * 
+//		 * // 評斷是否黑單 SkillManager.judgeBlock(13, new Score());
+//		 * 
+//		 */
+//	}
 
 }

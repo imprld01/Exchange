@@ -18,7 +18,7 @@ public class Test {
 		AccountManager am = new AccountManager();
 
 		// getAccount method success
-		// System.out.println(am.getAccount("10567026"));
+		 System.out.println(am.getAccount("10567026"));
 		// System.out.println(am.getAccount("1234567"));
 		// System.out.println(am.getAccount("jec88899"));
 
@@ -45,7 +45,7 @@ public class Test {
 		// System.out.println(am.getAllUserId());
 
 		// isSkillFull(id) success
-		 System.out.println(am.isSkillFull("0"));
+//		 System.out.println(am.isSkillFull("0"));
 
 		// getregion(id) success
 		// System.out.println(am.getRegion("1234567"));
