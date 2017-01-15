@@ -53,7 +53,7 @@ public class CommunicationManager {
 						,messagesSendByHe.getInt("msg_receiver"),messagesSendByHe.getString("content")
 						,messagesSendByHe.getBoolean("isRead"));
 				messages.add(message);
-				readMessage(message.getMsgID());
+				
 			}
 		}catch(Exception e){
 			System.err.println(e.getMessage());
@@ -87,7 +87,7 @@ public class CommunicationManager {
 						,messagesSendByHe.getInt("msg_receiver"),messagesSendByHe.getString("content")
 						,messagesSendByHe.getBoolean("isRead"));
 				messages.add(message);
-				readMessage(message.getMsgID());
+				//readMessage(message.getMsgID());
 			}
 		}catch(Exception e){
 			System.err.println(e.getMessage());
@@ -118,6 +118,8 @@ public class CommunicationManager {
 		for(Message msg:messages ){
 			System.out.println(msg);
 		}*/
-		System.out.println(CommunicationManager.getNickName(2));
+		String key = "0125_1";
+		System.out.println(Integer.parseInt(key.substring(key.indexOf("_")+1, key.length())));
+		
 	}
 }

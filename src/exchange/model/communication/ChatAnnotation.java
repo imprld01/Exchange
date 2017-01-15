@@ -34,6 +34,7 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import javax.websocket.EndpointConfig;
+import org.json.JSONObject;
 
 //import org.apache.juli.logging.Log;
 //import org.apache.juli.logging.LogFactory;
@@ -51,7 +52,7 @@ public class ChatAnnotation {
 
 	
 
-	
+
 	
 
 	public static int getKey(String key){
@@ -88,24 +89,34 @@ public class ChatAnnotation {
 	}
 
 	private static void broadcast(ArrayList<Message> messages) {
-		for (String client :  clients.keySet() ) {
-			try {
-				synchronized (client) {
-					for(Message msg:messages){
-					if(Integer.parseInt(client)==msg.getSender() || Integer.parseInt(client)==msg.getReceiver())
-						clients.get(client).getBasicRemote().sendText(msg.toString());
-					}
-				}
-			} catch (IOException e) {
-				// log.debug("Chat Error: Failed to send message to client", e);
-				clients.remove(client);
+		//先把每則訊息包成json再做處理
+		for(Message msg:messages){
+			 Map jsonMap = new HashMap();
+			 jsonMap.put("content", msg.getContent());
+			 jsonMap.put("sdr", msg.getSender());
+			 jsonMap.put("rcv", msg.getReceiver());
+			 
+			 JSONObject jsonMsg = new JSONObject(jsonMap);
+			//掃過每個用戶來偵測是否符合接受的資格
+			for (String client :  clients.keySet() ) {
 				try {
-					clients.get(client).close();
-				} catch (IOException e1) {
-					// Ignore
+					synchronized (client) {
+						if(Integer.parseInt(client)==msg.getSender() || Integer.parseInt(client)==msg.getReceiver()){
+							clients.get(client).getBasicRemote().sendText(jsonMsg.toString());
+							if(msg.getReceiver() == Integer.parseInt(client))CommunicationManager.readMessage(msg.getMsgID());
+						}
+					}
+				} catch (Exception e) {
+					// log.debug("Chat Error: Failed to send message to client", e);
+					clients.remove(client);
+					try {
+						clients.get(client).close();
+					} catch (IOException e1) {
+						// Ignore
+					}
+					//String message = String.format("* %s %s", client.nickname, "has been disconnected.");
+					//broadcast(message);
 				}
-				//String message = String.format("* %s %s", client.nickname, "has been disconnected.");
-				//broadcast(message);
 			}
 		}
 	}
