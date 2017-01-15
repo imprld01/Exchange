@@ -18,6 +18,7 @@ public class EvaluationManagerTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		DataBaseAdmin.openConnection("root", "narutoap12");
 		evaluationmanager = new EvaluationManager();
 	}
 
@@ -29,8 +30,8 @@ public class EvaluationManagerTest {
 	@Test //輸入正常SKILL id
 	public void testSaveComment1() throws SQLException {
 		EvaluationManager em = new EvaluationManager();
-		int output = 0;
-		int input = em.saveComment(5313, "You are suck!");
+		int output = 1;
+		int input = em.saveComment(5313, "You suck!");
 		assertEquals(input, output);
 	}
 	
@@ -38,7 +39,7 @@ public class EvaluationManagerTest {
 	public void testSaveComment2() throws SQLException {
 		EvaluationManager em = new EvaluationManager();
 		int output = 0;
-		int input = em.saveComment(1, null);
+		int input = em.saveComment(0, null);
 		assertEquals(input, output);
 	}
 	

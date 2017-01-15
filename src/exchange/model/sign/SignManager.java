@@ -70,12 +70,6 @@ public class SignManager {
 			if (rs.next()) {
 				if (id.equals(rs.getString("user_id")))
 					result = false;
-				// else if (id.length() > 20)
-				// result = false;
-				// else if (id == null)
-				// result = false;
-				// else
-				// result = true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -83,10 +77,10 @@ public class SignManager {
 		return result;
 	}
 
-	static public void main(String args[]) {
-		SignManager sm = new SignManager();
-
-		System.out.println(sm.CheckPassword(new Secret("bobobo","bobobo")));
-	}
+//	static public void main(String args[]) {
+//		SignManager sm = new SignManager();
+//
+//		System.out.println(sm.CheckPassword(new Secret("bobobo","bobobo")));
+//	}
 
 }

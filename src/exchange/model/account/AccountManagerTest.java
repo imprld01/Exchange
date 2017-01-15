@@ -53,7 +53,7 @@ public class AccountManagerTest {
 		AccountManager am = new AccountManager();
 		String input_id = "10567026";
 		String input_password = "k6666894";
-	    String input_userName = "鍾子健"; 
+	    String input_userName = "Serena"; 
 		String input_nickName = "nick2";
 		boolean input_gender = false;
 		String input_email = "email1515";
