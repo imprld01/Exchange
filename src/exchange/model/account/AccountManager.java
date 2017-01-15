@@ -110,9 +110,10 @@ public class AccountManager {
 	public boolean isValid(String id) {
 		
 		String query = "SELECT * FROM accounts where user_id='" + id + "'";
-		ResultSet rs = DataBaseAdmin.selectDB(query);
-		//System.out.println("[" + id + "] -> [" + rs +"]");
 		try {
+			ResultSet rs = DataBaseAdmin.selectDB(query);
+		//System.out.println("[" + id + "] -> [" + rs +"]");
+
 			if (rs.next()) {
 				
 				if (id.equals(rs.getString("user_id")))
