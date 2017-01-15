@@ -21,7 +21,6 @@ public class AccountManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		DataBaseAdmin.openConnection("root", "narutoap12");
 		accountmanager = new AccountManager();
 	}
 

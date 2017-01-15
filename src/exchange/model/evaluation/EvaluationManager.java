@@ -17,7 +17,7 @@ public class EvaluationManager{
 		Date recentLog = new Date();
 		java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		try{
-			String query = "INSERT INTO comments" + "VALUES ( '"+skillId+"' , '"+comment+"', '"+now+"' )";
+			String query = "INSERT INTO comments VALUES ( "+skillId+" , '"+comment+"', '"+now+"' )";
 //			String query = "INSERT comments SET skill_id = '"+ skillId +"', comment = '"+ comment +"',date = '"+ now +"'";
 		    result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){

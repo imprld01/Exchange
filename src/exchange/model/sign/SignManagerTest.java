@@ -18,7 +18,6 @@ public class SignManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		DataBaseAdmin.openConnection("root", "narutoap12");
 		signmanager = new SignManager();
 	}
 
