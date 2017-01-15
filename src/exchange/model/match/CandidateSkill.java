@@ -45,6 +45,14 @@ public class CandidateSkill implements Comparable<CandidateSkill> {
 		return skillScore;
 	}
 
+	public double getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(double totalScore) {
+		this.totalScore = totalScore;
+	}
+
 	public void setSkillScore(double skillScore) {
 		
 		this.skillScore = skillScore;
