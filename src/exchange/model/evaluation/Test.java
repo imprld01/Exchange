@@ -17,7 +17,7 @@ public class Test {
 		em.saveComment(2, "You suck!");
 		
 		
-//		em.saveScore(1, new Score(1, 1, 1, 1, 1));
+		em.saveScore(1, new Score(1, 1, 1, 1, 1));
 		
 
 	}
