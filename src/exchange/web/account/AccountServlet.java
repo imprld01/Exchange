@@ -21,7 +21,7 @@ public class AccountServlet extends HttpServlet {
 	private static final int SECRET_MODIFICATION = 0;
 	private static final int PROFILE_MODIFICATION = 1;
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		
@@ -33,14 +33,24 @@ public class AccountServlet extends HttpServlet {
 			
 			switch(mark){
 			case SECRET_MODIFICATION:
+				System.out.println("SECRET_MODIFICATION");
 				String oldPwd = (String)request.getParameter("old_pwd");
 				String pwd = (String)request.getParameter("pwd");
 				String rePwd = (String)request.getParameter("re_pwd");
-				Secret secret = new Secret(id, pwd);
+				Secret secret = new Secret(id, oldPwd);
 				
-				am.setSecret(secret);
-				
-				response.sendRedirect("Home.do");
+				switch(am.setSecret(secret,pwd,rePwd))
+				{
+					case 0:
+						response.sendRedirect("ChangePwd.jsp#popupNOTMATCH");
+						break;
+					case 1:
+						response.sendRedirect("ChangePwd.jsp#popupNOTSAME");
+						break;
+					case 3:
+						response.sendRedirect("Home.do#SUCCESSCHANGE");
+						break;
+				}
 				break;
 			case PROFILE_MODIFICATION:
 				String nick = (String)request.getParameter("nick");
@@ -55,6 +65,6 @@ public class AccountServlet extends HttpServlet {
 				break;
 			}
 		}
-		else response.sendRedirect("index.html");
+		else response.sendRedirect("Index.jsp");
 	}
 }

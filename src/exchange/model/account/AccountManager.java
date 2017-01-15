@@ -80,17 +80,33 @@ public class AccountManager {
 	}
 
 	// Secret修改
-	public int setSecret(Secret secret) {
-		int result = 0;
+	public int setSecret(Secret secret,String pwd, String rePwd) {
+		int NOTMATCH = 0;
+		int NOTSAME = 1;
+		int SUCCESS = 2;
+		
 		String id = secret.getId();
 		String password = secret.getPassword();
 		try {
-			String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
-			result = DataBaseAdmin.updateDB(query);
+			
+			ResultSet rs = DataBaseAdmin.selectDB("SELECT password FROM accounts WHERE  password = '" + password + "' " + "where user_id = '" + id + "'");
+			
+			rs.next();
+			if(rs.getString("password").equals(password)) 
+			{
+				System.out.println("[原始密碼符合]");
+				if( pwd.equals(rePwd))
+				{
+					DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'");
+					return SUCCESS;
+				}
+				return NOTSAME;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+		return NOTMATCH;
 
 	}
 

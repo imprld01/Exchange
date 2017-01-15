@@ -203,6 +203,14 @@
 								<p>
 							</div>
 						</div>
+						<div id="popupSUCCESSCHANGE" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>通知</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">更改密碼成功！
+								<p>
+							</div>
+						</div>
 					</h2>
 				</div>
 				</article> </section>

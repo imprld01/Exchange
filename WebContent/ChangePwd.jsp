@@ -29,24 +29,25 @@
 
 					<div class="content style4 fea-tured" >
 						<div class="container 75%" align="center">
-							<form method="post" ac-tion="#">
+							<form method="post" action="Account.do">
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="old_pwd" type="text" placeholder="目前密碼" /></div>
+									<div class="6u 12u(mobile)"><input name="old_pwd" type="password" placeholder="目前密碼" /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="pwd" type="text" placeholder="新密碼" /></div>
+									<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="新密碼" /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="re_pwd" type="text" placeholder="重新輸入新密碼" /></div>
+									<div class="6u 12u(mobile)"><input name="re_pwd" type="password" placeholder="重新輸入新密碼" /></div>
 								</div>
 								<br>
 
 								<div class="row">
 									<div class="12u">
 										<ul class="actions">
-											<li><input type="button" class="button alt" value="修改" onclick="window.location.href='Account.do?mark=0'"/></li>
+											<input type="hidden" value="3" name="mark"/>
+											<li><input type="submit" class="button alt" value="修改" /></li>
 											<li><input type="button" class="button alt" value="返回" onclick="window.location.href='Home.do'"/></li>
 										</ul>
 									</div>
