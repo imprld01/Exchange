@@ -67,7 +67,7 @@ public class AccountManagerTest {
 	}
 	
 	@Test //測試讀取已存在資料庫的帳號
-	public void testgetAccount1(){
+	public void testGetAccount1(){
 		AccountManager am = new AccountManager();
 		Account input = am.getAccount("10567026");
 		Account output = new Account(new Secret("10567026", "dsdsdsds"), 
