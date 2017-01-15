@@ -75,7 +75,7 @@ public class BasicAlgorithm implements MatchMaker {
 		
 		// (0) declare one arrayList which type is CandidateSkill.
 		ArrayList<CandidateSkill> skillArray = new ArrayList<CandidateSkill>();
-		
+		ArrayList<CandidateSkill> skillArray2 = new ArrayList<CandidateSkill>();
 		// (2) (loop) retrieve skills from db many times until array full.
 		
 		do {
@@ -90,25 +90,31 @@ public class BasicAlgorithm implements MatchMaker {
 						break;
 					}
 			}
+			
 			for(CandidateSkill cs : round) skillArray.add(cs);
+					
 		} while (skillArray.size() < BasicAlgorithm.sizeLimitation);
+
 		
+		CandidateSkill.setDistanceSort(true);
+		this.sortSkills(skillArray);//排序距離
 		
 		// (3) compute all skills' score.
 		this.computeSkillScore(skillArray);
 		
 		// (4) compute all skills' distance weight.
 		this.computeDistanceWeight(skillArray);
-			
+		
 		// (5) call method calculateTotalScore in CandidateSkill.
 		for(CandidateSkill cs : skillArray) cs.calculateTotalScore();
-		
+	
 		// (6) sorting the array by total score(attribute) in CandidateSkill.
+		CandidateSkill.setDistanceSort(false);
 		this.sortSkills(skillArray);
-			
+		
 		// (7) put elements in array into queue.
 		for(CandidateSkill cs : skillArray) this.skillQueue.add(cs.getSkill());
-		
+
 		return skillArray;
 	}
 	

@@ -18,7 +18,6 @@ public class SignManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		DataBaseAdmin.openConnection("root", "narutoap12");
 		signmanager = new SignManager();
 	}
 
@@ -106,9 +105,8 @@ public class SignManagerTest {
 		Secret secret = new Secret("15561315", "gd55kdls");
 		Profile profile = new Profile("ck66ja", "slmcs66mc",
 				true, "djjf66kkfd", "2016-09-06", "台北");
-		Date recentLog = new Date();
-		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
-		Account input_Account = new Account(secret, profile, sqlStartDate);
+		String recentlog = "2017-01-16";
+		Account input_Account = new Account(secret, profile, recentlog);
 		boolean output = true;
 		SignManager sm = new SignManager();
 		boolean input = sm.create(input_Account);
@@ -120,9 +118,8 @@ public class SignManagerTest {
 		Secret secret = new Secret(null, "gddlkdls");
 		Profile profile = new Profile("ckja", "slmcsmc",
 				true, "djjfkkfd", "2016-09-06", "台北");
-		Date recentLog = new Date();
-		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
-		Account input_Account = new Account(secret, profile, sqlStartDate);
+		String recentlog = "2017-01-16";
+		Account input_Account = new Account(secret, profile, recentlog);
 		SignManager sm = new SignManager();
 		boolean input = sm.create(input_Account);
 		boolean output = false;
@@ -135,8 +132,8 @@ public class SignManagerTest {
 		Profile profile = new Profile("ck66ja", "slmcs66mc",
 				true, "djjf66kkfd", "2016-09-06", "台北");
 		Date recentLog = new Date();
-		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
-		Account input_Account = new Account(secret, profile, sqlStartDate);
+		String recentlog = "2017-01-16";
+		Account input_Account = new Account(secret, profile, recentlog);
 		SignManager sm = new SignManager();
 		boolean input = sm.create(input_Account);
 		boolean output = false;

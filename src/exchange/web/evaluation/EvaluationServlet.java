@@ -48,6 +48,7 @@ public class EvaluationServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+			
 			SkillManager.judgeBlock(other, score);
 			SkillManager.updateSkillLevel(other);
 			

@@ -6,9 +6,9 @@ public class Account
 {
 	private Secret secret;
 	private Profile profile;
-	private Date reccntLog;
+	private String reccntLog;
 	
-	public Account(Secret secret, Profile profile, Date recentLog)
+	public Account(Secret secret, Profile profile, String recentLog)
 	{
 		this.secret = secret;
 		this.profile = profile;
@@ -46,19 +46,19 @@ public class Account
 		return profile;
 	}
 	
-	public void setRecentLog(Date recentLog)
+	public void setRecentLog(String recentLog)
 	{
 		this.reccntLog = recentLog;
 	}
 	
-	public Date getRecentLog()
+	public String getRecentLog()
 	{
 		return reccntLog;
 	}
 	
 	public String toString()
 	{
-		return String.format("Account[Secret = %s, Profile = %s, recentLog = %tT ]", getSecret(), getProfile(), 
+		return String.format("Account[Secret = %s, Profile = %s, recentLog = %s ]", getSecret(), getProfile(), 
 				getRecentLog());
 	}
 }

@@ -66,6 +66,15 @@ public class AccountManagerTest {
 		assertEquals(input, output);
 	}
 	
+	@Test //測試讀取已存在資料庫的帳號
+	public void testGetAccount1(){
+		AccountManager am = new AccountManager();
+		Account input = am.getAccount("10567026");
+		Account output = new Account(new Secret("10567026", "dsdsdsds"), 
+				new Profile("鍾子健", "nick3223", false, "345434", "1994-07-27", "台北", 3, 0), "2017-01-15");
+		assertEquals(input.toString(), output.toString());
+	}
+	
 	@Test //測試修改成功 輸入已存在user_id
 	public void testSetProfie1(){
 		AccountManager am = new AccountManager();

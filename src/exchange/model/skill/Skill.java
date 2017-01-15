@@ -203,7 +203,7 @@ public class Skill {
 	public String toString() {
 		return "Skill [skillId=" + skillId + ", userId=" + userId + ", type=" + type + ", introExpr=" + introExpr
 				+ ", skillLevel=" + skillLevel + ", times=" + times + ", score=" + score + ", warningTag=" + warningTag
-				+ ", badTag=" + badTag + ", image=" + image + ", video=" + video + ", comment=" + comment + "]";
+				+ ", badTag=" + badTag + ", comment=" + comment + ", image=" + image + ", video=" + video + "]";
 	}
 	
 	public static void main(String[] args){

@@ -84,12 +84,12 @@
 
 					<h5>我的證照/影片</h5>
 					<ul>
-						<c:forEach var="video" items="${skill.video}">
+						<c:forEach var="video" items="${skill.video}" varStatus="vedioLoop">
 
 							<li class="clearfix" style="position: relative; z-index: 5;">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>影片1</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>影片 - ${vedioLoop.getCount()}</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_1 r5">來看看<i
@@ -99,11 +99,11 @@
 						</c:forEach>
 
 
-						<c:forEach var="image" items="${skill.image}">
+						<c:forEach var="image" items="${skill.image}" varStatus="imageLoop">
 							<li class="clearfix" style="position: relative; z-index: 1">
 								<div class="con">
 									<h3>
-										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀1</em>
+										<i aria-hidden="true" data-icon="&#x5b;"></i>證照/獎狀 - ${imageLoop.getCount()}</em>
 									</h3>
 									<p></p>
 								</div> <a href="javascript:;" class="btn_go btn_green product_2 r5">來看看<i
@@ -389,8 +389,8 @@
 					
 					<div class="info_area info info_content">
 						<br>
-						<c:forEach var="comment" items="${skill.comment}">
-							<p class="desc s5">${comment}</p>
+						<c:forEach var="comment" items="${skill.comment}" varStatus="commentLoop">
+							<p class="desc s5">${commentLoop.getCount()}. ${comment.comment} [${comment.date}]</p>
 			
 						</c:forEach>
 						

@@ -17,7 +17,7 @@ public class EvaluationManager{
 		Date recentLog = new Date();
 		java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		try{
-			String query = "INSERT INTO comments" + "VALUES ( '"+skillId+"' , '"+comment+"', '"+now+"' )";
+			String query = "INSERT INTO comments VALUES ( "+skillId+" , '"+comment+"', '"+now+"' )";
 //			String query = "INSERT comments SET skill_id = '"+ skillId +"', comment = '"+ comment +"',date = '"+ now +"'";
 		    result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
@@ -31,12 +31,14 @@ public class EvaluationManager{
 		int result = 0;
 		Skill skill = SkillManager.findSkill(skillId);
 		try{
-			String query = "UPDATE skills SET attitude_score = '"+ (skill.getScore().getFrequency() + score.getAttitude()) +"',"
-			+ " profession_score = '"+ (skill.getScore().getProfession() + score.getProfession()) +"', "
-			+ "teaching_score = '"+(skill.getScore().getTeaching() + score.getTeaching())+"',"
-			+ " frequency_score = '"+(skill.getScore().getFrequency() + score.getFrequency()) +"', "
-			+ "satisfication_score = '"+ (skill.getScore().getSatisfication() + score.getSatisfication()) +"'"
-			+ "where skill_id = '"+skillId+"'";
+			System.out.println("[評分完成]:"+score);//<--------------------------
+			String query = "UPDATE skills SET times = times + 1,"
+			+ " attitude_score = '"+ (skill.getScore().getAttitude() + score.getAttitude()) +"',"
+			+ " profession_score = '"+ (skill.getScore().getProfession() + score.getProfession()) +"',"
+			+ " teaching_score = '"+(skill.getScore().getTeaching() + score.getTeaching())+"',"
+			+ " frequency_score = '"+(skill.getScore().getFrequency() + score.getFrequency()) +"',"
+			+ " satisfication_score = '"+ (skill.getScore().getSatisfication() + score.getSatisfication()) +"'"
+			+ " where skill_id = '"+skillId+"'";
 			result = DataBaseAdmin.updateDB(query);
 		}catch(Exception e){
 			e.printStackTrace();

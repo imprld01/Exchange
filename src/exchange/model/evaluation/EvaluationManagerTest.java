@@ -18,7 +18,6 @@ public class EvaluationManagerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		DataBaseAdmin.openConnection("root", "narutoap12");
 		evaluationmanager = new EvaluationManager();
 	}
 
@@ -34,15 +33,7 @@ public class EvaluationManagerTest {
 		int input = em.saveComment(5313, "You suck!");
 		assertEquals(input, output);
 	}
-	
-	@Test // 輸入空值
-	public void testSaveComment2() throws SQLException {
-		EvaluationManager em = new EvaluationManager();
-		int output = 0;
-		int input = em.saveComment(0, null);
-		assertEquals(input, output);
-	}
-	
+
 	@Test  //輸入存在的skillid測試有沒有存到
 	public void testSaveScore1() throws SQLException {
 		EvaluationManager em = new EvaluationManager();

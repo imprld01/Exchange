@@ -18,10 +18,12 @@ import exchange.model.skill.Skill;
 
 public class matchTest {
 	BasicAlgorithm ba;
-	double distanceCoefficient[]={5,4,4,3,2}; //分子
-	double distanceCoefficientSum=18;  //分母
-	double totalScore[]={10.625,10.5,6.75,0,46};
-	double skillScore[]={34,42,27,0,46};
+	double distanceCoefficient[]={5,5,4,4,3}; //分子
+	double distanceCoefficientSum=21;  //分母
+	
+	
+	double totalScore[]={10.95,8.09,8,5.14,0};
+	double skillScore[]={46,34,42,27,0};
 	
 	ArrayList<CandidateSkill> cs;
 	
@@ -47,8 +49,6 @@ public class matchTest {
 	private void assertSortSuccess(ArrayList<CandidateSkill> cs){ //測試排序有無錯誤
 		
 		for(int i=0;i<cs.size()-1;i++){
-			//System.out.println(cs.get(i).getSkillScore());
-			//System.out.println(cs.get(i+1).getSkillScore());
 			boolean	larger=(cs.get(i).getTotalScore()>=cs.get(i+1).getTotalScore());		
 			assertTrue(larger);
 		}
@@ -93,7 +93,7 @@ public class matchTest {
 		ba=new BasicAlgorithm("vegetable", 1);
 		cs=ba.getSkillArray("vegetable");
 		
-				
+			
 		for(int i=0;i<cs.size()-1;i++){
 			assertEquals(cs.get(i).getDistanceWeight_numerator(), distanceCoefficient[i],0);
 			assertEquals(cs.get(i).getDistanceWeight_denominator(),distanceCoefficientSum,0);

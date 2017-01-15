@@ -41,7 +41,7 @@ public class AccountManager {
 						result.getBoolean("gender"), result.getString("email"), result.getString("birthday"),
 						result.getString("region"), result.getInt("skill_max"), result.getInt("skill_number"));
 
-				account = new Account(secret, profile, result.getDate("recent_log"));
+				account = new Account(secret, profile, result.getString("recent_log"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -55,8 +55,7 @@ public class AccountManager {
 	public ArrayList<Secret> getAllUserId() throws SQLException {
 		ArrayList<Secret> idlist = new ArrayList<>();
 		String query = "SELECT * FROM accounts ";
-		ResultSet result = null;
-		result = DataBaseAdmin.selectDB(query);
+		ResultSet result = result = DataBaseAdmin.selectDB(query);
 		while (result.next())
 			idlist.add(new Secret(result.getString("user_id")));
 

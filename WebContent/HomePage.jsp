@@ -158,6 +158,9 @@
 										onclick="window.location.href='Match.do?cardId=${skill.mySkill.getSkillId()}'"
 										style="position: absolute; right: 4%; bottom: 6%;">
 								</c:when>
+								<c:when test = "${skill.status == 2}">
+								<input src="_homePage/images/star.png" type="image" onclick="window.location.href='Skill.do?mark=5&myId=${skill.mySkill.skillId}&otherId=${skill.othersSkill.skillId}#popup2'" style = "position: absolute; right:4%; bottom:6%;">
+								</c:when>
 							</c:choose>
 							</h2>
 						</div>
