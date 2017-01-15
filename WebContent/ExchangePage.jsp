@@ -119,7 +119,7 @@
 
                                         <div>
                                             <h2 style="margin:1em;">以${sendInvitation.mySkill.type.typeName}技能邀請中
-                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='Invitation.do?mark=0&sdr=${sendInvitation.othersSkill.skillId}&rcv=${sendInvitation.mySkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
+                                                    <input src="_homePage/images/no.png" type="image" onclick="window.location.href='Invitation.do?mark=0&sdr=${sendInvitation.mySkill.skillId}&rcv=${sendInvitation.othersSkill.skillId}'" style = "position: absolute; right:4%; bottom:6%;">
 
                                             </h2>
                                         </div>

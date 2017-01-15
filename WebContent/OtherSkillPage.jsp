@@ -586,7 +586,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-
+				 $("#atd").val(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -598,7 +598,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-				 $("#RRRRR").html(targetValue);
+				$("#pfn").val(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -610,7 +610,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-
+				$("#tch").val(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -622,7 +622,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-
+				$("#fqc").val(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
@@ -634,7 +634,7 @@
 				var arr = $.makeArray(meterItems); // Had to create array of <li> to loop through them
 
 				meterItems.removeClass("active"); // Clears prior active states
-
+				$("#sfn").val(targetValue);
 				for (i = 0; i <= targetValue - 1; i++) {
 					$(arr[i]).addClass("active");
 				}
