@@ -55,6 +55,7 @@ public class DataBaseAdmin {
 		try {
 			if (connection != null)
 				connection.close();
+				connection = null;
 			System.out.println("Connection closed !!");
 		} catch (SQLException e) {
 			e.printStackTrace();

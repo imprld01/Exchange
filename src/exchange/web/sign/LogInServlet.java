@@ -35,7 +35,7 @@ public class LogInServlet extends HttpServlet {
 			String id = (String) request.getParameter("id");
 			String pwd = (String) request.getParameter("pwd");
 			
-			//if(id == null || pwd == null) response.sendRedirect("Index.jsp#login");
+			if(id == null || pwd == null) response.sendRedirect("Index.jsp#login");
 			
 			Secret secret = new Secret(id, pwd);
 
