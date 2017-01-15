@@ -52,7 +52,7 @@ public class AccountManagerTest {
 	public void testAddAccount2() throws SQLException {
 		AccountManager am = new AccountManager();
 		String input_id = "10567026";
-		String input_password = "kc567894";
+		String input_password = "k6666894";
 	    String input_userName = "鍾子健"; 
 		String input_nickName = "nick2";
 		boolean input_gender = false;

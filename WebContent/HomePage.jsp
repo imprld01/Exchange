@@ -253,7 +253,7 @@
 										<option value="noType">請選擇類別</option>
 									</select>
 									<input type="hidden" value="3" name="mark">
-									<input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" >
+									<input type="submit" style="position:absolute;bottom:10%;" class="	 r5" >
 								</form>
 								
 							</div>

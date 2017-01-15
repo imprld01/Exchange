@@ -26,6 +26,9 @@ public class InvitationServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
+			System.out.println("[Invitation REMOVE]");
+			session.removeAttribute("mm");
+			
 			String sender = (String)request.getParameter("sdr");
 			String receiver = (String)request.getParameter("rcv");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));

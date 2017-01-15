@@ -30,7 +30,12 @@ public class ShowHomePageServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		if (session != null && session.getAttribute("uid") != null) {
+	
 			
+			if(session.getAttribute("algorithm") != null){ session.removeAttribute("algorithm");
+				System.out.println("[REMOVE]:"+session.getAttribute("algorithm"));
+			}
+		
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
 			

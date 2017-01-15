@@ -110,9 +110,10 @@ public class AccountManager {
 	public boolean isValid(String id) {
 		
 		String query = "SELECT * FROM accounts where user_id='" + id + "'";
-		ResultSet rs = DataBaseAdmin.selectDB(query);
-		//System.out.println("[" + id + "] -> [" + rs +"]");
 		try {
+			ResultSet rs = DataBaseAdmin.selectDB(query);
+		//System.out.println("[" + id + "] -> [" + rs +"]");
+
 			if (rs.next()) {
 				
 				if (id.equals(rs.getString("user_id")))
@@ -134,7 +135,7 @@ public class AccountManager {
 		try {
 			rs.next();
 			// System.out.println("[region]->"+rs.getString("region"));
-			System.out.println(rs.getString("region"));
+			//System.out.println(rs.getString("region"));
 			return rs.getString("region");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

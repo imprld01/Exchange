@@ -107,8 +107,7 @@
                                     <li data-value="5"></li>
                                   </ul>
                                   <br>
-                                  <textarea id="TextArea"ng- placeholder="This is an auto expanding textarea with just angularjs ... try typing something.">
-                                  </textarea>
+                                  <textarea id="TextArea"ng- placeholder="This is an auto expanding textarea with just angularjs ... try typing something."></textarea>
                                   <a href="" class="btn_more r5" >Confirm</a>
 
                                 </div>
@@ -439,8 +438,8 @@
 					
 					<div class="info_area info info_content">
 						<br>
-						<c:forEach var="comment" items="${skill.comment}">
-							<p class="desc s5">${comment}</p>
+						<c:forEach var="comment" items="${skill.comment}" varStatus="commentLoop">
+							<p class="desc s5">${commentLoop.getCount()}. ${comment.comment} [${comment.date}]</p>
 			
 						</c:forEach>
 						

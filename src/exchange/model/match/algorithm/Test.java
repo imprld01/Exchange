@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import exchange.model.database.DataBaseAdmin;
 import exchange.model.match.MatchMaker;
+import exchange.model.skill.Skill;
 
 public class Test {
 
@@ -12,23 +13,38 @@ public class Test {
 
 		// TODO Auto-generated method stub
 
-		DataBaseAdmin.changeDBAccount("root", "a2n5h011oj");
+		DataBaseAdmin.changeDBAccount("root", "root");
 
 		//////////////////////////
+
 		MatchMaker ba = new BasicAlgorithm("vegetable",1); // 傳遞帳號與技能ID過去
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
-		System.out.println(ba.toMatch());
+	
+		
+		Skill temp = ba.toMatch();
+		int i = 0;
+		
+		while(i != 200){
+			System.out.println("["+i%50+"]"+temp);
+			temp = ba.toMatch();
+			if(temp == null){
+				ba = new BasicAlgorithm("vegetable",1);
+				temp = ba.toMatch();
+			}
+			i++;
+		}
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+//		System.out.println(ba.toMatch());
+
 		
 
 		//Skill skill = new Skill();
