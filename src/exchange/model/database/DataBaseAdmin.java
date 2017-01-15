@@ -55,6 +55,7 @@ public class DataBaseAdmin {
 		try {
 			if (connection != null)
 				connection.close();
+				connection = null;
 			System.out.println("Connection closed !!");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -80,8 +81,7 @@ public class DataBaseAdmin {
 
 	// 用以下insert, update, delete QUERY之method
 	// UPDATE favorites SET type_name = 'swim' where account = 'admin'
-	// INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield',
-	// 2001)
+	// INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield',2001)
 	// DELETE FROM Registration " +"WHERE id = 101";
 	/**
 	 * @param query

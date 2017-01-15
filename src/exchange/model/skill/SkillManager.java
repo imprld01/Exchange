@@ -127,7 +127,7 @@ public class SkillManager {
 			while(rs.next())
 			{
 				if(rs.getString("type_name").equals(typeName)) count++;
-				System.out.println("["+rs.getString("type_name")+"]->["+typeName+"]");
+				//System.out.println("["+rs.getString("type_name")+"]->["+typeName+"]");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -19,6 +19,7 @@ public class LogOutServlet extends HttpServlet {
 		DataBaseAdmin.closeConnection();
 		
 		HttpSession session = request.getSession(false);
+		session.removeAttribute("uid");
 		session.invalidate();
 		
 		response.sendRedirect("Index.do");

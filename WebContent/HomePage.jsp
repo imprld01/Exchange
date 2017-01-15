@@ -192,6 +192,14 @@
 								<p>
 							</div>
 						</div>
+						<div id="popupDuplicate" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>錯誤警告</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">重複新增相同類別技能卡！
+								<p>
+							</div>
+						</div>
 					</h2>
 				</div>
 				</article> </section>

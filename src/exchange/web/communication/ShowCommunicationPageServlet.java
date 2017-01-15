@@ -21,6 +21,8 @@ public class ShowCommunicationPageServlet extends HttpServlet {
 	private static final int SHOW_MESSAGES = 0;
 	private static final int SAVE_MESSAGES = 1;
 	
+	
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);

@@ -56,6 +56,12 @@ public class SkillServlet extends HttpServlet {
 
 				skill = new Skill(uid, ie, tp, img, vdo);
 				//System.out.println("[skill]->" + skill);
+				if(SkillManager.checkSkillDuplicate(skill) == false) 
+				{
+					System.out.println("[重複]");
+					response.sendRedirect("Home.do#popupDuplicate");
+					return;
+				}
 				SkillManager.createSkill(skill);
 
 				break;

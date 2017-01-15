@@ -17,18 +17,14 @@ public class SignManager {
 		SignManager sm = new SignManager();
 		Date recentLog = new Date();
 		java.sql.Date sqlStartDate = new java.sql.Date(recentLog.getTime());
-		try {
-			//System.out.println("[帳號] -> ["+ secret.getPassword() +"]");
-			if (am.isValid(secret.getId()) == true) { // 帳號是否存在
-				//System.out.println("[帳號存在，比對密碼]");
-				if (sm.CheckPassword(secret) == true) { // 密碼是否相同
-					result = true;
-					String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate + "'";
-					DataBaseAdmin.updateDB(query);
-				} 
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		//System.out.println("[帳號] -> ["+ secret.getPassword() +"]");
+		if (am.isValid(secret.getId()) == true) { // 帳號是否存在
+			//System.out.println("[帳號存在，比對密碼]");
+			if (sm.CheckPassword(secret) == true) { // 密碼是否相同
+				result = true;
+				String query = "UPDATE accounts SET recent_Log = '" + sqlStartDate + "'";
+				DataBaseAdmin.updateDB(query);
+			} 
 		}
 		// DataBaseAdmin.closeConnection();
 		return result;
