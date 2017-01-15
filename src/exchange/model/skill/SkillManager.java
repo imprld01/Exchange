@@ -149,13 +149,12 @@ public class SkillManager {
 		try{
 			flag = DataBaseAdmin.updateDB(
 					"UPDATE skills SET intro_expr='" + skill.getIntorExpr() + "' where (skill_id = '" + skillId + "')");
-			if(flag != 0)
-			{
-				for (String vedio : skill.getVideo())
-				DataBaseAdmin.updateDB("UPDATE videos SET vedio='" + vedio + "' where (skill_id = '" + skillId + "')");
-				for (String image : skill.getImage())
-				DataBaseAdmin.updateDB("UPDATE images SET image='" + image + "' where (skill_id = '" + skillId + "')");
-			}
+			for (String vedio : skill.getVideo())
+			flag = DataBaseAdmin.updateDB(
+					"UPDATE videos SET vedio='" + vedio + "' where (skill_id = '" + skillId + "')");
+			for (String image : skill.getImage())
+			DataBaseAdmin.updateDB(
+					"UPDATE images SET image='" + image + "' where (skill_id = '" + skillId + "')");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -234,10 +233,9 @@ public class SkillManager {
 	// (現在做不到QAQ)
 	// 接收參數:skill_id、score
 	// 回傳型態:封鎖回傳true!
-	static public boolean judgeBlock(int skillId, Score score) {
+	static public void judgeBlock(int skillId, Score score) {
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM skills WHERE skill_id = '" + skillId + "'");
 
-		int flag = 0;
 		int warningTimes = 0;
 		int badTimes = 0;
 		try {
@@ -253,18 +251,16 @@ public class SkillManager {
 
 			if (warningTimes == 1 && badTimes == 0) {
 
-				flag = 
 					DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
-				if(flag != 0){
+
 					DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='0' WHERE skill_id = '" + skillId + "'");
-				}
+
 			} else {
 				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='" + (warningTimes + 1) + "' WHERE skill_id = '"
 						+ skillId + "'");
 			}
 
 		}
-		return (flag == 0)? true:false;
 	}
 
 	// 判斷卡片是否在邀請別人

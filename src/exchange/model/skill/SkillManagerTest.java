@@ -46,7 +46,7 @@ public class SkillManagerTest {
 	}
 
 	@Test //測試技能未達到上限，技能建立成功
-	public void testCreateSkill() {
+	public void testCreateSkill1() {
 		String a = "www.youtube.com";
 		ArrayList<String> image = new ArrayList<String>();
 		image.add(a);
@@ -57,16 +57,38 @@ public class SkillManagerTest {
 		assertEquals(input, output);
 	}
 	
-//	@Test //測試技能未達到上限，技能建立成功
-//	public void testCreateSkill() {
-//		String a = "www.youtube.com";
-//		ArrayList<String> image = new ArrayList<String>();
-//		image.add(a);
-//		ArrayList<String> video = new ArrayList<String>();
-//		video.add(a);
-//		boolean input = skillmanager.createSkill(new Skill("10567026", "我想回家ˊˋ", "吉他", image, video));
-//		boolean output = true; 
-//		assertEquals(input, output);
-//	}
+	@Test //測試技能達到上限，技能建立失敗
+	public void testCreateSkill() {
+		String a = "www.youtube.com";
+		ArrayList<String> image = new ArrayList<String>();
+		image.add(a);
+		ArrayList<String> video = new ArrayList<String>();
+		video.add(a);
+		boolean input = skillmanager.createSkill(new Skill("10567026", "我想回家ˊˋ", "吉他", image, video));
+		boolean output = false; 
+		assertEquals(input, output);
+	}
+	
+	@Test //測試技能重複
+	public void testCheckSkillDuplicate1() {
+		boolean input = skillmanager.checkSkillDuplicate((new Skill("vegetable", "吉他")));
+		boolean output = false; 
+		assertEquals(input, output);
+	}
+	
+	@Test //測試技能沒有重複
+	public void testCheckSkillDuplicate2() {
+		boolean input = skillmanager.checkSkillDuplicate((new Skill("vegetable", "鋼琴")));
+		boolean output = true; 
+		assertEquals(input, output);
+	}
+	
+	@Test //測試修改技能成功
+	public void testModifySkill1() {
+		boolean input = skillmanager.modifySkill((new Skill("vegetable", "吉他")));
+		boolean output = true; 
+		System.out.println(input);
+		assertEquals(input, output);
+	}
 	
 }
