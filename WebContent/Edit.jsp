@@ -78,8 +78,7 @@
 					<h5>技能的簡介/經歷</h5>
                     <form method="get" action="Skill.do" >
                     <input type="hidden" value="1" name="mark">
-                    <textarea cols="50" rows="20" name="intorExpr" placehoder = "輸入技能簡介及經歷...">
-						${skill.intorExpr}</textarea>
+                    <textarea cols="50" rows="20" name="intorExpr" placehoder = "輸入技能簡介及經歷...">${skill.intorExpr}</textarea>
 
 
 					<h5>我的證照/影片</h5>
