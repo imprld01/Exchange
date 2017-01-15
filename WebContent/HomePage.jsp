@@ -30,7 +30,7 @@
 		<div class="inner">
 
 			<!-- Logo -->
-			<a href="index.html" class="logo"> <span class="symbol"><img
+			<a href="#" class="logo"> <span class="symbol"><img
 					src="_homePage/images/logo.svg" alt="" /></span><span class="title">Exchange</span>
 			</a>
 
@@ -120,7 +120,7 @@
 									<input type="text" name="email" placeholder="信箱"><br>
 								
 									<input type="hidden" value="1" name="mark">
-									<input type="submit" class="btn_more r5" value="確認">
+									<input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" value="確認">
 								</form>
 							</div>
 						</div>
@@ -253,7 +253,7 @@
 										<option value="noType">請選擇類別</option>
 									</select>
 									<input type="hidden" value="3" name="mark">
-									<input type="submit" class="btn_more r5" >
+									<input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" >
 								</form>
 								
 							</div>

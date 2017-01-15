@@ -128,7 +128,7 @@
 						<div class="container 75%" align="center">
 							<form method="post" action="Signup.do">
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="user" type="text" placeholder="姓名" /></div>
+									<div class="6u 12u(mobile)"><input id="user" name="user" type="text" placeholder="姓名" /></div>
 								</div>
 								<br>
 								<div class="12u">
@@ -136,7 +136,7 @@
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="birth" type="text" id="date" placeholder="1111-11-11" /></div>
+									<div class="6u 12u(mobile)"><input name="birth" type="text" id="date" placeholder="生日 例如：1111-11-11	" /></div>
 								</div>
 								<br>
 								<div class="12u">
@@ -177,21 +177,7 @@
 					</div>
 				</section>
 
-		<!-- Footer -->
-			<section id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-				<div class="copyright">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</section>
+		
 
 		<!-- Scripts -->
 			<script src="_index/assets/js/jquery.min.js"></script>
@@ -200,6 +186,8 @@
 			<script src="_index/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="_index/assets/js/main.js"></script>
+			<script>
 
+			</script>
 	</body>
 </html>

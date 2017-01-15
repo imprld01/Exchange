@@ -45,9 +45,9 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="#ING">進行中交流</a></li>
-							<li><a href="#YA">受到的邀請</a></li>
-							<li><a href="#GET">送出的邀請</a></li>
+							<li><a href="#EXCHANGE">進行中交流</a></li>
+							<li><a href="#RECEIVE">受到的邀請</a></li>
+							<li><a href="#INVITE">送出的邀請</a></li>
 							<li><a href="Home.do">個人頁面 ></a></li>
 							<li><a href="../首頁/cnangePwd.html">帳戶管理 ></a></li>
 							<li><a href="Logout.do">登出 </a></li>
@@ -61,7 +61,7 @@
 								<h1>交流列表</h1>
 							</header>
 							<hr><br>
-							<h3 id="ING">進行中交流</h3>
+							<h3 id="EXCHANGE">進行中交流</h3>
 							<section class="tiles">
                                 <c:forEach var="exchange" items="${Exchanging}" varStatus="exchangeLoopCount">
                                 <article class="style${exchangeLoopCount.count%5+1}">
@@ -83,7 +83,7 @@
                                 </c:forEach>
 							</section>
 							<hr><br>
-							<h3 id="YA">受到的邀請</h3>
+							<h3 id="RECEIVE">受到的邀請</h3>
 							<section class="tiles">
                                 <c:forEach var="receiveInvitation" items="${ReceiveInvitation}" varStatus="receiveLoop">
                                     <article class="style${receiveLoop.count%5+1}">
@@ -105,7 +105,7 @@
                                 </c:forEach>
 							</section>
 							<hr><br>
-							<h3 id="GET">送出的邀請</h3>
+							<h3 id="INVITE">送出的邀請</h3>
 							<section class="tiles">
                                  <c:forEach var="sendInvitation" items="${SendInvitation}" varStatus="sendLoop">
                                     <article class="style${sendLoop.count%5+1}">
