@@ -29,7 +29,7 @@ public class SkillServlet extends HttpServlet {
 	private static final int SHOW_OTHER_SKILL = 5;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("[type]->" + (String) request.getParameter("type"));
+		//System.out.println("[type]->" + (String) request.getParameter("type"));
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 
