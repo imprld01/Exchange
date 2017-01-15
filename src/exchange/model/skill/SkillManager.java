@@ -246,18 +246,16 @@ public class SkillManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
 		if (score.calSumScore() <= 5) {
 
 			if (warningTimes == 1 && badTimes == 0) {
-
 					DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
-
 					DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='0' WHERE skill_id = '" + skillId + "'");
-
+					System.out.println("[評價過低封鎖一次]");
 			} else {
-				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='" + (warningTimes + 1) + "' WHERE skill_id = '"
-						+ skillId + "'");
+				DataBaseAdmin.updateDB("UPDATE skills SET warning_tag='" + (warningTimes + 1) + "' WHERE skill_id = '"+ skillId + "'");
+				System.out.println("[評價過低警告一次]");
 			}
 
 		}
@@ -278,7 +276,7 @@ public class SkillManager {
 		}
 		return false;
 	}
-
+	
 	// 更新資料庫中的技能等級
 	// 第一次升級僅需要15個評價分，之後每次升級需25個評價分。
 	// 任一個技能上升5個等級就增加一個新增技能欄位。
@@ -291,19 +289,17 @@ public class SkillManager {
 		int level = (totalScore >= 15) ? (totalScore - 15) / 25 + 1 : 0;
 		int newSkill = level / 5 + 3;
 
-		flag = 
-				DataBaseAdmin.updateDB("UPDATE skills SET skill_level='" + level + "' WHERE skill_id = '" + skillId + "'");
-
+		DataBaseAdmin.updateDB("UPDATE skills SET skill_level='" + level + "' WHERE skill_id = '" + skillId + "'");
 		ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM skills WHERE skill_id = '" + skillId + "'");
 
 		try {
 			rs.next();
-			DataBaseAdmin.updateDB("UPDATE accounts SET skill_max='" + newSkill + "' WHERE user_id = '"
-					+ rs.getString("user_id") + "'");
+			DataBaseAdmin.updateDB("UPDATE accounts SET skill_max='" + newSkill + "' WHERE user_id = '"+ rs.getString("user_id") + "'");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+	
 		return (flag == 0)? true:false;
 	}
 
