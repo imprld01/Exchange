@@ -46,7 +46,7 @@
 								<div class="row">
 									<div class="12u">
 										<ul class="actions">
-											<input type="hidden" value="3" name="mark"/>
+											<input type="hidden" value="0" name="mark"/>
 											<li><input type="submit" class="button alt" value="修改" /></li>
 											<li><input type="button" class="button alt" value="返回" onclick="window.location.href='Home.do'"/></li>
 										</ul>
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 				</section>
-						<div id="popupNotMatch" class="overlay">
+						<div id="popup_notmatch" class="overlay">
 							<div class="popup" style="color: black; height: 40%">
 								<h2>錯誤警告</h2>
 								<br> <a class="close" href="#">&times;</a>
@@ -64,7 +64,7 @@
 								<p>
 							</div>
 						</div>
-						<div id="popupNotSame" class="overlay">
+						<div id="popup_notsame" class="overlay">
 							<div class="popup" style="color: black; height: 40%">
 								<h2>錯誤警告</h2>
 								<br> <a class="close" href="#">&times;</a>

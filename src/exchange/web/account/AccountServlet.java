@@ -30,7 +30,7 @@ public class AccountServlet extends HttpServlet {
 			AccountManager am = new AccountManager();
 			String id = (String)session.getAttribute("uid");
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
-			
+			System.out.println("[mark]:"+mark);
 			switch(mark){
 			case SECRET_MODIFICATION:
 				System.out.println("SECRET_MODIFICATION");
@@ -38,16 +38,21 @@ public class AccountServlet extends HttpServlet {
 				String pwd = (String)request.getParameter("pwd");
 				String rePwd = (String)request.getParameter("re_pwd");
 				Secret secret = new Secret(id, oldPwd);
-				
+				System.out.println("[oldPwd]:"+oldPwd);
+				System.out.println("[pwd]:"+pwd);
+				System.out.println("[rePwd]:"+rePwd);
 				switch(am.setSecret(secret,pwd,rePwd))
 				{
 					case 0:
-						response.sendRedirect("ChangePwd.jsp#popupNOTMATCH");
+						System.out.println("NOTMATCH");
+						response.sendRedirect("ChangePwd.jsp#popup_notmatch");
 						break;
 					case 1:
-						response.sendRedirect("ChangePwd.jsp#popupNOTSAME");
+						System.out.println("popupNOTSAME");
+						response.sendRedirect("ChangePwd.jsp#popup_notsame");
 						break;
 					case 3:
+						System.out.println("SUCCESSCHANGE");
 						response.sendRedirect("Home.do#SUCCESSCHANGE");
 						break;
 				}

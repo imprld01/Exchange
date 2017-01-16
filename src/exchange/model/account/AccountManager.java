@@ -89,9 +89,9 @@ public class AccountManager {
 		String password = secret.getPassword();
 		try {
 			
-			ResultSet rs = DataBaseAdmin.selectDB("SELECT password FROM accounts WHERE  password = '" + password + "' " + "where user_id = '" + id + "'");
+			ResultSet rs = DataBaseAdmin.selectDB("SELECT password FROM accounts WHERE  password = '" + password + "' " + "AND user_id = '" + id + "'");
 			
-			rs.next();
+			while(rs.next()){
 			if(rs.getString("password").equals(password)) 
 			{
 				System.out.println("[原始密碼符合]");
@@ -102,7 +102,7 @@ public class AccountManager {
 				}
 				return NOTSAME;
 			}
-			
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
