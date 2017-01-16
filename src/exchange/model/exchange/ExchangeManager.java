@@ -9,7 +9,7 @@ import exchange.model.skill.SkillManager;;
 public class ExchangeManager {
 	//接受邀請, 新增到交流Table ,將邀請Table中原本的row刪除
 	public static void acceptInvitation(String mySkillID, String othersSkillID){
-		DataBaseAdmin.updateDB("INSERT INTO exchanges VALUES('"+othersSkillID+"','"+mySkillID+"','0')");
+		DataBaseAdmin.updateDB("INSERT INTO exchanges VALUES('"+othersSkillID+"','"+mySkillID+"','0','0')");
 		DataBaseAdmin.updateDB("DELETE FROM invitations Where ivt_sender = '"+mySkillID+"'AND ivt_receiver = '"+othersSkillID+"'");
 		//DataBaseAdmin.closeConnection();
 	}
