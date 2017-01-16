@@ -53,7 +53,7 @@ public class AccountServlet extends HttpServlet {
 						break;
 					case 3:
 						System.out.println("SUCCESSCHANGE");
-						response.sendRedirect("Home.do#SUCCESSCHANGE");
+						response.sendRedirect("Home.do");
 						break;
 				}
 				break;
