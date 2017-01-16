@@ -80,13 +80,17 @@ public class AccountManager {
 	}
 
 	// Secret修改
-	public void setSecret(Secret secret) {
-
+	public int setSecret(Secret secret) {
+		int result = 0;
 		String id = secret.getId();
 		String password = secret.getPassword();
-
-		DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'");
-
+		try {
+			String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
+			result = DataBaseAdmin.updateDB(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 
 	}
 
