@@ -87,6 +87,7 @@ public class AccountManager {
 
 		DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'");
 
+
 	}
 
 	public static boolean isSkillFull(String id) throws SQLException {

@@ -203,7 +203,7 @@
 								<p>
 							</div>
 						</div>
-						<div id="popupSUCCESSCHANGE" class="overlay">
+						<div id="popup_success_change" class="overlay">
 							<div class="popup" style="color: black; height: 40%">
 								<h2>通知</h2>
 								<br> <a class="close" href="#">&times;</a>
