@@ -18,9 +18,9 @@ public class AccountManager {
 		int skillNumber = 0;
 		int gender_int = 0;
 		if (gender) {
-			gender_int = 1;
-		} else {
 			gender_int = 0;
+		} else {
+			gender_int = 1;
 		}
 		String query = "INSERT INTO accounts VALUES ('" + id + "', '" + password + "', '" + userName + "', '" + nickName
 				+ "', '" + gender_int + "', " + "'" + email + "', '" + birthday + "' ,'" + region + "', '" + skillNumber
