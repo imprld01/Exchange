@@ -95,9 +95,9 @@ Hope you like it :)
 
     Chat.initialize = function() {
         if (window.location.protocol == 'http:') {
-            Chat.connect('ws://192.168.0.4:8080/Exchange/websocket/chat/${id}');
+            Chat.connect('ws://yhw1105.hopto.org:8080/Exchange/websocket/chat/${id}');
         } else {
-            Chat.connect('wss://192.168.0.4:8080/Exchange/websocket/chat/${id}');
+            Chat.connect('wss://yhw1105.hopto.org:8080/Exchange/websocket/chat/${id}');
         }
     };
 
