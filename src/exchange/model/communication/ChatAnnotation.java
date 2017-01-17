@@ -99,7 +99,7 @@ public class ChatAnnotation {
 					synchronized (client) {
 						if(Integer.parseInt(client)==msg.getSender() || Integer.parseInt(client)==msg.getReceiver()){
 							clients.get(client).getBasicRemote().sendText(jsonMsg.toString());
-							if(msg.getReceiver() == Integer.parseInt(client))CommunicationManager.readMessage(msg.getMsgID());
+							if(msg.getReceiver() == Integer.parseInt(client) || msg.getSender() == Integer.parseInt(client))CommunicationManager.readMessage(msg.getMsgID());
 						}
 					}
 				} catch (Exception e) {
