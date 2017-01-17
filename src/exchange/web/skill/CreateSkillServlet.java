@@ -34,10 +34,11 @@ public class CreateSkillServlet extends HttpServlet {
 		if (session != null) {
 			RequestDispatcher view = null;
 			String uid = (String) session.getAttribute("uid");
-
+			AccountManager am = new AccountManager();
+			
 			request.setAttribute("kinds", KindTypeManager.getKindList());
 			request.setAttribute("types", KindTypeManager.getTypeList());
-
+			request.setAttribute("region", am.getRegion(uid));
 			view = request.getRequestDispatcher("Create.jsp");
 			view.forward(request, response);
 		} else

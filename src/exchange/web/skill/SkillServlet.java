@@ -134,7 +134,7 @@ public class SkillServlet extends HttpServlet {
 				//System.out.println("[skill]:"+Integer.parseInt((String) request.getParameter("myId")));
 				request.setAttribute("myId", Integer.parseInt((String) request.getParameter("myId")));
 				request.setAttribute("skill", skilltoshowOther);
-
+				request.setAttribute("region", am.getRegion(skilltoshowOther.getUserId()));
 				view = request.getRequestDispatcher("/OtherSkillPage.jsp");
 				view.forward(request, response);
 				return;

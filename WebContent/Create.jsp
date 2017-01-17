@@ -62,7 +62,7 @@
 	
 							</select>
 	                        <span>
-	                            <p><i aria-hidden="true" data-icon="&#xe01d;"></i>在基隆市</p>
+	                            <p><i aria-hidden="true" data-icon="&#xe01d;"></i>在${region}</p>
 	                            <!-- <p><i aria-hidden="true" data-icon="&#xe031;"></i>評價</p> -->
 	                            <br>
 	                            <input type="hidden" value="0" name="mark">
