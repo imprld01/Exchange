@@ -327,11 +327,11 @@
 					
 					<div class="info_area info info_content">
 						<br>
-						<c:forEach var="comment" items="${skill.comment}">
-							<p class="desc s5">${comment} </p>
+
+						<c:forEach var="comment" items="${skill.comment}" varStatus="commentLoop">
+							<p class="desc s5">${commentLoop.getCount()}. ${comment.comment} [${comment.date}]</p>
 			
 						</c:forEach>
-						
 					</div>
 				</div>
 
