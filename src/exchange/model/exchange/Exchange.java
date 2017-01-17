@@ -15,7 +15,11 @@ public class Exchange {
 	private Skill mySkill;
 
 	public Exchange(Skill mySkill,Skill othersSkill){
+<<<<<<< HEAD
 		//System.out.println("Exchange");
+=======
+		
+>>>>>>> origin/master
 		this.mySkill = mySkill;
 		this.othersSkill = othersSkill;
 		status = EXCHANGING;

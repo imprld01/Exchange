@@ -41,7 +41,7 @@ public class AccountServlet extends HttpServlet {
 				System.out.println("[oldPwd]:"+oldPwd);
 				System.out.println("[pwd]:"+pwd);
 				System.out.println("[rePwd]:"+rePwd);
-				switch(am.setSecret(secret,pwd,rePwd))
+				switch(am.changeSecret(secret,pwd,rePwd))
 				{
 					case 0:
 						System.out.println("NOTMATCH");

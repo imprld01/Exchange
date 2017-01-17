@@ -80,36 +80,51 @@ public class AccountManager {
 	}
 
 	// Secret修改
-	public int setSecret(Secret secret,String pwd, String rePwd) {
-		int NOTMATCH = 0;
-		int NOTSAME = 1;
-		int SUCCESS = 2;
-		
+	public int setSecret(Secret secret) {
+		int result = 0;
 		String id = secret.getId();
 		String password = secret.getPassword();
 		try {
-			
-			ResultSet rs = DataBaseAdmin.selectDB("SELECT password FROM accounts WHERE  password = '" + password + "' " + "AND user_id = '" + id + "'");
-			
-			while(rs.next()){
-			if(rs.getString("password").equals(password)) 
-			{
-				System.out.println("[原始密碼符合]");
-				if( pwd.equals(rePwd))
-				{
-					DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + pwd + "' " + "where user_id = '" + id + "'");
-					return SUCCESS;
-				}
-				return NOTSAME;
-			}
-			}
+			String query = "UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'";
+			result = DataBaseAdmin.updateDB(query);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return NOTMATCH;
+		return result;
 
 	}
+	
+	// Secret修改
+		public int changeSecret(Secret secret,String pwd, String rePwd) {
+			int NOTMATCH = 0;
+			int NOTSAME = 1;
+			int SUCCESS = 2;
+			
+			String id = secret.getId();
+			String password = secret.getPassword();
+			try {
+				
+				ResultSet rs = DataBaseAdmin.selectDB("SELECT password FROM accounts WHERE  password = '" + password + "' " + "where user_id = '" + id + "'");
+				
+				rs.next();
+				if(rs.getString("password").equals(password)) 
+				{
+					System.out.println("[原始密碼符合]");
+					if( pwd.equals(rePwd))
+					{
+						DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'");
+						return SUCCESS;
+					}
+					return NOTSAME;
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return NOTMATCH;
 
+		}
+		
 	public static boolean isSkillFull(String id) throws SQLException {
 		boolean result = true;
 		String query = "select * from accounts where user_id = '" + id + "'";
@@ -123,34 +138,34 @@ public class AccountManager {
 
 	// 驗證帳號登入
 	public boolean isValid(String id) {
-		
+
 		String query = "SELECT * FROM accounts where user_id='" + id + "'";
 		try {
 			ResultSet rs = DataBaseAdmin.selectDB(query);
-		//System.out.println("[" + id + "] -> [" + rs +"]");
+			// System.out.println("[" + id + "] -> [" + rs +"]");
 
 			if (rs.next()) {
-				
+
 				if (id.equals(rs.getString("user_id")))
 					return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 
 	public String getRegion(String id) {
 		String query = "SELECT * FROM accounts where user_id = '" + id + "' ";
-		//System.out.println(id);
-		//System.out.println(query);
+		// System.out.println(id);
+		// System.out.println(query);
 
 		ResultSet rs = DataBaseAdmin.selectDB(query);
 		try {
 			rs.next();
 			// System.out.println("[region]->"+rs.getString("region"));
-			//System.out.println(rs.getString("region"));
+			// System.out.println(rs.getString("region"));
 			return rs.getString("region");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

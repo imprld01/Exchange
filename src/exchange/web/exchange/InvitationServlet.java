@@ -26,7 +26,7 @@ public class InvitationServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
-			System.out.println("[Invitation REMOVE]");
+	
 			session.removeAttribute("mm");
 			
 			String sender = (String)request.getParameter("sdr");
@@ -34,7 +34,7 @@ public class InvitationServlet extends HttpServlet {
 			int mark = Integer.parseInt((String)request.getParameter("mark"));
 			switch(mark){
 			case REJECT_INVITATION:
-				System.out.println("REJECT_INVITATION");
+			
 				ExchangeManager.rejectInvitation(sender, receiver);
 				break;
 			case ACCEPT_INVITATION:
