@@ -235,7 +235,7 @@ public class SkillManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
+		//DataBaseAdmin.updateDB("UPDATE skills SET bad_tag='" + 1 + "' WHERE skill_id = '" + skillId + "'");
 		if (score.calSumScore() <= 5) {
 
 			if (warningTimes == 1 && badTimes == 0) {
