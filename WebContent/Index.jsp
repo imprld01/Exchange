@@ -178,7 +178,7 @@
 					</div>
 				</section>
 
-						<div id="popup_IdDuplicate" class="overlay">
+						<div id="popup_Idduplicate" class="overlay">
 							<div class="popup" style="color: black; height: 40%">
 								<h2>錯誤警告</h2>
 								<br> <a class="close" href="#">&times;</a>

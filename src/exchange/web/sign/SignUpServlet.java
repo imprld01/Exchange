@@ -60,19 +60,24 @@ public class SignUpServlet extends HttpServlet {
 		boolean checkResult = false;
 		checkResult = sm.isAccountValid(secret.getId());
 		System.out.println("checkResult:"+checkResult);
-		if(pwd != rePwd)
+		if(!pwd.equals(rePwd))
 		{
+			System.out.println((!pwd.equals(rePwd))+" pwd != rePwd");
 			response.sendRedirect("Index.jsp#popup_notsame");
+		}else{
+			 if (checkResult)
+				{
+				 System.out.println("success");
+					sm.create(new Account(profile, secret));
+					response.sendRedirect("Index.jsp#popup_signsuccess");
+				}
+				else
+				{
+					System.out.println("重複");
+					response.sendRedirect("Index.jsp#popup_Idduplicate");
+				}
 		}
-		else if (checkResult)
-		{
-			sm.create(new Account(profile, secret));
-			response.sendRedirect("Index.jsp#popup_signsuccess");
-		}
-		else
-		{
-			response.sendRedirect("Index.jsp#popup_IdDuplicate");
-		}
+		
 		
 	}
 }

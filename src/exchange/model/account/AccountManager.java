@@ -113,7 +113,7 @@ public class AccountManager {
 					System.out.println("[原始密碼符合]");
 					if( pwd.equals(rePwd))
 					{
-						DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + password + "' " + "where user_id = '" + id + "'");
+						DataBaseAdmin.updateDB("UPDATE accounts SET password = '" + pwd + "' " + "where user_id = '" + id + "'");
 						return SUCCESS;
 					}
 					return NOTSAME;
