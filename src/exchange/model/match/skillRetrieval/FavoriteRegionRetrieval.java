@@ -37,7 +37,7 @@ public class FavoriteRegionRetrieval implements SkillRetrievalSet {
 			
 			ArrayList<CandidateSkill> candidates = new ArrayList<CandidateSkill>();
 		
-			String sql = "select skills.skill_id from skills,accounts where skills.user_id=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=true and datediff(CURRENT_DATE(),accounts.recent_log) <=3 and skills.user_id!='"
+			String sql = "select skills.skill_id from skills,accounts where skills.user_id=accounts.user_id and skill_id not in(select invitations.ivt_sender from invitations where invitations.ivt_sender=skill_id) and skills.bad_tag=false and datediff(CURRENT_DATE(),accounts.recent_log) <=3 and skills.user_id!='"
 					+ this.user_id + "' ";
 	
 			for (int i = 0; i < this.favoritesSkill.size(); i++) {
