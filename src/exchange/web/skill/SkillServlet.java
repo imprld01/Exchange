@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import exchange.model.account.AccountManager;
 import exchange.model.skill.KindTypeManager;
 import exchange.model.skill.Skill;
 import exchange.model.skill.SkillManager;
@@ -39,9 +40,10 @@ public class SkillServlet extends HttpServlet {
 			String cid, ie, uid, tp;
 			ArrayList<String> img = new ArrayList<String>();
 			ArrayList<String> vdo = new ArrayList<String>();
+			AccountManager am = new AccountManager();
 			//System.out.println("[mark]->" + (String) request.getParameter("mark"));
 			int mark = Integer.parseInt((String) request.getParameter("mark"));
-
+			
 			switch (mark) {
 			case CREATE_SKILL:
 				tp = (String) request.getParameter("type");
@@ -110,7 +112,7 @@ public class SkillServlet extends HttpServlet {
 				request.setAttribute("kindName", KindTypeManager.getKindName(skilltoshow.getType().getKindCode()));
 
 				request.setAttribute("skill", skilltoshow);
-
+				request.setAttribute("region", am.getRegion(skilltoshow.getUserId()));
 				view = request.getRequestDispatcher("/SkillPage.jsp");
 				view.forward(request, response);
 				return;
