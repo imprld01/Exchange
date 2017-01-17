@@ -123,7 +123,7 @@
 
 								<h2>修改個人資料</h2>
 								<br> <a class="close" href="#PROFILE">&times;</a>
-								<form method="get" action="Account.do#PROFILE"> 
+								<form method="post" action="Account.do"> 
 									<input type="text" name="nick" placeholder="暱稱"><br>
 									<input type="text" name="region" placeholder="地區"><br>
 									<input type="text" name="email" placeholder="信箱"><br>
