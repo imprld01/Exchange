@@ -28,8 +28,9 @@ public class SignUpServlet extends HttpServlet {
 		String rePwd = (String) request.getParameter("re_pwd");
 		String user = (String) request.getParameter("user");
 		String nick = (String) request.getParameter("nick");
+		String genderString = (String) request.getParameter("gender");
 		
-		boolean gender = Boolean.parseBoolean((String) request.getParameter("gender"));
+		boolean gender = (genderString.equals("男"))?true:false;
 		String email = (String) request.getParameter("email");
 		String birth = (String) request.getParameter("birth");
 		String region = (String) request.getParameter("region");
