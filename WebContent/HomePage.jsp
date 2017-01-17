@@ -86,7 +86,16 @@
 							</select> <select>
 								<option value="Taipei">${profile.birthday}</option>
 							</select> <select>
-								<option value="Taipei">${profile.gender}</option>
+								<option value="Taipei">
+								<c:choose>
+								<c:when test="${profile.gender== true}">
+									<c:out value="男" />
+								</c:when>
+								<c:when test="${profile.gender== false}">
+									<c:out value="女" />
+								</c:when>
+						</c:choose>
+								</option>
 							</select> <select>
 								<option value="Taipei">${profile.region}</option>
 							</select> <select>
