@@ -59,7 +59,7 @@ public class ChatAnnotation {
 		clients.put(Integer.toString(sender), session);
 		//String message = String.format("* %s %s", nickname, "has joined.");
 		ArrayList<Message> messages = CommunicationManager.getAllmessages(sender);
-		broadcast(messages);
+		broadcast(messages,sender);
 	}
 
 	@OnClose
@@ -100,6 +100,38 @@ public class ChatAnnotation {
 						if(Integer.parseInt(client)==msg.getSender() || Integer.parseInt(client)==msg.getReceiver()){
 							clients.get(client).getBasicRemote().sendText(jsonMsg.toString());
 							if(msg.getReceiver() == Integer.parseInt(client) || msg.getSender() == Integer.parseInt(client))CommunicationManager.readMessage(msg.getMsgID());
+						}
+					}
+				} catch (Exception e) {
+					// log.debug("Chat Error: Failed to send message to client", e);
+					clients.remove(client);
+					try {
+						clients.get(client).close();
+					} catch (IOException e1) {
+						// Ignore
+					}
+					//String message = String.format("* %s %s", client.nickname, "has been disconnected.");
+					//broadcast(message);
+				}
+			}
+		}
+	}
+	private static void broadcast(ArrayList<Message> messages,int id) {
+		//先把每則訊息包成json再做處理
+		for(Message msg:messages){
+			 Map jsonMap = new HashMap();
+			 jsonMap.put("content", msg.getContent());
+			 jsonMap.put("sdr", msg.getSender());
+			 jsonMap.put("rcv", msg.getReceiver());
+			 
+			 JSONObject jsonMsg = new JSONObject(jsonMap);
+			//掃過每個用戶來偵測是否符合接受的資格
+			for (String client :  clients.keySet() ) {
+				try {
+					synchronized (client) {
+						if(Integer.parseInt(client)==id){
+							clients.get(client).getBasicRemote().sendText(jsonMsg.toString());
+							//if(msg.getReceiver() == Integer.parseInt(client) || msg.getSender() == Integer.parseInt(client))CommunicationManager.readMessage(msg.getMsgID());
 						}
 					}
 				} catch (Exception e) {
