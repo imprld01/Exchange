@@ -76,7 +76,7 @@
 									<div>
 										<h2 style="margin:1em;">以${exchange.mySkill.type.getTypeName()}技能交換
 												<input src="_homePage/images/star.png" type="image" onclick="window.location.href='Skill.do?mark=5&myId=${exchange.mySkill.skillId}&otherId=${exchange.othersSkill.skillId}#popup2'" style = "position: absolute; right:4%; bottom:6%;">
-												<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='../messaging/index.html'" style = "position: absolute; right:16%; bottom:5%;">
+												<input src="_homePage/images/chat.png" type="image" onclick="window.location.href='Communication.do?id=${exchange.mySkill.getSkillId()}&othersID=${exchange.othersSkill.getSkillId()}'" style = "position: absolute; right:16%; bottom:5%;">
 										</h2>
 									</div>
 								</article>

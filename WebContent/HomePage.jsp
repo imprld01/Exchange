@@ -114,7 +114,7 @@
 
 								<h2>修改個人資料</h2>
 								<br> <a class="close" href="#PROFILE">&times;</a>
-								<form method="post" action="Account.do#PROFILE"> 
+								<form method="get" action="Account.do#PROFILE"> 
 									<input type="text" name="nick" placeholder="暱稱"><br>
 									<input type="text" name="region" placeholder="地區"><br>
 									<input type="text" name="email" placeholder="信箱"><br>
@@ -208,14 +208,6 @@
 								<h2>通知</h2>
 								<br> <a class="close" href="#">&times;</a>
 								<p style="color: red; float: center;">更改密碼成功！
-								<p>
-							</div>
-						</div>
-						<div id="popup_succesEdit" class="overlay">
-							<div class="popup" style="color: black; height: 40%">
-								<h2>通知</h2>
-								<br> <a class="close" href="#">&times;</a>
-								<p style="color: red; float: center;">成功修改個人資料！
 								<p>
 							</div>
 						</div>
