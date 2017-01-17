@@ -14,11 +14,11 @@ public class Test {
 		// Date recentLog = new Date();
 		// java.sql.Date now = new java.sql.Date(recentLog.getTime());
 		// System.out.println(now);
-		 DataBaseAdmin.openConnection("root", "narutoap12");
+		 //DataBaseAdmin.openConnection("root", "root");
 		AccountManager am = new AccountManager();
 
 		// getAccount method success
-		 System.out.println(am.getAccount("10567026"));
+		 System.out.println(am.changeSecret(new Secret("vegetable","123"), "1", "1"));
 		// System.out.println(am.getAccount("1234567"));
 		// System.out.println(am.getAccount("jec88899"));
 

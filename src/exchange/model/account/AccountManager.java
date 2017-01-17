@@ -102,9 +102,10 @@ public class AccountManager {
 			
 			String id = secret.getId();
 			String password = secret.getPassword();
+			System.out.println(secret);
 			try {
 				
-				ResultSet rs = DataBaseAdmin.selectDB("SELECT password FROM accounts WHERE  password = '" + password + "' " + "where user_id = '" + id + "'");
+				ResultSet rs = DataBaseAdmin.selectDB("SELECT * FROM accounts WHERE  user_id = '"+id+"' AND password = '"+password+"'");
 				
 				rs.next();
 				if(rs.getString("password").equals(password)) 

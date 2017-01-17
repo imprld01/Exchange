@@ -53,7 +53,7 @@ public class Test {
 		//SkillManager.createSkill(new Skill("bowen","123123","吉他", new ArrayList<String>(), new ArrayList<String>()));
 		
 //		SkillManager.updateSkillLevel(1);
-		DataBaseAdmin.openConnection("root", "narutoap12");
+		//DataBaseAdmin.openConnection("root", "narutoap12");
 		KindTypeManager ktm = new KindTypeManager();
 		System.out.println(sm.findSkill(1));
 	}
