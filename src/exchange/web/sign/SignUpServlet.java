@@ -31,6 +31,7 @@ public class SignUpServlet extends HttpServlet {
 		String genderString = (String) request.getParameter("gender");
 		
 		boolean gender = (genderString.equals("男"))?true:false;
+		System.out.println(gender);
 		String email = (String) request.getParameter("email");
 		String birth = (String) request.getParameter("birth");
 		String region = (String) request.getParameter("region");
