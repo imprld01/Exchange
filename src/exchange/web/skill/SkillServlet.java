@@ -49,6 +49,7 @@ public class SkillServlet extends HttpServlet {
 				tp = (String) request.getParameter("type");
 				uid = (String) session.getAttribute("uid");
 				ie = (String) request.getParameter("introExper");
+				//request.setAttribute("region", am.getRegion(uid));
 				//vn = Integer.parseInt((String) request.getParameter("vnum"));
 				//in = Integer.parseInt((String) request.getParameter("inum"));
 				for (int i = 1; i <= 1; ++i)
