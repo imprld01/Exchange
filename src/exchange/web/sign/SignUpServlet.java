@@ -3,6 +3,7 @@ package exchange.web.sign;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +25,10 @@ public class SignUpServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String id = (String) request.getParameter("id");
 		String pwd = (String) request.getParameter("pwd");
+		String rePwd = (String) request.getParameter("re_pwd");
 		String user = (String) request.getParameter("user");
 		String nick = (String) request.getParameter("nick");
+		
 		boolean gender = Boolean.parseBoolean((String) request.getParameter("gender"));
 		String email = (String) request.getParameter("email");
 		String birth = (String) request.getParameter("birth");
@@ -48,18 +51,28 @@ public class SignUpServlet extends HttpServlet {
 //		System.out.println("birth:" + birth);
 //		System.out.println("region:" + region);
 		
+		
+		
 		Secret secret = new Secret(id, pwd);
 		Profile profile = new Profile(user, nick, gender, email, birth, region);
 		SignManager sm = new SignManager();
 
 		boolean checkResult = false;
 		checkResult = sm.isAccountValid(secret.getId());
-
-		if (checkResult)
+		System.out.println("checkResult:"+checkResult);
+		if(pwd != rePwd)
+		{
+			response.sendRedirect("Index.jsp#popup_notsame");
+		}
+		else if (checkResult)
+		{
 			sm.create(new Account(profile, secret));
+			response.sendRedirect("Index.jsp#popup_signsuccess");
+		}
 		else
-			response.sendRedirect("error.html");
-
-		response.sendRedirect("Index.jsp");
+		{
+			response.sendRedirect("Index.jsp#popup_IdDuplicate");
+		}
+		
 	}
 }

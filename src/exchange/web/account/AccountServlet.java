@@ -51,9 +51,9 @@ public class AccountServlet extends HttpServlet {
 						System.out.println("popupNOTSAME");
 						response.sendRedirect("ChangePwd.jsp#popup_notsame");
 						break;
-					case 3:
+					case 2:
 						System.out.println("SUCCESSCHANGE");
-						response.sendRedirect("Home.do");
+						response.sendRedirect("Home.do#popup_success_change");
 						break;
 				}
 				break;
@@ -66,7 +66,7 @@ public class AccountServlet extends HttpServlet {
 				
 				am.setProfile(id, profile);
 				
-				response.sendRedirect("Home.do");
+				response.sendRedirect("Home.do#popup_succesEdit");
 				break;
 			}
 		}

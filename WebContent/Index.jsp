@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="_index/assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<link rel="stylesheet" href="_homePage/assets/css/popup.css" />
 	</head>
 	<body>
 
@@ -177,7 +178,32 @@
 					</div>
 				</section>
 
-		
+						<div id="popup_IdDuplicate" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>錯誤警告</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">帳號重複！
+								<p>
+							</div>
+						</div>
+							
+						<div id="popup_notsame" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>錯誤警告</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">輸入密碼不相同！
+								<p>
+							</div>
+						</div>
+						
+						<div id="popup_signsuccess" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>通知</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">帳號註冊成功！
+								<p>
+							</div>
+						</div>
 
 		<!-- Scripts -->
 			<script src="_index/assets/js/jquery.min.js"></script>

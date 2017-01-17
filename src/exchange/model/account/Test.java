@@ -18,7 +18,7 @@ public class Test {
 		AccountManager am = new AccountManager();
 
 		// getAccount method success
-		 System.out.println(am.changeSecret(new Secret("vegetable","123"), "1", "1"));
+		 System.out.println(am.isValid("test123"));
 		// System.out.println(am.getAccount("1234567"));
 		// System.out.println(am.getAccount("jec88899"));
 
