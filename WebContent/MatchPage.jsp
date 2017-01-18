@@ -35,6 +35,9 @@
 <!--字体??cdd-->
 <link href="_skill/css/font.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="_skill/css/evaluation.css">
+<script language="JavaScript">
+history.go(+1)
+</script>
 <title>配對頁面</title>
 </head>
 <body>

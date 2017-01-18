@@ -31,7 +31,9 @@
 
         <!--字体图标cdd-->
         <link href="_exchange/css/font.css" rel="stylesheet" type="text/css">
-
+		<script language="JavaScript">
+		history.go(+1)
+		</script>
         <title>Profile</title>
     </head>
     <body>
@@ -79,7 +81,7 @@
                     <div class="info_area info_left info_content">
 
                         <h5>技能的簡介/<i aria-hidden="true" data-icon="&#x7d;"></i>經歷</h5>
-						<textarea cols="50" rows="20" name="introExper"  placehoder = "輸入技能簡介及經歷..."></textarea>
+						<textarea cols="50" rows="20" name="introExper"  placehoder = "輸入技能簡介及經歷..." required></textarea>
                         <h5>我的證照/影片</h5>
                         輸入連結以嵌入影片 <input type="text"  name="video1"> <img src="_exchange/images/plus.png" style="margin-top:2px;"><br>
 						輸入連結以嵌入圖片 <input type="text"  name="image1"> <img src="_exchange/images/plus.png" style="margin-top:2px;"><br>

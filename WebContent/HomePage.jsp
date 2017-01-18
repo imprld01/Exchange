@@ -124,9 +124,27 @@
 								<h2>修改個人資料</h2>
 								<br> <a class="close" href="#PROFILE">&times;</a>
 								<form method="post" action="Account.do"> 
-									<input type="text" name="nick" placeholder="暱稱"><br>
-									<input type="text" name="region" placeholder="地區"><br>
-									<input type="text" name="email" placeholder="信箱"><br>
+									<input type="text" name="nick" placeholder="暱稱" required><br>
+									<select name="region">
+											　<option value="基隆">基隆</option>
+											　<option value="台北">台北</option>
+											　<option value="桃園">桃園</option>
+											　<option value="新竹">新竹</option>
+											 <option value="苗栗">苗栗</option>
+											　<option value="台中">台中</option>
+											　<option value="彰化">彰化</option>
+											　<option value="南投">南投</option>
+											 <option value="雲林">雲林</option>
+											　<option value="嘉義">嘉義</option>
+											　<option value="台南">台南</option>
+											　<option value="高雄">高雄</option>
+											 <option value="屏東">屏東</option>
+											　<option value="宜蘭">宜蘭</option>
+											　<option value="花蓮">花蓮</option>
+											　<option value="台東">台東</option>
+									</select>
+									<br>
+									<input type="text" name="email" placeholder="信箱" required><br>
 								
 									<input type="hidden" value="1" name="mark">
 									<input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" value="確認">

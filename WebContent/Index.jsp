@@ -16,6 +16,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<link rel="stylesheet" href="_homePage/assets/css/popup.css" />
+
 	</head>
 	<body>
 
@@ -95,11 +96,11 @@
 					<div class="container 75%" align="center">
 						<form method="post" action="Login.do">
 							<div class="12u">
-								<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="Account" /></div>
+								<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="Account" required/></div>
 							</div>
 							<br>
 							<div class="12u" >
-								<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="Password" /></div>
+								<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="Password" required/></div>
 							</div>
 								<br>
 							<div class="row">
@@ -127,48 +128,82 @@
 
 					<div class="content style4 fea-tured" >
 						<div class="container 75%" align="center">
-							<form method="post" action="Signup.do">
+							<form method="post" action="Signup.do" name="sign">
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input id="user" name="user" type="text" placeholder="姓名" /></div>
+									<div class="6u 12u(mobile)"><input id="user" name="user" type="text" placeholder="姓名" required /></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="nick" type="text" placeholder="暱稱" /></div>
+									<div class="6u 12u(mobile)"><input name="nick" type="text" placeholder="暱稱" required/></div>
 								</div>
 								<br>
 								<div class="12u">
-									<div class="6u 12u(mobile)"><input name="birth" type="text" id="date" placeholder="生日 例如：1111-11-11	" /></div>
+									<div class="6u 12u(mobile)"><input name="birth" type="text" id="date" placeholder="生日 YYYY-MM-DD" required/></div>
 								</div>
 								<br>
+								<!--
 								<div class="12u">
 									<div class="6u 12u(mobile)"><input name="gender" type="text" placeholder="性別" /></div>
 								</div>
 								<br>
+								<!--
 								<div class="12u">
 									<div class="6u 12u(mobile)"><input name="region" type="text" placeholder="地區" /></div>
 								</div>
+								-->
+								<div class="12u">
+									<div class="6u 12u(mobile)">
+										<select name="gender">
+											　<option value="男">男</option>
+											　<option value="女">女</option>
+										</select>
+									</div>
+								</div>	
+								<br>
+								<div class="12u">
+									<div class="6u 12u(mobile)">
+										<select name="region">
+											　<option value="基隆">基隆</option>
+											　<option value="台北">台北</option>
+											　<option value="桃園">桃園</option>
+											　<option value="新竹">新竹</option>
+											 <option value="苗栗">苗栗</option>
+											　<option value="台中">台中</option>
+											　<option value="彰化">彰化</option>
+											　<option value="南投">南投</option>
+											 <option value="雲林">雲林</option>
+											　<option value="嘉義">嘉義</option>
+											　<option value="台南">台南</option>
+											　<option value="高雄">高雄</option>
+											 <option value="屏東">屏東</option>
+											　<option value="宜蘭">宜蘭</option>
+											　<option value="花蓮">花蓮</option>
+											　<option value="台東">台東</option>
+										</select>
+									</div>
+								</div>	
 								<br>
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="帳號" /></div>
+									<div class="6u 12u(mobile)"><input name="id" type="text" placeholder="帳號" required/></div>
 								</div>
 								<br>
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="密碼" /></div>
+									<div class="6u 12u(mobile)"><input name="pwd" type="password" placeholder="密碼" required/></div>
 								</div>
 								<br>
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input name="re_pwd" type="password" placeholder="密碼確認" /></div>
+									<div class="6u 12u(mobile)"><input name="re_pwd" type="password" placeholder="密碼確認" required/></div>
 								</div>
 								<br>
 
 								<div class="12u" >
-									<div class="6u 12u(mobile)"><input name="email" type="text" placeholder="信箱" /></div>
+									<div class="6u 12u(mobile)"><input name="email" type="email" placeholder="信箱" required/></div>
 								</div>
 								<br>
 								<div class="row">
 									<div class="12u">
 										<ul class="actions">
-											<li><input type="submit" class="button alt" value="提交" /></li>
+											<li><input type="button" class="button alt" value="提交" onclick="validatedate(document.sign.birth)"/></li>
 
 										</ul>
 									</div>
@@ -195,11 +230,18 @@
 								<p>
 							</div>
 						</div>
-						
+						<div id="popup_errordate" class="overlay">
+							<div class="popup" style="color: black; height: 40%">
+								<h2>錯誤警告</h2>
+								<br> <a class="close" href="#">&times;</a>
+								<p style="color: red; float: center;">日期格式不符合！
+								<p>
+							</div>
+						</div>
 						<div id="popup_signsuccess" class="overlay">
 							<div class="popup" style="color: black; height: 40%">
 								<h2>通知</h2>
-								<br> <a class="close" href="#">&times;</a>
+								<br> <a class="close" href="#login">&times;</a>
 								<p style="color: red; float: center;">帳號註冊成功！
 								<p>
 							</div>
@@ -213,7 +255,62 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="_index/assets/js/main.js"></script>
 			<script>
+		function validatedate(inputText) {
+			var dateformat = /^\d{4}[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])$/;
+			// Match the date format through regular expression  
+			if (inputText.value.match(dateformat)) {
+				document.sign.birth.focus();
+				//Test which seperator is used '/' or '-'  
+				var opera1 = inputText.value.split('/');
+				var opera2 = inputText.value.split('-');
+				lopera1 = opera1.length;
+				lopera2 = opera2.length;
+				// Extract the string into month, date and year  
+				if (lopera1 > 1) {
+					var pdate = inputText.value.split('/');
+				} else if (lopera2 > 1) {
+					var pdate = inputText.value.split('-');
+				}
+				var dd = parseInt(pdate[2]);
+				var mm = parseInt(pdate[1]);
+				var yy = parseInt(pdate[0]);
+				
+				var ListofDays = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30,
+						31 ];
+				if (mm == 1 || mm > 2) {
+					if (dd > ListofDays[mm - 1]) {
+						document.getElementById("date").style.border = "thick solid red";
+						document.sign.birth.placeholder = "無效的日期 YYYY-MM-DD	";
+						return false;
+					}
+				}
+				if (mm == 2) {
+					var lyear = false;
+					if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
+						lyear = true;
+					}
+					if ((lyear == false) && (dd >= 29)) {
+						document.getElementById("date").style.border = "thick solid red";
+						document.sign.birth.placeholder = "無效的日期 YYYY-MM-DD	";
+						return false;
+					}
+					if ((lyear == true) && (dd > 29)) {
+						document.getElementById("date").style.border = "thick solid red";
+						document.sign.birth.placeholder = "無效的日期 YYYY-MM-DD	";
+						return false;
+					}
+				}
+				
+				document.sign.submit();
+			} else {
+				
+				document.getElementById("date").style.border = "thick solid red";
+				document.sign.birth.placeholder = "無效的日期 YYYY-MM-DD	";
+				document.sign.birth.focus();
+				return false;
+			}
+		}
+	</script>
 
-			</script>
 	</body>
 </html>

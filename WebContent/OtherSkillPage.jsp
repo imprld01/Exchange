@@ -35,6 +35,9 @@
 <!--字体??cdd-->
 <link href="_skill/css/font.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="_skill/css/evaluation.css">
+<script language="JavaScript">
+history.go(+1)
+</script>
 <title>配對頁面</title>
 </head>
 <body>
@@ -107,13 +110,13 @@
                                     <li data-value="5"></li>
                                   </ul>
                                   <br>
-	                                  <form method="get" action="Evaluation.do">
-	                                  <textarea id="TextArea" name="comment" placeholder="請輸入評論"></textarea>
-	                                  <input type="hidden" value="0" name="atd" id="atd">
-	                                  <input type="hidden" value="0" name="pfn" id="pfn">
-	                                  <input type="hidden" value="0" name="tch" id="tch">
-	                                  <input type="hidden" value="0" name="fqc" id="fqc">
-	                                  <input type="hidden" value="0" name="sfn" id="sfn">
+	                                  <form method="post" action="Evaluation.do">
+	                                  <textarea id="TextArea" name="comment" placeholder="請輸入評論" required></textarea>
+	                                  <input type="hidden" value="1" name="atd" id="atd">
+	                                  <input type="hidden" value="1" name="pfn" id="pfn">
+	                                  <input type="hidden" value="1" name="tch" id="tch">
+	                                  <input type="hidden" value="1" name="fqc" id="fqc">
+	                                  <input type="hidden" value="1" name="sfn" id="sfn">
 	                                  <input type="hidden" value="${myId}" name="my">
 	                                  <input type="hidden" value="${skill.skillId}" name="other">
 	                                 <input type="submit" style="position:absolute;bottom:10%;" class="btn_more r5" value="確認">
