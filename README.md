@@ -1,6 +1,6 @@
 # Exchange
 
-The Original Project comes from []().
+The Original Project comes from [YHW1105/Exchange](https://github.com/YHW1105/Exchange).
 
 This project is developed under software engineering method.
 You can find the [software engineering document](/tree/master/軟體工程文件) including:
